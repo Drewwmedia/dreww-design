@@ -1,0 +1,62 @@
+/* Dreww app tokens. The only colours, fonts, corners, shadows and speeds
+   the apps use. Agreed Nov 25, 2026 (docs/app-design-system.html). */
+:root{
+  color-scheme:light;
+
+  /* Brand, shared with dreww.ca */
+  --dw-burgundy:#892951;
+  --dw-coral:#ee7464;
+  --dw-ink:#111111;
+  --dw-grey-600:#525252;   /* secondary text, help text, labels on mist */
+  --dw-grey-500:#737373;   /* column headers and empty cells, on white only */
+  --dw-grey-200:#e5e5e5;   /* every border and divider */
+  --dw-mist:#f2f4f8;       /* app background, input fill, row hover, selected row */
+  --dw-white:#ffffff;
+
+  /* Status: UI only, never brand, never a chart series */
+  --dw-teal:#215f6a;       /* good for the client */
+  --dw-red:#da1e28;        /* bad for the client, failures, form errors */
+
+  /* Text on dark grounds */
+  --dw-on-burgundy-muted:#f3dce6;
+  --dw-on-burgundy-subtle:#e7c3d2;
+  --dw-on-ink-muted:#cfcfcf;
+  --dw-red-on-ink:#ff8389;
+
+  /* Charts only: series in this fixed order, four at most */
+  --dw-chart-1:#892951;
+  --dw-chart-2:#ee7464;
+  --dw-chart-3:#4058b5;
+  --dw-chart-4:#d4a72c;
+  --dw-chart-context:#737373; /* previous period, benchmarks */
+
+  /* Type. In Next.js, point these at your next/font variables. */
+  --dw-font-display:"Anton",Impact,"Arial Narrow",sans-serif;
+  --dw-font-sans:"DM Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --dw-font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+
+  /* Cut corner: top-left always square */
+  --dw-cut-xs:0 4px 4px 4px;   /* tags, checkboxes, kbd */
+  --dw-cut-sm:0 8px 8px 8px;   /* buttons, inputs, nav items, notices */
+  --dw-cut-md:0 12px 12px 12px;/* panels, KPI cards, large buttons */
+  --dw-cut-lg:0 16px 16px 16px;/* modals, drawers */
+
+  /* One shadow, for things that float */
+  --dw-shadow-float:0 12px 32px rgba(17,17,17,.14),0 2px 6px rgba(17,17,17,.08);
+
+  /* Motion */
+  --dw-ease-wipe:cubic-bezier(.7,0,.2,1);
+  --dw-dur-fast:120ms;   /* tints */
+  --dw-dur-wipe:350ms;   /* button wipe, tab underline */
+}
+
+body{
+  margin:0;
+  font-family:var(--dw-font-sans);
+  font-size:14px;
+  line-height:1.5;
+  color:var(--dw-ink);
+  background:var(--dw-mist);
+  -webkit-font-smoothing:antialiased;
+}
+:focus-visible{outline:2px solid var(--dw-coral);outline-offset:2px}

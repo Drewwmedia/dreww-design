@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dreww Web Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --color-burgundy:#892951; --color-burgundy-hover:#702242;
+  --color-coral:#ee7464; --color-coral-hover:#c95d4f;
+  --color-grey-900:#111; --color-grey-600:#525252; --color-grey-500:#737373;
+  --color-grey-200:#e5e5e5; --color-grey-100:#f5f5f5; --color-mist:#f2f4f8; --color-white:#fff;
+  --gradient-primary:linear-gradient(93deg,var(--color-burgundy) 0%,var(--color-coral) 99.25%);
+  --font-heading:"Anton",Georgia,serif; --font-body:"DM Sans",system-ui,-apple-system,Arial,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --nav-w:264px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;font-family:var(--font-body);font-size:16px;line-height:1.5;color:var(--color-grey-900);background:#fff;-webkit-font-smoothing:antialiased}
+h1,h2,h3{text-wrap:balance} p,li{text-wrap:pretty}
+button{font:inherit;color:inherit}
+
+/* ---------- Shell ---------- */
+.shell{display:grid;grid-template-columns:var(--nav-w) 1fr;min-height:100vh}
+.nav{position:sticky;top:0;height:100vh;overflow-y:auto;padding:28px 20px 40px;background:var(--color-burgundy);color:#fff}
+.nav-title{font-family:var(--font-heading);text-transform:uppercase;font-size:22px;line-height:1.1;margin:18px 0 6px}
+.nav-kit{font-family:var(--font-mono);font-size:11px!important;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.75)!important;margin:0 0 26px!important;padding:0!important;display:inline-block!important}
+.nav-kit:hover{color:#fff!important;background:none!important}
+.nav-brand{display:block;margin-bottom:6px}
+.nav-brand svg{width:104px;height:auto;display:block}
+.nav-sub{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-grey-500);margin:10px 0 28px}
+.nav-group{margin-bottom:22px}
+.nav-label{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6);margin:0 0 8px}
+.nav a{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 10px;margin:0 -10px;border-radius:0 8px 8px 8px;text-decoration:none;color:#fff;font-size:15px}
+.nav a:hover{background:rgba(255,255,255,.1)}
+.nav a.is-active{background:#fff;color:var(--color-burgundy)}
+.nav a.is-soon{color:rgba(255,255,255,.55);pointer-events:none}
+.tag{font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:0 4px 4px 4px;white-space:nowrap}
+.tag-review{background:var(--color-coral);color:#fff}
+.tag-soon{background:rgba(255,255,255,.12);color:rgba(255,255,255,.7)}
+.nav a.is-active .tag-review{background:var(--color-burgundy);color:#fff}
+
+main{min-width:0}
+.wrap{max-width:1080px;padding:0 56px}
+
+/* ---------- Hero ---------- */
+.hero{background:var(--color-burgundy);color:#fff;padding:28px 0}
+.hero-in{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.hero-link{font-family:var(--font-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#fff;text-decoration:none;opacity:.85}
+.hero-link:hover{opacity:1}
+.eyebrow{font-family:var(--font-mono);font-size:14px;font-weight:500;line-height:21px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-coral);margin:0 0 16px}
+.hero h1{font-family:var(--font-heading);font-weight:400;text-transform:uppercase;font-size:clamp(24px,3vw,32px);line-height:1.1;margin:0}
+.hero h1 em{font-style:normal;color:var(--color-coral)}
+.hero p{max-width:620px;color:#fff;font-size:18px;margin:0}
+.status{display:flex;flex-wrap:wrap;gap:24px;margin-top:36px;font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.75)}
+.status b{color:#fff;font-weight:500}
+
+/* ---------- Sections ---------- */
+.sec{padding:64px 0;border-bottom:1px solid var(--color-grey-200)}
+.sec:nth-of-type(even){background:var(--color-mist)}
+.sec h2,.decide h2{font-family:var(--font-heading);font-weight:400;text-transform:uppercase;font-size:clamp(32px,4.2vw,54px);line-height:1.06;margin:0 0 16px}
+.lede{font-size:16px;color:var(--color-grey-600);max-width:640px;margin:0 0 28px}
+.sub{font-family:var(--font-mono);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--color-grey-500);margin:48px 0 16px}
+.sub:first-of-type{margin-top:0}
+
+/* utility buttons (page chrome, not DS buttons) */
+.act{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--color-grey-200);background:#fff;padding:7px 11px;border-radius:0 8px 8px 8px;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;color:var(--color-grey-900);min-height:34px}
+.act:hover{border-color:var(--color-grey-900)}
+.act:focus-visible{outline:2px solid var(--color-coral);outline-offset:2px}
+.act svg{width:13px;height:13px}
+.acts{display:flex;flex-wrap:wrap;gap:8px}
+
+/* ---------- Logo ---------- */
+.logo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.logo-grid.mono{grid-template-columns:repeat(3,1fr);margin-top:16px}
+.logo-stage svg.m{width:auto;height:84px}
+.logo-card{background:#fff;border:1px solid var(--color-grey-200);border-radius:0 8px 8px 8px;overflow:hidden}
+.logo-stage{height:200px;display:flex;align-items:center;justify-content:center;padding:0 32px}
+.logo-stage svg{width:72%;max-width:240px;height:auto}
+.logo-meta{padding:16px 18px 18px}
+.logo-meta h3{font-size:15px;font-weight:700;margin:0 0 2px}
+.logo-meta p{font-size:13px;color:var(--color-grey-500);margin:0 0 14px}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.rule{background:#fff;border:1px solid var(--color-grey-200);border-radius:0 8px 8px 8px;padding:22px 24px}
+.rule h3{font-family:var(--font-mono);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin:0 0 12px}
+.rule.do h3{color:#215F6A} .rule.dont h3{color:var(--color-burgundy)}
+.rule ul{margin:0;padding-left:18px;font-size:15px;line-height:1.6;color:var(--color-grey-600)}
+
+/* ---------- Colour ---------- */
+.sw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.sw-grid[data-swatches="brand"]{grid-template-columns:1fr 1fr}
+.glow-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.glow{border:1px solid var(--color-grey-200);border-radius:0 8px 8px 8px;overflow:hidden;background:#fff}
+.glow-stage{height:200px;background-color:#111;position:relative}
+.glow-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px}
+.glow-body .sw-use{margin-bottom:6px}
+@media (max-width:1000px){.glow-grid{grid-template-columns:1fr 1fr}}@media (max-width:600px){.glow-grid{grid-template-columns:1fr}}
+.sw-grid[data-swatches="brand"] .sw-chip{height:180px}
+.sw{background:#fff;border:1px solid var(--color-grey-200);border-radius:0 8px 8px 8px;overflow:hidden;display:flex;flex-direction:column}
+.sw-chip{height:120px;position:relative;cursor:pointer;border:0;width:100%;padding:0;display:block}
+.sw-chip:focus-visible{outline:2px solid var(--color-coral);outline-offset:-4px}
+.sw-chip .hint{position:absolute;right:10px;bottom:10px;font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.06em;padding:3px 7px;border-radius:0 4px 4px 4px;background:rgba(255,255,255,.92);color:var(--color-grey-900);opacity:0;transition:opacity .2s}
+.sw-chip:hover .hint,.sw-chip:focus-visible .hint{opacity:1}
+.sw-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.sw-name{font-weight:700;font-size:15px}
+.sw-code{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-mono);font-size:12px;color:var(--color-grey-600)}
+.sw-code button{border:0;background:none;padding:2px 0;cursor:pointer;font-family:inherit;font-size:inherit;color:inherit;text-decoration:underline;text-decoration-color:var(--color-grey-200);text-underline-offset:3px}
+.sw-code button:hover{text-decoration-color:currentColor}
+.sw-use{font-size:13px;color:var(--color-grey-500);line-height:1.45}
+.sw-aa{display:flex;gap:6px;margin-top:auto;padding-top:8px}
+.aa{font-family:var(--font-mono);font-size:10px;padding:2px 6px;border-radius:0 4px 4px 4px;border:1px solid var(--color-grey-200)}
+.grad{height:120px;border-radius:0 8px 8px 8px;background:var(--gradient-primary);display:flex;align-items:flex-end;justify-content:space-between;padding:16px 18px;color:#fff;cursor:pointer;border:0;width:100%;text-align:left}
+.grad span{font-family:var(--font-mono);font-size:12px}
+
+/* ---------- Type ---------- */
+.fam-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.fam{background:#fff;border:1px solid var(--color-grey-200);border-radius:0 8px 8px 8px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.fam .big{font-size:64px;line-height:1}
+.fam h3{font-size:15px;font-weight:700;margin:6px 0 0}
+.fam p{font-size:13px;color:var(--color-grey-500);margin:0}
+.scale{background:#fff;border:1px solid var(--color-grey-200);border-radius:0 8px 8px 8px;overflow:hidden}
+.row{display:grid;grid-template-columns:150px 1fr auto;gap:24px;align-items:center;padding:22px 24px;border-bottom:1px solid var(--color-grey-200)}
+.row:last-child{border-bottom:0}
+.row .spec{font-family:var(--font-mono);font-size:11px;color:var(--color-grey-500);line-height:1.6;text-transform:uppercase;letter-spacing:.04em}
+.row .spec b{display:block;color:var(--color-grey-900);font-weight:500;font-size:12px}
+.row .sample{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.t-h1{font-family:var(--font-heading);text-transform:uppercase;font-size:72px;line-height:1.1}
+.t-h2{font-family:var(--font-heading);text-transform:uppercase;font-size:clamp(54px,4.3vw,62px);line-height:1.06}
+.t-h3{font-family:var(--font-heading);text-transform:uppercase;font-size:28px;line-height:1.3}
+.t-h4{font-family:var(--font-heading);text-transform:uppercase;font-size:22px;line-height:1.4}
+.t-h5{font-family:var(--font-heading);text-transform:uppercase;font-size:20px;line-height:1.4}
+.t-lead{font-size:20px;line-height:1.55;color:var(--color-grey-600)}
+.t-body{font-size:18px;line-height:1.5}
+.t-small{font-size:14px;line-height:1.5;color:var(--color-grey-600)}
+.t-eyebrow{font-family:var(--font-mono);font-weight:500;font-size:14px;line-height:21px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-coral)}
+.t-meta{font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--color-grey-500)}
+
+.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;gap:10px;border:0;cursor:pointer;text-decoration:none;font-family:"Anton",sans-serif;font-weight:400;font-size:20px;line-height:1.1;letter-spacing:.02em;text-transform:uppercase;padding:16px 32px;border-radius:0 12px 12px 12px;transition:color .35s}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;clip-path:inset(0 100% 0 0);transition:clip-path .5s cubic-bezier(.7,0,.2,1)}
+.btn:hover::before,.btn:focus-visible::before{clip-path:inset(0)}
+.btn:focus-visible{outline:3px solid #ee7464;outline-offset:3px}
+.btn svg{width:18px;height:18px;flex:none}
+.btn--lg{font-size:22px;padding:18px 36px}
+.btn--sm{font-size:16px;padding:11px 20px}
+.btn--primary{background:#ee7464;color:#fff}
+.btn--primary::before{background:#892951}
+.on-dark .btn--primary::before{background:#fff}
+.on-dark .btn--primary:hover,.on-dark .btn--primary:focus-visible{color:#892951}
+.btn--ghost{background:transparent;color:#892951;box-shadow:inset 0 0 0 2px #892951}
+.btn--ghost::before{background:#892951}
+.btn--ghost:hover,.btn--ghost:focus-visible{color:#fff}
+.on-dark .btn--ghost{color:#fff;box-shadow:inset 0 0 0 2px #fff}
+.on-dark .btn--ghost::before{background:#fff}
+.on-dark .btn--ghost:hover,.on-dark .btn--ghost:focus-visible{color:#892951}
+.btn[aria-disabled="true"],.btn:disabled{opacity:.4;pointer-events:none}
+.link-arrow{position:relative;display:inline-flex;align-items:center;gap:10px;padding:6px 0;text-decoration:none;color:#111;font-family:"Anton",sans-serif;font-size:18px;letter-spacing:.02em;text-transform:uppercase}
+.on-dark .link-arrow{color:#fff}
+.link-arrow::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:currentColor;transform:scaleX(0);transform-origin:right center;transition:transform .45s cubic-bezier(.7,0,.2,1)}
+.link-arrow:hover::after,.link-arrow:focus-visible::after{transform:scaleX(1);transform-origin:left center}
+.link-arrow svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .35s}
+.link-arrow:hover svg,.link-arrow:focus-visible svg{transform:translateX(5px)}
+.link-arrow:focus-visible{outline:3px solid #ee7464;outline-offset:3px}
+/* preview-only: forced states */
+.btn.is-hover::before{clip-path:inset(0)}
+.btn--primary.is-hover{color:#fff}
+.on-dark .btn--primary.is-hover{color:#892951}
+.btn--ghost.is-hover{color:#fff}
+.on-dark .btn--ghost.is-hover{color:#892951}
+.btn.is-focus{outline:3px solid #ee7464;outline-offset:3px}
+.link-arrow.is-hover::after{transform:scaleX(1)}
+.link-arrow.is-hover svg{transform:translateX(5px)}
+/* section 2 layout */
+.cmp{background:#fff;border:1px solid var(--color-grey-200);border-radius:0 8px 8px 8px;overflow:hidden;margin-bottom:16px}
+.cmp-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:18px 20px;border-bottom:1px solid var(--color-grey-200)}
+.cmp-head h3{font-size:16px;font-weight:700;margin:0 0 2px}
+.cmp-head p{font-size:13px;color:var(--color-grey-500);margin:0}
+.grounds{display:grid;grid-template-columns:1fr 1fr 1fr}
+.ground{padding:36px 24px;display:flex;flex-direction:column;align-items:flex-start;gap:14px;min-width:0}
+.ground small{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-grey-500)}
+.ground.on-dark small{color:rgba(255,255,255,.65)}
+.g-light{background:#fff}
+.g-ink{background:#111}
+.g-burg{background:#892951}
+.states{display:grid;grid-template-columns:repeat(4,1fr)}
+.states .ground{align-items:center;text-align:center;border-left:1px solid var(--color-grey-200)}
+.states .ground:first-child{border-left:0}
+.spec-list{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--color-grey-200)}
+.spec-list div{padding:14px 20px;border-left:1px solid var(--color-grey-200);font-size:13px;color:var(--color-grey-600)}
+.spec-list div:first-child{border-left:0}
+.spec-list b{display:block;font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--color-grey-500);margin-bottom:2px}
+@media (max-width:1000px){.grounds,.states,.spec-list{grid-template-columns:1fr}.states .ground,.spec-list div{border-left:0;border-top:1px solid var(--color-grey-200)}.cmp-head{flex-direction:column}}
+
+
+.lab-row{background:#fff;border:1px solid var(--color-grey-200);border-radius:0 8px 8px 8px;overflow:hidden;margin-bottom:16px}
+.lab-row .grounds{grid-template-columns:1fr 1fr 1fr}
+.lab-row .ground{align-items:center;justify-content:center;min-height:170px}
+.verdict{font-size:12px!important;color:var(--color-grey-600)!important;margin-top:6px!important;font-style:italic}
+.lab-tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-coral);margin-right:8px}
+
+/* ===== Cards (as live on dreww.ca) ===== */
+.c-svc{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;min-height:300px;padding:28px;border-radius:0 16px 16px 16px;background:#f2f4f8;color:#111;text-decoration:none;transition:color .15s}
+.c-svc:hover,.c-svc:focus-visible{transition:color .35s}
+.c-svc::before{content:"";position:absolute;inset:0;z-index:-1;background:#892951;clip-path:circle(0% at var(--mx,50%) var(--my,100%));transition:clip-path .4s cubic-bezier(.4,0,.2,1)}
+.c-svc:hover::before,.c-svc:focus-visible::before{transition:clip-path .6s cubic-bezier(.7,0,.2,1)}
+.c-svc:hover::before,.c-svc:focus-visible::before{clip-path:circle(150% at var(--mx,50%) var(--my,100%))}
+.c-svc:hover,.c-svc:focus-visible{color:#fff}
+.c-svc:focus-visible{outline:3px solid #ee7464;outline-offset:3px}
+.c-n{font-family:"IBM Plex Mono",monospace;font-size:14px;font-weight:500;color:#ee7464}
+.c-svc h4{font-family:"Anton",sans-serif;font-weight:400;font-size:28px;line-height:1.15;text-transform:uppercase;margin:0 0 10px}
+.c-svc p{margin:0;color:#525252;font-size:16px;line-height:1.5;max-width:30ch;transition:color .15s}
+.c-svc:hover p{transition:color .35s}
+.c-svc:hover p,.c-svc:focus-visible p{color:#e5e5e5}
+.c-go{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ee7464;color:#fff;margin-top:22px;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.c-go svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.c-svc:hover .c-go,.c-svc:focus-visible .c-go{transform:translateX(6px)}
+
+.c-faq{position:relative;isolation:isolate;overflow:hidden;list-style:none;border-radius:0 12px 12px 12px;background:#f2f4f8;color:#111;transition:color .15s}
+.c-faq.is-open,.c-faq:hover{transition:color .35s}
+.c-faq::before{content:"";position:absolute;inset:0;z-index:-1;background:#892951;clip-path:circle(0% at var(--mx,50%) var(--my,100%));transition:clip-path .4s cubic-bezier(.4,0,.2,1)}
+.c-faq.is-open::before,.c-faq:hover::before{transition:clip-path .6s cubic-bezier(.7,0,.2,1)}
+.c-faq.is-open::before,.c-faq:hover::before{clip-path:circle(150% at var(--mx,50%) var(--my,100%))}
+.c-faq.is-open,.c-faq:hover{color:#fff}
+.c-faq button{all:unset;box-sizing:border-box;display:grid;grid-template-columns:36px 1fr 40px;gap:12px;align-items:center;width:100%;padding:24px 24px;cursor:pointer}
+.c-faq button:focus-visible{outline:2px solid #ee7464;outline-offset:-4px}
+.c-faq .c-q{font-family:"Anton",sans-serif;font-size:24px;line-height:1.2;text-transform:uppercase}
+.c-faq .c-plus{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ee7464;color:#fff;transition:transform .45s cubic-bezier(.7,0,.2,1),background .3s,color .3s}
+.c-faq .c-plus svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round}
+.c-faq:hover .c-plus{transform:rotate(90deg)}
+.c-faq.is-open .c-plus{background:#fff;color:#892951;transform:rotate(135deg)}
+.c-faq .c-emo{display:inline-block;margin-left:8px;opacity:0;transform:translateY(6px) rotate(-12deg);transition:opacity .3s,transform .45s cubic-bezier(.2,.8,.2,1)}
+.c-faq.is-open .c-emo{opacity:1;transform:none;transition-delay:.18s}
+.c-faq .c-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.7,0,.2,1)}
+.c-faq.is-open .c-a{grid-template-rows:1fr}
+.c-faq .c-a > div{overflow:hidden}
+.c-faq .c-a p{margin:0;padding:0 24px 26px 72px;color:#e5e5e5;font-size:16px;line-height:1.55}
+
+.c-rev{margin:0;display:flex;flex-direction:column;gap:18px;padding:23px;background:#fff;border:2px solid #e5e5e5;border-radius:0 16px 16px 16px;transition:border-color .3s}
+.c-rev:hover{border-color:#ee7464}
+.c-rev-top{display:flex;justify-content:space-between;align-items:center}
+.c-stars{display:flex;gap:2px;color:#ee7464}
+.c-stars svg{width:16px;height:15px;fill:currentColor}
+.c-rev blockquote{margin:0;font-size:16px;line-height:1.55;color:#111;flex:1}
+.c-rev figcaption{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid #e5e5e5}
+.c-rev .c-logo{height:22px;width:auto;margin-right:auto}
+.c-rev .c-who{text-align:right;font-size:13px;line-height:1.3}
+.c-rev .c-who b{display:block;font-size:14px}
+.c-rev .c-who small{color:#737373;font-size:12px}
+.c-rev .c-head{width:40px;height:40px;border-radius:50%;object-fit:cover}
+
+.c-case{position:relative;display:flex;flex-direction:column;overflow:hidden;background:#fff;border:2px solid #e5e5e5;border-radius:0 16px 16px 16px;transition:border-color .3s;text-decoration:none;color:#111}
+.c-case:hover,.c-case:focus-visible{border-color:#ee7464}
+.c-case:focus-visible{outline:3px solid #ee7464;outline-offset:3px}
+.c-cover{position:relative;aspect-ratio:9/12;overflow:hidden;background:#111}
+.c-cover img.c-reel{width:100%;height:100%;object-fit:cover;display:block}
+.c-chip{position:absolute;left:12px;top:12px;background:#fff;border-radius:0 10px 10px 10px;padding:8px 10px;display:flex}
+.c-chip img{height:22px;width:auto}
+.c-views{position:absolute;left:12px;bottom:12px;display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:0 8px 8px 8px;background:rgba(17,17,17,.6);color:#fff;font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500}
+.c-views svg{width:12px;height:12px;fill:currentColor}
+.c-body{padding:22px 22px 24px;display:flex;flex-direction:column;gap:8px}
+.c-body h4{font-family:"Anton",sans-serif;font-weight:400;font-size:28px;line-height:1.1;text-transform:uppercase;margin:0}
+.c-tags{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#ee7464;margin:0}
+.c-see{display:inline-flex;align-items:center;gap:8px;margin-top:8px;font-family:"Anton",sans-serif;font-size:16px;letter-spacing:.02em;text-transform:uppercase}
+.c-see svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .35s}
+.c-case:hover .c-see svg{transform:translateX(4px)}
+
+.c-logo-tile{position:relative;display:grid;place-items:center;min-height:130px;padding:24px 32px;background:#fff;border:2px solid #e5e5e5;border-radius:0 12px 12px 12px;cursor:pointer;transition:border-color .25s}
+.c-logo-tile img{max-height:48px;max-width:100%;width:auto;filter:grayscale(1) contrast(1.15);opacity:.85;transition:filter .25s,opacity .25s}
+.c-logo-tile:hover,.c-logo-tile:focus-visible{border-color:#ee7464}
+.c-logo-tile:hover img,.c-logo-tile:focus-visible img{filter:none;opacity:1}
+.c-logo-tile i{position:absolute;right:10px;top:10px;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#ee7464;color:#fff;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.c-logo-tile i svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round}
+.c-logo-tile:hover i,.c-logo-tile:focus-visible i{transform:rotate(90deg) scale(1.08)}
+
+.card-stage{padding:40px 32px;display:flex;justify-content:center}
+.card-stage.st-white{background:#fff}.card-stage.st-mist{background:#f2f4f8}
+.card-stage > .c-svc{width:min(460px,100%)}
+.card-stage > .c-rev{width:min(360px,100%)}
+.card-stage > .c-case{width:min(300px,100%)}
+.faq-demo{margin:0;padding:0;width:min(620px,100%)}
+.logo-wall{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;width:100%}
+.card-decide{margin-top:24px;background:#111;color:#fff;border-radius:0 8px 8px 8px;padding:28px}
+.card-decide h3{font-family:var(--font-heading);font-weight:400;text-transform:uppercase;font-size:24px;margin:0 0 18px}
+.cd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cd-grid b{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#ee7464}
+.cd-grid p{font-size:14px;color:#cfcfcf;margin:8px 0 0}
+.cd-grid .cd-rec{color:#fff;font-weight:500}
+@media (max-width:1000px){.cd-grid,.logo-wall{grid-template-columns:1fr 1fr}}
+@media (max-width:820px){.cd-grid{grid-template-columns:1fr}.card-stage{padding:28px 16px}}
+
+.card-stage.st-ink{background:#111}
+.lab-tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-coral);margin-right:8px}
+/* ===== Forms ===== */
+.f-field{display:flex;flex-direction:column;gap:8px;min-width:0}
+.f-label{font-family:"DM Sans",sans-serif;font-size:16px;font-weight:700;color:#111}
+.f-label .req{color:#892951;margin-left:2px}
+.f-help{font-size:14px;line-height:1.45;color:#525252;margin:0}
+.f-input,.f-select,.f-textarea{box-sizing:border-box;width:100%;font-family:"DM Sans",sans-serif;font-size:16px;color:#111;background:#f2f4f8;border:1px solid #e5e5e5;border-radius:0 8px 8px 8px;padding:0 18px;height:52px;outline:none;transition:border-color .2s,background-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
+.f-textarea{height:auto;min-height:132px;padding:14px 18px;line-height:1.5;resize:vertical}
+.f-input::placeholder,.f-textarea::placeholder{color:#737373}
+.f-input:hover,.f-select:hover,.f-textarea:hover{border-color:#737373}
+.f-input:focus-visible,.f-select:focus-visible,.f-textarea:focus-visible,.f-input.is-focus{background:#fff;border-color:#892951;box-shadow:0 0 0 3px rgba(238,116,100,.45)}
+.f-select{padding-right:48px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;background-size:18px}
+.f-field.is-error .f-input,.f-field.is-error .f-textarea{border-color:#da1e28;box-shadow:inset 0 0 0 1px #da1e28;background:#fff}
+.f-error{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:500;color:#da1e28;margin:0}
+.f-error svg{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
+.f-input:disabled{opacity:.5;cursor:not-allowed}
+
+/* Option cards (radio / checkbox), from /book-call */
+.f-options{display:grid;gap:12px}
+.f-opt{position:relative;display:flex;align-items:center;gap:16px;padding:16px 18px;background:#fff;border:1px solid #e5e5e5;border-radius:0 12px 12px 12px;cursor:pointer;transition:border-color .2s,background-color .2s,box-shadow .2s}
+.f-opt:hover{border-color:#737373}
+.f-opt input{position:absolute;opacity:0;pointer-events:none}
+.f-opt .t{flex:1;min-width:0}
+.f-opt b{display:block;font-size:18px;line-height:1.4;color:#111}
+.f-opt small{display:block;font-size:14px;color:#525252;margin-top:2px}
+.f-opt .dot{width:22px;height:22px;flex:none;border-radius:50%;border:1.5px solid #e5e5e5;display:grid;place-items:center;background:#fff;transition:border-color .2s}
+.f-opt .dot::after{content:"";width:10px;height:10px;border-radius:50%;background:#ee7464;transform:scale(0);transition:transform .2s cubic-bezier(.2,.8,.2,1)}
+.f-opt .box{width:22px;height:22px;flex:none;border:1.5px solid #e5e5e5;border-radius:0 6px 6px 6px;display:grid;place-items:center;background:#fff;transition:background-color .2s,border-color .2s}
+.f-opt .box svg{width:14px;height:14px;fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:0}
+.f-opt:has(input:checked){background:#f2f4f8;border-color:#892951;box-shadow:inset 0 0 0 1px #892951}
+.f-opt:has(input:checked) .dot{border-color:#892951}
+.f-opt:has(input:checked) .dot::after{transform:scale(1)}
+.f-opt:has(input:checked) .box{background:#ee7464;border-color:#ee7464}
+.f-opt:has(input:checked) .box svg{opacity:1}
+.f-opt:has(input:focus-visible){outline:3px solid #ee7464;outline-offset:3px}
+
+/* On dark grounds (footer newsletter) */
+.on-dark .f-label{color:#fff}
+.on-dark .f-label .req{color:#ee7464}
+.on-dark .f-input{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.22);color:#fff}
+.on-dark .f-input::placeholder{color:rgba(255,255,255,.55)}
+.on-dark .f-input:hover{border-color:rgba(255,255,255,.5)}
+.on-dark .f-input:focus-visible{background:rgba(255,255,255,.1);border-color:#fff;box-shadow:0 0 0 3px rgba(238,116,100,.6)}
+
+.f-demo{width:min(560px,100%)}
+.f-states{display:grid;grid-template-columns:1fr 1fr;gap:20px 24px}
+.st-ink .f-demo{width:100%}
+.f-news-h{font-family:var(--font-heading);font-weight:400;text-transform:uppercase;font-size:32px;line-height:1.1;margin:0 0 22px;color:#fff}
+.f-news-row{display:grid;grid-template-columns:1fr 1fr 1.4fr auto;gap:12px;align-items:end}
+@media (max-width:1000px){.f-news-row{grid-template-columns:1fr 1fr}.f-states{grid-template-columns:1fr}}
+@media (max-width:600px){.f-news-row{grid-template-columns:1fr}}
+
+/* ===== Header ===== */
+.hd{--fg:#fff;position:relative;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px 24px;color:var(--fg);transition:background-color .25s,box-shadow .25s}
+.hd-logo svg{display:block;width:124px;height:auto}
+.hd-end{display:flex;align-items:center;gap:14px}
+.hd-nav{display:flex;align-items:center}
+.hd-tab{position:relative;display:inline-flex;align-items:center;gap:6px;padding:10px 18px;font-family:"DM Sans",sans-serif;font-size:15px;font-weight:600;color:var(--fg);text-decoration:none;background:none;border:0;cursor:pointer}
+.hd-tab .fill{position:absolute;inset:3px 4px;border-radius:0 12px 12px 12px;background:#ee7464;clip-path:inset(0 100% 0 0);transition:clip-path .35s cubic-bezier(.7,0,.2,1)}
+.hd-tab span,.hd-tab svg{position:relative}
+.hd-tab svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;opacity:.6;transition:transform .3s,opacity .3s}
+.hd-tab:hover svg,.hd-tab:focus-visible svg{opacity:1}
+.hd.is-menu .hd-tab:hover .fill,.hd.is-menu .hd-tab.on .fill{clip-path:inset(0)}
+.hd.is-menu .hd-tab.on svg{transform:rotate(180deg);opacity:1}
+.hd-tab:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.hd-search{display:inline-flex;align-items:center;gap:10px;height:42px;min-width:168px;padding:0 10px 0 14px;border:0;border-radius:0 12px 12px 12px;background:rgba(255,255,255,.12);box-shadow:inset 0 0 0 1px rgba(255,255,255,.28);color:var(--fg);font:500 15px "DM Sans",sans-serif;cursor:pointer}
+.hd-search svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
+.hd-search span{flex:1;text-align:left;opacity:.85}
+.hd-search kbd{font:500 11px/1 "IBM Plex Mono",monospace;padding:5px 6px;border-radius:0 5px 5px 5px;background:rgba(255,255,255,.14)}
+.hd-lang{font-family:"Anton",sans-serif;font-size:16px;color:var(--fg);text-decoration:none;padding:6px}
+.hd .btn--sm{font-size:16px;padding:11px 20px;white-space:nowrap}
+/* States */
+.hd--hero{background:transparent}
+.hd--scrolled{background:#892951;box-shadow:0 6px 24px rgba(0,0,0,.18)}
+.hd--light{--fg:#111;background:transparent}
+.hd--light .hd-logo svg path{fill:#111}
+.hd--light .hd-search{background:rgba(0,0,0,.05);box-shadow:inset 0 0 0 1px rgba(0,0,0,.18)}
+.hd--light .btn--primary::before{background:#892951}
+.hd:not(.hd--light) .btn--primary::before{background:#fff}
+.hd:not(.hd--light) .btn--primary:hover{color:#892951}
+
+/* ===== Menu (stage) ===== */
+.mn{position:relative;isolation:isolate;overflow:hidden;background:#181215;color:#fff;border-radius:0 16px 16px 16px}
+.mn::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(1000px 640px at 100% 105%,rgba(238,116,100,.30),rgba(238,116,100,0) 60%),radial-gradient(800px 520px at -5% -10%,rgba(137,41,81,.42),rgba(137,41,81,0) 65%)}
+.mn .hd{background:transparent}
+.mn-body{padding:40px 48px 48px}
+.mn-kick{font:500 12px/1.4 "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:#ee7464;margin:0 0 22px}
+.mn-kick b{font-weight:500;color:rgba(255,255,255,.6);margin-left:12px}
+.mn-pane{display:none}
+.mn-pane.on{display:block}
+.mn-item{display:grid;grid-template-columns:28px minmax(0,1fr);column-gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.12);color:#fff;text-decoration:none}
+.mn-pane .mn-item:first-of-type{border-top:1px solid rgba(255,255,255,.12)}
+.mn-n{font:500 12px/1 "IBM Plex Mono",monospace;color:#ee7464}
+.mn-big{display:inline-block;font-family:"Anton",sans-serif;font-size:clamp(32px,4vw,56px);line-height:1;text-transform:uppercase;transition:transform .5s cubic-bezier(.2,.8,.2,1),color .3s}
+.mn-sx{grid-column:2;display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.2,.8,.2,1)}
+.mn-sx>span{overflow:hidden;min-height:0}
+.mn-sx>span>span{display:block;padding:10px 0 2px 16px;max-width:56ch;font-size:17px;line-height:1.45;color:rgba(255,255,255,.7);opacity:0;transform:translateY(-6px);transition:opacity .3s,transform .4s}
+.mn-item:hover .mn-big,.mn-item:focus-visible .mn-big{color:#ee7464;transform:translateX(16px)}
+.mn-item:hover .mn-sx,.mn-item:focus-visible .mn-sx{grid-template-rows:1fr}
+.mn-item:hover .mn-sx>span>span,.mn-item:focus-visible .mn-sx>span>span{opacity:1;transform:none;transition-delay:.08s}
+.mn-item:focus-visible{outline:2px solid #fff;outline-offset:4px}
+
+/* ===== Footer ===== */
+.ft{font-family:"DM Sans",sans-serif;text-transform:none;letter-spacing:normal;font-size:14px;position:relative;background:#111;background-image:radial-gradient(farthest-side,#111 0%,#32201D 100%);color:#fff;padding:56px 48px 28px;border-radius:0 16px 16px 16px}
+.ft-grid{display:grid;grid-template-columns:1.3fr repeat(5,1fr);gap:28px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.12)}
+.ft-h{font:500 14px/1.4 "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);margin:0 0 14px}
+.ft-h.coral{color:#ee7464}
+.ft .ft-bot{font-family:"DM Sans",sans-serif}
+.ft address{font-style:normal;font-size:14px;line-height:1.6;color:rgba(255,255,255,.85)}
+.ft ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.ft ul a{font-size:14px;font-weight:500;color:rgba(255,255,255,.85);text-decoration:none;background:linear-gradient(currentColor,currentColor) no-repeat 0 100%/0 1px;transition:color .2s,background-size .3s}
+.ft ul a:hover,.ft ul a:focus-visible{color:#fff;background-size:100% 1px}
+.ft-plat{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;padding:24px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.ft-plat span{font:500 12px "IBM Plex Mono",monospace;letter-spacing:.06em;color:rgba(255,255,255,.6);padding:6px 10px;border:1px solid rgba(255,255,255,.16);border-radius:0 8px 8px 8px}
+.ft-bot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:20px;font-size:12px;color:rgba(255,255,255,.55)}
+.ft-bot a{color:inherit;text-decoration:none;margin-left:18px}
+.ft-bot a:hover{color:#fff}
+.ft-soc{display:flex;gap:10px}
+.ft-soc a{display:grid;place-items:center;width:36px;height:36px;border-radius:0 8px 8px 8px;background:rgba(255,255,255,.08);color:#fff;text-decoration:none;font:500 11px "IBM Plex Mono",monospace;transition:background .2s}
+.ft-soc a:hover{background:#ee7464}
+@media (max-width:1100px){.ft-grid{grid-template-columns:1fr 1fr 1fr}.hd-search span,.hd-search kbd{display:none}.hd-search{min-width:0}}
+@media (max-width:820px){.hd-nav{display:none}.ft-grid{grid-template-columns:1fr 1fr}.mn-body,.ft{padding-left:22px;padding-right:22px}}
+
+/* ---------- Decisions ---------- */
+.decide{background:var(--color-burgundy);color:#fff;padding:88px 0}
+.decide h2{color:#fff}
+.decide .lede{color:rgba(255,255,255,.85)}
+.q-list{display:grid;gap:14px;counter-reset:q}
+.q{background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.14);border-radius:0 8px 8px 8px;padding:22px 24px;display:grid;grid-template-columns:44px 1fr;gap:4px 16px}
+.q::before{counter-increment:q;content:counter(q,decimal-leading-zero);font-family:var(--font-mono);font-size:13px;color:#fff;opacity:.7;grid-row:span 3;padding-top:3px}
+.q h3{font-size:17px;font-weight:700;margin:0}
+.q p{margin:0;color:rgba(255,255,255,.85);font-size:15px}
+.q .todo{margin-top:6px;font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#ffd2cb}
+.q.is-open{background:#fff;border-color:#fff}
+.q.is-open h3{color:var(--color-burgundy)} .q.is-open p{color:var(--color-grey-600)} .q.is-open::before{color:var(--color-burgundy);opacity:1}
+.q .rec::before{content:"Recommended — ";font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#ffd2cb}
+.dots{display:inline-flex;gap:4px;vertical-align:middle;margin:0 2px}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+
+footer{padding:40px 0 56px;font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--color-grey-500)}
+
+/* ---------- Toast ---------- */
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--color-grey-900);color:#fff;padding:11px 16px;border-radius:0 8px 8px 8px;font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:.05em;opacity:0;pointer-events:none;transition:.25s;z-index:20}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- Responsive ---------- */
+.nav-toggle{display:none}
+@media (max-width:1000px){
+  .logo-grid,.fam-grid{grid-template-columns:1fr 1fr}
+  .row{grid-template-columns:120px 1fr}
+  .row .acts{grid-column:1 / -1}
+}
+@media (max-width:820px){
+  .shell{display:block}
+  .nav{position:sticky;top:0;height:auto;z-index:10;display:flex;align-items:center;gap:6px;padding:10px 16px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+  .nav::-webkit-scrollbar{display:none}
+  .nav-brand{margin:0 8px 0 0;flex:none}
+  .nav-brand svg{width:64px}
+  .nav-title,.nav-kit,.nav-label,.nav a.is-soon{display:none!important}
+  .nav-group{display:contents}
+  .nav a{margin:0;flex:none;font-size:14px}
+  .nav a .tag{display:none}
+  .wrap{padding:0 20px}
+  .hero{padding:16px 0}
+  .sec,.decide{padding:56px 0}
+  .logo-grid,.fam-grid,.rules{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr;gap:10px}
+  .t-h1{font-size:32px;white-space:normal} .t-h2{font-size:24px;white-space:normal}
+  .t-h3{font-size:22px} .t-h4{font-size:18px} .t-h5{font-size:16px} .t-body{font-size:16px}
+  .lede{margin-bottom:32px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<nav class="nav" aria-label="Design system sections">
+  <a class="nav-brand" href="#top" aria-label="Dreww Web Design System"><span id="nav-logo"></span></a>
+  <p class="nav-title">Web design system</p>
+  <a class="nav-kit" href="https://dreww.ca/brand-kit">Brand kit ↗</a>
+
+  <div class="nav-group">
+    <p class="nav-label">Foundations</p>
+    <a href="#logo" data-nav>Logo <span class="tag tag-soon">Agreed</span></a>
+    <a href="#colour" data-nav>Colour <span class="tag tag-soon">Agreed</span></a>
+    <a href="#type" data-nav>Typography <span class="tag tag-soon">Agreed</span></a>
+    <a href="#decisions" data-nav>Decisions <span class="tag tag-soon">Agreed</span></a>
+    <a class="is-soon">Spacing &amp; radius <span class="tag tag-soon">Next</span></a>
+  </div>
+  <div class="nav-group">
+    <p class="nav-label">Components</p>
+    <a href="#buttons" data-nav>Buttons &amp; links <span class="tag tag-soon">Agreed</span></a>
+    <a class="is-soon">Eyebrows &amp; headings <span class="tag tag-soon">Soon</span></a>
+    <a href="#cards" data-nav>Cards <span class="tag tag-soon">Agreed</span></a>
+    <a href="#forms" data-nav>Forms <span class="tag tag-soon">Agreed</span></a>
+    <a href="#header" data-nav>Header &amp; footer <span class="tag tag-review">Review</span></a>
+  </div>
+  <div class="nav-group">
+    <p class="nav-label">Patterns</p>
+    <a class="is-soon">FAQ accordion <span class="tag tag-soon">Soon</span></a>
+    <a class="is-soon">Review carousel <span class="tag tag-soon">Soon</span></a>
+    <a class="is-soon">Logo marquee <span class="tag tag-soon">Soon</span></a>
+    <a class="is-soon">Final CTA <span class="tag tag-soon">Soon</span></a>
+    <a class="is-soon">Section rhythm <span class="tag tag-soon">Soon</span></a>
+  </div>
+</nav>
+
+<main id="top">
+  
+
+  <!-- LOGO -->
+  <section class="sec" id="logo">
+    <div class="wrap">
+      <h2>Logo</h2>
+      <p class="lede">Wordmark by default. Monogram for avatars and small spaces.</p>
+
+            <div class="logo-grid" id="logo-grid"></div>
+      <p class="sub">Monogram</p>
+      <div class="logo-grid mono" id="mono-grid"></div>
+
+      <div class="rules">
+        <div class="rule do"><h3>Do</h3><ul>
+          <li>Black or burgundy on light backgrounds.</li>
+          <li>White or coral on burgundy and dark backgrounds.</li>
+          <li>Keep the ® attached to the wordmark.</li>
+          <li>Use the files exactly as provided.</li>
+        </ul></div>
+        <div class="rule dont"><h3>Don't</h3><ul>
+          <li>Stretch, squash, rotate or redraw it.</li>
+          <li>Use any colour beyond black, white, burgundy and coral.</li>
+          <li>Add gradients, shadows or outlines.</li>
+          <li>Place it on a busy background.</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLOUR -->
+  <section class="sec" id="colour">
+    <div class="wrap">
+      <h2>Colour</h2>
+      <p class="lede">Click a swatch to copy its hex.</p>
+
+      <p class="sub">Brand</p>
+      <div class="sw-grid" data-swatches="brand"></div>
+
+      <p class="sub">Greys</p>
+      <div class="sw-grid" data-swatches="neutral"></div>
+
+      <p class="sub">UI only</p>
+      <div class="sw-grid" data-swatches="ui"></div>
+
+      <p class="sub">Glows · on ink only</p>
+      <div class="glow-grid" id="glows"></div>
+
+    </div>
+  </section>
+
+  <!-- TYPE -->
+  <section class="sec" id="type">
+    <div class="wrap">
+      <h2>Typography</h2>
+      <p class="lede">Desktop / mobile sizes. H2 grows to 62&nbsp;px on large monitors.</p>
+
+      <p class="sub">Families</p>
+      <div class="fam-grid">
+        <div class="fam">
+          <span class="big" style="font-family:var(--font-heading)">AA</span>
+          <h3>Anton</h3><p>Headings and buttons. Regular 400 only, usually uppercase. Never bold, never body text.</p>
+          <div class="acts"><button class="act" data-copy='font-family: "Anton", Georgia, serif;' data-label="Anton CSS">Copy CSS</button></div>
+        </div>
+        <div class="fam">
+          <span class="big" style="font-family:var(--font-body)">Aa</span>
+          <h3>DM Sans</h3><p>Body copy, sub-headings and the interface. 400 to 700.</p>
+          <div class="acts"><button class="act" data-copy='font-family: "DM Sans", system-ui, -apple-system, Arial, sans-serif;' data-label="DM Sans CSS">Copy CSS</button></div>
+        </div>
+        <div class="fam">
+          <span class="big" style="font-family:var(--font-mono)">Aa</span>
+          <h3>IBM Plex Mono</h3><p>Eyebrows and small labels. Medium 500, uppercase, 0.1em spacing.</p>
+          <div class="acts"><button class="act" data-copy='font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;' data-label="Plex Mono CSS">Copy CSS</button></div>
+        </div>
+      </div>
+
+      <p class="sub">Scale</p>
+      <div class="scale" id="scale"></div>
+    </div>
+  </section>
+
+  <!-- BUTTONS -->
+  <section class="sec" id="buttons">
+    <div class="wrap">
+      <h2>Buttons &amp; links</h2>
+      <p class="lede">Coral and white, with the left-to-right wipe. Hover any button.</p>
+
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Primary</h3><p>Coral. One per section, for the main action.</p></div>
+          <div class="acts"><button class="act" data-copy-html="primary">HTML</button><button class="act" data-copy-css>CSS</button></div></div>
+        <div class="grounds">
+          <div class="ground g-light"><small>On light · burgundy wipe</small><a class="btn btn--primary" href="#buttons">Book a call</a></div>
+          <div class="ground g-ink on-dark"><small>On ink · white wipe</small><a class="btn btn--primary" href="#buttons">Book a call</a></div>
+          <div class="ground g-burg on-dark"><small>On burgundy · white wipe</small><a class="btn btn--primary" href="#buttons">Book a call</a></div>
+        </div>
+        <div class="spec-list"><div><b>Type</b>Anton 20&nbsp;px, 0.02em, uppercase</div><div><b>Padding</b>16 × 32&nbsp;px</div><div><b>Corner</b>0 12 12 12</div><div><b>Hover</b>Wipe left to right, 0.5&nbsp;s</div></div>
+      </div>
+
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Ghost</h3><p>Secondary action next to a primary button.</p></div>
+          <div class="acts"><button class="act" data-copy-html="ghost">HTML</button><button class="act" data-copy-css>CSS</button></div></div>
+        <div class="grounds">
+          <div class="ground g-light"><small>On light · burgundy</small><a class="btn btn--ghost" href="#buttons">See the work</a></div>
+          <div class="ground g-ink on-dark"><small>On ink · white</small><a class="btn btn--ghost" href="#buttons">See the work</a></div>
+          <div class="ground g-burg on-dark"><small>On burgundy · white</small><a class="btn btn--ghost" href="#buttons">See the work</a></div>
+        </div>
+      </div>
+
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Text link</h3><p>The quiet option. Underline draws in on hover, arrow nudges right.</p></div>
+          <div class="acts"><button class="act" data-copy-html="link">HTML</button><button class="act" data-copy-css>CSS</button></div></div>
+        <div class="grounds">
+          <div class="ground g-light"><small>On light</small><a class="link-arrow" href="#buttons">Explore our services <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></div>
+          <div class="ground g-ink on-dark"><small>On ink</small><a class="link-arrow" href="#buttons">Explore our services <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></div>
+          <div class="ground g-burg on-dark"><small>On burgundy</small><a class="link-arrow" href="#buttons">Explore our services <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+      </div>
+
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Sizes</h3><p>Large for the Final CTA, default everywhere else, small for the header.</p></div></div>
+        <div class="grounds">
+          <div class="ground g-light"><small>Large · 22&nbsp;px · 18 × 36</small><a class="btn btn--primary btn--lg" href="#buttons">Book a call</a></div>
+          <div class="ground g-light"><small>Default · 20&nbsp;px · 16 × 32</small><a class="btn btn--primary" href="#buttons">Book a call</a></div>
+          <div class="ground g-light"><small>Small · 16&nbsp;px · 11 × 20</small><a class="btn btn--primary btn--sm" href="#buttons">Book a call</a></div>
+        </div>
+      </div>
+
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>States</h3><p>Focus and disabled aren't styled on the live site yet. These are proposals.</p></div></div>
+        <div class="states">
+          <div class="ground g-light"><small>Default</small><span class="btn btn--primary">Book a call</span></div>
+          <div class="ground g-light"><small>Hover</small><span class="btn btn--primary is-hover">Book a call</span></div>
+          <div class="ground g-light"><small>Focus · proposed</small><span class="btn btn--primary is-focus">Book a call</span></div>
+          <div class="ground g-light"><small>Disabled · proposed</small><span class="btn btn--primary" aria-disabled="true">Book a call</span></div>
+        </div>
+        <div class="states">
+          <div class="ground g-ink on-dark"><small>Default</small><span class="btn btn--primary">Book a call</span></div>
+          <div class="ground g-ink on-dark"><small>Hover</small><span class="btn btn--primary is-hover">Book a call</span></div>
+          <div class="ground g-ink on-dark"><small>Focus · proposed</small><span class="btn btn--primary is-focus">Book a call</span></div>
+          <div class="ground g-ink on-dark"><small>Disabled · proposed</small><span class="btn btn--primary" aria-disabled="true">Book a call</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- CARDS -->
+  <section class="sec" id="cards">
+    <div class="wrap">
+      <h2>Cards</h2>
+      <p class="lede">Every card on dreww.ca, brought onto one system: cut corners, two hover styles, one border colour.</p>
+
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Service card</h3><p>Home services grid. Click goes to the service.</p></div>
+          <div class="acts"><button class="act" data-card-html="svc">HTML</button><button class="act" data-card-css>CSS + JS</button></div></div>
+        <div class="card-stage st-white"><a class="c-svc" href="/services#always-on-social-media"><span class="c-n">01</span><span><h4>Always-On Social Media</h4><p>Content and community that build demand month after month.</p><span class="c-go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></span></a></div>
+        <div class="spec-list"><div><b>Corner</b>Cut, 16 px</div><div><b>Ground</b>Mist</div><div><b>Hover</b>Burgundy ink spread</div><div><b>Padding</b>28 px</div></div>
+      </div>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>FAQ card</h3><p>Home, Clients, service pages. Click to open.</p></div>
+          <div class="acts"><button class="act" data-card-html="faq">HTML</button><button class="act" data-card-css>CSS + JS</button></div></div>
+        <div class="card-stage st-white"><ul class="faq-demo"><li class="c-faq"><button type="button" aria-expanded="false"><span class="c-n">01</span><span class="c-q">What is Dreww?<span class="c-emo" aria-hidden="true">👋</span></span><span class="c-plus"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M8 2v12"/></svg></span></button><div class="c-a"><div><p>Dreww is a growth marketing agency in Montréal. Since 2015, Dreww has helped B2C and B2B businesses turn marketing into revenue. A specialist team runs each of its four core services: always-on social media, lead generation, e-commerce growth and user acquisition.</p></div></div></li></ul></div>
+        <div class="spec-list"><div><b>Corner</b>Cut, 12 px</div><div><b>Ground</b>Mist</div><div><b>Hover / open</b>Burgundy ink spread</div><div><b>Icon</b>+ rotates to ×</div></div>
+      </div>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Review card</h3><p>Home and service pages, in the review carousel.</p></div>
+          <div class="acts"><button class="act" data-card-html="rev">HTML</button><button class="act" data-card-css>CSS + JS</button></div></div>
+        <div class="card-stage st-mist"><figure class="c-rev"><div class="c-rev-top"><svg width="22" height="22" viewBox="0 0 24 24" aria-label="Google"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.46a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.58-5.17 3.58-8.72z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3c-1.08.72-2.46 1.15-4.06 1.15-3.12 0-5.77-2.11-6.72-4.95H1.28v3.09A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.28 14.3a7.2 7.2 0 0 1 0-4.6V6.61H1.28a12 12 0 0 0 0 10.78l4-3.09z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.190 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4 3.09C6.23 6.86 8.88 4.75 12 4.75z"/></svg><span class="c-stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg></span></div><blockquote>We’re very satisfied with the quality of Dreww’s work with Second Cup project. They handled the project with professionalism and delivered results that aligned well with our expectations.</blockquote><figcaption><img class="c-logo" src="img/second-cup-logo--color.svg" alt="Second Cup"><span class="c-who"><b>Cendrine Lavigne</b><small>Marketing Director</small></span><img class="c-head" src="img/cendrine-lavigne.jpg" alt=""></figcaption></figure></div>
+        <div class="spec-list"><div><b>Corner</b>Cut, 16 px</div><div><b>Ground</b>White, 2 px Grey 200 border</div><div><b>Hover</b>Coral border</div><div><b>Padding</b>23 px</div></div>
+      </div>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Case study card</h3><p>Clients page grid. Click opens the client viewer.</p></div>
+          <div class="acts"><button class="act" data-card-html="case">HTML</button><button class="act" data-card-css>CSS + JS</button></div></div>
+        <div class="card-stage st-mist"><a class="c-case" href="/clients"><div class="c-cover"><img class="c-reel" src="img/prime-video-reel.jpg" alt="Prime Video, Motorheads reel"><span class="c-chip"><img src="img/prime-video-logo--color.svg" alt="Prime Video"></span><span class="c-views"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>19.9M</span></div><div class="c-body"><h4>Prime Video</h4><p class="c-tags">Always-On Social Media</p><span class="c-see">See the work <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div></a></div>
+        <div class="spec-list"><div><b>Corner</b>Cut, 16 px</div><div><b>Ground</b>White, 2 px Grey 200 border</div><div><b>Hover</b>Coral border</div><div><b>Cover</b>Reel, logo chip, views</div></div>
+      </div>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Logo tile</h3><p>Clients page logo wall. Click opens that client.</p></div>
+          <div class="acts"><button class="act" data-card-html="logo">HTML</button><button class="act" data-card-css>CSS + JS</button></div></div>
+        <div class="card-stage st-mist"><div class="logo-wall"><button type="button" class="c-logo-tile"><img src="img/natrel-logo--color.svg" alt="Natrel"><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M8 2v12"/></svg></i></button><button type="button" class="c-logo-tile"><img src="img/agropur-logo--color.svg" alt="Agropur"><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M8 2v12"/></svg></i></button><button type="button" class="c-logo-tile"><img src="img/second-cup-logo--color.svg" alt="Second Cup"><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M8 2v12"/></svg></i></button><button type="button" class="c-logo-tile"><img src="img/access-signs-logo--color.svg" alt="Access Signs"><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M8 2v12"/></svg></i></button></div></div>
+        <div class="spec-list"><div><b>Corner</b>Cut, 12 px</div><div><b>Ground</b>White, 2 px Grey 200 border</div><div><b>Hover</b>Coral border, logo turns colour</div><div><b>Icon</b>+ rotates</div></div>
+      </div>
+      <div class="card-decide">
+        <h3>Card rules · agreed</h3>
+        <div class="cd-grid">
+          <div><b>Corners</b><p class="cd-rec">Cut corner on every card. 16&nbsp;px for big cards, 12&nbsp;px for small ones.</p><p>Was: 12, 16 and 22&nbsp;px fully round on three cards.</p></div>
+          <div><b>Hover</b><p class="cd-rec">Burgundy ink spread for cards you act on. Coral border for cards you read. No lift, no shadow.</p><p>Text colour returns fast when you leave so it never sits dark on burgundy.</p></div>
+          <div><b>Border</b><p class="cd-rec">2&nbsp;px Grey 200 #E5E5E5 on every white card.</p><p>Was: #E3E5E8 and #E9EAEB.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMS -->
+  <section class="sec" id="forms">
+    <div class="wrap">
+      <h2>Forms</h2>
+      <p class="lede">Built from the footer newsletter and the /book-call form, on the card rules: cut corners, Grey 200, burgundy for focus and selection, red for errors.</p>
+
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Text input</h3><p>Name, email, phone. Label above, never inside.</p></div><div class="acts"><button class="act" data-form-html="input">HTML</button><button class="act" data-form-css>CSS</button></div></div>
+        <div class="card-stage st-white"><div class="f-demo"><div class="f-field"><label class="f-label" for="f-email">Work email<span class="req">*</span></label><input class="f-input" id="f-email" type="email" placeholder="you@company.com" autocomplete="email"></div></div></div>
+        <div class='spec-list'><div><b>Height</b>52 px</div><div><b>Corner</b>Cut, 8 px</div><div><b>Ground</b>Mist, 1 px Grey 200</div><div><b>Focus</b>White, burgundy border, coral ring</div></div>
+      </div>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Input states</h3><p>Hover darkens the border to Grey 500. Errors are red with an icon, the same as in the apps, and pass contrast.</p></div></div>
+        <div class="card-stage st-white"><div class="f-demo"><div class="f-states">
+  <div class="f-field"><span class="f-label">Default</span><input class="f-input" placeholder="you@company.com" aria-label="Default"></div>
+  <div class="f-field"><span class="f-label">Focus</span><input class="f-input is-focus" value="andrew@dreww" aria-label="Focus"></div>
+  <div class="f-field is-error"><span class="f-label">Error</span><input class="f-input" value="andrew@dreww" aria-label="Error"><p class="f-error"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.5v.01"/></svg>Enter a full email, like name@company.com</p></div>
+  <div class="f-field"><span class="f-label">Disabled</span><input class="f-input" value="Prefilled" disabled aria-label="Disabled"></div>
+</div></div></div>
+        
+      </div>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Textarea</h3><p>Open questions. Grows with the content.</p></div><div class="acts"><button class="act" data-form-html="textarea">HTML</button><button class="act" data-form-css>CSS</button></div></div>
+        <div class="card-stage st-white"><div class="f-demo"><div class="f-field"><label class="f-label" for="f-msg">What are you trying to solve?</label><textarea class="f-textarea" id="f-msg" placeholder="A few lines is plenty"></textarea></div></div></div>
+        
+      </div>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Select</h3><p>Short fixed lists. Above 7 options, use option cards or search instead.</p></div><div class="acts"><button class="act" data-form-html="select">HTML</button><button class="act" data-form-css>CSS</button></div></div>
+        <div class="card-stage st-white"><div class="f-demo"><div class="f-field"><label class="f-label" for="f-team">Sales team size</label><select class="f-select" id="f-team"><option>Just me</option><option selected>2–5 sales representatives</option><option>6–20 sales representatives</option><option>More than 20</option></select></div></div></div>
+        
+      </div>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Option cards · single choice</h3><p>From /book-call. Click one: mist ground, burgundy edge, coral dot.</p></div><div class="acts"><button class="act" data-form-html="radio">HTML</button><button class="act" data-form-css>CSS</button></div></div>
+        <div class="card-stage st-white"><div class="f-demo"><fieldset class="f-field" style="border:0;padding:0;margin:0"><legend class="f-label" style="margin-bottom:8px">What’s your primary marketing goal?<span class="req">*</span></legend><div class="f-options"><label class="f-opt"><input type="radio" name="goal"><span class="t"><b>Always-On Social Media</b><small>Build future demand</small></span><span class="dot"></span></label><label class="f-opt"><input type="radio" name="goal" checked><span class="t"><b>Lead Generation</b><small>Generate qualified leads for a sales team</small></span><span class="dot"></span></label><label class="f-opt"><input type="radio" name="goal"><span class="t"><b>Ecommerce Growth</b><small>Grow online revenue profitably</small></span><span class="dot"></span></label></div></fieldset></div></div>
+        <div class='spec-list'><div><b>Corner</b>Cut, 12 px</div><div><b>Title</b>DM Sans 18 px bold</div><div><b>Selected</b>Mist, 2 px burgundy edge</div><div><b>Mark</b>Coral dot</div></div>
+      </div>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Option cards · multiple choice</h3><p>Same card, square mark that fills coral with a white tick.</p></div><div class="acts"><button class="act" data-form-html="checkbox">HTML</button><button class="act" data-form-css>CSS</button></div></div>
+        <div class="card-stage st-white"><div class="f-demo"><div class="f-options"><label class="f-opt"><input type="checkbox" checked><span class="t"><b>HubSpot</b></span><span class="box"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 5"/></svg></span></label><label class="f-opt"><input type="checkbox"><span class="t"><b>Salesforce</b></span><span class="box"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 5"/></svg></span></label></div></div></div>
+        
+      </div>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Newsletter · on ink</h3><p>The footer form on its dark ground.</p></div></div>
+        <div class="card-stage st-ink on-dark"><div class="f-demo"><div class="f-news">
+  <p class="eyebrow" style="margin-bottom:10px">News</p>
+  <h4 class="f-news-h">Marketing insights, straight to your inbox.</h4>
+  <form class="f-news-row" onsubmit="event.preventDefault()">
+    <div class="f-field"><label class="f-label" for="n1">First name<span class="req">*</span></label><input class="f-input" id="n1" placeholder="John"></div>
+    <div class="f-field"><label class="f-label" for="n2">Last name<span class="req">*</span></label><input class="f-input" id="n2" placeholder="Doe"></div>
+    <div class="f-field"><label class="f-label" for="n3">Email<span class="req">*</span></label><input class="f-input" id="n3" type="email" placeholder="john@company.com"></div>
+    <button class="btn btn--primary" type="submit" style="align-self:end">Subscribe</button>
+  </form>
+</div></div></div>
+        
+      </div>
+      <div class="card-decide">
+        <h3>Form rules · agreed</h3>
+        <div class="cd-grid">
+          <div><b>The /book-call buttons</b><p>The main conversion form's buttons are HubSpot defaults: burgundy, DM Sans, 8&nbsp;px round. The footer uses the real coral Anton button.</p><p class="cd-rec">Use the system primary button on every form.</p></div>
+          <div><b>Corners</b><p>Footer inputs are 6&nbsp;px round, /book-call option cards 12&nbsp;px round, and the later /book-call fields look like HubSpot's 3&nbsp;px default with a grey #959494 border.</p><p class="cd-rec">Cut corner: 8&nbsp;px on inputs, 12&nbsp;px on option cards.</p></div>
+          <div><b>Errors and code</b><p>Footer errors are coral text (2.9:1, too faint). Form styles are spread over 200+ rules in six places.</p><p class="cd-rec">Red errors with an icon, the same as the apps. One shared form stylesheet.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HEADER & FOOTER -->
+  <section class="sec" id="header">
+    <div class="wrap">
+      <h2>Header &amp; footer</h2>
+      <p class="lede">The live header and its three states, the full-screen menu, and the footer.</p>
+
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Header · over a burgundy hero</h3><p>Transparent, white logo and text. The default on pages that open with a burgundy hero.</p></div></div>
+        <div class="card-stage g-burg on-dark" style="padding:0;display:block"><div class="hd hd--hero"><a class="hd-logo" href="#header"><svg viewBox="0 0 124 21" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Dreww"><path d="M120.495 3.78662C119.819 3.78662 119.158 3.98862 118.596 4.36702C118.034 4.74542 117.596 5.28322 117.337 5.91252C117.079 6.54172 117.011 7.23412 117.143 7.90222C117.275 8.57022 117.6 9.18382 118.078 9.66542C118.556 10.147 119.165 10.475 119.828 10.6079C120.491 10.7408 121.178 10.6726 121.803 10.4119C122.427 10.1513 122.961 9.70992 123.337 9.14362C123.712 8.57722 123.912 7.91142 123.912 7.23032C123.911 6.31752 123.55 5.44272 122.91 4.79722C122.269 4.15182 121.401 3.78842 120.495 3.78662ZM120.495 10.2284C119.906 10.2286 119.331 10.0528 118.842 9.72352C118.352 9.39412 117.971 8.92592 117.745 8.37812C117.52 7.83032 117.461 7.22742 117.576 6.64582C117.691 6.06422 117.974 5.52992 118.39 5.11062C118.806 4.69122 119.336 4.40562 119.913 4.28992C120.491 4.17412 121.089 4.23352 121.633 4.46042C122.176 4.68732 122.641 5.07162 122.968 5.56462C123.295 6.05772 123.47 6.63732 123.47 7.23032C123.471 7.62442 123.395 8.01492 123.246 8.37922C123.097 8.74362 122.878 9.07472 122.602 9.35342C122.325 9.63212 121.997 9.85292 121.635 10.003C121.273 10.1532 120.886 10.2298 120.495 10.2284Z" fill="#FFFFFF"/>
+<path d="M121.416 8.68505L120.93 5.93945H120.062L119.577 8.68505L119.009 5.93945H118.553L119.14 8.77545H120.013L120.498 6.02985L120.984 8.77545H121.856L122.44 5.93945H121.987L121.416 8.68505Z" fill="#FFFFFF"/>
+<path d="M14.7718 7.3987C13.6465 4.507 11.4517 3.0897 8.16003 3.0897C3.32153 3.0897 -0.0826721 6.8881 0.00152789 12.1595C0.00152789 17.2057 2.95543 20.9756 7.70973 20.9756C11.1987 20.9756 13.6182 19.5019 14.7736 16.695V20.4086H21.6618V0H14.7718V7.3987ZM10.9456 15.6757C8.63853 15.6757 7.14773 14.1735 7.14773 12.019C7.14773 9.8645 8.63973 8.3908 10.9739 8.3908C13.3657 8.3908 14.8 9.8645 14.8 11.9627C14.7994 14.1166 13.308 15.6757 10.9456 15.6757Z" fill="#FFFFFF"/>
+<path d="M48.2217 3.08984C41.8077 3.08984 38.0381 6.83134 38.0381 11.8786C38.0381 17.2367 42.2014 20.9769 49.1222 20.9769C52.3016 20.9769 55.2272 20.1265 57.0276 18.9345V14.0319C55.2555 15.1095 53.3704 15.7327 50.8943 15.7327C47.8003 15.7327 45.8304 14.8539 45.0147 13.3517H57.5903V11.4522C57.5903 6.40674 54.5516 3.08984 48.2217 3.08984ZM44.8433 10.3189C45.2377 8.95734 46.5319 8.05064 48.5571 8.05064C50.5546 8.05064 51.7647 8.87254 52.0454 10.3189H44.8433Z" fill="#FFFFFF"/>
+<path d="M107.516 13.834L104.45 3.82715H97.472L94.434 13.7771L92.099 3.82715H81.667L79.2192 13.834L76.1528 3.82715H69.1762L66.1375 13.7771L63.8027 3.82715H56.6289L62.0017 20.4102H69.2886L72.4391 10.4324L75.7308 20.4102H83.3267L86.7573 9.48115L90.298 20.4102H97.585L100.736 10.4324L104.027 20.4102H111.623L116.828 3.82715H109.964L107.516 13.834Z" fill="#FFFFFF"/>
+<path d="M31.2675 6.4514C31.2675 7.8031 30.7312 8.2413 29.8713 8.2413H29.8602L29.8227 3.8265H23.0703V20.4101H29.9634L29.8878 11.4882C30.23 9.3467 35.0039 7.9393 37.5869 9.6147L38.0168 3.8265C38.0168 3.8265 36.9339 3.1333 35.2011 3.1333C33.2447 3.1333 31.2675 4.3371 31.2675 6.4514Z" fill="#FFFFFF"/></svg></a><div class="hd-end"><nav class="hd-nav" aria-label="Demo"><button class="hd-tab" type="button" data-pane="0"><span class="fill"></span><span>Services</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button class="hd-tab" type="button" data-pane="1"><span class="fill"></span><span>Work</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button class="hd-tab" type="button" data-pane="2"><span class="fill"></span><span>About</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button class="hd-tab" type="button" data-pane="3"><span class="fill"></span><span>Resources</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></nav><button class="hd-search" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span>Search</span><kbd>⌘K</kbd></button><a class="btn btn--primary btn--sm" href="#header">Book a call</a><a class="hd-lang" href="#header">FR</a></div></div></div>
+      </div>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Header · scrolled</h3><p>Once you scroll, the bar fills burgundy with a soft shadow.</p></div></div>
+        <div class="card-stage st-white" style="padding:0;display:block"><div class="hd hd--scrolled"><a class="hd-logo" href="#header"><svg viewBox="0 0 124 21" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Dreww"><path d="M120.495 3.78662C119.819 3.78662 119.158 3.98862 118.596 4.36702C118.034 4.74542 117.596 5.28322 117.337 5.91252C117.079 6.54172 117.011 7.23412 117.143 7.90222C117.275 8.57022 117.6 9.18382 118.078 9.66542C118.556 10.147 119.165 10.475 119.828 10.6079C120.491 10.7408 121.178 10.6726 121.803 10.4119C122.427 10.1513 122.961 9.70992 123.337 9.14362C123.712 8.57722 123.912 7.91142 123.912 7.23032C123.911 6.31752 123.55 5.44272 122.91 4.79722C122.269 4.15182 121.401 3.78842 120.495 3.78662ZM120.495 10.2284C119.906 10.2286 119.331 10.0528 118.842 9.72352C118.352 9.39412 117.971 8.92592 117.745 8.37812C117.52 7.83032 117.461 7.22742 117.576 6.64582C117.691 6.06422 117.974 5.52992 118.39 5.11062C118.806 4.69122 119.336 4.40562 119.913 4.28992C120.491 4.17412 121.089 4.23352 121.633 4.46042C122.176 4.68732 122.641 5.07162 122.968 5.56462C123.295 6.05772 123.47 6.63732 123.47 7.23032C123.471 7.62442 123.395 8.01492 123.246 8.37922C123.097 8.74362 122.878 9.07472 122.602 9.35342C122.325 9.63212 121.997 9.85292 121.635 10.003C121.273 10.1532 120.886 10.2298 120.495 10.2284Z" fill="#FFFFFF"/>
+<path d="M121.416 8.68505L120.93 5.93945H120.062L119.577 8.68505L119.009 5.93945H118.553L119.14 8.77545H120.013L120.498 6.02985L120.984 8.77545H121.856L122.44 5.93945H121.987L121.416 8.68505Z" fill="#FFFFFF"/>
+<path d="M14.7718 7.3987C13.6465 4.507 11.4517 3.0897 8.16003 3.0897C3.32153 3.0897 -0.0826721 6.8881 0.00152789 12.1595C0.00152789 17.2057 2.95543 20.9756 7.70973 20.9756C11.1987 20.9756 13.6182 19.5019 14.7736 16.695V20.4086H21.6618V0H14.7718V7.3987ZM10.9456 15.6757C8.63853 15.6757 7.14773 14.1735 7.14773 12.019C7.14773 9.8645 8.63973 8.3908 10.9739 8.3908C13.3657 8.3908 14.8 9.8645 14.8 11.9627C14.7994 14.1166 13.308 15.6757 10.9456 15.6757Z" fill="#FFFFFF"/>
+<path d="M48.2217 3.08984C41.8077 3.08984 38.0381 6.83134 38.0381 11.8786C38.0381 17.2367 42.2014 20.9769 49.1222 20.9769C52.3016 20.9769 55.2272 20.1265 57.0276 18.9345V14.0319C55.2555 15.1095 53.3704 15.7327 50.8943 15.7327C47.8003 15.7327 45.8304 14.8539 45.0147 13.3517H57.5903V11.4522C57.5903 6.40674 54.5516 3.08984 48.2217 3.08984ZM44.8433 10.3189C45.2377 8.95734 46.5319 8.05064 48.5571 8.05064C50.5546 8.05064 51.7647 8.87254 52.0454 10.3189H44.8433Z" fill="#FFFFFF"/>
+<path d="M107.516 13.834L104.45 3.82715H97.472L94.434 13.7771L92.099 3.82715H81.667L79.2192 13.834L76.1528 3.82715H69.1762L66.1375 13.7771L63.8027 3.82715H56.6289L62.0017 20.4102H69.2886L72.4391 10.4324L75.7308 20.4102H83.3267L86.7573 9.48115L90.298 20.4102H97.585L100.736 10.4324L104.027 20.4102H111.623L116.828 3.82715H109.964L107.516 13.834Z" fill="#FFFFFF"/>
+<path d="M31.2675 6.4514C31.2675 7.8031 30.7312 8.2413 29.8713 8.2413H29.8602L29.8227 3.8265H23.0703V20.4101H29.9634L29.8878 11.4882C30.23 9.3467 35.0039 7.9393 37.5869 9.6147L38.0168 3.8265C38.0168 3.8265 36.9339 3.1333 35.2011 3.1333C33.2447 3.1333 31.2675 4.3371 31.2675 6.4514Z" fill="#FFFFFF"/></svg></a><div class="hd-end"><nav class="hd-nav" aria-label="Demo"><button class="hd-tab" type="button" data-pane="0"><span class="fill"></span><span>Services</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button class="hd-tab" type="button" data-pane="1"><span class="fill"></span><span>Work</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button class="hd-tab" type="button" data-pane="2"><span class="fill"></span><span>About</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button class="hd-tab" type="button" data-pane="3"><span class="fill"></span><span>Resources</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></nav><button class="hd-search" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span>Search</span><kbd>⌘K</kbd></button><a class="btn btn--primary btn--sm" href="#header">Book a call</a><a class="hd-lang" href="#header">FR</a></div></div></div>
+      </div>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Header · over a light page</h3><p>Transparent, black logo and text. The Book a call wipe turns burgundy.</p></div></div>
+        <div class="card-stage st-white" style="padding:0;display:block"><div class="hd hd--light"><a class="hd-logo" href="#header"><svg viewBox="0 0 124 21" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Dreww"><path d="M120.495 3.78662C119.819 3.78662 119.158 3.98862 118.596 4.36702C118.034 4.74542 117.596 5.28322 117.337 5.91252C117.079 6.54172 117.011 7.23412 117.143 7.90222C117.275 8.57022 117.6 9.18382 118.078 9.66542C118.556 10.147 119.165 10.475 119.828 10.6079C120.491 10.7408 121.178 10.6726 121.803 10.4119C122.427 10.1513 122.961 9.70992 123.337 9.14362C123.712 8.57722 123.912 7.91142 123.912 7.23032C123.911 6.31752 123.55 5.44272 122.91 4.79722C122.269 4.15182 121.401 3.78842 120.495 3.78662ZM120.495 10.2284C119.906 10.2286 119.331 10.0528 118.842 9.72352C118.352 9.39412 117.971 8.92592 117.745 8.37812C117.52 7.83032 117.461 7.22742 117.576 6.64582C117.691 6.06422 117.974 5.52992 118.39 5.11062C118.806 4.69122 119.336 4.40562 119.913 4.28992C120.491 4.17412 121.089 4.23352 121.633 4.46042C122.176 4.68732 122.641 5.07162 122.968 5.56462C123.295 6.05772 123.47 6.63732 123.47 7.23032C123.471 7.62442 123.395 8.01492 123.246 8.37922C123.097 8.74362 122.878 9.07472 122.602 9.35342C122.325 9.63212 121.997 9.85292 121.635 10.003C121.273 10.1532 120.886 10.2298 120.495 10.2284Z" fill="#FFFFFF"/>
+<path d="M121.416 8.68505L120.93 5.93945H120.062L119.577 8.68505L119.009 5.93945H118.553L119.14 8.77545H120.013L120.498 6.02985L120.984 8.77545H121.856L122.44 5.93945H121.987L121.416 8.68505Z" fill="#FFFFFF"/>
+<path d="M14.7718 7.3987C13.6465 4.507 11.4517 3.0897 8.16003 3.0897C3.32153 3.0897 -0.0826721 6.8881 0.00152789 12.1595C0.00152789 17.2057 2.95543 20.9756 7.70973 20.9756C11.1987 20.9756 13.6182 19.5019 14.7736 16.695V20.4086H21.6618V0H14.7718V7.3987ZM10.9456 15.6757C8.63853 15.6757 7.14773 14.1735 7.14773 12.019C7.14773 9.8645 8.63973 8.3908 10.9739 8.3908C13.3657 8.3908 14.8 9.8645 14.8 11.9627C14.7994 14.1166 13.308 15.6757 10.9456 15.6757Z" fill="#FFFFFF"/>
+<path d="M48.2217 3.08984C41.8077 3.08984 38.0381 6.83134 38.0381 11.8786C38.0381 17.2367 42.2014 20.9769 49.1222 20.9769C52.3016 20.9769 55.2272 20.1265 57.0276 18.9345V14.0319C55.2555 15.1095 53.3704 15.7327 50.8943 15.7327C47.8003 15.7327 45.8304 14.8539 45.0147 13.3517H57.5903V11.4522C57.5903 6.40674 54.5516 3.08984 48.2217 3.08984ZM44.8433 10.3189C45.2377 8.95734 46.5319 8.05064 48.5571 8.05064C50.5546 8.05064 51.7647 8.87254 52.0454 10.3189H44.8433Z" fill="#FFFFFF"/>
+<path d="M107.516 13.834L104.45 3.82715H97.472L94.434 13.7771L92.099 3.82715H81.667L79.2192 13.834L76.1528 3.82715H69.1762L66.1375 13.7771L63.8027 3.82715H56.6289L62.0017 20.4102H69.2886L72.4391 10.4324L75.7308 20.4102H83.3267L86.7573 9.48115L90.298 20.4102H97.585L100.736 10.4324L104.027 20.4102H111.623L116.828 3.82715H109.964L107.516 13.834Z" fill="#FFFFFF"/>
+<path d="M31.2675 6.4514C31.2675 7.8031 30.7312 8.2413 29.8713 8.2413H29.8602L29.8227 3.8265H23.0703V20.4101H29.9634L29.8878 11.4882C30.23 9.3467 35.0039 7.9393 37.5869 9.6147L38.0168 3.8265C38.0168 3.8265 36.9339 3.1333 35.2011 3.1333C33.2447 3.1333 31.2675 4.3371 31.2675 6.4514Z" fill="#FFFFFF"/></svg></a><div class="hd-end"><nav class="hd-nav" aria-label="Demo"><button class="hd-tab" type="button" data-pane="0"><span class="fill"></span><span>Services</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button class="hd-tab" type="button" data-pane="1"><span class="fill"></span><span>Work</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button class="hd-tab" type="button" data-pane="2"><span class="fill"></span><span>About</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button class="hd-tab" type="button" data-pane="3"><span class="fill"></span><span>Resources</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></nav><button class="hd-search" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span>Search</span><kbd>⌘K</kbd></button><a class="btn btn--primary btn--sm" href="#header">Book a call</a><a class="hd-lang" href="#header">FR</a></div></div></div>
+      </div>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Menu</h3><p>Opens full screen on the menu glow. Click the tabs to switch panels and hover the items.</p></div></div>
+        <div class="card-stage st-white" style=";display:block"><div class="mn" id="mn-demo"><div class="hd hd--hero is-menu"><a class="hd-logo" href="#header"><svg viewBox="0 0 124 21" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Dreww"><path d="M120.495 3.78662C119.819 3.78662 119.158 3.98862 118.596 4.36702C118.034 4.74542 117.596 5.28322 117.337 5.91252C117.079 6.54172 117.011 7.23412 117.143 7.90222C117.275 8.57022 117.6 9.18382 118.078 9.66542C118.556 10.147 119.165 10.475 119.828 10.6079C120.491 10.7408 121.178 10.6726 121.803 10.4119C122.427 10.1513 122.961 9.70992 123.337 9.14362C123.712 8.57722 123.912 7.91142 123.912 7.23032C123.911 6.31752 123.55 5.44272 122.91 4.79722C122.269 4.15182 121.401 3.78842 120.495 3.78662ZM120.495 10.2284C119.906 10.2286 119.331 10.0528 118.842 9.72352C118.352 9.39412 117.971 8.92592 117.745 8.37812C117.52 7.83032 117.461 7.22742 117.576 6.64582C117.691 6.06422 117.974 5.52992 118.39 5.11062C118.806 4.69122 119.336 4.40562 119.913 4.28992C120.491 4.17412 121.089 4.23352 121.633 4.46042C122.176 4.68732 122.641 5.07162 122.968 5.56462C123.295 6.05772 123.47 6.63732 123.47 7.23032C123.471 7.62442 123.395 8.01492 123.246 8.37922C123.097 8.74362 122.878 9.07472 122.602 9.35342C122.325 9.63212 121.997 9.85292 121.635 10.003C121.273 10.1532 120.886 10.2298 120.495 10.2284Z" fill="#FFFFFF"/>
+<path d="M121.416 8.68505L120.93 5.93945H120.062L119.577 8.68505L119.009 5.93945H118.553L119.14 8.77545H120.013L120.498 6.02985L120.984 8.77545H121.856L122.44 5.93945H121.987L121.416 8.68505Z" fill="#FFFFFF"/>
+<path d="M14.7718 7.3987C13.6465 4.507 11.4517 3.0897 8.16003 3.0897C3.32153 3.0897 -0.0826721 6.8881 0.00152789 12.1595C0.00152789 17.2057 2.95543 20.9756 7.70973 20.9756C11.1987 20.9756 13.6182 19.5019 14.7736 16.695V20.4086H21.6618V0H14.7718V7.3987ZM10.9456 15.6757C8.63853 15.6757 7.14773 14.1735 7.14773 12.019C7.14773 9.8645 8.63973 8.3908 10.9739 8.3908C13.3657 8.3908 14.8 9.8645 14.8 11.9627C14.7994 14.1166 13.308 15.6757 10.9456 15.6757Z" fill="#FFFFFF"/>
+<path d="M48.2217 3.08984C41.8077 3.08984 38.0381 6.83134 38.0381 11.8786C38.0381 17.2367 42.2014 20.9769 49.1222 20.9769C52.3016 20.9769 55.2272 20.1265 57.0276 18.9345V14.0319C55.2555 15.1095 53.3704 15.7327 50.8943 15.7327C47.8003 15.7327 45.8304 14.8539 45.0147 13.3517H57.5903V11.4522C57.5903 6.40674 54.5516 3.08984 48.2217 3.08984ZM44.8433 10.3189C45.2377 8.95734 46.5319 8.05064 48.5571 8.05064C50.5546 8.05064 51.7647 8.87254 52.0454 10.3189H44.8433Z" fill="#FFFFFF"/>
+<path d="M107.516 13.834L104.45 3.82715H97.472L94.434 13.7771L92.099 3.82715H81.667L79.2192 13.834L76.1528 3.82715H69.1762L66.1375 13.7771L63.8027 3.82715H56.6289L62.0017 20.4102H69.2886L72.4391 10.4324L75.7308 20.4102H83.3267L86.7573 9.48115L90.298 20.4102H97.585L100.736 10.4324L104.027 20.4102H111.623L116.828 3.82715H109.964L107.516 13.834Z" fill="#FFFFFF"/>
+<path d="M31.2675 6.4514C31.2675 7.8031 30.7312 8.2413 29.8713 8.2413H29.8602L29.8227 3.8265H23.0703V20.4101H29.9634L29.8878 11.4882C30.23 9.3467 35.0039 7.9393 37.5869 9.6147L38.0168 3.8265C38.0168 3.8265 36.9339 3.1333 35.2011 3.1333C33.2447 3.1333 31.2675 4.3371 31.2675 6.4514Z" fill="#FFFFFF"/></svg></a><div class="hd-end"><nav class="hd-nav" aria-label="Demo"><button class="hd-tab on" type="button" data-pane="0"><span class="fill"></span><span>Services</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button class="hd-tab" type="button" data-pane="1"><span class="fill"></span><span>Work</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button class="hd-tab" type="button" data-pane="2"><span class="fill"></span><span>About</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button class="hd-tab" type="button" data-pane="3"><span class="fill"></span><span>Resources</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></nav><button class="hd-search" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span>Search</span><kbd>⌘K</kbd></button><a class="btn btn--primary btn--sm" href="#header">Book a call</a><a class="hd-lang" href="#header">FR</a></div></div><div class="mn-body"><div class="mn-pane on" data-pane="0"><p class="mn-kick">Services<b>4 ways we grow brands</b></p><a class="mn-item" href="#header"><span class="mn-n">01</span><span class="mn-big">Always-On Social Media</span><span class="mn-sx"><span><span>Content and community that build demand month after month.</span></span></span></a><a class="mn-item" href="#header"><span class="mn-n">02</span><span class="mn-big">Lead Generation</span><span class="mn-sx"><span><span>Qualified leads, tracked to signed deals in HubSpot.</span></span></span></a><a class="mn-item" href="#header"><span class="mn-n">03</span><span class="mn-big">E-commerce Growth</span><span class="mn-sx"><span><span>Paid social, creative and CRO that grow online revenue profitably.</span></span></span></a><a class="mn-item" href="#header"><span class="mn-n">04</span><span class="mn-big">User Acquisition</span><span class="mn-sx"><span><span>Paid campaigns that bring in app and product users.</span></span></span></a></div><div class="mn-pane" data-pane="1"><p class="mn-kick">Work<b>1.5B+ views and counting</b></p><a class="mn-item" href="#header"><span class="mn-n">01</span><span class="mn-big">Case Studies</span><span class="mn-sx"><span><span>The problems we solved, and the numbers behind them.</span></span></span></a><a class="mn-item" href="#header"><span class="mn-n">02</span><span class="mn-big">Clients</span><span class="mn-sx"><span><span>The brands we’ve helped grow.</span></span></span></a><a class="mn-item" href="#header"><span class="mn-n">03</span><span class="mn-big">Watch Our Work</span><span class="mn-sx"><span><span>The Dreww feed. Every reel we’ve made, in one place.</span></span></span></a></div><div class="mn-pane" data-pane="2"><p class="mn-kick">About<b>One team for growth</b></p><a class="mn-item" href="#header"><span class="mn-n">01</span><span class="mn-big">About Dreww</span><span class="mn-sx"><span><span>Who we are, what we do, and the team behind it.</span></span></span></a><a class="mn-item" href="#header"><span class="mn-n">02</span><span class="mn-big">Culture</span><span class="mn-sx"><span><span>We work hard and have fun doing it.</span></span></span></a><a class="mn-item" href="#header"><span class="mn-n">03</span><span class="mn-big">Origin Story</span><span class="mn-sx"><span><span>Open the files from the Dreww archives.</span></span></span></a></div><div class="mn-pane" data-pane="3"><p class="mn-kick">Resources<b>Free, from the team</b></p><a class="mn-item" href="#header"><span class="mn-n">01</span><span class="mn-big">Insights</span><span class="mn-sx"><span><span>Marketing insights from the Dreww team.</span></span></span></a><a class="mn-item" href="#header"><span class="mn-n">02</span><span class="mn-big">Press Releases</span><span class="mn-sx"><span><span>News from Dreww and our clients.</span></span></span></a><a class="mn-item" href="#header"><span class="mn-n">03</span><span class="mn-big">Tools</span><span class="mn-sx"><span><span>Calculators and playbooks we use with clients.</span></span></span></a></div></div></div></div>
+      </div><div id="footer"></div>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Footer</h3><p>Edge glow on ink. The newsletter form sits above it (see Forms).</p></div></div>
+        <div class="card-stage st-white" style=";display:block"><footer class="ft"><div class="ft-grid"><div><p class="ft-h coral">Montreal HQ</p><address>1600 Rue Notre-Dame Ouest,<br>Unit 304, Montréal, QC<br>H3J 1M1, Canada</address></div><div><p class="ft-h">Core services</p><ul><li><a href="#footer">Always-On Social Media</a></li><li><a href="#footer">Lead Generation</a></li><li><a href="#footer">E-commerce Growth</a></li><li><a href="#footer">User Acquisition</a></li></ul></div><div><p class="ft-h">Company</p><ul><li><a href="#footer">About</a></li><li><a href="#footer">Origin Story</a></li><li><a href="#footer">Culture</a></li><li><a href="#footer">Careers</a></li></ul></div><div><p class="ft-h">Work</p><ul><li><a href="#footer">Clients</a></li><li><a href="#footer">Case Studies</a></li></ul></div><div><p class="ft-h">Resources</p><ul><li><a href="#footer">Insights</a></li><li><a href="#footer">Press Releases</a></li><li><a href="#footer">Lead Value Calculator</a></li><li><a href="#footer">Brand Kit</a></li></ul></div><div><p class="ft-h">Connect</p><ul><li><a href="#footer">Contact</a></li><li><a href="#footer">Book a call</a></li></ul></div></div><div class="ft-plat"><p class="ft-h coral" style="margin:0 8px 0 0">Platforms we work with</p><span>Meta Business Partner</span><span>Google Partner</span><span>HubSpot Certified Partner</span><span>Klaviyo</span><span>TikTok</span><span>Shopify Partners</span></div><div class="ft-bot"><span>© 2015–2026 Dreww Media Inc.<a href="#footer">Privacy Policy</a><a href="#footer">Terms of Service</a><a href="#footer">Data Request</a></span><span class="ft-soc"><a href="#footer" aria-label="Instagram">IG</a><a href="#footer" aria-label="LinkedIn">IN</a><a href="#footer" aria-label="TikTok">TT</a><a href="#footer" aria-label="YouTube">YT</a><a href="#footer" aria-label="Facebook">FB</a></span></div></footer></div>
+      </div>
+      <div class="card-decide">
+        <h3>Where the header and footer disagree</h3>
+        <div class="cd-grid">
+          <div><b>Corners</b><p>The header Book a call button is 8&nbsp;px. The tab fill and search field are 12&nbsp;px, which matches the agreed buttons.</p><p class="cd-rec">12&nbsp;px on the header button too.</p></div>
+          <div><b>Footer labels</b><p>Two eyebrow styles in one footer: coral at 400 weight (Montreal HQ, Platforms) and faded white at 500 (the link columns), with different spacing.</p><p class="cd-rec">One style: Plex Mono 500, 0.1em. Coral for the first label only, faded white for the columns.</p></div>
+          <div><b>Naming</b><p>The footer says "App Growth &amp; User Acquisition" and "Book a Call". Everywhere else it's "User Acquisition" and "Book a call".</p><p class="cd-rec">Match the rest of the site.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DECISIONS -->
+  <section class="decide" id="decisions">
+    <div class="wrap">
+      <p class="eyebrow">Your call</p>
+      <h2>Decisions</h2>
+      <p class="lede">What we agreed, and what still has to change on the site and the brand kit.</p>
+      <div class="q-list">
+        <div class="q"><h3>Final CTA: ink with the warm glow</h3>
+          <p>Keep it as live. The brand kit's "burgundy for CTA bands" rule gets updated.</p>
+          <p class="todo">To do: update /brand-kit and brand.md</p></div>
+        <div class="q"><h3>Buttons: the home hero button is the standard</h3>
+          <p>Coral, 12&nbsp;px cut corner, Anton 20&nbsp;px, white wipe on hover. Shown in Buttons &amp; links, next.</p>
+          <p class="todo">To do: Final CTA button 14 → 12&nbsp;px · brand kit 8 → 12&nbsp;px</p></div>
+        <div class="q"><h3>Hover: left-to-right wipe</h3>
+          <p>Same on primary and ghost. Alternatives explored and set aside. No darker shades, grow or lift.</p>
+          <p class="todo">To do: remove #702242, #C95D4F and scale(1.03) from the theme</p></div>
+        <div class="q"><h3>Eyebrows: 0.1em spacing</h3>
+          <p>A little tighter than the brand kit's 0.12em.</p>
+          <p class="todo">To do: homepage eyebrows (now 0) · brand kit 0.12 → 0.1em</p></div>
+        <div class="q"><h3>H2: 54&nbsp;px, 62&nbsp;px on large monitors</h3>
+          <p>One fluid size instead of two fixed ones.</p>
+          <p class="todo">To do: theme H2 token</p></div>
+        <div class="q"><h3>Teal #215F6A for positive states</h3>
+          <p>UI only, never a brand colour. Replaces the site's green #2F7D4F.</p>
+          <p class="todo">To do: theme success token · add to brand kit as UI-only</p></div>
+        <div class="q"><h3>Gradients: the live glows</h3>
+          <p>Four glows: Final CTA, footer, open menu and behind media. All dark. No flat burgundy-to-coral gradient.</p>
+          <p class="todo">To do: remove --gradient-primary and --gradient-secondary from the theme</p></div>
+        <div class="q"><h3>Coral buttons keep white text</h3>
+          <p>Accepted exception: 2.9:1 contrast, below AA. Kept for brand recognition.</p></div>
+        <div class="q"><h3>Cards: cut corners, two hovers, one border</h3>
+          <p>Service card stays as built today, with the cut corner (alternatives explored and set aside). 16&nbsp;px cut corner for big cards, 12&nbsp;px for small. Ink spread for action cards, coral border for reading cards. No lift. Grey 200 borders.</p>
+          <p class="todo">To do: service, FAQ and review cards to cut corners · drop case card lift · swap border colours</p></div>
+        <div class="q"><h3>Forms: cut corners, burgundy state, one stylesheet</h3>
+          <p>8&nbsp;px cut corner on inputs, 12&nbsp;px on option cards. Focus: white, burgundy border, coral ring. Errors in red #DA1E28 with an icon, the same as the apps (agreed Nov 25).</p>
+          <p class="todo">To do: /book-call buttons to the primary button · restyle /book-call step 2 fields · error colour to #DA1E28 · merge 200+ form rules into one stylesheet</p></div>
+        <div class="q"><h3>Leftover template values: remove</h3>
+          <p>Navy surface #2A2E42, orange link #DD6B3E, red form button #E31B22 and grey 100.</p>
+          <p class="todo">To do: remove from the theme</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer><div class="wrap">Dreww web design system · values read from dreww.ca theme CSS · v0.1</div></footer>
+</main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ---------- Logo source (from dreww.ca/hubfs/Dreww Logo/) ---------- */
+const LOGO_PATHS = `<path d="M120.495 3.78662C119.819 3.78662 119.158 3.98862 118.596 4.36702C118.034 4.74542 117.596 5.28322 117.337 5.91252C117.079 6.54172 117.011 7.23412 117.143 7.90222C117.275 8.57022 117.6 9.18382 118.078 9.66542C118.556 10.147 119.165 10.475 119.828 10.6079C120.491 10.7408 121.178 10.6726 121.803 10.4119C122.427 10.1513 122.961 9.70992 123.337 9.14362C123.712 8.57722 123.912 7.91142 123.912 7.23032C123.911 6.31752 123.55 5.44272 122.91 4.79722C122.269 4.15182 121.401 3.78842 120.495 3.78662ZM120.495 10.2284C119.906 10.2286 119.331 10.0528 118.842 9.72352C118.352 9.39412 117.971 8.92592 117.745 8.37812C117.52 7.83032 117.461 7.22742 117.576 6.64582C117.691 6.06422 117.974 5.52992 118.39 5.11062C118.806 4.69122 119.336 4.40562 119.913 4.28992C120.491 4.17412 121.089 4.23352 121.633 4.46042C122.176 4.68732 122.641 5.07162 122.968 5.56462C123.295 6.05772 123.47 6.63732 123.47 7.23032C123.471 7.62442 123.395 8.01492 123.246 8.37922C123.097 8.74362 122.878 9.07472 122.602 9.35342C122.325 9.63212 121.997 9.85292 121.635 10.003C121.273 10.1532 120.886 10.2298 120.495 10.2284Z" fill="FILL"/>
+<path d="M121.416 8.68505L120.93 5.93945H120.062L119.577 8.68505L119.009 5.93945H118.553L119.14 8.77545H120.013L120.498 6.02985L120.984 8.77545H121.856L122.44 5.93945H121.987L121.416 8.68505Z" fill="FILL"/>
+<path d="M14.7718 7.3987C13.6465 4.507 11.4517 3.0897 8.16003 3.0897C3.32153 3.0897 -0.0826721 6.8881 0.00152789 12.1595C0.00152789 17.2057 2.95543 20.9756 7.70973 20.9756C11.1987 20.9756 13.6182 19.5019 14.7736 16.695V20.4086H21.6618V0H14.7718V7.3987ZM10.9456 15.6757C8.63853 15.6757 7.14773 14.1735 7.14773 12.019C7.14773 9.8645 8.63973 8.3908 10.9739 8.3908C13.3657 8.3908 14.8 9.8645 14.8 11.9627C14.7994 14.1166 13.308 15.6757 10.9456 15.6757Z" fill="FILL"/>
+<path d="M48.2217 3.08984C41.8077 3.08984 38.0381 6.83134 38.0381 11.8786C38.0381 17.2367 42.2014 20.9769 49.1222 20.9769C52.3016 20.9769 55.2272 20.1265 57.0276 18.9345V14.0319C55.2555 15.1095 53.3704 15.7327 50.8943 15.7327C47.8003 15.7327 45.8304 14.8539 45.0147 13.3517H57.5903V11.4522C57.5903 6.40674 54.5516 3.08984 48.2217 3.08984ZM44.8433 10.3189C45.2377 8.95734 46.5319 8.05064 48.5571 8.05064C50.5546 8.05064 51.7647 8.87254 52.0454 10.3189H44.8433Z" fill="FILL"/>
+<path d="M107.516 13.834L104.45 3.82715H97.472L94.434 13.7771L92.099 3.82715H81.667L79.2192 13.834L76.1528 3.82715H69.1762L66.1375 13.7771L63.8027 3.82715H56.6289L62.0017 20.4102H69.2886L72.4391 10.4324L75.7308 20.4102H83.3267L86.7573 9.48115L90.298 20.4102H97.585L100.736 10.4324L104.027 20.4102H111.623L116.828 3.82715H109.964L107.516 13.834Z" fill="FILL"/>
+<path d="M31.2675 6.4514C31.2675 7.8031 30.7312 8.2413 29.8713 8.2413H29.8602L29.8227 3.8265H23.0703V20.4101H29.9634L29.8878 11.4882C30.23 9.3467 35.0039 7.9393 37.5869 9.6147L38.0168 3.8265C38.0168 3.8265 36.9339 3.1333 35.2011 3.1333C33.2447 3.1333 31.2675 4.3371 31.2675 6.4514Z" fill="FILL"/>`;
+const logoSVG = fill => `<svg width="124" height="21" viewBox="0 0 124 21" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="dreww">\n${LOGO_PATHS.replaceAll('FILL', fill)}\n</svg>\n`;
+
+const MONO_PATHS = `<path d="M241.265 139.37C222.885 91.91 187.045 68.64 133.265 68.64C54.2651 68.64 -1.35488 131 0.0251179 217.55C0.0251179 300.38 48.2651 362.27 125.915 362.27C182.915 362.27 222.405 338.07 241.245 292V353H353.835V0H241.265V139.37ZM178.775 275.22C141.105 275.22 116.775 250.56 116.775 215.22C116.775 179.88 141.125 155.66 179.255 155.66C218.315 155.66 241.745 179.86 241.745 214.29C241.725 249.66 217.355 275.22 178.775 275.22Z" fill="FILL"/>
+<path d="M432.175 68.4702C421.028 68.4702 410.132 71.7757 400.863 77.9686C391.595 84.1615 384.371 92.9637 380.106 103.262C375.84 113.561 374.724 124.893 376.898 135.826C379.073 146.758 384.441 156.801 392.323 164.683C400.205 172.565 410.247 177.933 421.18 180.107C432.113 182.282 443.445 181.166 453.744 176.9C464.042 172.634 472.844 165.411 479.037 156.142C485.23 146.874 488.535 135.977 488.535 124.83C488.506 109.892 482.559 95.5731 471.996 85.0098C461.433 74.4465 447.114 68.4993 432.175 68.4702ZM432.175 173.88C422.469 173.892 412.978 171.025 404.902 165.641C396.826 160.257 390.528 152.598 386.806 143.634C383.084 134.67 382.105 124.803 383.992 115.282C385.879 105.761 390.547 97.014 397.407 90.1473C404.267 83.2805 413.009 78.6028 422.528 76.7061C432.047 74.8094 441.915 75.7789 450.883 79.4919C459.851 83.2049 467.516 89.4945 472.908 97.565C478.3 105.635 481.177 115.124 481.175 124.83C481.198 131.274 479.946 137.658 477.492 143.616C475.038 149.574 471.431 154.988 466.877 159.546C462.323 164.105 456.913 167.718 450.957 170.178C445.002 172.638 438.619 173.896 432.175 173.88Z" fill="FILL"/>
+<path d="M447.345 148.62L439.335 103.7H425.015L417.005 148.62L407.655 103.7H400.125L409.815 150.1H424.205L432.205 105.17L440.215 150.1H454.605L464.225 103.7H456.755L447.345 148.62Z" fill="FILL"/>`;
+const monoSVG = fill => `<svg class="m" width="489" height="363" viewBox="0 0 489 363" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="dreww monogram">\n${MONO_PATHS.replaceAll('FILL', fill)}\n</svg>\n`;
+
+const LOGOS = [
+  {id:'wm-black', kind:'wm', name:'Black', fill:'#000000', bg:'#ffffff', ground:'Light backgrounds (default)', file:'dreww-wordmark--black'},
+  {id:'wm-burgundy', kind:'wm', name:'Burgundy', fill:'#892951', bg:'#ffffff', ground:'Light backgrounds', file:'dreww-wordmark--burgundy'},
+  {id:'wm-white', kind:'wm', name:'White', fill:'#FFFFFF', bg:'#892951', ground:'Burgundy, dark backgrounds, photos', file:'dreww-wordmark--white'},
+  {id:'wm-coral', kind:'wm', name:'Coral', fill:'#EE7464', bg:'#892951', ground:'Burgundy and social media', file:'dreww-wordmark--coral'},
+  {id:'mo-black', kind:'mo', name:'Black', fill:'#000000', bg:'#ffffff', ground:'Avatars and favicons on light', file:'dreww-monogram--black'},
+  {id:'mo-white', kind:'mo', name:'White', fill:'#FFFFFF', bg:'#892951', ground:'Small spaces on dark', file:'dreww-monogram--white'},
+  {id:'mo-coral', kind:'mo', name:'Coral', fill:'#EE7464', bg:'#892951', ground:'Social avatar on burgundy', file:'dreww-monogram--coral'},
+];
+const svgFor = l => l.kind==='wm' ? logoSVG(l.fill) : monoSVG(l.fill);
+const dims = l => l.kind==='wm' ? [124,21] : [489,363];
+
+document.getElementById('nav-logo').innerHTML = logoSVG('#FFFFFF');
+
+const ic = {
+  copy:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="5" width="9" height="9" rx="1"/><path d="M11 5V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h2"/></svg>',
+  down:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v9M4 7l4 4 4-4M2 14h12"/></svg>'
+};
+
+const card = l => `
+  <div class="logo-card">
+    <div class="logo-stage" style="background:${l.bg}${l.bg==='#ffffff'?';border-bottom:1px solid #e5e5e5':''}">${svgFor(l)}</div>
+    <div class="logo-meta">
+      <h3>${l.name}</h3><p>${l.ground}</p>
+      <div class="acts">
+        <button class="act" data-logo-copy="${l.id}">${ic.copy}SVG code</button>
+        <button class="act" data-logo-svg="${l.id}">${ic.down}SVG</button>
+        <button class="act" data-logo-png="${l.id}">${ic.down}PNG</button>
+      </div>
+    </div>
+  </div>`;
+document.getElementById('logo-grid').innerHTML = LOGOS.filter(l=>l.kind==='wm').map(card).join('');
+document.getElementById('mono-grid').innerHTML = LOGOS.filter(l=>l.kind==='mo').map(card).join('');
+
+/* ---------- Colours (from dreww.ca :root) ---------- */
+const COLOURS = {
+  brand: [
+    {name:'Burgundy', hex:'#892951', v:'--color-burgundy', use:'Primary brand colour. Hero sections, big moments, brand text.'},
+    {name:'Coral', hex:'#EE7464', v:'--color-coral', use:'Accent. Calls to action, highlights, active states. Never body text on white.'},
+  ],
+  neutral: [
+    {name:'Ink', hex:'#111111', v:'--color-grey-900', use:'Primary text, footer.'},
+    {name:'Grey 600', hex:'#525252', v:'--color-grey-600', use:'Secondary text.'},
+    {name:'Grey 200', hex:'#E5E5E5', v:'--color-grey-200', use:'Borders and dividers.'},
+    {name:'Mist', hex:'#F2F4F8', v:'--color-mist', use:'Subtle cool backgrounds.'},
+    {name:'White', hex:'#FFFFFF', v:'--color-white', use:'Main page background.'},
+  ],
+  ui: [
+    {name:'Teal', hex:'#215F6A', v:'--color-positive', use:'UI only. Positive and success states, "fix" or "after" in comparisons. Never a brand colour.'},
+    {name:'Red', hex:'#DA1E28', v:'--color-negative', use:'UI only. Form errors and failed states, the same as the apps. Never a brand colour.'},
+  ]
+};
+const GLOWS = [
+  {name:'Warm glow', where:'Final CTA. Warm centre fading out to ink.', css:'background-color: #111111;\nbackground-image: radial-gradient(44% 40% at 50% 46%, #311F1D 0%, #311F1D 42%, #111111 100%);'},
+  {name:'Edge glow', where:'Footer. The reverse: ink centre, warm edges.', css:'background-color: #111111;\nbackground-image: radial-gradient(farthest-side, #111111 0%, #32201D 100%);'},
+  {name:'Menu glow', where:'Open menu, desktop and mobile. Coral low right, burgundy high left, on a warm near-black.', css:'background-color: #181215;\nbackground-image: radial-gradient(1000px 640px at 100% 105%, rgba(238,116,100,.30), rgba(238,116,100,0) 60%), radial-gradient(800px 520px at -5% -10%, rgba(137,41,81,.42), rgba(137,41,81,0) 65%);'},
+  {name:'Soft glow', where:'Behind media on ink, like the Watch how section.', css:'background-color: #111111;\nbackground-image: radial-gradient(55% 70% at 72% 45%, rgba(238,116,100,.18) 0%, rgba(137,41,81,.12) 45%, rgba(0,0,0,0) 75%);'},
+];
+document.getElementById('glows').innerHTML = GLOWS.map(g => `<div class="glow">
+  <div class="glow-stage" style="${g.css.replace(/\n/g,' ')}"></div>
+  <div class="glow-body"><span class="sw-name">${g.name}</span><span class="sw-use">${g.where}</span>
+  <div class="acts"><button class="act" data-copy="${g.css}" data-label="${g.name} CSS">${ic.copy}CSS</button></div></div></div>`).join('');
+
+const lum = hex => { const c=[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16)/255).map(v=>v<=.03928?v/12.92:((v+.055)/1.055)**2.4); return .2126*c[0]+.7152*c[1]+.0722*c[2]; };
+const ratio = (a,b) => { const [x,y]=[lum(a),lum(b)].sort((m,n)=>n-m); return (x+.05)/(y+.05); };
+const badge = (hex, on, label) => { const r=ratio(hex,on); const grade=r>=7?'AAA':r>=4.5?'AA':r>=3?'AA large':'Fail'; return `<span class="aa" title="Contrast with ${label}">${label} ${r.toFixed(1)} · ${grade}</span>`; };
+
+document.querySelectorAll('[data-swatches]').forEach(el => {
+  el.innerHTML = COLOURS[el.dataset.swatches].map(c => {
+    const border = c.hex==='#FFFFFF'||c.hex==='#F5F5F5'||c.hex==='#F2F4F8' ? 'box-shadow:inset 0 -1px 0 #e5e5e5;' : '';
+    return `<div class="sw">
+      <button class="sw-chip" type="button" style="background:${c.hex};${border}" data-copy="${c.hex}" data-label="${c.name} ${c.hex}" aria-label="Copy ${c.name} ${c.hex}"><span class="hint">Copy hex</span></button>
+      <div class="sw-body">
+        <span class="sw-name">${c.name}</span>
+        <span class="sw-code"><span>${c.hex}</span><button type="button" data-copy="var(${c.v})" data-label="var(${c.v})">${c.v}</button></span>
+        <span class="sw-use">${c.use}</span>
+        <span class="sw-aa">${badge(c.hex,'#FFFFFF','On white')}${badge(c.hex,'#892951','On burgundy')}</span>
+      </div></div>`;
+  }).join('');
+});
+
+/* ---------- Type scale (from dreww.ca :root) ---------- */
+const SCALE = [
+  {k:'H1', cls:'t-h1', d:'72', m:'32', lh:'1.1', fam:'Anton', txt:'Turn marketing into revenue', css:'font-family:"Anton",Georgia,serif;font-size:72px;line-height:1.1;text-transform:uppercase;font-weight:400;'},
+  {k:'H2', cls:'t-h2', d:'54–62', m:'24', lh:'1.06', fam:'Anton', txt:'Growth systems that work', css:'font-family:"Anton",Georgia,serif;font-size:clamp(54px,4.3vw,62px);line-height:1.06;text-transform:uppercase;font-weight:400;'},
+  {k:'H3', cls:'t-h3', d:'28', m:'22', lh:'1.3', fam:'Anton', txt:'Paid inbound, built to close', css:'font-family:"Anton",Georgia,serif;font-size:28px;line-height:1.3;text-transform:uppercase;font-weight:400;'},
+  {k:'H4', cls:'t-h4', d:'22', m:'18', lh:'1.4', fam:'Anton', txt:'Lead generation', css:'font-family:"Anton",Georgia,serif;font-size:22px;line-height:1.4;text-transform:uppercase;font-weight:400;'},
+  {k:'H5', cls:'t-h5', d:'20', m:'16', lh:'1.4', fam:'Anton', txt:'Book a call', css:'font-family:"Anton",Georgia,serif;font-size:20px;line-height:1.4;text-transform:uppercase;font-weight:400;'},
+  {k:'Lead', cls:'t-lead', d:'20', m:'18', lh:'1.55', fam:'DM Sans 400', txt:'We build the systems that turn attention into booked calls.', css:'font-family:"DM Sans",system-ui,sans-serif;font-size:20px;line-height:1.55;color:#525252;'},
+  {k:'Body', cls:'t-body', d:'18', m:'16', lh:'1.5', fam:'DM Sans 400', txt:'Every campaign is tied to pipeline, not vanity metrics, so you always know what a dollar of ad spend brings back.', css:'font-family:"DM Sans",system-ui,sans-serif;font-size:18px;line-height:1.5;'},
+  {k:'Small', cls:'t-small', d:'14', m:'14', lh:'1.5', fam:'DM Sans 400', txt:'Results vary by industry and budget.', css:'font-family:"DM Sans",system-ui,sans-serif;font-size:14px;line-height:1.5;color:#525252;'},
+  {k:'Eyebrow', cls:'t-eyebrow', d:'14', m:'12', lh:'21px', fam:'Plex Mono 500', txt:'Case studies · Our clients', css:'font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:14px;line-height:21px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#ee7464;'},
+  
+];
+document.getElementById('scale').innerHTML = SCALE.map(s => `
+  <div class="row">
+    <div class="spec"><b>${s.k}</b>${s.fam}<br>${s.d} / ${s.m}px · LH ${s.lh}</div>
+    <div class="sample ${s.cls}">${s.txt}</div>
+    <div class="acts"><button class="act" data-copy='${s.css}' data-label="${s.k} CSS">${ic.copy}CSS</button></div>
+  </div>`).join('');
+
+/* ---------- Copy / download ---------- */
+const toast = document.getElementById('toast'); let tt;
+const say = m => { toast.textContent = m; toast.classList.add('on'); clearTimeout(tt); tt = setTimeout(()=>toast.classList.remove('on'), 1800); };
+
+async function copy(text, label){
+  try { await navigator.clipboard.writeText(text); say('Copied · ' + label); }
+  catch(e){
+    const ta=document.createElement('textarea'); ta.value=text; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select();
+    let ok=false; try{ ok=document.execCommand('copy'); }catch(_){} ta.remove();
+    say(ok ? 'Copied · ' + label : 'Copy blocked here. Open the page in its own tab.');
+  }
+}
+
+let downloads = null;
+(async()=>{ try{ if(window.claude && claude.use) downloads = await claude.use('downloads'); }catch(e){} })();
+
+async function save(filename, data){
+  if(!downloads){ say('Downloads not available in this view'); return; }
+  try { await downloads.save({filename, data}); say('Saved · ' + filename); }
+  catch(e){ if(e && e.code==='declined') return; say(e && e.code==='rate_limited' ? 'One moment, then try again' : 'Download unavailable here'); }
+}
+
+function pngBlob(svg, width, ratio){
+  return new Promise((res, rej) => {
+    const img = new Image();
+    const url = URL.createObjectURL(new Blob([svg], {type:'image/svg+xml'}));
+    img.onload = () => {
+      const h = Math.round(width * ratio);
+      const c = document.createElement('canvas'); c.width = width; c.height = h;
+      c.getContext('2d').drawImage(img, 0, 0, width, h);
+      URL.revokeObjectURL(url);
+      c.toBlob(b => b ? res(b) : rej(), 'image/png');
+    };
+    img.onerror = rej; img.src = url;
+  });
+}
+
+document.addEventListener('click', async ev => {
+  const b = ev.target.closest('button'); if(!b) return;
+  if(b.dataset.copy){ copy(b.dataset.copy, b.dataset.label || 'value'); return; }
+  const id = b.dataset.logoCopy || b.dataset.logoSvg || b.dataset.logoPng; if(!id) return;
+  const l = LOGOS.find(x => x.id === id); const svg = svgFor(l); const [w0,h0] = dims(l);
+  if(b.dataset.logoCopy) copy(svg, l.file + '.svg');
+  else if(b.dataset.logoSvg) save(l.file + '.svg', svg);
+  else { try { save(l.file + '.png', await pngBlob(svg, l.kind==='wm'?2000:1000, h0/w0)); } catch(e){ say('PNG render failed in this browser'); } }
+});
+
+
+/* ---------- Component copy ---------- */
+const COMP_CSS = `.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;gap:10px;border:0;cursor:pointer;text-decoration:none;font-family:"Anton",sans-serif;font-weight:400;font-size:20px;line-height:1.1;letter-spacing:.02em;text-transform:uppercase;padding:16px 32px;border-radius:0 12px 12px 12px;transition:color .35s}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;clip-path:inset(0 100% 0 0);transition:clip-path .5s cubic-bezier(.7,0,.2,1)}
+.btn:hover::before,.btn:focus-visible::before{clip-path:inset(0)}
+.btn:focus-visible{outline:3px solid #ee7464;outline-offset:3px}
+.btn svg{width:18px;height:18px;flex:none}
+.btn--lg{font-size:22px;padding:18px 36px}
+.btn--sm{font-size:16px;padding:11px 20px}
+.btn--primary{background:#ee7464;color:#fff}
+.btn--primary::before{background:#892951}
+.on-dark .btn--primary::before{background:#fff}
+.on-dark .btn--primary:hover,.on-dark .btn--primary:focus-visible{color:#892951}
+.btn--ghost{background:transparent;color:#892951;box-shadow:inset 0 0 0 2px #892951}
+.btn--ghost::before{background:#892951}
+.btn--ghost:hover,.btn--ghost:focus-visible{color:#fff}
+.on-dark .btn--ghost{color:#fff;box-shadow:inset 0 0 0 2px #fff}
+.on-dark .btn--ghost::before{background:#fff}
+.on-dark .btn--ghost:hover,.on-dark .btn--ghost:focus-visible{color:#892951}
+.btn[aria-disabled="true"],.btn:disabled{opacity:.4;pointer-events:none}
+.link-arrow{position:relative;display:inline-flex;align-items:center;gap:10px;padding:6px 0;text-decoration:none;color:#111;font-family:"Anton",sans-serif;font-size:18px;letter-spacing:.02em;text-transform:uppercase}
+.on-dark .link-arrow{color:#fff}
+.link-arrow::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:currentColor;transform:scaleX(0);transform-origin:right center;transition:transform .45s cubic-bezier(.7,0,.2,1)}
+.link-arrow:hover::after,.link-arrow:focus-visible::after{transform:scaleX(1);transform-origin:left center}
+.link-arrow svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .35s}
+.link-arrow:hover svg,.link-arrow:focus-visible svg{transform:translateX(5px)}
+.link-arrow:focus-visible{outline:3px solid #ee7464;outline-offset:3px}`;
+const ARROW = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>';
+const HTML = {
+  primary: `<!-- On light grounds. Inside a dark or burgundy section, add class="on-dark" to the section. -->\n<a class="btn btn--primary" href="/book-call">Book a call</a>`,
+  ghost: `<a class="btn btn--ghost" href="/case-studies">See the work</a>`,
+  link: `<a class="link-arrow" href="/services">Explore our services ${ARROW}</a>`,
+};
+const INK_JS = `// Ink spread: fill grows from where the pointer enters, shrinks back to where it leaves
+document.querySelectorAll('.btn').forEach(b => {
+  const at = e => { const r = b.getBoundingClientRect(); b.style.setProperty('--px', (e.clientX - r.left) + 'px'); b.style.setProperty('--py', (e.clientY - r.top) + 'px'); };
+  b.addEventListener('pointerenter', e => { at(e); b.classList.add('is-on'); });
+  b.addEventListener('pointerleave', e => { at(e); b.classList.remove('is-on'); });
+});`;
+document.addEventListener('click', ev => {
+  const b = ev.target.closest('button'); if(!b) return;
+  if(b.dataset.copyHtml){ copy(HTML[b.dataset.copyHtml], b.dataset.copyHtml + ' HTML'); }
+  else if('copyCss' in b.dataset){ copy(COMP_CSS, 'button & link CSS'); }
+});
+document.querySelectorAll('#buttons a[href="#buttons"]').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+
+
+/* ---------- Cards ---------- */
+// Ink spread origin for fill cards + FAQ toggle
+document.querySelectorAll('.c-svc,.c-faq').forEach(c => {
+  const at = e => { const r = c.getBoundingClientRect(); c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px'); };
+  c.addEventListener('pointerenter', at); c.addEventListener('pointerleave', at);
+});
+document.querySelectorAll('.c-faq button').forEach(b => b.addEventListener('click', () => {
+  const li = b.closest('.c-faq'); const open = !li.classList.contains('is-open');
+  li.classList.toggle('is-open', open); b.setAttribute('aria-expanded', open);
+}));
+
+const CARD_CSS = "/* ===== Cards (as live on dreww.ca) ===== */\n.c-svc{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;min-height:300px;padding:28px;border-radius:0 16px 16px 16px;background:#f2f4f8;color:#111;text-decoration:none;transition:color .15s}\n.c-svc:hover,.c-svc:focus-visible{transition:color .35s}\n.c-svc::before{content:\"\";position:absolute;inset:0;z-index:-1;background:#892951;clip-path:circle(0% at var(--mx,50%) var(--my,100%));transition:clip-path .4s cubic-bezier(.4,0,.2,1)}\n.c-svc:hover::before,.c-svc:focus-visible::before{transition:clip-path .6s cubic-bezier(.7,0,.2,1)}\n.c-svc:hover::before,.c-svc:focus-visible::before{clip-path:circle(150% at var(--mx,50%) var(--my,100%))}\n.c-svc:hover,.c-svc:focus-visible{color:#fff}\n.c-svc:focus-visible{outline:3px solid #ee7464;outline-offset:3px}\n.c-n{font-family:\"IBM Plex Mono\",monospace;font-size:14px;font-weight:500;color:#ee7464}\n.c-svc h4{font-family:\"Anton\",sans-serif;font-weight:400;font-size:28px;line-height:1.15;text-transform:uppercase;margin:0 0 10px}\n.c-svc p{margin:0;color:#525252;font-size:16px;line-height:1.5;max-width:30ch;transition:color .15s}\n.c-svc:hover p{transition:color .35s}\n.c-svc:hover p,.c-svc:focus-visible p{color:#e5e5e5}\n.c-go{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ee7464;color:#fff;margin-top:22px;transition:transform .35s cubic-bezier(.2,.8,.2,1)}\n.c-go svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}\n.c-svc:hover .c-go,.c-svc:focus-visible .c-go{transform:translateX(6px)}\n\n.c-faq{position:relative;isolation:isolate;overflow:hidden;list-style:none;border-radius:0 12px 12px 12px;background:#f2f4f8;color:#111;transition:color .15s}\n.c-faq.is-open,.c-faq:hover{transition:color .35s}\n.c-faq::before{content:\"\";position:absolute;inset:0;z-index:-1;background:#892951;clip-path:circle(0% at var(--mx,50%) var(--my,100%));transition:clip-path .4s cubic-bezier(.4,0,.2,1)}\n.c-faq.is-open::before,.c-faq:hover::before{transition:clip-path .6s cubic-bezier(.7,0,.2,1)}\n.c-faq.is-open::before,.c-faq:hover::before{clip-path:circle(150% at var(--mx,50%) var(--my,100%))}\n.c-faq.is-open,.c-faq:hover{color:#fff}\n.c-faq button{all:unset;box-sizing:border-box;display:grid;grid-template-columns:36px 1fr 40px;gap:12px;align-items:center;width:100%;padding:24px 24px;cursor:pointer}\n.c-faq button:focus-visible{outline:2px solid #ee7464;outline-offset:-4px}\n.c-faq .c-q{font-family:\"Anton\",sans-serif;font-size:24px;line-height:1.2;text-transform:uppercase}\n.c-faq .c-plus{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ee7464;color:#fff;transition:transform .45s cubic-bezier(.7,0,.2,1),background .3s,color .3s}\n.c-faq .c-plus svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round}\n.c-faq:hover .c-plus{transform:rotate(90deg)}\n.c-faq.is-open .c-plus{background:#fff;color:#892951;transform:rotate(135deg)}\n.c-faq .c-emo{display:inline-block;margin-left:8px;opacity:0;transform:translateY(6px) rotate(-12deg);transition:opacity .3s,transform .45s cubic-bezier(.2,.8,.2,1)}\n.c-faq.is-open .c-emo{opacity:1;transform:none;transition-delay:.18s}\n.c-faq .c-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.7,0,.2,1)}\n.c-faq.is-open .c-a{grid-template-rows:1fr}\n.c-faq .c-a > div{overflow:hidden}\n.c-faq .c-a p{margin:0;padding:0 24px 26px 72px;color:#e5e5e5;font-size:16px;line-height:1.55}\n\n.c-rev{margin:0;display:flex;flex-direction:column;gap:18px;padding:23px;background:#fff;border:2px solid #e5e5e5;border-radius:0 16px 16px 16px;transition:border-color .3s}\n.c-rev:hover{border-color:#ee7464}\n.c-rev-top{display:flex;justify-content:space-between;align-items:center}\n.c-stars{display:flex;gap:2px;color:#ee7464}\n.c-stars svg{width:16px;height:15px;fill:currentColor}\n.c-rev blockquote{margin:0;font-size:16px;line-height:1.55;color:#111;flex:1}\n.c-rev figcaption{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid #e5e5e5}\n.c-rev .c-logo{height:22px;width:auto;margin-right:auto}\n.c-rev .c-who{text-align:right;font-size:13px;line-height:1.3}\n.c-rev .c-who b{display:block;font-size:14px}\n.c-rev .c-who small{color:#737373;font-size:12px}\n.c-rev .c-head{width:40px;height:40px;border-radius:50%;object-fit:cover}\n\n.c-case{position:relative;display:flex;flex-direction:column;overflow:hidden;background:#fff;border:2px solid #e5e5e5;border-radius:0 16px 16px 16px;transition:border-color .3s;text-decoration:none;color:#111}\n.c-case:hover,.c-case:focus-visible{border-color:#ee7464}\n.c-case:focus-visible{outline:3px solid #ee7464;outline-offset:3px}\n.c-cover{position:relative;aspect-ratio:9/12;overflow:hidden;background:#111}\n.c-cover img.c-reel{width:100%;height:100%;object-fit:cover;display:block}\n.c-chip{position:absolute;left:12px;top:12px;background:#fff;border-radius:0 10px 10px 10px;padding:8px 10px;display:flex}\n.c-chip img{height:22px;width:auto}\n.c-views{position:absolute;left:12px;bottom:12px;display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:0 8px 8px 8px;background:rgba(17,17,17,.6);color:#fff;font-family:\"IBM Plex Mono\",monospace;font-size:12px;font-weight:500}\n.c-views svg{width:12px;height:12px;fill:currentColor}\n.c-body{padding:22px 22px 24px;display:flex;flex-direction:column;gap:8px}\n.c-body h4{font-family:\"Anton\",sans-serif;font-weight:400;font-size:28px;line-height:1.1;text-transform:uppercase;margin:0}\n.c-tags{font-family:\"IBM Plex Mono\",monospace;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#ee7464;margin:0}\n.c-see{display:inline-flex;align-items:center;gap:8px;margin-top:8px;font-family:\"Anton\",sans-serif;font-size:16px;letter-spacing:.02em;text-transform:uppercase}\n.c-see svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .35s}\n.c-case:hover .c-see svg{transform:translateX(4px)}\n\n.c-logo-tile{position:relative;display:grid;place-items:center;min-height:130px;padding:24px 32px;background:#fff;border:2px solid #e5e5e5;border-radius:0 12px 12px 12px;cursor:pointer;transition:border-color .25s}\n.c-logo-tile img{max-height:48px;max-width:100%;width:auto;filter:grayscale(1) contrast(1.15);opacity:.85;transition:filter .25s,opacity .25s}\n.c-logo-tile:hover,.c-logo-tile:focus-visible{border-color:#ee7464}\n.c-logo-tile:hover img,.c-logo-tile:focus-visible img{filter:none;opacity:1}\n.c-logo-tile i{position:absolute;right:10px;top:10px;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#ee7464;color:#fff;transition:transform .35s cubic-bezier(.2,.8,.2,1)}\n.c-logo-tile i svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round}\n.c-logo-tile:hover i,.c-logo-tile:focus-visible i{transform:rotate(90deg) scale(1.08)}";
+const CARD_JS = "// Ink spread origin for fill cards + FAQ toggle\ndocument.querySelectorAll('.c-svc,.c-faq').forEach(c => {\n  const at = e => { const r = c.getBoundingClientRect(); c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px'); };\n  c.addEventListener('pointerenter', at); c.addEventListener('pointerleave', at);\n});\ndocument.querySelectorAll('.c-faq button').forEach(b => b.addEventListener('click', () => {\n  const li = b.closest('.c-faq'); const open = !li.classList.contains('is-open');\n  li.classList.toggle('is-open', open); b.setAttribute('aria-expanded', open);\n}));\n";
+const CARD_HTML = {"svc": "<a class=\"c-svc\" href=\"/services#always-on-social-media\"><span class=\"c-n\">01</span><span><h4>Always-On Social Media</h4><p>Content and community that build demand month after month.</p><span class=\"c-go\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h13M13 6l6 6-6 6\"/></svg></span></span></a>", "faq": "<li class=\"c-faq\"><button type=\"button\" aria-expanded=\"false\"><span class=\"c-n\">01</span><span class=\"c-q\">What is Dreww?<span class=\"c-emo\" aria-hidden=\"true\">\ud83d\udc4b</span></span><span class=\"c-plus\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M2 8h12M8 2v12\"/></svg></span></button><div class=\"c-a\"><div><p>Dreww is a growth marketing agency in Montr\u00e9al. Since 2015, Dreww has helped B2C and B2B businesses turn marketing into revenue. A specialist team runs each of its four core services: always-on social media, lead generation, e-commerce growth and user acquisition.</p></div></div></li>", "rev": "<figure class=\"c-rev\"><div class=\"c-rev-top\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" aria-label=\"Google\"><path fill=\"#4285F4\" d=\"M23.52 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.46a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.58-5.17 3.58-8.72z\"/><path fill=\"#34A853\" d=\"M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3c-1.08.72-2.46 1.15-4.06 1.15-3.12 0-5.77-2.11-6.72-4.95H1.28v3.09A12 12 0 0 0 12 24z\"/><path fill=\"#FBBC05\" d=\"M5.28 14.3a7.2 7.2 0 0 1 0-4.6V6.61H1.28a12 12 0 0 0 0 10.78l4-3.09z\"/><path fill=\"#EA4335\" d=\"M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.190 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4 3.09C6.23 6.86 8.88 4.75 12 4.75z\"/></svg><span class=\"c-stars\" role=\"img\" aria-label=\"5 out of 5\"><svg viewBox=\"0 0 16 15\" aria-hidden=\"true\"><path d=\"M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z\"/></svg><svg viewBox=\"0 0 16 15\" aria-hidden=\"true\"><path d=\"M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z\"/></svg><svg viewBox=\"0 0 16 15\" aria-hidden=\"true\"><path d=\"M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z\"/></svg><svg viewBox=\"0 0 16 15\" aria-hidden=\"true\"><path d=\"M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z\"/></svg><svg viewBox=\"0 0 16 15\" aria-hidden=\"true\"><path d=\"M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z\"/></svg></span></div><blockquote>We\u2019re very satisfied with the quality of Dreww\u2019s work with Second Cup project. They handled the project with professionalism and delivered results that aligned well with our expectations.</blockquote><figcaption><img class=\"c-logo\" src=\"https://dreww.ca/hubfs/Clients/Clients%20Logo/SVG/second-cup-logo--color.svg\" alt=\"Second Cup\"><span class=\"c-who\"><b>Cendrine Lavigne</b><small>Marketing Director</small></span><img class=\"c-head\" src=\"https://dreww.ca/hubfs/Client%20Profile%20Pictures/cendrine-lavigne-second-cup.jpg\" alt=\"\"></figcaption></figure>", "case": "<a class=\"c-case\" href=\"/clients\"><div class=\"c-cover\"><img class=\"c-reel\" src=\"https://dreww.ca/hubfs/Clients/Clients%20Organic%20Videos/Thumbnails/Prime%20Video%20-%20Motorheads%20-%202025-06%20-%20FR.jpeg\" alt=\"Prime Video, Motorheads reel\"><span class=\"c-chip\"><img src=\"https://dreww.ca/hubfs/Clients/Clients%20Logo/SVG/prime-video-logo--color.svg\" alt=\"Prime Video\"></span><span class=\"c-views\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 4v16l13-8z\"/></svg>19.9M</span></div><div class=\"c-body\"><h4>Prime Video</h4><p class=\"c-tags\">Always-On Social Media</p><span class=\"c-see\">See the work <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h13M13 6l6 6-6 6\"/></svg></span></div></a>", "logo": "<button type=\"button\" class=\"c-logo-tile\"><img src=\"https://dreww.ca/hubfs/Clients/Clients%20Logo/SVG/natrel-logo--color.svg\" alt=\"Natrel\"><i><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M2 8h12M8 2v12\"/></svg></i></button><button type=\"button\" class=\"c-logo-tile\"><img src=\"https://dreww.ca/hubfs/Clients/Clients%20Logo/SVG/agropur-logo--color.svg\" alt=\"Agropur\"><i><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M2 8h12M8 2v12\"/></svg></i></button><button type=\"button\" class=\"c-logo-tile\"><img src=\"https://dreww.ca/hubfs/Clients/Clients%20Logo/SVG/second-cup-logo--color.svg\" alt=\"Second Cup\"><i><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M2 8h12M8 2v12\"/></svg></i></button><button type=\"button\" class=\"c-logo-tile\"><img src=\"https://dreww.ca/hubfs/Clients/Clients%20Logo/SVG/access-signs-logo--color.svg\" alt=\"Access Signs\"><i><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M2 8h12M8 2v12\"/></svg></i></button>"};
+document.querySelectorAll('#cards a').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+document.addEventListener('click', ev => {
+  const b = ev.target.closest('button'); if(!b) return;
+  if(b.dataset.cardHtml) copy(CARD_HTML[b.dataset.cardHtml], b.dataset.cardHtml + ' card HTML');
+  else if('cardCss' in b.dataset) copy('<style>\n' + CARD_CSS + '\n</style>\n<script>\n' + CARD_JS + '\n<\/script>', 'card CSS + JS');
+});
+
+/* ---------- Forms ---------- */
+const FORM_CSS = "/* ===== Forms ===== */\n.f-field{display:flex;flex-direction:column;gap:8px;min-width:0}\n.f-label{font-family:\"DM Sans\",sans-serif;font-size:16px;font-weight:700;color:#111}\n.f-label .req{color:#892951;margin-left:2px}\n.f-help{font-size:14px;line-height:1.45;color:#525252;margin:0}\n.f-input,.f-select,.f-textarea{box-sizing:border-box;width:100%;font-family:\"DM Sans\",sans-serif;font-size:16px;color:#111;background:#f2f4f8;border:1px solid #e5e5e5;border-radius:0 8px 8px 8px;padding:0 18px;height:52px;outline:none;transition:border-color .2s,background-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}\n.f-textarea{height:auto;min-height:132px;padding:14px 18px;line-height:1.5;resize:vertical}\n.f-input::placeholder,.f-textarea::placeholder{color:#737373}\n.f-input:hover,.f-select:hover,.f-textarea:hover{border-color:#737373}\n.f-input:focus-visible,.f-select:focus-visible,.f-textarea:focus-visible,.f-input.is-focus{background:#fff;border-color:#892951;box-shadow:0 0 0 3px rgba(238,116,100,.45)}\n.f-select{padding-right:48px;background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\");background-repeat:no-repeat;background-position:right 16px center;background-size:18px}\n.f-field.is-error .f-input,.f-field.is-error .f-textarea{border-color:#da1e28;box-shadow:inset 0 0 0 1px #da1e28;background:#fff}\n.f-error{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:500;color:#da1e28;margin:0}\n.f-error svg{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}\n.f-input:disabled{opacity:.5;cursor:not-allowed}\n\n/* Option cards (radio / checkbox), from /book-call */\n.f-options{display:grid;gap:12px}\n.f-opt{position:relative;display:flex;align-items:center;gap:16px;padding:16px 18px;background:#fff;border:1px solid #e5e5e5;border-radius:0 12px 12px 12px;cursor:pointer;transition:border-color .2s,background-color .2s,box-shadow .2s}\n.f-opt:hover{border-color:#737373}\n.f-opt input{position:absolute;opacity:0;pointer-events:none}\n.f-opt .t{flex:1;min-width:0}\n.f-opt b{display:block;font-size:18px;line-height:1.4;color:#111}\n.f-opt small{display:block;font-size:14px;color:#525252;margin-top:2px}\n.f-opt .dot{width:22px;height:22px;flex:none;border-radius:50%;border:1.5px solid #e5e5e5;display:grid;place-items:center;background:#fff;transition:border-color .2s}\n.f-opt .dot::after{content:\"\";width:10px;height:10px;border-radius:50%;background:#ee7464;transform:scale(0);transition:transform .2s cubic-bezier(.2,.8,.2,1)}\n.f-opt .box{width:22px;height:22px;flex:none;border:1.5px solid #e5e5e5;border-radius:0 6px 6px 6px;display:grid;place-items:center;background:#fff;transition:background-color .2s,border-color .2s}\n.f-opt .box svg{width:14px;height:14px;fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:0}\n.f-opt:has(input:checked){background:#f2f4f8;border-color:#892951;box-shadow:inset 0 0 0 1px #892951}\n.f-opt:has(input:checked) .dot{border-color:#892951}\n.f-opt:has(input:checked) .dot::after{transform:scale(1)}\n.f-opt:has(input:checked) .box{background:#ee7464;border-color:#ee7464}\n.f-opt:has(input:checked) .box svg{opacity:1}\n.f-opt:has(input:focus-visible){outline:3px solid #ee7464;outline-offset:3px}\n\n/* On dark grounds (footer newsletter) */\n.on-dark .f-label{color:#fff}\n.on-dark .f-input{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.22);color:#fff}\n.on-dark .f-input::placeholder{color:rgba(255,255,255,.55)}\n.on-dark .f-input:hover{border-color:rgba(255,255,255,.5)}\n.on-dark .f-input:focus-visible{background:rgba(255,255,255,.1);border-color:#fff;box-shadow:0 0 0 3px rgba(238,116,100,.6)}\n";
+const FORM_HTML = {"input": "<div class=\"f-field\"><label class=\"f-label\" for=\"f-email\">Work email<span class=\"req\">*</span></label><input class=\"f-input\" id=\"f-email\" type=\"email\" placeholder=\"you@company.com\" autocomplete=\"email\"></div>", "textarea": "<div class=\"f-field\"><label class=\"f-label\" for=\"f-msg\">What are you trying to solve?</label><textarea class=\"f-textarea\" id=\"f-msg\" placeholder=\"A few lines is plenty\"></textarea></div>", "select": "<div class=\"f-field\"><label class=\"f-label\" for=\"f-team\">Sales team size</label><select class=\"f-select\" id=\"f-team\"><option>Just me</option><option selected>2\u20135 sales representatives</option><option>6\u201320 sales representatives</option><option>More than 20</option></select></div>", "radio": "<fieldset class=\"f-field\" style=\"border:0;padding:0;margin:0\"><legend class=\"f-label\" style=\"margin-bottom:8px\">What\u2019s your primary marketing goal?<span class=\"req\">*</span></legend><div class=\"f-options\"><label class=\"f-opt\"><input type=\"radio\" name=\"goal\"><span class=\"t\"><b>Always-On Social Media</b><small>Build future demand</small></span><span class=\"dot\"></span></label><label class=\"f-opt\"><input type=\"radio\" name=\"goal\" checked><span class=\"t\"><b>Lead Generation</b><small>Generate qualified leads for a sales team</small></span><span class=\"dot\"></span></label><label class=\"f-opt\"><input type=\"radio\" name=\"goal\"><span class=\"t\"><b>Ecommerce Growth</b><small>Grow online revenue profitably</small></span><span class=\"dot\"></span></label></div></fieldset>", "checkbox": "<div class=\"f-options\"><label class=\"f-opt\"><input type=\"checkbox\" checked><span class=\"t\"><b>HubSpot</b></span><span class=\"box\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M3 8.5l3.2 3L13 5\"/></svg></span></label><label class=\"f-opt\"><input type=\"checkbox\"><span class=\"t\"><b>Salesforce</b></span><span class=\"box\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M3 8.5l3.2 3L13 5\"/></svg></span></label></div>"};
+document.addEventListener('click', ev => {
+  const b = ev.target.closest('button'); if(!b) return;
+  if(b.dataset.formHtml) copy(FORM_HTML[b.dataset.formHtml], b.dataset.formHtml + ' HTML');
+  else if('formCss' in b.dataset) copy(FORM_CSS, 'form CSS');
+});
+
+/* ---------- Header demo ---------- */
+document.querySelectorAll('#header a[href="#header"], #header a[href="#footer"]').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+(function(){ const m = document.getElementById('mn-demo'); if(!m) return;
+  m.querySelectorAll('.hd-tab').forEach(t => t.addEventListener('click', () => {
+    m.querySelectorAll('.hd-tab').forEach(x => x.classList.toggle('on', x === t));
+    m.querySelectorAll('.mn-pane').forEach(p => p.classList.toggle('on', p.dataset.pane === t.dataset.pane));
+  }));
+})();
+
+/* ---------- Active nav ---------- */
+const links = [...document.querySelectorAll('[data-nav]')];
+const io = new IntersectionObserver(es => {
+  es.forEach(e => { if(e.isIntersecting){ links.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === '#' + e.target.id)); } });
+}, {rootMargin:'-40% 0px -55% 0px'});
+links.forEach(a => { const s = document.querySelector(a.getAttribute('href')); if(s) io.observe(s); });
+</script>
+</body>
+</html>

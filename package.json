@@ -1,0 +1,26 @@
+{
+  "name": "@dreww/design",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dreww app design system: tokens, Tailwind 4 theme, component CSS and React components.",
+  "type": "module",
+  "exports": {
+    "./tokens.css": "./src/tokens.css",
+    "./theme.css": "./src/theme.css",
+    "./components.css": "./src/components.css",
+    "./react": "./src/react/index.ts",
+    "./charts": "./src/charts/palette.ts"
+  },
+  "files": ["src", "CLAUDE.md", "README.md"],
+  "scripts": {
+    "test": "node scripts/check-contrast.mjs && node scripts/check-tokens.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": ">=19"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "typescript": "^5.6.0"
+  }
+}
