@@ -6,6 +6,7 @@
   "type": "module",
   "exports": {
     "./tokens.css": "./src/tokens.css",
+    "./base.css": "./src/base.css",
     "./theme.css": "./src/theme.css",
     "./components.css": "./src/components.css",
     "./react": "./src/react/index.ts",

@@ -23,6 +23,7 @@ In `globals.css`, replacing the app's own colour and font tokens:
 ```css
 @import "tailwindcss";
 @import "@dreww/design/tokens.css";
+@import "@dreww/design/base.css";
 @import "@dreww/design/theme.css";
 @import "@dreww/design/components.css";
 ```
@@ -66,6 +67,6 @@ Type-checks the React components.
 
 One app at a time, one pull request each, merged by Joey:
 
-1. Import the three CSS files and remove the app's own colour and font tokens.
+1. Import `tokens.css` alone first: it only adds `--dw-*` variables and changes nothing on screen. Then add `base.css`, `theme.css` and `components.css`, removing the app's own colour and font tokens.
 2. Replace stock Tailwind colours and `rounded-*` classes with the theme names and `cut-*` utilities.
 3. Swap the app's UI components for the ones here, page by page.

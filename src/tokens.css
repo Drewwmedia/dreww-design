@@ -50,13 +50,3 @@
   --dw-dur-wipe:350ms;   /* button wipe, tab underline */
 }
 
-body{
-  margin:0;
-  font-family:var(--dw-font-sans);
-  font-size:14px;
-  line-height:1.5;
-  color:var(--dw-ink);
-  background:var(--dw-mist);
-  -webkit-font-smoothing:antialiased;
-}
-:focus-visible{outline:2px solid var(--dw-coral);outline-offset:2px}
