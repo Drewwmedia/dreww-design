@@ -1,9 +1,9 @@
 import type { ReactNode } from "react";
 import { cx } from "./cx";
 
-export type Tone = "good" | "bad" | "warn" | "neutral";
+export type Tone = "good" | "bad" | "warn" | "neutral" | "solid";
 
-/** Mono tag on mist with a coloured dot. Teal good, red bad, coral needs attention, grey otherwise. */
+/** Mono tag on mist with a coloured dot. Teal good, red bad, coral needs attention, grey otherwise. `solid` = filled burgundy, only for a finished win (Signed, Won). */
 export function Tag({ tone = "neutral", dot = true, plain, children }: { tone?: Tone; dot?: boolean; plain?: boolean; children: ReactNode }) {
   return (
     <span className={cx("tag", tone !== "neutral" && `tag--${tone}`, plain && "tag--plain")}>

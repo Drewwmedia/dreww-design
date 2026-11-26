@@ -1,6 +1,6 @@
 {
   "name": "@dreww/design",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "Dreww app design system: tokens, Tailwind 4 theme, component CSS and React components.",
   "type": "module",
