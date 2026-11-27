@@ -1,0 +1,18 @@
+{
+  "_about": "One French name per term, used in menus, copy and page addresses on dreww.ca. Agreed Nov 27, 2026. Client, brand, product and campaign names are never translated.",
+  "terms": [
+    { "en": "Always-On Social Media", "fr": "Médias sociaux en continu" },
+    { "en": "Lead Generation", "fr": "Génération de prospects" },
+    { "en": "E-commerce Growth", "fr": "Croissance e-commerce" },
+    { "en": "User Acquisition", "fr": "Acquisition d’utilisateurs" },
+    { "en": "Services", "fr": "Services" },
+    { "en": "Work", "fr": "Réalisations" },
+    { "en": "About", "fr": "À propos" },
+    { "en": "Resources", "fr": "Ressources" },
+    { "en": "Case studies", "fr": "Études de cas" },
+    { "en": "Clients", "fr": "Clients" },
+    { "en": "Insights", "fr": "Insights" },
+    { "en": "Book a call", "fr": "Planifier un appel" },
+    { "en": "Search", "fr": "Rechercher" }
+  ]
+}
