@@ -1007,6 +1007,28 @@ main{min-width:0}
 .im-corners .x i{border-color:#da1e28}
 @media (max-width:1000px){.im-yn{grid-template-columns:1fr}.im-corners{grid-template-columns:repeat(3,1fr)}}
 
+
+/* ===== French & English ===== */
+.la-pair{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--color-grey-200)}
+.la-pair > div{padding:24px 24px 28px;border-left:1px solid var(--color-grey-200);display:flex;flex-direction:column;gap:12px}
+.la-pair > div:first-child{border-left:0}
+.la-pair small{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-grey-500)}
+.la-pair .la-h{font-family:var(--font-heading);font-weight:400;text-transform:uppercase;font-size:34px;line-height:1.06;margin:0;max-width:430px}
+.la-pair em{font-style:normal;font-family:var(--font-mono);font-size:11px;color:var(--color-grey-600)}
+.la-pair em.bad{color:#da1e28}.la-pair em.ok{color:#215F6A}
+.la-btns{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.la-typo{width:100%;border-collapse:collapse;font-size:15px}
+.la-typo th{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--color-grey-500);text-align:left;padding:12px 20px;border-bottom:1px solid var(--color-grey-200)}
+.la-typo td{padding:14px 20px;border-bottom:1px solid var(--color-grey-200);vertical-align:top}
+.la-typo tr:last-child td{border-bottom:0}
+.la-typo td:first-child{font-weight:700;width:22%}
+.la-typo .was{color:#da1e28;text-decoration:line-through;text-decoration-thickness:1px}
+.la-typo .now{color:#111}
+.la-typo .sp{display:inline-block;width:.32em;height:.9em;vertical-align:-.1em;background:rgba(238,116,100,.35);border-radius:2px}
+.la-typo .sp.w{width:.5em;background:rgba(137,41,81,.3)}
+.la-typo small{display:block;color:var(--color-grey-500);font-size:12px;margin-top:4px}
+@media (max-width:1000px){.la-pair{grid-template-columns:1fr}}
+
 /* ---------- Decisions ---------- */
 .decide{background:var(--color-burgundy);color:#fff;padding:88px 0}
 .decide h2{color:#fff}
@@ -1085,6 +1107,7 @@ footer{padding:40px 0 56px;font-family:var(--font-mono);font-size:11px;text-tran
     <a href="#icons" data-nav>Icons <span class="tag tag-soon">Agreed</span></a>
     <a href="#motion" data-nav>Motion &amp; focus <span class="tag tag-soon">Agreed</span></a>
     <a href="#imagery" data-nav>Imagery <span class="tag tag-soon">Agreed</span></a>
+    <a href="#language" data-nav>French &amp; English <span class="tag tag-review">Review</span></a>
   </div>
   <div class="nav-group">
     <p class="nav-label">Components</p>
@@ -1476,6 +1499,50 @@ footer{padding:40px 0 56px;font-family:var(--font-mono);font-size:11px;text-tran
           <div><b>Corners and crop</b><p>Ten corner treatments and 69 stretched images.</p><p class="cd-rec">The image takes its container’s cut corner (16 big, 12 small); circles for avatars; round 22 only for reels. Always cover, never fill.</p></div>
           <div><b>Delivery and alt text</b><p>Mostly JPEG at the wrong size, and two thirds of photos without alt text.</p><p class="cd-rec">WebP at 2× the display width, hero eager and the rest lazy. Alt text says what the image shows; empty only when a caption beside it already does.</p></div>
           <div><b>Video</b><p>Case study videos autoplay muted on a loop.</p><p class="cd-rec">Keep autoplay muted and inline with a poster, pause it off screen, and give it a pause button.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FRENCH & ENGLISH -->
+  <section class="sec" id="language">
+    <div class="wrap">
+      <h2>French &amp; English</h2>
+      <p class="lede">Every page exists in both languages, and the French runs 11 to 25% longer. Compared page for page across the homepage, Services, Lead Generation, About, Book a call, the case studies and a case study.</p>
+
+      <p class="sub">Length</p>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>The same heading in both languages</h3><p>Same width, same size. The French breaks the three-line rule.</p></div></div>
+        <div class="la-pair">
+          <div><small>English · live</small><h3 class="la-h">We help businesses turn marketing into revenue</h3><em class="ok">2 lines on the live homepage</em></div>
+          <div><small>French · live</small><h3 class="la-h">Nous aidons les entreprises à transformer leur marketing en revenus</h3><em class="bad">4 lines on the live homepage, past the three-line limit</em></div>
+        </div>
+        <div class="la-pair">
+          <div><small>French · edited for length (example)</small><h3 class="la-h">Transformez votre marketing en revenus</h3><em class="ok">Same idea, written to fit the lines the English takes</em></div>
+          <div><small>Buttons</small><div class="la-btns"><span class="btn btn--primary btn--sm">Book a call</span><span class="btn btn--primary btn--sm">Planifier un appel</span></div><em>64% wider in French. Buttons size to their label, never a fixed width; French labels stay under 20 characters.</em></div>
+        </div>
+      </div>
+
+      <p class="sub">French typography</p>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Spaces, numbers and quotes</h3><p>Patterns counted on the French pages, shown on short examples. Coral marks show a narrow no-break space, burgundy a full no-break space.</p></div></div>
+        <div class="audit-wrap"><table class="la-typo"><thead><tr><th>What</th><th>French pages today</th><th>Rule</th></tr></thead><tbody><tr><td>Question and exclamation marks</td><td><span class="was">Pourquoi Dreww?</span></td><td><span class="now">Pourquoi Dreww<span class="sp" title="narrow no-break space"></span>?</span><small>A narrow no-break space before ? ! and ;. 42 question marks and 14 exclamation marks have none today.</small></td></tr><tr><td>Colons</td><td><span class="was">Note : 4.8 sur 5</span></td><td><span class="now">Note<span class="sp w" title="no-break space"></span>: 4,8 sur 5</span><small>A no-break space before :, so it never wraps to the next line alone. 26 colons use a normal space today.</small></td></tr><tr><td>Decimals</td><td><span class="was">4.8 étoiles</span></td><td><span class="now">4,8 étoiles</span><small>Comma for decimals. The Google rating shows 4.8 on French pages.</small></td></tr><tr><td>Money</td><td><span class="was">$310K · $50K–$100K</span></td><td><span class="now">310<span class="sp" title="narrow no-break space"></span>k$ · 50<span class="sp" title="narrow no-break space"></span>k$ à 100<span class="sp" title="narrow no-break space"></span>k$</span><small>Amount first, then k$ or $. 36 amounts on French pages are written the English way.</small></td></tr><tr><td>Thousands</td><td><span class="was">1,500 abonnés</span></td><td><span class="now">1<span class="sp" title="narrow no-break space"></span>500 abonnés</span><small>A narrow no-break space between thousands, never a comma.</small></td></tr><tr><td>Percent</td><td><span class="was">40%</span></td><td><span class="now">40<span class="sp" title="narrow no-break space"></span>%</span><small>A narrow no-break space before %. Most of the site already does this; 5 places don’t.</small></td></tr><tr><td>Quotes</td><td><span class="was">“Ils livrent plus que promis.”</span></td><td><span class="now">«<span class="sp" title="narrow no-break space"></span>Ils livrent plus que promis.<span class="sp" title="narrow no-break space"></span>»</span><small>Guillemets with narrow no-break spaces inside.</small></td></tr></tbody></table></div>
+      </div>
+
+      <p class="sub">Names</p>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>One French name for each term</h3><p>The French menu already translates every service; body copy and page addresses don’t always follow.</p></div></div>
+        <div class="audit-wrap"><table class="audit"><thead><tr><th>English</th><th>French</th><th>Today</th></tr></thead><tbody><tr><td>Always-On Social Media</td><td>Médias sociaux en continu</td><td class="new">“Always-On” in body copy 14 times</td></tr><tr><td>Lead Generation</td><td>Génération de prospects</td><td class="new">Page address says “generation-de-leads”</td></tr><tr><td>E-commerce Growth</td><td>Croissance e-commerce</td><td class="">Consistent</td></tr><tr><td>User Acquisition</td><td>Acquisition d’utilisateurs</td><td class="">Consistent</td></tr><tr><td>Case studies</td><td>Études de cas</td><td class="">Consistent</td></tr><tr><td>Book a call</td><td>Planifier un appel</td><td class="">Consistent</td></tr></tbody></table></div>
+        <div class="spec-list"><div><b>Switcher</b>EN / FR in the header goes to the same page in the other language. Works today; keep it</div><div><b>Page language</b><code>lang="fr-CA"</code> and <code>lang="en-CA"</code>; today just “fr” and “en”</div><div><b>Addresses</b>French pages under /fr/, with French slugs that use the glossary terms</div><div><b>Client names</b>Never translated: brand, product and campaign names stay as they are</div></div>
+      </div>
+
+      <div class="card-decide">
+        <h3>Your call</h3>
+        <div class="cd-grid">
+          <div><b>Written to fit</b><p>French runs up to 25% longer, so headings reach 4–5 lines and buttons grow by up to 64%.</p><p class="cd-rec">French copy is edited to fit the same line limits, not just translated. Buttons size to their label; French labels stay under 20 characters.</p></div>
+          <div><b>French typography</b><p>Spaces before ? ! : are missing or breakable, decimals use a point, and amounts are written the English way.</p><p class="cd-rec">Narrow no-break spaces before ? ! ; % and inside « », a no-break space before :, decimal commas, 310&nbsp;k$.</p></div>
+          <div><b>One glossary</b><p>The menu says “Médias sociaux en continu”, body copy says “Always-On”, and the Lead Generation address says “leads”.</p><p class="cd-rec">One French name per term, from a glossary kept with the design system, used in menus, copy and addresses.</p></div>
         </div>
       </div>
     </div>
