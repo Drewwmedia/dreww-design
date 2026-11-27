@@ -58,5 +58,15 @@ for (const [fg, bg, min, why] of PAIRS) {
 for (const [fg, bg, why] of EXCEPTIONS) console.log(`NOTE  ${ratio(tok[fg], tok[bg]).toFixed(2)}:1  ${fg} on ${bg}  (accepted exception: ${why})`);
 if (fail) problems.push(`${fail} web contrast pair(s) below the minimum`);
 
+// 4. Icon sprite: every agreed icon is there, line icons follow the Lucide rules
+const sprite = read("../web/icons.svg");
+const REQUIRED = ["arrow-right","arrow-left","arrow-down","arrow-up-right","chevron-down","chevron-left","chevron-right","plus","minus","x","search","check","circle-alert","menu","download","refresh-cw","link","copy","calculator","trending-up","user","shield-check","square-play","volume-2","volume-x","eye","heart","message-circle","send","star","play","brand-google","brand-linkedin","brand-instagram","brand-tiktok","brand-youtube","brand-facebook","brand-x"];
+const ids = new Set([...sprite.matchAll(/<symbol id="([^"]+)"/g)].map((m) => m[1]));
+for (const id of REQUIRED) if (!ids.has(id)) problems.push(`icons.svg: missing ${id}`);
+for (const m of sprite.matchAll(/<symbol id="([^"]+)" viewBox="0 0 24 24" fill="none"([^>]*)>/g)) {
+  if (m[1].startsWith("brand-")) continue; // brand marks follow the brand, not Lucide
+  if (!/stroke-width="2"/.test(m[2]) || !/stroke-linecap="round"/.test(m[2])) problems.push(`icons.svg: ${m[1]} is not 2px with round ends`);
+}
+
 if (problems.length) { console.error("\n" + [...new Set(problems)].join("\n")); process.exit(1); }
-console.log(`\nWeb: components use only tokens (${defined.size} defined), ${shared} shared values match the app, all pairs pass.`);
+console.log(`\nWeb: components use only tokens (${defined.size} defined), ${shared} shared values match the app, all pairs pass, ${ids.size} icons in the sprite.`);
