@@ -12,7 +12,7 @@ let problems = [];
 
 // 1. Tokens only
 const defined = new Set([...web.matchAll(/(--dw-[\w-]+)\s*:/g)].map((m) => m[1]));
-const local = new Set(["--mx", "--my", "--d"]); // set per element by motion.js or inline
+const local = new Set(["--mx", "--my", "--d", "--focus"]); // set per element by motion.js or inline (--focus: an image's focal point)
 for (const m of comp.matchAll(/var\((--[\w-]+)/g)) if (!defined.has(m[1]) && !local.has(m[1])) problems.push(`components.css: undefined token ${m[1]}`);
 for (const m of comp.matchAll(/#[0-9a-fA-F]{3,8}\b/g)) problems.push(`components.css: raw colour ${m[0]}`);
 
@@ -67,6 +67,9 @@ for (const m of sprite.matchAll(/<symbol id="([^"]+)" viewBox="0 0 24 24" fill="
   if (m[1].startsWith("brand-")) continue; // brand marks follow the brand, not Lucide
   if (!/stroke-width="2"/.test(m[2]) || !/stroke-linecap="round"/.test(m[2])) problems.push(`icons.svg: ${m[1]} is not 2px with round ends`);
 }
+
+// 6. Imagery: never stretch
+if (/object-fit\s*:\s*fill/.test(comp)) problems.push("components.css: object-fit: fill stretches images; use cover");
 
 // 5. Motion and focus: agreed speeds and curves only, focus never switched off
 for (const m of comp.matchAll(/transition:([^;}]+)/g)) {

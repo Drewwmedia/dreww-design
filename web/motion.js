@@ -105,7 +105,26 @@
     });
   }
 
-  function init(root) { root = root || document; inkSpread(root); faq(root); marquee(root); cta(root); }
+  /* Video: autoplay muted and inline, paused off screen, with a pause button.
+     <figure class="dw-media dw-media--reel"><video data-dw-video muted loop playsinline poster="…" src="…"></video>
+       <button class="dw-video__pause" type="button" aria-label="Pause video">…</button></figure> */
+  function video(root) {
+    root.querySelectorAll('video[data-dw-video]').forEach((v) => {
+      if (v.dataset.dwOn) return; v.dataset.dwOn = '1';
+      v.muted = true; v.playsInline = true; v.loop = true;
+      let userPaused = still();
+      const btn = v.parentElement.querySelector('.dw-video__pause');
+      const label = () => { if (btn) btn.setAttribute('aria-label', v.paused ? 'Play video' : 'Pause video'); };
+      if (btn) btn.addEventListener('click', () => { if (v.paused) { userPaused = false; v.play().catch(() => {}); } else { userPaused = true; v.pause(); } label(); });
+      v.addEventListener('play', label); v.addEventListener('pause', label);
+      if ('IntersectionObserver' in window) new IntersectionObserver((es) => es.forEach((e) => {
+        if (e.isIntersecting && !userPaused) v.play().catch(() => {}); else if (!e.isIntersecting) v.pause();
+      }), { threshold: 0.25 }).observe(v);
+      label();
+    });
+  }
+
+  function init(root) { root = root || document; inkSpread(root); faq(root); marquee(root); cta(root); video(root); }
   window.DrewwMotion = { init };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => init()); else init();
 })();
