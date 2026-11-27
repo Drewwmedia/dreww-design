@@ -11,6 +11,23 @@
 .dw-section--ink{background:var(--dw-ink);color:var(--dw-white)}
 .dw-section--rule{border-top:1px solid var(--dw-grey-200)} /* same-kind runs share a ground */
 
+/* ============ Grid: 12 / 8 / 4 columns ============ */
+.dw-grid{display:grid;grid-template-columns:repeat(var(--dw-grid-cols),minmax(0,1fr));column-gap:var(--dw-grid-gap);row-gap:var(--dw-space-xl)}
+/* Four layouts. Children take the spans; every size is set. */
+.dw-layout-half > *{grid-column:span 6}
+.dw-layout-feature > :nth-child(odd){grid-column:span 5}
+.dw-layout-feature > :nth-child(even){grid-column:span 7}
+.dw-layout-three > *{grid-column:span 4}
+.dw-layout-reading > *{grid-column:3 / span 8}
+@media (max-width:1023px){
+  .dw-layout-half > *,.dw-layout-three > *{grid-column:span 4}
+  .dw-layout-three > :nth-child(3n){grid-column:span 8}
+  .dw-layout-feature > *,.dw-layout-reading > *{grid-column:1 / -1}
+}
+@media (max-width:767px){
+  .dw-layout-half > *,.dw-layout-three > *,.dw-layout-three > :nth-child(3n){grid-column:1 / -1}
+}
+
 /* ============ Type ============ */
 .dw-display,.dw-h1,.dw-h2l,.dw-h2,.dw-h3,.dw-h4,.dw-h5{font-family:var(--dw-font-display);font-weight:400;text-transform:uppercase;margin:0}
 .dw-display{font-size:var(--dw-fs-display);line-height:var(--dw-lh-display)}
@@ -132,7 +149,7 @@
 .dw-faq.is-open .dw-faq__a{grid-template-rows:1fr}
 .dw-faq__a > div{overflow:hidden}
 .dw-faq__a p{margin:0;padding:0 24px 26px 72px;color:var(--dw-grey-200);font-size:17px;line-height:1.55}
-@media (max-width:1000px){
+@media (max-width:1023px){
   .dw-faq-layout{grid-template-columns:1fr;gap:var(--dw-space-2xl)}
   .dw-faq-layout__head{position:static}
   .dw-faq button{grid-template-columns:28px 1fr 36px;padding:16px 16px 16px 18px}
@@ -213,7 +230,7 @@
 .dw-cta-badge text{font:500 10.5px var(--dw-font-mono);letter-spacing:.18em;text-transform:uppercase;fill:currentColor}
 .dw-cta-badge b{display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:var(--dw-white);color:var(--dw-ink);font:400 18px var(--dw-font-display)}
 @keyframes dw-spin{to{transform:rotate(360deg)}}
-@media (max-width:820px){.dw-cta{min-height:0}.dw-cta-badge{display:none}}
+@media (max-width:767px){.dw-cta{min-height:0}.dw-cta-badge{display:none}}
 
 @media (prefers-reduced-motion:reduce){
   [data-dw-rise] > *{animation:none}
