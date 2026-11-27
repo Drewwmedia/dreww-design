@@ -89,7 +89,7 @@ Header, menu and footer are single theme modules (`hv4-*`), not shared component
 ### Motion and focus
 - Four speeds: tint 0.12s (colour, border, opacity), move 0.3s (nudges, chevrons, the plus turning), wipe 0.5s (button wipes, underlines, ink spread, the FAQ opening), rise 1.4s with the heading at 1.8s. Use `--dw-dur-*`; `npm test` fails on a raw duration.
 - Three curves: `--dw-ease-wipe` for things that cover or draw, `--dw-ease-out` for things that arrive, `--dw-ease-expo` for big arrivals (Final CTA). Linear only for loops (marquees, the badge). No bounce, no default `ease`.
-- Hover changes colour, wipes, draws an underline, nudges an arrow 5px or spreads the card ink. Nothing grows, lifts, tilts, glows or zooms, images included. No magnetic pull.
+- Hover changes colour, wipes, draws an underline, nudges an arrow 5px or spreads the card ink. Nothing grows, lifts, tilts, glows or zooms, images included. One exception, kept from live: the homepage insight row thumbnail grows 4% inside its cut frame (overflow hidden, 0.3s, `--dw-ease-out`), never the card. No magnetic pull.
 - Page heroes blur-rise once on load: each line rises 14px out of a 14px blur, 0.18s apart, top to bottom. Sections further down don't animate their headings.
 - Marquees drift (logos 40px/s, reviews 54px/s), pause on hover and focus, and can be grabbed and dragged on desktop.
 - Focus: the coral ring (3px, 5px out) with a 2px contrast edge, burgundy on light and white on burgundy or ink (`base.css`). Never `outline:none` on a focus state; `npm test` fails on it. Inside cards, the ring is the text colour.
