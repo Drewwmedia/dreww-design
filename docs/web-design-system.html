@@ -919,6 +919,70 @@ main{min-width:0}
 .ic-live figcaption{font-family:var(--font-mono);font-size:10px;color:var(--color-grey-500)}
 @media (max-width:1000px){.ic-sizes{grid-template-columns:1fr 1fr}}
 
+
+/* ===== Motion & focus ===== */
+.mo-rows{display:grid;border-top:1px solid var(--color-grey-200)}
+.mo-row{display:grid;grid-template-columns:170px 1fr 260px;gap:24px;align-items:center;padding:18px 20px;border-bottom:1px solid var(--color-grey-200)}
+.mo-row:last-child{border-bottom:0}
+.mo-row b{display:block;font-family:var(--font-heading);font-weight:400;font-size:20px;text-transform:uppercase}
+.mo-row code{font-family:var(--font-mono);font-size:11px;color:var(--color-grey-500)}
+.mo-row p{margin:0;font-size:14px;color:var(--color-grey-600);line-height:1.5}
+.mo-demo{display:flex;align-items:center;justify-content:flex-end;gap:12px}
+.mo-swatch{width:56px;height:36px;border-radius:0 8px 8px 8px;background:var(--color-mist);border:2px solid var(--color-grey-200);transition:background-color .12s,border-color .12s}
+.mo-row.go .mo-swatch{background:var(--color-burgundy);border-color:var(--color-burgundy)}
+.mo-chev{width:24px;height:24px;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.mo-row.go .mo-chev{transform:rotate(180deg)}
+.mo-wipe{position:relative;overflow:hidden;isolation:isolate;display:inline-block;padding:10px 18px;border-radius:0 12px 12px 12px;background:var(--color-coral);color:#fff;font-family:var(--font-heading);text-transform:uppercase;font-size:15px;transition:color .35s}
+.mo-wipe::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--color-burgundy);clip-path:inset(0 100% 0 0);transition:clip-path .5s cubic-bezier(.7,0,.2,1)}
+.mo-row.go .mo-wipe::before{clip-path:inset(0)}
+.mo-rise{font-family:var(--font-heading);text-transform:uppercase;font-size:22px;opacity:1;filter:none;transform:none}
+.mo-row.go .mo-rise{animation:mo-rise 1.8s cubic-bezier(.2,.8,.2,1) both}
+@keyframes mo-rise{0%{opacity:0;filter:blur(14px);transform:translateY(14px)}100%{opacity:1;filter:none;transform:none}}
+.mo-curves{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--color-grey-200)}
+.mo-curve{padding:20px;border-left:1px solid var(--color-grey-200);display:flex;flex-direction:column;gap:10px}
+.mo-curve:first-child{border-left:0}
+.mo-curve.no{background:#fff7f6}
+.mo-curve svg{width:100%;max-width:150px;height:auto;overflow:visible}
+.mo-curve b{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+.mo-curve.no b{color:#da1e28}
+.mo-curve small{font-size:13px;color:var(--color-grey-600);line-height:1.45}
+.mo-track{position:relative;height:14px;background:var(--color-mist);border-radius:7px;overflow:visible}
+.mo-dot{position:absolute;left:0;top:-3px;width:20px;height:20px;border-radius:50%;background:var(--color-coral)}
+.mo-curves.go .mo-dot{left:calc(100% - 20px)}
+.mo-hov{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--color-grey-200)}
+.mo-hov > div{padding:24px 20px;border-left:1px solid var(--color-grey-200);display:flex;flex-direction:column;align-items:flex-start;gap:14px;min-height:150px}
+.mo-hov > div:first-child{border-left:0}
+.mo-hov small{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.mo-hov .y small{color:#215F6A}.mo-hov .n small{color:#da1e28}
+.mo-card{width:100%;max-width:220px;padding:18px;border:2px solid var(--color-grey-200);border-radius:0 12px 12px 12px;background:#fff;font-size:14px;transition:border-color .3s,transform .3s,box-shadow .3s}
+.mo-card.ok:hover{border-color:var(--color-coral)}
+.mo-card.lift:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 14px 30px rgba(0,0,0,.14)}
+.fo-opts{display:grid;gap:16px}
+.fo-opt{border:1px solid var(--color-grey-200);border-radius:0 8px 8px 8px;overflow:hidden;background:#fff}
+.fo-opt.rec{outline:2px solid var(--color-burgundy);outline-offset:-2px}
+.fo-head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:14px 18px;border-bottom:1px solid var(--color-grey-200)}
+.fo-head b{font-size:15px}
+.fo-head span{font-family:var(--font-mono);font-size:11px;color:var(--color-grey-600)}
+.fo-head .p{color:#215F6A}.fo-head .f{color:#da1e28}
+.fo-grounds{display:grid;grid-template-columns:repeat(3,1fr)}
+.fo-g{padding:24px 20px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.fo-g.w{background:#fff}.fo-g.b{background:var(--color-burgundy)}.fo-g.k{background:#111}
+.fo-g button,.fo-g a,.fo-g input{outline:none}
+.fo-g .fbtn{display:inline-block;padding:10px 18px;border-radius:0 12px 12px 12px;background:var(--color-coral);color:#fff;font-family:var(--font-heading);text-transform:uppercase;font-size:15px;border:0;cursor:pointer;text-decoration:none}
+.fo-g .flink{font-family:var(--font-heading);text-transform:uppercase;font-size:15px;color:#111;text-decoration:none}
+.fo-g.b .flink,.fo-g.k .flink{color:#fff}
+.fo-g input{height:40px;width:150px;padding:0 12px;border:1px solid var(--color-grey-200);border-radius:0 8px 8px 8px;background:var(--color-mist);font:inherit;font-size:14px}
+.fo-g.b input,.fo-g.k input{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.25);color:#fff}
+.fo-a :focus-visible{outline:3px solid var(--color-coral);outline-offset:3px}
+.fo-bb .w :focus-visible{outline:3px solid var(--color-burgundy);outline-offset:3px}
+.fo-bb .b :focus-visible,.fo-bb .k :focus-visible{outline:3px solid #fff;outline-offset:3px}
+.fo-c :focus-visible{outline:3px solid var(--color-coral);outline-offset:5px;box-shadow:0 0 0 2px #fff,0 0 0 4px var(--color-burgundy)}
+.fo-c .b :focus-visible,.fo-c .k :focus-visible{box-shadow:0 0 0 2px var(--color-burgundy),0 0 0 4px #fff}
+.fo-c .k :focus-visible{box-shadow:0 0 0 2px #111,0 0 0 4px #fff}
+.fo-g .is-f{outline:3px solid var(--color-coral);outline-offset:3px}
+@media (max-width:1000px){.mo-row{grid-template-columns:1fr}.mo-demo{justify-content:flex-start}.mo-curves,.mo-hov,.fo-grounds{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.mo-row.go .mo-rise{animation:none}}
+
 /* ---------- Decisions ---------- */
 .decide{background:var(--color-burgundy);color:#fff;padding:88px 0}
 .decide h2{color:#fff}
@@ -995,6 +1059,7 @@ footer{padding:40px 0 56px;font-family:var(--font-mono);font-size:11px;text-tran
     <a href="#spacing" data-nav>Spacing &amp; radius <span class="tag tag-soon">Agreed</span></a>
     <a href="#grid" data-nav>Grid &amp; breakpoints <span class="tag tag-soon">Agreed</span></a>
     <a href="#icons" data-nav>Icons <span class="tag tag-soon">Agreed</span></a>
+    <a href="#motion" data-nav>Motion &amp; focus <span class="tag tag-soon">Agreed</span></a>
   </div>
   <div class="nav-group">
     <p class="nav-label">Components</p>
@@ -1262,6 +1327,75 @@ footer{padding:40px 0 56px;font-family:var(--font-mono);font-size:11px;text-tran
         <h3>Icons · agreed</h3>
         <div class="cd-grid">
           <div><b>One set</b><p>66 drawings for 36 icons: the arrow is drawn 4 ways, play 5, close, check and the chevrons 3 each, at five stroke weights.</p><p class="cd-rec">Lucide only, one drawing per icon, 2px on a 24 grid, round ends, the text colour. The same set as the apps.</p></div><div><b>Three sizes</b><p>Every size from 12 to 24 in use.</p><p class="cd-rec">16 beside small text, 20 in buttons and links, 24 on its own. Actions on cards sit in a 40px coral circle at 18.</p></div><div><b>Filled</b><p>Stars, play and brand logos are filled; everything else is line.</p><p class="cd-rec">Line everywhere except stars (coral), play, and brand logos, which use each brand’s own one-colour mark. Google stays full colour on review cards.</p></div><div><b>The AI sparkle</b><p>Two pages mark content “AI generated” with a sparkle.</p><p class="cd-rec">Drop the sparkle; say it in words where it needs saying.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- MOTION & FOCUS -->
+  <section class="sec" id="motion">
+    <div class="wrap">
+      <h2>Motion &amp; focus</h2>
+      <p class="lede">Every speed and curve in one place, what may move on hover, and how keyboard focus looks. Read from the theme’s CSS: 17 durations, 7 curves including a bounce, 8 hovers that grow or lift, and focus switched off in 6 places.</p>
+
+      <p class="sub">Four speeds</p>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Speeds</h3><p>Press Play to see each one.</p></div><div class="acts"><button class="act" type="button" id="mo-play">Play</button></div></div>
+        <div class="mo-rows" id="mo-rows">
+          <div class="mo-row"><div><b>Tint</b><code>0.12s</code></div><p>Colour, border and opacity changes: hover colours, logo strength, swatches.</p><div class="mo-demo"><span class="mo-swatch"></span></div></div>
+          <div class="mo-row"><div><b>Move</b><code>0.3s · arrive</code></div><p>Small moves: a chevron turning, an arrow nudging 5px, the FAQ plus turning to ×.</p><div class="mo-demo"><svg class="mo-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></div></div>
+          <div class="mo-row"><div><b>Wipe</b><code>0.5s · wipe</code></div><p>Button wipes, the underline drawing in, the ink spread on cards.</p><div class="mo-demo"><span class="mo-wipe">Book a call</span></div></div>
+          <div class="mo-row"><div><b>Rise</b><code>1.4s · heading 1.8s · arrive</code></div><p>The hero blur rise, 0.18s apart. Once per page view.</p><div class="mo-demo"><span class="mo-rise">Real results</span></div></div>
+        </div>
+        <div class="spec-list"><div><b>Loops</b>Linear only: marquees by speed (logos 40, reviews 54&nbsp;px/s), the badge 16&nbsp;s a turn</div><div><b>Never</b>Longer than 1.8&nbsp;s for anything that isn’t a loop</div><div><b>Reduced motion</b>Everything settles instantly; loops stop</div><div><b>Tokens</b>--dw-dur-tint, -wipe-web, -rise, -rise-heading; --dw-ease-wipe, -out, -expo</div></div>
+      </div>
+
+      <p class="sub">Three curves</p>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Curves</h3><p>Press Play to race the dots: same distance, same time, different feel.</p></div><div class="acts"><button class="act" type="button" id="mo-race">Play</button></div></div>
+        <div class="mo-curves" id="mo-curves"><div class="mo-curve "><b>Wipe</b><svg viewBox="-6 -6 112 112"><rect x="0" y="0" width="100" height="100" fill="none" stroke="var(--color-grey-200)"/><path d="M0 100 C70.0 100 20.0 0 100 0" fill="none" stroke="var(--color-burgundy)" stroke-width="3"/></svg><code style="font-family:var(--font-mono);font-size:11px;color:var(--color-grey-500)">cubic-bezier(.7, 0, .2, 1)</code><div class="mo-track"><i class="mo-dot" style="transition:left 1.2s cubic-bezier(.7, 0, .2, 1)"></i></div><small>Things that cover or draw: the button wipe, the underline, the ink spread on cards.</small></div><div class="mo-curve "><b>Arrive</b><svg viewBox="-6 -6 112 112"><rect x="0" y="0" width="100" height="100" fill="none" stroke="var(--color-grey-200)"/><path d="M0 100 C20.0 20.0 20.0 0 100 0" fill="none" stroke="var(--color-burgundy)" stroke-width="3"/></svg><code style="font-family:var(--font-mono);font-size:11px;color:var(--color-grey-500)">cubic-bezier(.2, .8, .2, 1)</code><div class="mo-track"><i class="mo-dot" style="transition:left 1.2s cubic-bezier(.2, .8, .2, 1)"></i></div><small>Things that arrive and settle: the blur rise, panels, the FAQ opening.</small></div><div class="mo-curve "><b>Expo</b><svg viewBox="-6 -6 112 112"><rect x="0" y="0" width="100" height="100" fill="none" stroke="var(--color-grey-200)"/><path d="M0 100 C16.0 0 30.0 0 100 0" fill="none" stroke="var(--color-burgundy)" stroke-width="3"/></svg><code style="font-family:var(--font-mono);font-size:11px;color:var(--color-grey-500)">cubic-bezier(.16, 1, .3, 1)</code><div class="mo-track"><i class="mo-dot" style="transition:left 1.2s cubic-bezier(.16, 1, .3, 1)"></i></div><small>Big arrivals: the Final CTA words, the cycling phrase.</small></div><div class="mo-curve no"><b>Bounce · live today</b><svg viewBox="-6 -6 112 112"><rect x="0" y="0" width="100" height="100" fill="none" stroke="var(--color-grey-200)"/><path d="M0 100 C34.0 -56.0 64.0 0 100 0" fill="none" stroke="#da1e28" stroke-width="3"/></svg><code style="font-family:var(--font-mono);font-size:11px;color:var(--color-grey-500)">cubic-bezier(.34, 1.56, .64, 1)</code><div class="mo-track"><i class="mo-dot" style="transition:left 1.2s cubic-bezier(.34, 1.56, .64, 1)"></i></div><small>Overshoots and springs back. Used twice. Never.</small></div></div>
+      </div>
+
+      <p class="sub">Hover</p>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>What may move on hover</h3><p>Hover each card. Colour, wipes, underlines and small nudges only.</p></div></div>
+        <div class="mo-hov">
+          <div class="y"><small>Yes · reading card</small><div class="mo-card ok">Border turns coral. Nothing moves.</div></div>
+          <div class="y"><small>Yes · button and link</small><span class="mo-wipe" style="cursor:pointer" onmouseenter="this.parentElement.classList.add('go')" onmouseleave="this.parentElement.classList.remove('go')">Book a call</span><a class="link-arrow" href="#motion">Explore <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></div>
+          <div class="n"><small>No · grow, lift, shadow, tilt</small><div class="mo-card lift">Lifts 4px and grows 3%. Live on 8 hovers today.</div></div>
+        </div>
+      </div>
+
+      <p class="sub">Keyboard focus</p>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Focus ring</h3><p>Click into a row, then press Tab to move through the button, link and field. Rings need 3:1 against the ground behind them.</p></div></div>
+        <div class="fo-opts" style="padding:20px">
+          <div class="fo-opt fo-a"><div class="fo-head"><b>A · Coral ring, agreed so far</b><span><em class="f">2.9:1 on white</em> · <em class="f">2.9:1 on burgundy</em> · <em class="p">6.6:1 on ink</em></span></div><div class="fo-grounds"><div class="fo-g w"><a class="fbtn" href="#motion" role="button">Book a call</a><a class="flink" href="#motion">Explore</a><input aria-label="White example field" placeholder="Email"></div><div class="fo-g b"><a class="fbtn" href="#motion" role="button">Book a call</a><a class="flink" href="#motion">Explore</a><input aria-label="Burgundy example field" placeholder="Email"></div><div class="fo-g k"><a class="fbtn" href="#motion" role="button">Book a call</a><a class="flink" href="#motion">Explore</a><input aria-label="Ink example field" placeholder="Email"></div></div></div>
+          <div class="fo-opt fo-bb"><div class="fo-head"><b>B · Burgundy on light, white on dark</b><span><em class="p">8.4:1 on white</em> · <em class="p">8.4:1 on burgundy</em> · <em class="p">18.9:1 on ink</em></span></div><div class="fo-grounds"><div class="fo-g w"><a class="fbtn" href="#motion" role="button">Book a call</a><a class="flink" href="#motion">Explore</a><input aria-label="White example field" placeholder="Email"></div><div class="fo-g b"><a class="fbtn" href="#motion" role="button">Book a call</a><a class="flink" href="#motion">Explore</a><input aria-label="Burgundy example field" placeholder="Email"></div><div class="fo-g k"><a class="fbtn" href="#motion" role="button">Book a call</a><a class="flink" href="#motion">Explore</a><input aria-label="Ink example field" placeholder="Email"></div></div></div>
+          <div class="fo-opt fo-c rec"><div class="fo-head"><b>C · Coral ring with a contrast edge · recommended</b><span><em class="p">Burgundy edge on light 8.4:1</em> · <em class="p">white edge on dark 8.4:1 and up</em> · coral stays</span></div><div class="fo-grounds"><div class="fo-g w"><a class="fbtn" href="#motion" role="button">Book a call</a><a class="flink" href="#motion">Explore</a><input aria-label="White example field" placeholder="Email"></div><div class="fo-g b"><a class="fbtn" href="#motion" role="button">Book a call</a><a class="flink" href="#motion">Explore</a><input aria-label="Burgundy example field" placeholder="Email"></div><div class="fo-g k"><a class="fbtn" href="#motion" role="button">Book a call</a><a class="flink" href="#motion">Explore</a><input aria-label="Ink example field" placeholder="Email"></div></div></div>
+        </div>
+      </div>
+
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>What the theme does today</h3><p>Counted in the dreww-cms-builder CSS and module templates.</p></div></div>
+        <div class="audit-wrap"><table class="audit">
+          <thead><tr><th>What</th><th>Today</th><th>Proposed</th></tr></thead>
+          <tbody>
+            <tr><td>Durations</td><td>17: 0.15, 0.2, 0.22, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.8, 0.9, 1.4 seconds, plus 2.5, 4 and 7 second loops</td><td class="new">0.12, 0.3, 0.5, 1.4 / 1.8</td></tr>
+            <tr><td>Curves</td><td><code>ease</code> 48 times, <code>linear</code> 30, five cubic-beziers including a bounce</td><td class="new">Wipe, arrive, expo; linear for loops</td></tr>
+            <tr><td>Hover</td><td>8 hovers grow (up to 125%), lift 2–4&nbsp;px or tilt</td><td class="new">Colour, wipe, underline, nudge</td></tr>
+            <tr><td>Focus</td><td>Switched off (<code>outline:none</code>) in 6 places; rings in coral, burgundy, ink and white at 2&nbsp;px</td><td class="new">One ring everywhere, never off</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+
+      <div class="card-decide">
+        <h3>Motion &amp; focus · agreed</h3>
+        <div class="cd-grid">
+          <div><b>Four speeds, three curves</b><p>17 durations and seven curves today, including a bounce.</p><p class="cd-rec">Tint 0.12, move 0.3, wipe 0.5, rise 1.4 (heading 1.8). Wipe, arrive and expo curves; linear only for loops. No bounce, no default <code>ease</code>.</p></div>
+          <div><b>Hover</b><p>Eight hovers grow, lift or tilt, against the agreed button and card rules.</p><p class="cd-rec">Colour, wipe, underline, a 5&nbsp;px nudge or the ink spread. Nothing grows, lifts, tilts or zooms, images included.</p></div>
+          <div><b>Focus ring</b><p>Coral alone is 2.9:1 on white and burgundy, under the 3:1 a focus ring needs, and focus is switched off in six places.</p><p class="cd-rec">C: keep the coral ring, with a thin burgundy edge on light grounds and white on dark. Never switch focus off.</p></div>
+        </div>
       </div>
     </div>
   </section>
@@ -1862,6 +1996,9 @@ footer{padding:40px 0 56px;font-family:var(--font-mono);font-size:11px;text-tran
         <div class="q"><h3>Icons: Lucide, one drawing each</h3>
           <p>36 icons in 66 drawings become one Lucide set: 2px on a 24 grid, round ends, the text colour. Sizes 16, 20, 24, and a 40px coral action circle at 18. Filled only for stars, play and brand marks. Reels is square-play. The AI sparkle goes. Agreed Nov 27, 2026.</p>
           <p class="todo">To do: swap every inline SVG for the web/icons.svg sprite · one drawing per icon (arrow 4 → 1, play 5 → 1, close, check, chevrons 3 → 1) · remove the “AI generated” sparkle · menu icon from CSS lines to the sprite</p></div>
+        <div class="q"><h3>Motion &amp; focus: four speeds, three curves, one ring</h3>
+          <p>Tint 0.12, move 0.3, wipe 0.5, rise 1.4 (heading 1.8). Wipe, arrive and expo curves; linear only for loops; no bounce. Hover changes colour, wipes, underlines or nudges 5&nbsp;px; nothing grows, lifts, tilts or zooms. Focus: the coral ring with a burgundy edge on light, white on dark; never switched off. Replaces the coral-only ring agreed in Buttons and Forms. Agreed Nov 27, 2026.</p>
+          <p class="todo">To do: theme transitions onto the four speeds and three curves · remove the bounce and default ease · remove the 8 grow, lift and tilt hovers · remove the 6 outline:none · one focus ring everywhere</p></div>
       </div>
     </div>
   </section>
@@ -2283,6 +2420,22 @@ document.querySelectorAll('[data-mq]').forEach(view => {
     cur = btn.dataset.bp; document.querySelectorAll('[data-bp]').forEach(x => x.classList.toggle('on', x === btn)); draw();
   }));
   addEventListener('resize', draw); draw();
+})();
+
+
+/* ---------- Motion demos ---------- */
+(function(){
+  const rows = document.getElementById('mo-rows'), play = document.getElementById('mo-play');
+  if (rows && play) play.addEventListener('click', () => {
+    rows.querySelectorAll('.mo-row').forEach(r => r.classList.remove('go')); void rows.offsetWidth;
+    rows.querySelectorAll('.mo-row').forEach(r => r.classList.add('go'));
+    setTimeout(() => rows.querySelectorAll('.mo-row').forEach(r => { if (!r.querySelector('.mo-rise')) r.classList.remove('go'); }), 1600);
+  });
+  const cv = document.getElementById('mo-curves'), race = document.getElementById('mo-race');
+  if (cv && race) race.addEventListener('click', () => {
+    if (cv.classList.contains('go')) { cv.classList.remove('go'); setTimeout(() => cv.classList.add('go'), 1300); } else cv.classList.add('go');
+  });
+  document.querySelectorAll('.fo-g a').forEach(a => a.addEventListener('click', e => e.preventDefault()));
 })();
 
 /* ---------- Active nav ---------- */

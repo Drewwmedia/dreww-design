@@ -18,8 +18,12 @@ p,li{text-wrap:pretty}
 .dw-on-ink ::selection{background:var(--dw-white);color:var(--dw-ink)}
 .dw-on-burgundy ::selection{background:var(--dw-white);color:var(--dw-burgundy)}
 
-/* Focus: coral ring on every ground */
-:focus-visible{outline:3px solid var(--dw-coral);outline-offset:3px}
+/* Focus: the coral ring with a contrast edge (burgundy on light, white on dark).
+   Coral alone is 2.9:1 on white and burgundy; the edge makes every ring pass 3:1.
+   Never switch focus off. */
+:focus-visible{outline:3px solid var(--dw-coral);outline-offset:5px;box-shadow:0 0 0 2px var(--dw-white),0 0 0 4px var(--dw-burgundy)}
+.dw-on-burgundy :focus-visible{box-shadow:0 0 0 2px var(--dw-burgundy),0 0 0 4px var(--dw-white)}
+.dw-on-ink :focus-visible{box-shadow:0 0 0 2px var(--dw-ink),0 0 0 4px var(--dw-white)}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}

@@ -68,5 +68,12 @@ for (const m of sprite.matchAll(/<symbol id="([^"]+)" viewBox="0 0 24 24" fill="
   if (!/stroke-width="2"/.test(m[2]) || !/stroke-linecap="round"/.test(m[2])) problems.push(`icons.svg: ${m[1]} is not 2px with round ends`);
 }
 
+// 5. Motion and focus: agreed speeds and curves only, focus never switched off
+for (const m of comp.matchAll(/transition:([^;}]+)/g)) {
+  if (/(^|[\s,])\d*\.?\d+m?s\b/.test(m[1].replace(/var\([^)]*\)/g, ""))) problems.push(`components.css: raw duration in "transition:${m[1]}"; use --dw-dur-*`);
+}
+for (const m of comp.matchAll(/cubic-bezier\(([^)]*)\)/g)) { const y = m[1].split(",").map(Number); if (y[1] > 1 || y[1] < 0 || y[3] > 1 || y[3] < 0) problems.push(`components.css: bounce curve cubic-bezier(${m[1]})`); }
+for (const m of comp.matchAll(/([^{}]*:focus[^{}]*)\{([^}]*)\}/g)) if (/outline\s*:\s*(none|0)\b/.test(m[2])) problems.push(`components.css: focus switched off in ${m[1].trim()}`);
+
 if (problems.length) { console.error("\n" + [...new Set(problems)].join("\n")); process.exit(1); }
 console.log(`\nWeb: components use only tokens (${defined.size} defined), ${shared} shared values match the app, all pairs pass, ${ids.size} icons in the sprite.`);

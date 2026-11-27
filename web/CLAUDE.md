@@ -64,10 +64,13 @@ Header, menu and footer are single theme modules (`hv4-*`), not shared component
 - Cut corner, top-left always square: 4 (tags, kbd), 8 (inputs, small buttons, chips), 12 (buttons, small and FAQ cards, option cards), 16 (big cards, menu and footer panels). Only circles are round (icon buttons, avatars, dots). The hero reels stay rounded: they read as phones.
 - One shadow: the scrolled header. Cards are flat with a Grey 200 border.
 
-### Motion
-- Buttons wipe left to right (0.5s, `--dw-ease-wipe`). No darker shade, grow, lift, glow or magnetic pull on any button or logo.
-- Page heroes blur-rise once on load: each line rises 14px out of a 14px blur, 0.18s apart, top to bottom; the heading takes 1.8s, the rest 1.4s. Sections further down don't animate their headings.
+### Motion and focus
+- Four speeds: tint 0.12s (colour, border, opacity), move 0.3s (nudges, chevrons, the plus turning), wipe 0.5s (button wipes, underlines, ink spread, the FAQ opening), rise 1.4s with the heading at 1.8s. Use `--dw-dur-*`; `npm test` fails on a raw duration.
+- Three curves: `--dw-ease-wipe` for things that cover or draw, `--dw-ease-out` for things that arrive, `--dw-ease-expo` for big arrivals (Final CTA). Linear only for loops (marquees, the badge). No bounce, no default `ease`.
+- Hover changes colour, wipes, draws an underline, nudges an arrow 5px or spreads the card ink. Nothing grows, lifts, tilts, glows or zooms, images included. No magnetic pull.
+- Page heroes blur-rise once on load: each line rises 14px out of a 14px blur, 0.18s apart, top to bottom. Sections further down don't animate their headings.
 - Marquees drift (logos 40px/s, reviews 54px/s), pause on hover and focus, and can be grabbed and dragged on desktop.
+- Focus: the coral ring (3px, 5px out) with a 2px contrast edge, burgundy on light and white on burgundy or ink (`base.css`). Never `outline:none` on a focus state; `npm test` fails on it. Inside cards, the ring is the text colour.
 - Everything stops for `prefers-reduced-motion`.
 
 ### Components
