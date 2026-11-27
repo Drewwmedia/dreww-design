@@ -272,6 +272,8 @@ main{min-width:0}
 .tag--bad i{background:var(--dw-red)}
 .tag--warn i{background:var(--dw-coral)}
 .tag--plain{background:var(--dw-white);box-shadow:inset 0 0 0 1px var(--dw-grey-200)}
+.tag--solid{background:var(--dw-burgundy);color:var(--dw-white)}
+.tag--solid i{background:var(--dw-white)}
 .delta{display:inline-flex;align-items:center;gap:3px;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
 .delta svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .delta--good{color:var(--dw-teal)} .delta--bad{color:var(--dw-red)} .delta--flat{color:var(--dw-grey-600)}
@@ -798,7 +800,7 @@ main{min-width:0}
   <!-- INTRO -->
   <section class="intro" id="overview">
     <div class="wrap">
-      <p class="eyebrow">Dreww apps · v1.0</p>
+      <p class="eyebrow">Dreww apps · v1.1</p>
       <h1>App design system</h1>
       <p class="lede">The source of truth for anything built inside the Dreww apps: Reporting, the hub, proposals and the diagnostic. It starts from how dreww.ca looks and works, then scales that down for dense, everyday screens.</p>
       <div class="intro-meta"><span>Based on <b>Web design system v0.1</b></span><span>Theme <b>Light only</b></span><span>Status <b>Locked Nov 25, 2026</b></span></div>
@@ -1107,9 +1109,9 @@ main{min-width:0}
   <section class="sec alt" id="tags">
     <div class="wrap">
       <h2>Tags &amp; status</h2>
-      <p class="lede">Status lives in a small mono tag with a coloured dot. The word does the work, the dot helps you scan. No tinted fills.</p>
+      <p class="lede">Status lives in a small mono tag with a coloured dot. The word does the work, the dot helps you scan. No tinted fills: the one filled tag is solid burgundy, for a finished win.</p>
       <div class="panel">
-        <div class="ph"><div><h3>Status tags</h3><p>Teal good, red bad, coral needs attention, grey for everything else. On white or mist.</p></div></div>
+        <div class="ph"><div><h3>Status tags</h3><p>Teal good, red bad, coral needs attention, grey for everything else. Solid burgundy for a finished win (Signed, Won). On white or mist.</p></div></div>
         <div class="stage">
           <span class="tag tag--good"><i></i>Delivering</span>
           <span class="tag tag--bad"><i></i>Over target</span>
@@ -1118,6 +1120,7 @@ main{min-width:0}
           <span class="tag tag--warn"><i></i>Under 30 clicks</span>
           <span class="tag"><i></i>Paused</span>
           <span class="tag tag--plain">Prospecting</span>
+          <span class="tag tag--solid"><i></i>Signed</span>
         </div>
         <div class="stage mist" style="border-top:1px solid var(--dw-grey-200)">
           <span class="tag tag--plain tag--good"><i></i>Delivering</span>
@@ -1607,12 +1610,12 @@ main{min-width:0}
   <section class="decide" id="decisions">
     <div class="wrap">
       <h2>Decisions</h2>
-      <p class="lede">Agreed on Nov 24 and 25, and applied across this page.</p>
+      <p class="lede">Agreed on Nov 24 to 26, and applied across this page.</p>
       <div class="q-list" id="q-list"></div>
     </div>
   </section>
 
-  <div class="wrap doc-foot">Dreww app design system · v1.0 · locked Nov 25, 2026 · built from the web design system · example data only</div>
+  <div class="wrap doc-foot">Dreww app design system · v1.1 · Nov 26, 2026 · built from the web design system · example data only</div>
 </main>
 </div>
 
@@ -1808,6 +1811,7 @@ const QS = [
   ['One token repo','Agreed','dreww-design: brand tokens shared with the website, an app layer on top, components for the apps only.'],
   ['No soft tints','Applied','No burgundy, teal, coral or amber tints. Status shows as a coloured dot or icon on mist or white. Selected rows use mist.'],
   ['Blue and gold for charts','Agreed','Blue #4058B5 and gold #D4A72C join burgundy and coral as series 3 and 4. Charts only, never in the interface.'],
+  ['Solid burgundy tag for a finished win','Agreed','Nov 26. Signed, Won and other end states that are good news get a filled burgundy tag with a white dot. Positive steps on the way, like Viewed or Delivering, stay teal.'],
   ['Form errors in red, app and website','Agreed','Red for form errors everywhere. The web design system and the dreww.ca theme follow, replacing burgundy.'],
 ];
 $('#q-list').innerHTML = QS.map(([h,st,r]) => `<div class="q${st==='Your call'?' is-open':''}"><h3>${h}</h3><p class="r"><b>${st}</b>${r}</p></div>`).join('');

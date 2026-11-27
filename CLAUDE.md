@@ -1,10 +1,12 @@
 # Dreww app design system
 
+> Building for dreww.ca or a page prototype? The website system lives in `web/`; its rules are in `web/CLAUDE.md`. This file covers the apps.
+
 The source of truth for how every Dreww app looks: Reporting, the hub, proposals and the diagnostic. It is built from the dreww.ca web design system and scaled down for dense, everyday screens. The current apps are not a reference for how things should look; this repo is.
 
 - Visual reference with every component live: `docs/app-design-system.html` (published at https://claude.ai/artifact/A8YuabgA31G7W14omfqkpz).
 - Website system it builds on: `docs/web-design-system.html`.
-- v1.0, every section agreed 2026-11-25.
+- v1.0, every section agreed 2026-11-25. v1.1 (2026-11-26) adds the solid burgundy tag.
 
 ## What's here
 
@@ -25,6 +27,7 @@ The source of truth for how every Dreww app looks: Reporting, the hub, proposals
 - Teal means good for the client, red (`#da1e28`) means bad, failed, or a form error. Both are UI only, never brand, never a chart series.
 - Colour a delta by meaning, not direction: a cost per lead going down is teal.
 - No tinted fills. Status shows as a coloured dot or icon on white or mist. Selected rows are mist with the name in burgundy.
+- The one filled tag: `tag--solid`, solid burgundy with a white dot, for a finished win (Signed, Won). Positive steps on the way (Viewed, Delivering) stay teal `tag--good`.
 - Run `npm test` after adding any new text/background pair, and add the pair to `scripts/check-contrast.mjs`.
 
 ### Type

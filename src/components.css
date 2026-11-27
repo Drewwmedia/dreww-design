@@ -89,6 +89,8 @@
 .tag--bad i{background:var(--dw-red)}
 .tag--warn i{background:var(--dw-coral)}
 .tag--plain{background:var(--dw-white);box-shadow:inset 0 0 0 1px var(--dw-grey-200)}
+.tag--solid{background:var(--dw-burgundy);color:var(--dw-white)}
+.tag--solid i{background:var(--dw-white)}
 .delta{display:inline-flex;align-items:center;gap:3px;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
 .delta svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .delta--good{color:var(--dw-teal)} .delta--bad{color:var(--dw-red)} .delta--flat{color:var(--dw-grey-600)}

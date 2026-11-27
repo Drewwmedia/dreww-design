@@ -1,8 +1,8 @@
 {
   "name": "@dreww/design",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "private": true,
-  "description": "Dreww app design system: tokens, Tailwind 4 theme, component CSS and React components.",
+  "description": "Dreww design system: app tokens, Tailwind 4 theme, component CSS and React components; web tokens, components, motion and Tailwind 3 preset for dreww.ca.",
   "type": "module",
   "exports": {
     "./tokens.css": "./src/tokens.css",
@@ -10,11 +10,21 @@
     "./theme.css": "./src/theme.css",
     "./components.css": "./src/components.css",
     "./react": "./src/react/index.ts",
-    "./charts": "./src/charts/palette.ts"
+    "./charts": "./src/charts/palette.ts",
+    "./web/tokens.css": "./web/tokens.css",
+    "./web/base.css": "./web/base.css",
+    "./web/components.css": "./web/components.css",
+    "./web/motion.js": "./web/motion.js",
+    "./web/tailwind-preset": "./web/tailwind.preset.js"
   },
-  "files": ["src", "CLAUDE.md", "README.md"],
+  "files": [
+    "src",
+    "web",
+    "CLAUDE.md",
+    "README.md"
+  ],
   "scripts": {
-    "test": "node scripts/check-contrast.mjs && node scripts/check-tokens.mjs",
+    "test": "node scripts/check-contrast.mjs && node scripts/check-tokens.mjs && node scripts/check-web.mjs",
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {

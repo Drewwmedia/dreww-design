@@ -1,0 +1,26 @@
+/* Dreww web base styles. Import after web/tokens.css.
+   Mark dark grounds with .dw-on-burgundy or .dw-on-ink so selection,
+   ledes and buttons pick their on-dark versions. */
+body{
+  margin:0;
+  font-family:var(--dw-font-sans);
+  font-size:var(--dw-fs-body);
+  line-height:var(--dw-lh-body);
+  color:var(--dw-ink);
+  background:var(--dw-white);
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,h5{text-wrap:balance}
+p,li{text-wrap:pretty}
+
+/* Highlighted text: brand colours, never the browser blue */
+::selection{background:var(--dw-burgundy);color:var(--dw-white)}
+.dw-on-ink ::selection{background:var(--dw-white);color:var(--dw-ink)}
+.dw-on-burgundy ::selection{background:var(--dw-white);color:var(--dw-burgundy)}
+
+/* Focus: coral ring on every ground */
+:focus-visible{outline:3px solid var(--dw-coral);outline-offset:3px}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}

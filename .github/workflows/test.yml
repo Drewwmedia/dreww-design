@@ -1,0 +1,23 @@
+name: Test
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Contrast, tokens and web checks
+        run: npm test
+      - name: Type-check the React components
+        run: npm run typecheck
+      - name: Web motion script parses
+        run: node --check web/motion.js
