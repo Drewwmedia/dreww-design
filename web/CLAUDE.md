@@ -66,6 +66,13 @@ Header, menu and footer are single theme modules (`hv4-*`), not shared component
 - Links burgundy and underlined. Lists with coral markers. Quotes are the statement quote (`<blockquote><p>…</p><cite>Name · Role</cite></blockquote>`), never a plain paragraph.
 - Images inside the text take the cut 12 corner and a 13px caption that says what the image shows.
 
+### Insight cards
+- Insights hub, press releases and the homepage keep the live card set: featured (`.dw-insight--feature`), secondary (`.dw-insight`), Latest rows (`--row`), Most read (`.dw-insight-ranked`), topic chips (`.dw-chip`), homepage rows (`.dw-insight-home`) and Dreww News press cards on burgundy (`.dw-news-card`).
+- Images 16:9: cut 16 on featured and secondary, cut 12 on thumbnails and press cards. Featured titles sized to their words, three lines at most.
+- Meta: category in coral mono, then date and read time. No view counts.
+- Hover: the title turns burgundy. Homepage rows also fill the arrow coral, nudge it 5px and zoom the thumbnail 4% inside its frame, the one image zoom on the site.
+- Topic chips are cut 8, never pills.
+
 ### Imagery
 - Five shapes: 9:16 for reels (`.dw-media--reel`), 4:5 for people (`--portrait`), 3:2 for case study and studio photos (`--photo`), 16:9 for video and covers (`--wide`), 1:1 only for round avatars (`.dw-avatar`).
 - Images take their container's cut corner: 12 by default, 16 inside big cards (`--lg`). Circles only for avatars. Round 22 only for the hero reels (`--reel.dw-media--phone`).
@@ -89,7 +96,7 @@ Header, menu and footer are single theme modules (`hv4-*`), not shared component
 ### Motion and focus
 - Four speeds: tint 0.12s (colour, border, opacity), move 0.3s (nudges, chevrons, the plus turning), wipe 0.5s (button wipes, underlines, ink spread, the FAQ opening), rise 1.4s with the heading at 1.8s. Use `--dw-dur-*`; `npm test` fails on a raw duration.
 - Three curves: `--dw-ease-wipe` for things that cover or draw, `--dw-ease-out` for things that arrive, `--dw-ease-expo` for big arrivals (Final CTA). Linear only for loops (marquees, the badge). No bounce, no default `ease`.
-- Hover changes colour, wipes, draws an underline, nudges an arrow 5px or spreads the card ink. Nothing grows, lifts, tilts, glows or zooms, images included. No magnetic pull.
+- Hover changes colour, wipes, draws an underline, nudges an arrow 5px or spreads the card ink. Nothing grows, lifts, tilts, glows or zooms, images included. One exception, kept from live: the homepage insight row thumbnail grows 4% inside its cut frame (overflow hidden, 0.3s, `--dw-ease-out`), never the card. No magnetic pull.
 - Page heroes blur-rise once on load: each line rises 14px out of a 14px blur, 0.18s apart, top to bottom. Sections further down don't animate their headings.
 - Marquees drift (logos 40px/s, reviews 54px/s), pause on hover and focus, and can be grabbed and dragged on desktop.
 - Focus: the coral ring (3px, 5px out) with a 2px contrast edge, burgundy on light and white on burgundy or ink (`base.css`). Never `outline:none` on a focus state; `npm test` fails on it. Inside cards, the ring is the text colour.

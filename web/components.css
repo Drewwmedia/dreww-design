@@ -180,6 +180,72 @@
 .dw-prose th{font-family:var(--dw-font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--dw-grey-500);text-align:left;padding:10px 12px;border-bottom:1px solid var(--dw-grey-200)}
 .dw-prose td{padding:12px;border-bottom:1px solid var(--dw-grey-200);font-variant-numeric:tabular-nums}
 
+/* ============ Insight cards ============ */
+/* Insights hub, press releases and the homepage. Card is an <a>; the title turns burgundy on hover.
+   <a class="dw-insight dw-insight--feature"><figure class="dw-insight__img"><img></figure>
+     <p class="dw-insight__meta"><span class="dw-insight__cat">AEO</span><span>Nov 25, 2026</span><span>9 min read</span></p>
+     <h3 class="dw-insight__title">…</h3><p class="dw-insight__dek">…</p><p class="dw-insight__by"><img alt="">Name · date</p></a> */
+.dw-insight{display:flex;flex-direction:column;gap:var(--dw-space-md);color:var(--dw-ink);text-decoration:none}
+.dw-insight__img{margin:0;aspect-ratio:16/9;overflow:hidden;border-radius:var(--dw-cut-lg);background:var(--dw-ink)}
+.dw-insight__img img{width:100%;height:100%;object-fit:cover;object-position:var(--focus,50% 50%);display:block}
+.dw-insight__meta{display:flex;flex-wrap:wrap;gap:6px 10px;margin:0;font-family:var(--dw-font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--dw-grey-500)}
+.dw-insight__cat{color:var(--dw-coral)}
+.dw-insight__title{margin:0;font-family:var(--dw-font-display);font-weight:400;text-transform:uppercase;font-size:24px;line-height:1.08;transition:color var(--dw-dur-tint) var(--dw-ease-out)}
+.dw-insight--feature .dw-insight__title{font-size:var(--dw-fs-h2);line-height:1.04;max-width:24ch}
+.dw-insight__dek{margin:0;font-size:15px;line-height:1.5;color:var(--dw-grey-600);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.dw-insight__by{display:flex;align-items:center;gap:var(--dw-space-sm);margin:0;font-size:13px;color:var(--dw-grey-600)}
+.dw-insight__by img{width:24px;height:24px;border-radius:50%;object-fit:cover}
+.dw-insight__by b{color:var(--dw-ink);font-weight:600}
+.dw-insight:hover .dw-insight__title,.dw-insight:focus-visible .dw-insight__title{color:var(--dw-burgundy)}
+
+/* Latest list row: text left, 200px thumbnail right (stacks on phone, image first) */
+.dw-insight--row{display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:var(--dw-space-2xl);align-items:center;padding:var(--dw-space-xl) 0;border-bottom:1px solid var(--dw-grey-200)}
+.dw-insight--row > div{display:flex;flex-direction:column;gap:var(--dw-space-sm);min-width:0}
+.dw-insight--row .dw-insight__img{border-radius:var(--dw-cut-md)}
+.dw-insight--row .dw-insight__title{font-family:var(--dw-font-sans);font-weight:700;text-transform:none;font-size:23px;line-height:1.28}
+.dw-insight--row .dw-insight__by{margin-top:var(--dw-space-xs)}
+
+/* Most read: numbered list */
+.dw-insight-ranked{list-style:none;margin:0;padding:0;counter-reset:dw-rank}
+.dw-insight-ranked a{display:grid;grid-template-columns:28px 1fr;gap:var(--dw-space-sm);padding:14px 0;border-bottom:1px solid var(--dw-grey-200);color:var(--dw-ink);text-decoration:none;counter-increment:dw-rank}
+.dw-insight-ranked a::before{content:counter(dw-rank);font-family:var(--dw-font-display);font-size:22px;line-height:1;color:var(--dw-coral)}
+.dw-insight-ranked b{display:block;font-size:15px;line-height:1.35;transition:color var(--dw-dur-tint) var(--dw-ease-out)}
+.dw-insight-ranked small{display:block;margin-top:4px;font-family:var(--dw-font-mono);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--dw-coral)}
+.dw-insight-ranked a:hover b{color:var(--dw-burgundy)}
+
+/* Topic chips: cut 8, never pills */
+.dw-chips{display:flex;flex-wrap:wrap;gap:var(--dw-space-sm)}
+.dw-chip{padding:8px 12px;border:1px solid var(--dw-grey-200);border-radius:var(--dw-cut-sm);font-family:var(--dw-font-mono);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--dw-ink);text-decoration:none;transition:border-color var(--dw-dur-tint) var(--dw-ease-out),color var(--dw-dur-tint) var(--dw-ease-out)}
+.dw-chip:hover,.dw-chip[aria-current]{border-color:var(--dw-burgundy);color:var(--dw-burgundy)}
+
+/* Homepage row: number, thumbnail, title, meta, author, outlined arrow.
+   The thumbnail zooms 4% inside its frame: the one image zoom on the site (agreed Nov 27). */
+.dw-insight-home{display:grid;grid-template-columns:40px 224px minmax(0,1fr) 44px;gap:var(--dw-space-xl);align-items:center;padding:var(--dw-space-xl) 0;border-bottom:1px solid var(--dw-grey-200);color:var(--dw-ink);text-decoration:none}
+.dw-insight-home__n{font-family:var(--dw-font-mono);font-size:15px;color:var(--dw-coral)}
+.dw-insight-home .dw-insight__img{border-radius:var(--dw-cut-md)}
+.dw-insight-home .dw-insight__img img{transition:transform var(--dw-dur-move) var(--dw-ease-out)}
+.dw-insight-home > div{display:flex;flex-direction:column;gap:var(--dw-space-sm);min-width:0}
+.dw-insight-home .dw-insight__title{font-size:28px;line-height:1.1}
+.dw-insight-home__go{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:2px solid var(--dw-ink);color:var(--dw-ink);transition:background-color var(--dw-dur-tint) var(--dw-ease-out),border-color var(--dw-dur-tint) var(--dw-ease-out),color var(--dw-dur-tint) var(--dw-ease-out),transform var(--dw-dur-move) var(--dw-ease-out)}
+.dw-insight-home__go .dw-icon{width:18px;height:18px}
+.dw-insight-home:hover .dw-insight__title,.dw-insight-home:focus-visible .dw-insight__title{color:var(--dw-burgundy)}
+.dw-insight-home:hover .dw-insight-home__go,.dw-insight-home:focus-visible .dw-insight-home__go{background:var(--dw-coral);border-color:var(--dw-coral);color:var(--dw-white);transform:translateX(5px)}
+.dw-insight-home:hover .dw-insight__img img,.dw-insight-home:focus-visible .dw-insight__img img{transform:scale(1.04)}
+
+/* Dreww News: press cards on burgundy */
+.dw-news-card{display:flex;flex-direction:column;gap:10px;color:var(--dw-white);text-decoration:none}
+.dw-news-card .dw-insight__img{border-radius:var(--dw-cut-md)}
+.dw-news-card__kicker{font-family:var(--dw-font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.dw-news-card__title{font-size:18px;font-weight:700;line-height:1.3;margin:0}
+.dw-news-card:hover .dw-news-card__title{text-decoration:underline;text-underline-offset:3px}
+
+@media (max-width:767px){
+  .dw-insight--row{grid-template-columns:1fr}
+  .dw-insight--row .dw-insight__img{order:-1}
+  .dw-insight-home{grid-template-columns:28px minmax(0,1fr) 44px}
+  .dw-insight-home .dw-insight__img{display:none}
+}
+
 /* ============ FAQ ============ */
 .dw-faq-layout{display:grid;grid-template-columns:5fr 7fr;gap:var(--dw-space-3xl);align-items:start}
 .dw-faq-layout__head{position:sticky;top:120px}
