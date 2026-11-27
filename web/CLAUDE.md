@@ -58,6 +58,14 @@ Header, menu and footer are single theme modules (`hv4-*`), not shared component
 - Reels and "watch our work" use `square-play`. No sparkles or "AI" icons.
 - Need an icon that isn't in the sprite? Take it from Lucide as is, add it to `web/icons.svg`, and note it on the reference page.
 
+### Imagery
+- Five shapes: 9:16 for reels (`.dw-media--reel`), 4:5 for people (`--portrait`), 3:2 for case study and studio photos (`--photo`), 16:9 for video and covers (`--wide`), 1:1 only for round avatars (`.dw-avatar`).
+- Images take their container's cut corner: 12 by default, 16 inside big cards (`--lg`). Circles only for avatars. Round 22 only for the hero reels (`--reel.dw-media--phone`).
+- Always `object-fit: cover`, never fill or stretch. Set the focal point with `--focus` so faces stay in frame.
+- Deliver WebP at exactly 2× the display width (HubSpot resizes to the width/height attributes). The hero image loads eager with `fetchpriority="high"`; everything else `loading="lazy"`.
+- Alt text says what the image shows and why it's there. Leave it empty (`alt=""`) only when a caption or name beside it already says it.
+- Video autoplays muted, inline and looping, with a poster, through `data-dw-video`: it pauses off screen and has a pause button (`.dw-video__pause`). Never autoplay with sound.
+
 ### Space and shape
 - Spacing scale 4, 8, 12, 16, 24, 32, 48, 64, 120. Eyebrow → heading → lede 16, heading block → content 48, columns 24 apart, cards 12 apart.
 - Sections pad 120 top and bottom (64 on phone); the hero is the only exception. Container 1520 max, side margins 40 (20 on mobile).

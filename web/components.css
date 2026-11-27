@@ -37,6 +37,21 @@
 .dw-icon-dot{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--dw-coral);color:var(--dw-white);flex:none}
 .dw-icon-dot .dw-icon{width:18px;height:18px}
 
+/* ============ Imagery: five shapes, always cover ============ */
+/* <figure class="dw-media dw-media--photo" style="--focus:50% 30%"><img src="…" alt="…" width="…" height="…" loading="lazy"></figure> */
+.dw-media{position:relative;margin:0;overflow:hidden;border-radius:var(--dw-cut-md);background:var(--dw-mist)}
+.dw-media > img,.dw-media > video{display:block;width:100%;height:100%;object-fit:cover;object-position:var(--focus,50% 40%)}
+.dw-media--lg{border-radius:var(--dw-cut-lg)}               /* inside big cards */
+.dw-media--reel{aspect-ratio:9/16}
+.dw-media--reel.dw-media--phone{border-radius:var(--dw-radius-reel)}
+.dw-media--portrait{aspect-ratio:4/5}
+.dw-media--photo{aspect-ratio:3/2}
+.dw-media--wide{aspect-ratio:16/9}
+.dw-avatar{aspect-ratio:1/1;border-radius:50%;object-fit:cover}
+/* Video: web/motion.js pauses it off screen and wires the pause button */
+.dw-video__pause{position:absolute;right:12px;bottom:12px;display:grid;place-items:center;width:40px;height:40px;border:0;border-radius:50%;background:rgba(17,17,17,.6);color:var(--dw-white);cursor:pointer}
+.dw-video__pause .dw-icon{width:18px;height:18px}
+
 /* ============ Type ============ */
 .dw-display,.dw-h1,.dw-h2l,.dw-h2,.dw-h3,.dw-h4,.dw-h5{font-family:var(--dw-font-display);font-weight:400;text-transform:uppercase;margin:0}
 .dw-display{font-size:var(--dw-fs-display);line-height:var(--dw-lh-display)}
