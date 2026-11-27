@@ -983,6 +983,30 @@ main{min-width:0}
 @media (max-width:1000px){.mo-row{grid-template-columns:1fr}.mo-demo{justify-content:flex-start}.mo-curves,.mo-hov,.fo-grounds{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.mo-row.go .mo-rise{animation:none}}
 
+
+/* ===== Imagery ===== */
+.im-ratios{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;padding:28px 24px;border-top:1px solid var(--color-grey-200)}
+.im-r{display:flex;flex-direction:column;gap:8px;width:150px}
+.im-r .fr{width:100%;overflow:hidden;border-radius:0 12px 12px 12px;background:#111}
+.im-r .fr img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block}
+.im-r b{font-family:var(--font-heading);font-weight:400;font-size:20px;text-transform:uppercase}
+.im-r small{font-size:12px;color:var(--color-grey-600);line-height:1.4}
+.im-r.av .fr{border-radius:50%}
+.im-r.reel .fr{border-radius:22px}
+.im-yn{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;padding:24px;border-top:1px solid var(--color-grey-200)}
+.im-yn > div{display:flex;flex-direction:column;gap:10px}
+.im-yn .fr{aspect-ratio:16/9;overflow:hidden;border-radius:0 12px 12px 12px;background:#111}
+.im-yn .fr img{width:100%;height:100%;display:block}
+.im-yn small{font-size:13px;color:var(--color-grey-600)}
+.im-yn small b{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;margin-right:6px}
+.im-yn .y b{color:#215F6A}.im-yn .n b{color:#da1e28}
+.im-corners{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding:24px;border-top:1px solid var(--color-grey-200)}
+.im-corners > div{display:flex;flex-direction:column;align-items:center;gap:6px}
+.im-corners i{display:block;width:72px;height:56px;background:var(--color-mist);border:2px solid #111}
+.im-corners small{font-family:var(--font-mono);font-size:10px;color:var(--color-grey-600);text-align:center}
+.im-corners .x i{border-color:#da1e28}
+@media (max-width:1000px){.im-yn{grid-template-columns:1fr}.im-corners{grid-template-columns:repeat(3,1fr)}}
+
 /* ---------- Decisions ---------- */
 .decide{background:var(--color-burgundy);color:#fff;padding:88px 0}
 .decide h2{color:#fff}
@@ -1060,6 +1084,7 @@ footer{padding:40px 0 56px;font-family:var(--font-mono);font-size:11px;text-tran
     <a href="#grid" data-nav>Grid &amp; breakpoints <span class="tag tag-soon">Agreed</span></a>
     <a href="#icons" data-nav>Icons <span class="tag tag-soon">Agreed</span></a>
     <a href="#motion" data-nav>Motion &amp; focus <span class="tag tag-soon">Agreed</span></a>
+    <a href="#imagery" data-nav>Imagery <span class="tag tag-review">Review</span></a>
   </div>
   <div class="nav-group">
     <p class="nav-label">Components</p>
@@ -1395,6 +1420,62 @@ footer{padding:40px 0 56px;font-family:var(--font-mono);font-size:11px;text-tran
           <div><b>Four speeds, three curves</b><p>17 durations and seven curves today, including a bounce.</p><p class="cd-rec">Tint 0.12, move 0.3, wipe 0.5, rise 1.4 (heading 1.8). Wipe, arrive and expo curves; linear only for loops. No bounce, no default <code>ease</code>.</p></div>
           <div><b>Hover</b><p>Eight hovers grow, lift or tilt, against the agreed button and card rules.</p><p class="cd-rec">Colour, wipe, underline, a 5&nbsp;px nudge or the ink spread. Nothing grows, lifts, tilts or zooms, images included.</p></div>
           <div><b>Focus ring</b><p>Coral alone is 2.9:1 on white and burgundy, under the 3:1 a focus ring needs, and focus is switched off in six places.</p><p class="cd-rec">C: keep the coral ring, with a thin burgundy edge on light grounds and white on dark. Never switch focus off.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- IMAGERY -->
+  <section class="sec" id="imagery">
+    <div class="wrap">
+      <h2>Imagery</h2>
+      <p class="lede">How photos, reels and video sit on the page: their shapes, corners, crop and how they’re delivered. Read from the 767 photos and 5 videos on the 33 pages scanned for icons (logos are covered by the marquee and logo tiles).</p>
+
+      <p class="sub">Shapes</p>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Five shapes</h3><p>Every photo uses one of these. The same photo is shown cropped to each.</p></div></div>
+        <div class="im-ratios"><div class="im-r reel"><div class="fr" style="aspect-ratio:9/16"><img src="img/prime-video-reel.jpg" alt=""></div><b>9:16</b><small>Reels and phone frames. The only rounded-all-round shape.</small></div><div class="im-r "><div class="fr" style="aspect-ratio:4/5"><img src="img/prime-video-reel.jpg" alt=""></div><b>4:5</b><small>People and portraits: team, testimonials with a photo.</small></div><div class="im-r "><div class="fr" style="aspect-ratio:3/2"><img src="img/prime-video-reel.jpg" alt=""></div><b>3:2</b><small>Case study and studio photos, image beside text (Half layout).</small></div><div class="im-r "><div class="fr" style="aspect-ratio:16/9"><img src="img/prime-video-reel.jpg" alt=""></div><b>16:9</b><small>Video, insight covers, wide media.</small></div><div class="im-r av"><div class="fr" style="aspect-ratio:1/1"><img src="img/cendrine-lavigne.jpg" alt=""></div><b>1:1</b><small>Avatars only, always a circle.</small></div></div>
+      </div>
+
+      <p class="sub">Corners</p>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>The image takes its container’s corner</h3><p>Four treatments instead of ten.</p></div></div>
+        <div class="im-corners"><div class=""><i style="border-radius:0 16px 16px 16px"></i><small>Cut 16<br>big cards, case covers</small></div><div class=""><i style="border-radius:0 12px 12px 12px"></i><small>Cut 12<br>small cards, insets</small></div><div class=""><i style="border-radius:50%"></i><small>Circle<br>avatars only</small></div><div class=""><i style="border-radius:22px"></i><small>Round 22<br>hero reels only</small></div><div class="x"><i style="border-radius:10px"></i><small>Live today also: 10, 12, 24 round; 14, 18, 22 cut</small></div></div>
+      </div>
+
+      <p class="sub">Crop</p>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Always cover, never stretch</h3><p>69 images on the site use <code>fill</code>, which stretches them to the frame.</p></div></div>
+        <div class="im-yn">
+          <div class="y"><div class="fr"><img src="img/prime-video-reel.jpg" alt="" style="object-fit:cover;object-position:50% 22%"></div><small><b>Yes</b>Cover: fills the frame and crops the edges. Set the focal point so faces stay in frame.</small></div>
+          <div class="n"><div class="fr"><img src="img/prime-video-reel.jpg" alt="" style="object-fit:fill"></div><small><b>No</b>Fill: stretches the photo. On the media slider and case study screens today.</small></div>
+        </div>
+      </div>
+
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>What the live site does today</h3><p>767 photos and 5 videos across 33 pages.</p></div></div>
+        <div class="audit-wrap"><table class="audit">
+          <thead><tr><th>What</th><th>Today</th><th>Proposed</th></tr></thead>
+          <tbody>
+            <tr><td>Shapes</td><td>About 15: 1:1 (229, mostly avatars), 281 tall frames between 0.4 and 0.7 that are almost 9:16, 16:9 (99), 21:9, 4:5, 4:3, 2:3, 3:2</td><td class="new">9:16, 4:5, 3:2, 16:9, 1:1</td></tr>
+            <tr><td>Corners</td><td>10 treatments: cut 12, 14, 16, 18, 22; round 10, 12, 22, 24; circles</td><td class="new">Cut 16, cut 12, circle, round 22 for reels</td></tr>
+            <tr><td>Crop</td><td>696 cover, 69 fill (stretched), 2 contain</td><td class="new">Cover</td></tr>
+            <tr><td>Format and size</td><td>686 JPEG, 53 WebP, 28 PNG. 179 sent at over 2.5× their display size; 375 smaller than displayed, so soft</td><td class="new">WebP, exactly 2× display width</td></tr>
+            <tr><td>Loading</td><td>701 lazy, 15 eager, 51 unset</td><td class="new">Hero eager with high priority, the rest lazy</td></tr>
+            <tr><td>Alt text</td><td>503 of 767 empty, including reel thumbnails and insight covers that carry meaning</td><td class="new">Describe what matters; empty only beside its own caption</td></tr>
+            <tr><td>Video</td><td>5 on case studies, 4 autoplay, all muted and looping with a poster</td><td class="new">Keep, plus pause when off screen and a pause control</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+
+      <div class="card-decide">
+        <h3>Your call</h3>
+        <div class="cd-grid">
+          <div><b>Five shapes</b><p>About fifteen crops, including 281 near-9:16 frames that each differ slightly.</p><p class="cd-rec">9:16 for reels, 4:5 for people, 3:2 for photos, 16:9 for video and covers, 1:1 only for round avatars.</p></div>
+          <div><b>Corners and crop</b><p>Ten corner treatments and 69 stretched images.</p><p class="cd-rec">The image takes its container’s cut corner (16 big, 12 small); circles for avatars; round 22 only for reels. Always cover, never fill.</p></div>
+          <div><b>Delivery and alt text</b><p>Mostly JPEG at the wrong size, and two thirds of photos without alt text.</p><p class="cd-rec">WebP at 2× the display width, hero eager and the rest lazy. Alt text says what the image shows; empty only when a caption beside it already does.</p></div>
+          <div><b>Video</b><p>Case study videos autoplay muted on a loop.</p><p class="cd-rec">Keep autoplay muted and inline with a poster, pause it off screen, and give it a pause button.</p></div>
         </div>
       </div>
     </div>
