@@ -1,0 +1,62 @@
+// Web system checks:
+// 1. web/components.css uses only tokens that web/tokens.css defines, and no raw hex.
+// 2. Brand values shared with the app (src/tokens.css) are identical.
+// 3. Every web text/background pair meets WCAG contrast, or is a listed exception.
+import { readFileSync } from "node:fs";
+
+const read = (p) => readFileSync(new URL(p, import.meta.url), "utf8");
+const web = read("../web/tokens.css");
+const app = read("../src/tokens.css");
+const comp = read("../web/components.css");
+let problems = [];
+
+// 1. Tokens only
+const defined = new Set([...web.matchAll(/(--dw-[\w-]+)\s*:/g)].map((m) => m[1]));
+const local = new Set(["--mx", "--my", "--d"]); // set per element by motion.js or inline
+for (const m of comp.matchAll(/var\((--[\w-]+)/g)) if (!defined.has(m[1]) && !local.has(m[1])) problems.push(`components.css: undefined token ${m[1]}`);
+for (const m of comp.matchAll(/#[0-9a-fA-F]{3,8}\b/g)) problems.push(`components.css: raw colour ${m[0]}`);
+
+// 2. Shared values match the app
+const vals = (css) => Object.fromEntries([...css.matchAll(/(--dw-[\w-]+)\s*:\s*([^;]+);/g)].map((m) => [m[1], m[2].trim()]));
+const w = vals(web), a = vals(app);
+let shared = 0;
+for (const k of Object.keys(w)) if (k in a) { shared++; if (w[k].toLowerCase() !== a[k].toLowerCase()) problems.push(`${k} is ${w[k]} on the web but ${a[k]} in the app`); }
+
+// 3. Contrast
+const tok = Object.fromEntries([...web.matchAll(/--(dw-[\w-]+):\s*(#[0-9a-fA-F]{6})/g)].map((m) => [m[1], m[2]]));
+const lum = (hex) => {
+  const c = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255).map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+  return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+};
+const ratio = (x, y) => { const [p, q] = [lum(x), lum(y)].sort((m, n) => n - m); return (p + 0.05) / (q + 0.05); };
+const PAIRS = [
+  ["dw-ink", "dw-white", 4.5, "body text"],
+  ["dw-ink", "dw-mist", 4.5, "body text on mist sections and cards"],
+  ["dw-grey-600", "dw-white", 4.5, "ledes and help text"],
+  ["dw-grey-600", "dw-mist", 4.5, "card text on mist"],
+  ["dw-grey-500", "dw-white", 4.5, "meta and placeholders, on white only"],
+  ["dw-burgundy", "dw-white", 4.5, "ghost buttons, required marks"],
+  ["dw-white", "dw-burgundy", 4.5, "headings on burgundy"],
+  ["dw-on-burgundy-muted", "dw-burgundy", 4.5, "ledes on burgundy"],
+  ["dw-white", "dw-ink", 4.5, "headings on ink"],
+  ["dw-on-ink-muted", "dw-ink", 4.5, "ledes on ink"],
+  ["dw-coral", "dw-ink", 4.5, "eyebrows on ink"],
+  ["dw-grey-200", "dw-burgundy", 4.5, "FAQ answers on the open card"],
+  ["dw-red", "dw-white", 4.5, "form errors"],
+  ["dw-teal", "dw-white", 4.5, "positive states"],
+  ["dw-burgundy", "dw-white", 3, "selected text highlight"],
+];
+const EXCEPTIONS = [
+  ["dw-white", "dw-coral", "primary button label, kept for the brand"],
+  ["dw-coral", "dw-burgundy", "eyebrows and the highlight phrase on burgundy, kept for the brand"],
+];
+let fail = 0;
+for (const [fg, bg, min, why] of PAIRS) {
+  const r = ratio(tok[fg], tok[bg]); const ok = r >= min; if (!ok) fail++;
+  console.log(`${ok ? "PASS" : "FAIL"}  ${r.toFixed(2)}:1  ${fg} on ${bg}  (needs ${min}, ${why})`);
+}
+for (const [fg, bg, why] of EXCEPTIONS) console.log(`NOTE  ${ratio(tok[fg], tok[bg]).toFixed(2)}:1  ${fg} on ${bg}  (accepted exception: ${why})`);
+if (fail) problems.push(`${fail} web contrast pair(s) below the minimum`);
+
+if (problems.length) { console.error("\n" + [...new Set(problems)].join("\n")); process.exit(1); }
+console.log(`\nWeb: components use only tokens (${defined.size} defined), ${shared} shared values match the app, all pairs pass.`);

@@ -70,3 +70,22 @@ One app at a time, one pull request each, merged by Joey:
 1. Import `tokens.css` alone first: it only adds `--dw-*` variables and changes nothing on screen. Then add `base.css`, `theme.css` and `components.css`, removing the app's own colour and font tokens.
 2. Replace stock Tailwind colours and `rounded-*` classes with the theme names and `cut-*` utilities.
 3. Swap the app's UI components for the ones here, page by page.
+
+## The website: `web/`
+
+Tokens, base styles, components, motion and a Tailwind 3 preset for dreww.ca, all agreed on the [web reference page](docs/web-design-system.html). Rules in [`web/CLAUDE.md`](web/CLAUDE.md); a full page built only from these files in [`web/starter.html`](web/starter.html).
+
+```css
+@import "@dreww/design/web/tokens.css";
+@import "@dreww/design/web/base.css";
+@import "@dreww/design/web/components.css";
+```
+
+```js
+import "@dreww/design/web/motion.js";
+// tailwind.config.js
+import dreww from "@dreww/design/web/tailwind-preset";
+export default { presets: [dreww], /* … */ };
+```
+
+`npm test` also checks that web components use only web tokens, that brand values shared with the app match, and that every web colour pair passes contrast.

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dreww page starter</title>
+<!-- Starter for prototypes: a full page built only from web/*.css and web/motion.js. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="components.css">
+<script src="motion.js" defer></script>
+</head>
+<body>
+
+<!-- Hero: burgundy, blur rise on load -->
+<header class="dw-hero dw-hero--glow dw-on-burgundy">
+  <div class="dw-hero__copy" data-dw-rise>
+    <p class="dw-eyebrow">Case studies</p>
+    <h1 class="dw-h1 dw-display--short">Real results from businesses like yours</h1>
+    <p class="dw-lead">See how Dreww helped brands grow. Each case study shows the challenge, the work we did and the results, in real numbers.</p>
+  </div>
+</header>
+<div class="dw-section--burgundy dw-on-burgundy dw-logo-strip">
+  <div class="dw-marquee dw-marquee--logos" data-dw-marquee="40" style="flex:1" aria-label="Client logos">
+    <div class="dw-marquee__track">
+      <img alt="Example client" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='32'%3E%3Ctext x='0' y='24' font-family='Arial' font-weight='700' font-size='22'%3EEXAMPLE%3C/text%3E%3C/svg%3E">
+      <img alt="Example client" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='32'%3E%3Ctext x='0' y='24' font-family='Georgia' font-style='italic' font-size='24'%3EClient%3C/text%3E%3C/svg%3E">
+      <img alt="Example client" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='32'%3E%3Ctext x='0' y='24' font-family='Arial' font-size='22' letter-spacing='4'%3EBRAND%3C/text%3E%3C/svg%3E">
+      <img alt="Example client" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='32'%3E%3Ctext x='0' y='24' font-family='Arial' font-weight='700' font-size='22'%3EEXAMPLE%3C/text%3E%3C/svg%3E">
+      <img alt="Example client" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='32'%3E%3Ctext x='0' y='24' font-family='Georgia' font-style='italic' font-size='24'%3EClient%3C/text%3E%3C/svg%3E">
+      <img alt="Example client" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='32'%3E%3Ctext x='0' y='24' font-family='Arial' font-size='22' letter-spacing='4'%3EBRAND%3C/text%3E%3C/svg%3E">
+    </div>
+  </div>
+</div>
+
+<!-- Content on white -->
+<section class="dw-section dw-section--white">
+  <div class="dw-container">
+    <div class="dw-heading">
+      <p class="dw-eyebrow"><span class="dw-eyebrow__n">01</span><span class="dw-eyebrow__dot">·</span>Core services</p>
+      <h2 class="dw-h2">Growth systems built around business outcomes</h2>
+      <p class="dw-lead">One team for content, ads and the systems that track them to revenue.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--dw-space-md)">
+      <a class="dw-card-svc" href="#"><span class="dw-card-svc__n">01</span><span><h4>Always-On Social Media</h4><p>Content and community that build demand month after month.</p><span class="dw-go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></span></a>
+      <a class="dw-card-svc" href="#"><span class="dw-card-svc__n">02</span><span><h4>Lead Generation</h4><p>Qualified leads, tracked to signed deals in HubSpot.</p><span class="dw-go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ on mist -->
+<section class="dw-section dw-section--mist">
+  <div class="dw-container dw-faq-layout">
+    <div class="dw-faq-layout__head">
+      <div class="dw-heading" style="margin-bottom:var(--dw-space-xl)"><p class="dw-eyebrow">FAQ</p><h2 class="dw-h2">Questions before your first call</h2><p class="dw-lead">What Dreww does, who we work with and how we start.</p></div>
+      <a class="dw-link" href="#">Still have a question? Book a call <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <ul class="dw-faq-list" data-dw-faq>
+      <li class="dw-faq is-open"><button type="button" aria-expanded="true"><span class="dw-faq__n">01</span><span class="dw-faq__q">What is Dreww?<span class="dw-faq__emo" aria-hidden="true">👋</span></span><span class="dw-faq__plus"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M8 2v12"/></svg></span></button><div class="dw-faq__a"><div><p>A growth marketing agency in Montréal. Example answer, first sentence answers outright.</p></div></div></li>
+      <li class="dw-faq"><button type="button" aria-expanded="false"><span class="dw-faq__n">02</span><span class="dw-faq__q">How do I get started?<span class="dw-faq__emo" aria-hidden="true">📞</span></span><span class="dw-faq__plus"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M8 2v12"/></svg></span></button><div class="dw-faq__a"><div><p>Book a call. Example answer.</p></div></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Final CTA: always last before the footer -->
+<section class="dw-cta dw-on-ink" data-dw-cta>
+  <div class="dw-cta__copy">
+    <p class="dw-eyebrow">Your next step</p>
+    <h2 class="dw-display"><span class="dw-cta__line">Let’s turn your</span><span class="dw-cta__line">marketing into</span><span class="dw-cta__line"><span class="dw-rot"><span class="dw-rot__list"><span>revenue</span><span>qualified leads</span><span>online sales</span><span>new users</span></span></span></span></h2>
+    <p class="dw-lead">A 30-minute call with a strategist.</p>
+    <div class="dw-cta__actions"><a class="dw-btn dw-btn--primary dw-btn--lg" href="#">Book a call</a><a class="dw-link" href="#">Explore our services <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></div>
+  </div>
+</section>
+
+</body>
+</html>

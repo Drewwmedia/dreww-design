@@ -128,8 +128,10 @@ main{min-width:0}
 .row .spec{font-family:var(--font-mono);font-size:11px;color:var(--color-grey-500);line-height:1.6;text-transform:uppercase;letter-spacing:.04em}
 .row .spec b{display:block;color:var(--color-grey-900);font-weight:500;font-size:12px}
 .row .sample{min-width:0;overflow:hidden;text-overflow:ellipsis}
-.t-h1{font-family:var(--font-heading);text-transform:uppercase;font-size:72px;line-height:1.1}
-.t-h2{font-family:var(--font-heading);text-transform:uppercase;font-size:clamp(54px,4.3vw,62px);line-height:1.06}
+.t-disp{font-family:var(--font-heading);text-transform:uppercase;font-size:82px;line-height:1}
+.t-h1{font-family:var(--font-heading);text-transform:uppercase;font-size:68px;line-height:1.04}
+.t-h2l{font-family:var(--font-heading);text-transform:uppercase;font-size:62px;line-height:1}
+.t-h2{font-family:var(--font-heading);text-transform:uppercase;font-size:44px;line-height:1.06}
 .t-h3{font-family:var(--font-heading);text-transform:uppercase;font-size:28px;line-height:1.3}
 .t-h4{font-family:var(--font-heading);text-transform:uppercase;font-size:22px;line-height:1.4}
 .t-h5{font-family:var(--font-heading);text-transform:uppercase;font-size:20px;line-height:1.4}
@@ -415,6 +417,452 @@ main{min-width:0}
 @media (max-width:1100px){.ft-grid{grid-template-columns:1fr 1fr 1fr}.hd-search span,.hd-search kbd{display:none}.hd-search{min-width:0}}
 @media (max-width:820px){.hd-nav{display:none}.ft-grid{grid-template-columns:1fr 1fr}.mn-body,.ft{padding-left:22px;padding-right:22px}}
 
+
+
+/* Nav dividers and hover underline (as live) */
+.hd-nav .hd-tab + .hd-tab::before{content:"";position:absolute;left:0;top:50%;width:1px;height:16px;margin-top:-8px;background:#ee7464;opacity:.55;transition:opacity .25s}
+.hd-nav:hover .hd-tab + .hd-tab::before,.hd.is-menu .hd-nav .hd-tab + .hd-tab::before{opacity:0}
+.hd-tab .hd-tb{position:absolute;inset:3px 4px;width:calc(100% - 8px);height:calc(100% - 6px);overflow:visible;pointer-events:none;opacity:1;transform:none}
+.hd-tb path{fill:none;stroke:#ee7464;stroke-width:2;vector-effect:non-scaling-stroke;stroke-dasharray:1 1;stroke-dashoffset:1;transition:stroke-dashoffset .35s cubic-bezier(.7,0,.2,1)}
+.hd-tab:hover .hd-tb path,.hd-tab:focus-visible .hd-tb path{stroke-dashoffset:calc(1 - var(--to,.3))}
+.hd.is-menu .hd-tb{display:none}
+/* ===== Menu, complete (as live) ===== */
+.card-stage .hd-tab{padding:10px 14px}
+.card-stage .hd-end{gap:12px}
+.mn-closerow{display:flex;justify-content:flex-end;padding:4px 24px 0}
+.mn-close{display:inline-flex;align-items:center;gap:10px;height:36px;padding:0 12px 0 14px;border:1px solid rgba(255,255,255,.28);border-radius:0 8px 8px 8px;background:rgba(255,255,255,.04);color:#fff;font:400 13px "Anton",sans-serif;letter-spacing:.04em;text-transform:uppercase;cursor:pointer}
+.mn-close svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
+.mn-close:hover{border-color:#fff}
+.mn-pane.on{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:48px;align-items:center}
+.mn-pane.mn-svc.on{grid-template-columns:minmax(0,1.1fr) minmax(0,.8fr) minmax(0,.7fr)}
+.mn-item .mn-big{color:rgba(255,255,255,.5);font-size:clamp(26px,2.6vw,36px)}
+.mn-item.is-on .mn-big{color:#fff}
+.mn-item.is-on .mn-sx{grid-template-rows:1fr}
+.mn-item.is-on .mn-sx>span>span{opacity:1;transform:none}
+.mn-item.is-on .mn-big{transform:translateX(16px)}
+.mn-all{display:inline-flex;align-items:center;gap:8px;margin-top:22px;padding:8px 12px;border:1px solid rgba(255,255,255,.3);border-radius:0 8px 8px 8px;color:#fff;text-decoration:none;font-size:13px;font-weight:500}
+.mn-all svg,.mn-pv-all svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.mn-all:hover{border-color:#fff}
+.mn-how .mn-kick{margin-bottom:12px}
+.mn-how p:not(.mn-kick){margin:0;font-size:16px;line-height:1.6;color:rgba(255,255,255,.85)}
+.mn-pvs{position:relative}
+.mn-pv{display:none}
+.mn-pv.on{display:block}
+/* reel */
+.mn-reel{position:relative;aspect-ratio:9/16;max-height:420px;margin-left:auto;overflow:hidden;border-radius:0 16px 16px 16px;background:#111;color:#fff}
+.mn-reel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.mn-reel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0,rgba(0,0,0,0) 22%,rgba(0,0,0,0) 55%,rgba(0,0,0,.8) 100%)}
+.mn-reel > *:not(img){position:absolute;z-index:1}
+.mn-bars{top:8px;left:8px;right:8px;display:flex;gap:4px}
+.mn-bars i{flex:1;height:2px;background:rgba(255,255,255,.35)}
+.mn-bars i:first-child{background:#fff}
+.mn-count{top:18px;left:10px;font:500 11px "IBM Plex Mono",monospace;padding:3px 7px;border-radius:0 6px 6px 6px;background:rgba(0,0,0,.45)}
+.mn-snd{top:16px;right:10px;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.45);border:0;color:#fff}
+.mn-snd svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mn-cap{left:12px;right:12px;bottom:12px;font-size:12px;line-height:1.4}
+.mn-cap b{display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:6px}
+.mn-cap b i{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#fff;color:#111;font:700 11px "DM Sans",sans-serif;font-style:normal}
+.mn-cap span{display:block;color:rgba(255,255,255,.85)}
+.mn-cap small{display:flex;align-items:center;gap:4px;margin-top:6px;font:500 11px "IBM Plex Mono",monospace}
+.mn-cap small svg{width:10px;height:10px}
+/* list previews: case studies, insights, press */
+.mn-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:0 16px 16px 16px;padding:20px}
+.mn-box .mn-kick{margin-bottom:14px}
+.mn-row{display:grid;grid-template-columns:96px minmax(0,1fr);gap:14px;align-items:center;padding:10px;margin-bottom:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:0 12px 12px 12px;color:#fff;text-decoration:none;transition:border-color .2s}
+.mn-row:hover{border-color:#ee7464}
+.mn-th{aspect-ratio:16/10;border-radius:0 8px 8px 8px;background:#2a2024 center/cover no-repeat;display:grid;place-items:center;overflow:hidden}
+.mn-th img{max-width:70%;max-height:60%;filter:brightness(0) invert(1);opacity:.9}
+.mn-row small{display:block;font:500 11px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:4px}
+.mn-row b{display:block;font:400 15px/1.2 "Anton",sans-serif;text-transform:uppercase}
+.mn-row em{display:flex;justify-content:space-between;margin-top:6px;font:500 11px "IBM Plex Mono",monospace;font-style:normal;color:rgba(255,255,255,.55)}
+.mn-pv-all{display:inline-flex;align-items:center;gap:8px;float:right;margin-top:6px;padding:6px 10px;border:1px solid rgba(255,255,255,.3);border-radius:0 8px 8px 8px;color:#fff;text-decoration:none;font-size:12px;font-weight:500}
+.mn-box::after{content:"";display:table;clear:both}
+/* logo wall, photos, tool */
+.mn-logos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.mn-logos span{display:grid;place-items:center;height:76px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:0 12px 12px 12px}
+.mn-logos img{max-width:62%;max-height:34px;filter:brightness(0) invert(1);opacity:.85}
+.mn-photos{display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:1fr 1fr;gap:10px;height:300px}
+.mn-photos span{border-radius:0 12px 12px 12px;background:#2a2024;display:grid;place-items:end start;padding:10px;font:500 10px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.mn-photos span:first-child{grid-row:span 2}
+.mn-tool h4{font:400 28px/1.1 "Anton",sans-serif;text-transform:uppercase;margin:0 0 16px}
+.mn-tool ul{list-style:none;margin:18px 0 0;padding:16px 0 0;border-top:1px solid rgba(255,255,255,.12);display:grid;gap:8px;font-size:14px;color:rgba(255,255,255,.7)}
+/* bottom strip */
+.mn-foot{display:flex;align-items:center;gap:28px;margin:0 48px;padding:18px 0 22px;border-top:1px solid rgba(255,255,255,.12);overflow:hidden}
+.mn-meta{flex:none;font:500 12px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.mn-tick{flex:1;min-width:0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mn-tick-in{display:flex;align-items:center;gap:40px;width:max-content;animation:mn-tick 40s linear infinite}
+.mn-tick img{height:24px;width:auto;filter:brightness(0) invert(1);opacity:.85}
+.mn-tick q{font-size:14px;color:rgba(255,255,255,.9);white-space:nowrap}
+.mn-tick q + i{font:500 11px "IBM Plex Mono",monospace;font-style:normal;letter-spacing:.06em;text-transform:uppercase;color:#ee7464;white-space:nowrap;margin-left:-28px}
+@keyframes mn-tick{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.mn-tick-in{animation:none}}
+.mn-tick img.keep,.mn-logos img.keep,.mn-th img.keep{filter:none;opacity:1}
+@media (max-width:1000px){.mn-pane.on,.mn-pane.mn-svc.on{grid-template-columns:1fr}.mn-reel{margin:0;max-height:360px}.mn-foot{margin:0 22px}}
+
+/* ===== Mobile header + menu ===== */
+.mob-row{display:flex;flex-wrap:wrap;gap:24px;justify-content:center;padding:32px 16px;background:#f2f4f8}
+.mob{width:320px;flex:none;border-radius:0 24px 24px 24px;overflow:hidden;border:6px solid #111;background:#892951;color:#fff;font-family:"DM Sans",sans-serif;position:relative}
+.mob small.cap{display:block;text-align:center;font:500 11px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:#737373;margin-top:10px}
+.mob-col{display:flex;flex-direction:column;align-items:center}
+.mob-hd{display:flex;align-items:center;gap:10px;padding:14px 14px}
+.mob-hd .hd-logo{margin-right:auto}
+.mob-hd .hd-logo svg{width:84px;height:auto;display:block}
+.mob-hd .btn--sm{font-size:14px;padding:9px 14px}
+.mob-burger,.mob-x{display:grid;place-items:center;width:38px;height:38px;border:0;border-radius:0 8px 8px 8px;cursor:pointer}
+.mob-burger{background:rgba(255,255,255,.14);color:#fff}
+.mob-x{background:#ee7464;color:#fff}
+.mob-burger svg,.mob-x svg,.mob-bar button svg,.mob-bar a.ic svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.mob-hero{padding:24px 16px 32px}
+.mob-hero p.e{font:500 11px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:#ee7464;margin:0 0 10px}
+.mob-hero h4{font:400 30px/1.05 "Anton",sans-serif;text-transform:uppercase;margin:0 0 12px}
+.mob-hero h4 em{font-style:normal;color:#ee7464}
+.mob-hero p.b{font-size:14px;line-height:1.5;margin:0;color:rgba(255,255,255,.9)}
+.mob-menu{position:relative;isolation:isolate;background:#181215;height:640px;display:flex;flex-direction:column}
+.mob-menu::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(420px 300px at 100% 100%,rgba(238,116,100,.28),transparent 60%),radial-gradient(360px 260px at 0 30%,rgba(137,41,81,.45),transparent 65%)}
+.mob-tools{display:flex;gap:10px;padding:0 14px 14px}
+.mob-search{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;height:40px;border:1.5px solid rgba(255,255,255,.85);border-radius:0 8px 8px 8px;background:none;color:#fff;font:400 15px "Anton",sans-serif;text-transform:uppercase;letter-spacing:.03em}
+.mob-search svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round}
+.mob-lang{display:flex;padding:3px;border-radius:999px;background:rgba(255,255,255,.12)}
+.mob-lang span{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;font:400 13px "Anton",sans-serif;color:rgba(255,255,255,.7)}
+.mob-lang span.on{background:#fff;color:#892951}
+.mob-scroll{flex:1;overflow-y:auto;padding:0 14px;scrollbar-width:thin}
+.mob-acc{border-bottom:1px solid rgba(255,255,255,.14)}
+.mob-acc > button{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;width:100%;padding:12px 0;font:400 32px/1 "Anton",sans-serif;text-transform:uppercase;color:#fff;cursor:pointer}
+.mob-acc > button svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s}
+.mob-acc.on > button{color:#ee7464}
+.mob-acc.on > button svg{transform:rotate(180deg)}
+.mob-acc > button:focus-visible{outline:2px solid #ee7464;outline-offset:2px}
+.mob-panel{display:none;padding:4px 0 16px}
+.mob-acc.on .mob-panel{display:grid;gap:8px}
+.mob-card{display:grid;grid-template-columns:1fr 28px;gap:10px;align-items:center;padding:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:0 12px 12px 12px;color:#fff;text-decoration:none}
+.mob-card b{display:block;font-size:15px}
+.mob-card span{display:block;font-size:12px;line-height:1.4;color:rgba(255,255,255,.7);margin-top:2px}
+.mob-card i{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#ee7464}
+.mob-card i svg{width:14px;height:14px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.mob-all{justify-self:start;display:inline-flex;align-items:center;gap:8px;margin-top:4px;padding:8px 12px;border:1px solid rgba(255,255,255,.4);border-radius:0 8px 8px 8px;color:#fff;text-decoration:none;font-size:12px;font-weight:600}
+.mob-all svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.mob-tick{overflow:hidden;padding:14px 0}
+.mob-tick .mn-tick-in{gap:28px}
+.mob-bar{display:flex;gap:8px;padding:10px 14px 14px;border-top:1px solid rgba(255,255,255,.1)}
+.mob-bar a.ic{display:grid;place-items:center;width:42px;height:42px;flex:none;border:1.5px solid #ee7464;border-radius:0 8px 8px 8px;color:#ee7464}
+.mob-bar .btn{flex:1;justify-content:center;font-size:15px;padding:11px 12px}
+.mob-bar button{display:grid;place-items:center;width:42px;height:42px;flex:none;border:1.5px solid rgba(255,255,255,.5);border-radius:0 8px 8px 8px;background:none;color:#fff}
+
+/* ===== Footer, complete (as live) ===== */
+.ft-news{text-align:center;padding:8px 0 56px;margin-bottom:48px;border-bottom:1px solid rgba(255,255,255,.12)}
+.ft-news .ft-h{margin-bottom:10px}
+.ft-news h4{font:400 36px/1.1 "Anton",sans-serif;text-transform:uppercase;margin:0 0 10px}
+.ft-news > p{margin:0 auto 24px;max-width:44ch;font-size:15px;color:rgba(255,255,255,.8)}
+.ft-news form{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:520px;margin:0 auto;text-align:left}
+.ft-news .full{grid-column:1 / -1}
+.ft-news .f-input{height:48px}
+.ft-news .fine{grid-column:1 / -1;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:12px;color:rgba(255,255,255,.6)}
+.ft-news .fine a{color:inherit}
+.ft .ft-grid{grid-template-columns:1.2fr 1.5fr .9fr .8fr 1.1fr .8fr;gap:24px}
+@media (max-width:1100px){.ft .ft-grid{grid-template-columns:1fr 1fr 1fr}}
+@media (max-width:820px){.ft .ft-grid{grid-template-columns:1fr 1fr}}
+.ft-logo svg{width:150px;height:auto;display:block;margin-bottom:22px}
+.ft .ft-soc{margin-top:18px;gap:8px}
+.ft .ft-soc a{width:auto;height:auto;padding:4px;background:none;border-radius:0}
+.ft .ft-soc a svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ft .ft-soc a:hover{background:none;color:#ee7464}
+.ft-plat{flex-direction:column;gap:18px;padding:28px 0}
+.ft-plat .ft-h{margin:0}
+.ft-plat-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 48px}
+.ft-plat-row b{font:700 15px "DM Sans",sans-serif;color:#fff;letter-spacing:-.01em;white-space:nowrap}
+.ft-plat-row b small{display:block;font:500 8px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.ft-bot{padding-top:24px}
+.ft-legal a:first-child{margin-left:0}
+@media (max-width:600px){.ft-news form{grid-template-columns:1fr}.ft-news h4{font-size:28px}.ft-plat-row{gap:14px 28px}}
+
+
+/* ===== Spacing & radius ===== */
+.sp-scale{display:flex;flex-direction:column;gap:0;background:#fff;border:1px solid var(--color-grey-200);border-radius:0 8px 8px 8px;overflow:hidden}
+.sp-row{display:grid;grid-template-columns:140px minmax(0,1fr) minmax(0,1.3fr);align-items:center;gap:20px;padding:12px 20px;border-bottom:1px solid var(--color-grey-200)}
+.sp-row:last-child{border-bottom:0}
+.sp-row b{font-family:var(--font-mono);font-size:13px;font-weight:500}
+.sp-row .bar{height:16px;background:var(--color-burgundy)}
+.sp-row span{font-size:14px;color:var(--color-grey-600)}
+.sp-row.big .bar{background:var(--color-grey-900)}
+.sp-tok{font-family:var(--font-mono);font-size:11px;color:var(--color-grey-500);display:block;margin-top:2px}
+/* measured specimen */
+.spec{position:relative;background:#fff;padding:0}
+.spec-gap{position:relative;display:flex;align-items:center;justify-content:flex-end;background:repeating-linear-gradient(135deg,#f2f4f8 0 6px,#e9ecf2 6px 12px);font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-grey-600);padding:0 10px}
+.spec-gap.v{border-left:1px dashed var(--color-grey-500);border-right:1px dashed var(--color-grey-500)}
+.spec-sec{display:grid;grid-template-columns:40px 1fr 40px}
+.spec-side{background:repeating-linear-gradient(135deg,#f2f4f8 0 6px,#e9ecf2 6px 12px);display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-grey-600)}
+.spec-body{padding:0;background:#fff}
+.spec-body > p,.spec-body > h3{background:#fff}
+.spec-eyebrow{font-family:var(--font-mono);font-size:14px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--color-coral);margin:0}
+.spec-h2{font-family:var(--font-heading);font-weight:400;text-transform:uppercase;font-size:clamp(32px,4vw,54px);line-height:1.06;margin:0}
+.spec-lede{font-size:18px;color:var(--color-grey-600);margin:0;max-width:52ch}
+.spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.spec-grid div{height:120px;background:var(--color-mist);border-radius:0 16px 16px 16px;display:grid;place-items:center;font-family:var(--font-mono);font-size:11px;color:var(--color-grey-500);text-transform:uppercase;letter-spacing:.06em}
+.spec-colgap{display:grid;grid-template-columns:1fr 24px 1fr 24px 1fr;height:120px}
+.spec-colgap div{background:var(--color-mist);border:1px solid var(--color-grey-200);border-radius:0 16px 16px 16px}
+.spec-colgap i{background:repeating-linear-gradient(135deg,#f2f4f8 0 6px,#dde1e8 6px 12px)}
+/* audit */
+.audit{width:100%;border-collapse:collapse;font-size:14px;background:#fff}
+.audit th{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--color-grey-500);text-align:left;padding:12px 20px;border-bottom:1px solid var(--color-grey-200)}
+.audit td{padding:14px 20px;border-bottom:1px solid var(--color-grey-200);vertical-align:top;color:var(--color-grey-600)}
+.audit td:first-child{color:var(--color-grey-900);font-weight:700}
+.audit td.new{color:var(--color-grey-900);font-weight:500}
+.audit tr:last-child td{border-bottom:0}
+.audit-wrap{overflow-x:auto}
+/* radius */
+.rad-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.rad{background:#fff;border:1px solid var(--color-grey-200);border-radius:0 8px 8px 8px;overflow:hidden}
+.rad-stage{height:150px;display:grid;place-items:center;background:var(--color-mist)}
+.rad-shape{width:96px;height:72px;background:var(--color-burgundy)}
+.rad-body{padding:14px 16px 16px}
+.rad-body h3{font-size:15px;font-weight:700;margin:0 0 2px}
+.rad-body code{font-family:var(--font-mono);font-size:12px;color:var(--color-grey-600)}
+.rad-body p{font-size:13px;color:var(--color-grey-500);margin:8px 0 0;line-height:1.45}
+.rad-live{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.rad-live .rad-stage{height:130px}
+.rad-live .rad-shape{width:110px;height:80px;background:#fff;border:2px solid var(--color-grey-900)}
+.rad-tag{display:inline-block;margin-top:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:0 4px 4px 4px;border:1px solid var(--color-grey-200)}
+.rad-tag.fix{border-color:var(--color-burgundy);color:var(--color-burgundy)}
+@media (max-width:1000px){.rad-grid,.rad-live{grid-template-columns:1fr 1fr}.sp-row{grid-template-columns:60px 1fr}.sp-row span{grid-column:1 / -1}.spec-grid{grid-template-columns:1fr}}
+
+
+/* ===== Eyebrows & headings ===== */
+.on-dark .eh-h2l{color:#fff}
+.eh-block .eh-h2{max-width:900px;min-width:min(640px,100%)}
+/* burgundy colour options */
+.bo{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.bo > div{border:1px solid var(--color-grey-200);border-radius:0 8px 8px 8px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.bo .st{background:var(--color-burgundy);padding:32px 26px;display:flex;flex-direction:column;gap:14px;flex:1}
+.bo .st .eh-h2{color:#fff;font-size:clamp(24px,2.4vw,34px)}
+.bo .st p.l{margin:0;font-size:15px;line-height:1.5}
+.bo .meta{padding:14px 18px;font-size:13px;color:var(--color-grey-600);display:grid;gap:6px}
+.bo .meta b{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--color-grey-900)}
+.bo .meta span{display:flex;justify-content:space-between;gap:10px;font-family:var(--font-mono);font-size:11px}
+.bo .pass{color:#215F6A}.bo .fail{color:#da1e28}
+.yn.lc{grid-template-columns:2fr 1fr}
+.yn.lc .yes h3{max-width:900px}
+@media (max-width:1000px){.yn.lc{grid-template-columns:1fr}}
+.bo .rec{outline:2px solid var(--color-burgundy);outline-offset:-2px}
+
+/* highlight variations */
+.hv-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.hv{border:1px solid var(--color-grey-200);border-radius:0 8px 8px 8px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.hv .st{background:var(--color-burgundy);padding:22px 18px;flex:1;display:flex;align-items:center}
+.hv h3{font-family:var(--font-heading);font-weight:400;text-transform:uppercase;font-size:clamp(20px,1.9vw,28px);line-height:1.08;color:#fff;margin:0}
+.hv .meta{padding:10px 12px;display:grid;gap:4px}
+.hv .meta b{font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--color-grey-900)}
+.hv .meta span{font-family:var(--font-mono);font-size:10px;color:var(--color-grey-600)}
+.hv .pass{color:#215F6A;font-style:normal}.hv .fail{color:#da1e28;font-style:normal}
+.hv.rec{outline:2px solid var(--color-burgundy);outline-offset:-2px}
+.x1{color:#ee7464}.x2{color:#ef7a6a}.x3{color:#f6b5ab}.x4{color:#f3dce6}
+.x5{text-decoration:underline;text-decoration-color:#ee7464;text-decoration-thickness:.09em;text-underline-offset:.1em}
+.x6{background:#ee7464;color:#111;padding:0 .14em;border-radius:0 8px 8px 8px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.x7{background:#111;color:#fff;padding:0 .14em;border-radius:0 8px 8px 8px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.x8{color:transparent;-webkit-text-stroke:1.4px #fff}
+.x9{background:linear-gradient(transparent 62%,#ee7464 62%,#ee7464 92%,transparent 92%);padding:0 .06em}
+.eb-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:12px}
+.eb-row > div{background:var(--color-burgundy);border-radius:0 8px 8px 8px;padding:16px 14px;display:flex;flex-direction:column;gap:8px}
+.eb-row small{font-family:var(--font-mono);font-size:10px;color:#fff;opacity:.9}
+/* statement (case study blur rise) */
+.stm-stage{background:#fff;padding:88px 40px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px;position:relative}
+.stm{font-family:var(--font-body);font-weight:600;font-size:clamp(28px,3.4vw,84px);line-height:1.2;letter-spacing:-.012em;color:#111;max-width:26ch;margin:0;text-wrap:balance}
+.stm .w{color:#dcd6d9;transition:color .25s}
+.stm .w.lit{color:#111}
+.stm-intro{font-size:20px;line-height:1.55;color:var(--color-grey-600);max-width:820px;margin:0}
+.br-stage.reset .br{transition:none!important}
+@media (max-width:1000px){.hv-grid,.eb-row{grid-template-columns:1fr 1fr}.stm-stage{padding:56px 20px}}
+
+/* case study hero */
+.csh{position:relative;isolation:isolate;overflow:hidden;background:var(--color-burgundy);color:#fff;display:grid;place-items:center;padding:120px 40px;text-align:center}
+@media (max-width:820px){.csh{padding:64px 20px}}
+.csh::before{content:"";position:absolute;right:-260px;bottom:-420px;width:760px;height:760px;border-radius:50%;z-index:-1;background:radial-gradient(closest-side,rgba(238,116,100,.55),rgba(238,116,100,.2) 48%,rgba(238,116,100,0))}
+.csh-copy{display:grid;justify-items:center;gap:16px}
+.csh-copy > dl{margin-top:32px}
+.csh-copy > *{animation:c2blur 1.4s cubic-bezier(.2,.8,.2,1) both}
+.csh-copy > :nth-child(2){animation-delay:.18s}.csh-copy > :nth-child(3){animation-delay:.36s}.csh-copy > :nth-child(4){animation-delay:.54s}.csh-copy > :nth-child(5){animation-delay:.72s}
+.csh-copy > .hd-line{animation-duration:1.8s}
+.csh[hidden]{display:none}
+.csh-lede{max-width:640px;margin:0;font-size:17px;line-height:1.55;color:#F3DCE6}
+.csh-rate{display:flex;align-items:center;gap:8px;font-size:15px}
+.csh-rate b{font-family:var(--font-heading);font-weight:400;font-size:20px}
+.csh-rate i{color:var(--color-coral);font-style:normal;letter-spacing:2px}
+.csh h3.std{font-size:clamp(36px,4.4vw,68px);line-height:1.04;max-width:18ch}
+.act.on{border-color:var(--color-grey-900);background:var(--color-grey-900);color:#fff}
+@keyframes c2blur{0%{filter:blur(14px);opacity:0;transform:translateY(14px)}100%{filter:none;opacity:1;transform:none}}
+.csh-crumbs{display:flex;align-items:center;gap:10px;font-size:14px;color:#f1e4ea}
+.csh-tag{display:inline-flex;padding:5px 9px;border-radius:0 8px 8px 8px;background:rgba(238,116,100,.22);color:#fff;font-size:13px;font-weight:600}
+.csh-logo{font-family:var(--font-body);font-size:34px;letter-spacing:.04em;line-height:1;color:#fff}
+.csh-logo b{font-weight:700}.csh-logo span{font-weight:300}
+.csh h3{font-family:var(--font-heading);font-weight:400;text-transform:uppercase;color:#fff;margin:0;font-size:clamp(40px,5.4vw,82px);line-height:.98;max-width:18ch}
+.csh h3.long{font-size:clamp(36px,4.4vw,68px);max-width:21ch}
+.csh dl{display:flex;flex-wrap:wrap;justify-content:center;gap:16px clamp(32px,4vw,64px);margin:0;font-size:15px}
+.csh dt{font:500 11px/1 var(--font-mono);letter-spacing:.07em;text-transform:uppercase;color:var(--color-coral);margin-bottom:6px}
+.csh dd{margin:0}
+.csh-cue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font:500 10px var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.csh-cue i{display:block;width:1px;height:34px;background:#fff;transform-origin:center top;animation:c2cue 1.8s ease-in-out infinite}
+@keyframes c2cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{opacity:0;transform:scaleY(1)}}
+.csh.paused .csh-copy > *{animation:none;opacity:0}
+.csh-switch{display:flex;gap:8px}
+@media (prefers-reduced-motion:reduce){.csh-copy > *,.csh-cue i{animation:none}}
+/* blur rise */
+.br-stage{position:relative}
+.br-stage .br{opacity:0;filter:blur(14px);transform:translateY(14px);transition:opacity 1.2s cubic-bezier(.2,.8,.2,1) var(--d,0s),filter 1.4s cubic-bezier(.2,.8,.2,1) var(--d,0s),transform 1.4s cubic-bezier(.2,.8,.2,1) var(--d,0s)}
+.br-stage.in .br{opacity:1;filter:none;transform:none}
+.br-replay{position:absolute;right:16px;top:16px}
+@media (prefers-reduced-motion:reduce){.br-stage .br{opacity:1;filter:none;transform:none;transition:none}}
+/* agreed list */
+.agreed-list{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.14)}
+.agreed-list b{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#7fc4cf}
+.agreed-list p{font-size:14px;color:#fff;margin:8px 0 0}
+@media (max-width:1000px){.bo,.agreed-list{grid-template-columns:1fr}}
+
+.eb{font-family:var(--font-mono);font-size:14px;font-weight:500;line-height:21px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-coral);margin:0}
+.eb .n{color:inherit;margin-right:10px}
+.eb .dotsep{opacity:.7;margin-right:10px}
+.on-dark .eb{color:var(--color-coral)}
+.eh-h1{font-family:var(--font-heading);font-weight:400;text-transform:uppercase;font-size:clamp(32px,4.4vw,68px);line-height:1.04;margin:0}
+.eh-h2{font-family:var(--font-heading);font-weight:400;text-transform:uppercase;font-size:clamp(24px,3vw,44px);line-height:1.06;margin:0}
+.eh-h2l{font-family:var(--font-heading);font-weight:400;text-transform:uppercase;font-size:clamp(32px,4.2vw,62px);line-height:1;margin:0}
+.eh-disp{font-family:var(--font-heading);font-weight:400;text-transform:uppercase;font-size:clamp(40px,5.4vw,82px);line-height:1;margin:0}
+.eh-h1 em,.eh-h2 em,.eh-disp em{font-style:normal;color:var(--color-coral)}
+.eh-lede{font-size:18px;line-height:1.55;color:var(--color-grey-600);margin:0}
+.on-dark .eh-lede{color:rgba(255,255,255,.85)}
+.on-dark .eh-h1,.on-dark .eh-h2,.on-dark .eh-disp{color:#fff}
+.eh-block{display:flex;flex-direction:column;gap:16px}
+.eh-block.c{align-items:center;text-align:center}
+.eh-block .eh-h2{max-width:900px}
+.eh-block.c .eh-h2{max-width:1000px}
+.eh-block .eh-lede{max-width:640px}
+.eh-stage{padding:48px 40px}
+.eh-stage.g-light{background:#fff}.eh-stage.g-mist{background:var(--color-mist)}.eh-stage.g-ink{background:#111}.eh-stage.g-burg{background:var(--color-burgundy)}
+.eh-two{display:grid;grid-template-columns:1fr 1fr}
+.eh-two > div{min-width:0}
+.eh-lab{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-grey-500);margin-bottom:18px}
+.on-dark .eh-lab{color:rgba(255,255,255,.6)}
+/* eyebrow audit */
+.eb-audit{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--color-grey-200)}
+.eb-audit > div{padding:22px 18px;border-left:1px solid var(--color-grey-200);display:flex;flex-direction:column;gap:12px;min-width:0}
+.eb-audit > div:first-child{border-left:0}
+.eb-audit small{font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-grey-500);line-height:1.5}
+.eb-audit .x{font-family:var(--font-mono);font-size:14px;text-transform:uppercase;color:var(--color-coral)}
+/* yes / no pairs */
+.yn{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.yn > div{background:#fff;border:1px solid var(--color-grey-200);border-radius:0 8px 8px 8px;overflow:hidden}
+.yn .st{padding:32px 28px;min-height:150px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+.yn .cap{display:flex;gap:10px;align-items:baseline;padding:12px 18px;border-top:1px solid var(--color-grey-200);font-size:13px;color:var(--color-grey-600)}
+.yn .cap b{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+.yn .yes b{color:#215F6A}.yn .no b{color:#da1e28}
+.dashline{display:inline-block;width:28px;height:2px;background:var(--color-coral);vertical-align:middle;margin-right:12px}
+/* size ladder */
+.ladder{background:#fff;border:1px solid var(--color-grey-200);border-radius:0 8px 8px 8px;overflow:hidden}
+.ladder > div{display:grid;grid-template-columns:180px 1fr;gap:24px;align-items:center;padding:22px 24px;border-bottom:1px solid var(--color-grey-200)}
+.ladder > div:last-child{border-bottom:0}
+.ladder .spec{font-family:var(--font-mono);font-size:11px;line-height:1.6;text-transform:uppercase;letter-spacing:.04em;color:var(--color-grey-500)}
+.ladder .spec b{display:block;font-size:12px;font-weight:500;color:var(--color-grey-900)}
+.ladder .smp{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:1000px){.eh-two,.yn{grid-template-columns:1fr}.eb-audit{grid-template-columns:1fr 1fr}.ladder > div{grid-template-columns:1fr}.eh-stage{padding:32px 20px}}
+
+
+/* ===== FAQ accordion (pattern) ===== */
+.fq{display:grid;grid-template-columns:5fr 7fr;gap:48px;align-items:start;background:#fff;padding:120px 40px}
+.fq-head{position:sticky;top:24px}
+.fq-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.fq-more{margin-top:24px}
+.fq-narrow{width:390px;max-width:100%;margin:0 auto;border:6px solid #111;border-radius:0 24px 24px 24px;overflow:hidden;background:#fff}
+.fq-narrow .fq{grid-template-columns:1fr;gap:32px;padding:64px 20px}
+.fq-narrow .fq-head{position:static}
+.fq-narrow .c-faq button{grid-template-columns:28px 1fr 36px;padding:16px 16px 16px 18px}
+.fq-narrow .c-faq .c-q{font-size:20px}
+.fq-narrow .c-faq .c-a p{padding:0 18px 20px 18px;font-size:15px}
+.fq-narrow .eh-h2{font-size:24px}
+.fq-narrow .eh-lede{font-size:16px}
+@media (max-width:1000px){.fq{grid-template-columns:1fr;padding:64px 20px}.fq-head{position:static}}
+
+
+/* ===== Review carousel (pattern) ===== */
+.rc{background:#fff;padding:120px 0}
+.rc-head{display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;padding:0 40px;margin-bottom:48px}
+.rc-rate{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--color-grey-600)}
+.rc-rate b{font-family:var(--font-heading);font-weight:400;font-size:22px;color:#111}
+.rc-rate .stars{color:var(--color-coral);letter-spacing:2px}
+.rc-view{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.rc-track{display:flex;gap:16px;width:max-content;padding:4px 0;will-change:transform}
+.rc-view:hover .rc-track,.rc-view:focus-within .rc-track,.rc.paused .rc-track{animation-play-state:paused}
+@keyframes rc-move{to{transform:translateX(calc(-50% - 8px))}}
+.rc .c-rev{width:340px;flex:none}
+.rc-view{cursor:grab;touch-action:pan-y}
+.rc-view.drag{cursor:grabbing}
+.rc-view.drag .rc-track{user-select:none;-webkit-user-select:none}
+.rc-view:focus-visible{outline:3px solid var(--color-coral);outline-offset:-3px}
+.rc .c-who b{color:#111}
+.rc-ini{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--color-mist);font:700 13px var(--font-body);color:var(--color-burgundy)}
+.rc-co{margin-right:auto;font:600 13px var(--font-body);color:var(--color-grey-600)}
+.rc-foot{display:flex;justify-content:center;margin-top:24px}
+
+
+
+/* ===== Logo marquee (pattern) ===== */
+.mq{position:relative;overflow:hidden;cursor:grab;touch-action:pan-y;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.mq.drag{cursor:grabbing}
+.mq:focus-visible{outline:3px solid var(--color-coral);outline-offset:-3px}
+.mq-track{display:flex;align-items:center;width:max-content;will-change:transform}
+.mq img{height:32px;max-width:150px;width:auto;object-fit:contain;margin:0 32px;opacity:.75;transition:opacity .12s;-webkit-user-drag:none;user-select:none}
+.mq img:hover{opacity:1}
+.mq-dark{background:var(--color-burgundy);border-top:1px solid rgba(255,255,255,.15);height:96px;display:flex;align-items:center}
+.mq-dark .mq{flex:1}
+.mq-dark img{filter:brightness(0) invert(1)}
+.mq-light{background:#fff;padding:48px 0}
+.mq-light img{filter:grayscale(1) brightness(.2);opacity:.6}
+.mq-light img:hover{filter:none;opacity:1}
+.mq-ink{background:#111;height:96px;display:flex;align-items:center}
+.mq-ink .mq{flex:1}
+.mq-ink img{filter:brightness(0) invert(1)}
+
+
+/* ===== Final CTA (pattern) ===== */
+.fc{position:relative;overflow:hidden;background-color:#111;background-image:radial-gradient(44% 40% at 50% 46%,#311F1D 0%,#311F1D 42%,#111 100%);color:#fff;min-height:640px;display:grid;place-items:center;padding:120px 40px;text-align:center}
+.fc-copy{display:flex;flex-direction:column;align-items:center;gap:16px;max-width:1000px}
+.fc h3{font-family:var(--font-heading);font-weight:400;text-transform:uppercase;font-size:clamp(40px,5.4vw,82px);line-height:1.02;margin:0;color:#fff}
+.fc .ln{display:block}
+.fc .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.04em}
+.fc .w > span{display:inline-block;transform:translateY(110%) rotate(4deg);transform-origin:0 100%;transition:transform 1.1s cubic-bezier(.16,1,.3,1) var(--d,0s)}
+.fc.in .w > span{transform:none}
+.fc .rot{display:inline-block;height:1.04em;overflow:hidden;vertical-align:top;transition:width .7s cubic-bezier(.16,1,.3,1)}
+.fc .rot-list{display:flex;flex-direction:column;align-items:flex-start;transition:transform .8s cubic-bezier(.7,0,.2,1)}
+.fc .rot-list span{display:block;height:1.04em;line-height:1.04;white-space:nowrap;color:var(--color-coral)}
+.fc .fc-lede{max-width:620px;margin:0;font-size:clamp(17px,1.35vw,20px);line-height:1.55;color:#CFCFCF}
+.fc .fc-ctas{margin-top:32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px 32px}
+.fc-badge{position:absolute;right:48px;top:48px;width:132px;height:132px;display:grid;place-items:center;color:#fff;text-decoration:none}
+.fc-badge svg{position:absolute;inset:0;width:100%;height:100%;animation:fc-spin 16s linear infinite}
+.fc-badge text{font:500 10.5px var(--font-mono);letter-spacing:.18em;text-transform:uppercase;fill:#fff}
+.fc-badge b{display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:#fff;color:#111;font:400 18px var(--font-heading)}
+@keyframes fc-spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.fc .w > span{transform:none;transition:none}.fc-badge svg{animation:none}.fc .rot-list{transition:none}}
+@media (max-width:820px){.fc{padding:64px 20px;min-height:0}.fc-badge{display:none}}
+
+
+/* ===== Section rhythm (pattern) ===== */
+.pg-row{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;align-items:start}
+.pg{display:flex;flex-direction:column;gap:8px;min-width:0}
+.pg-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-grey-600)}
+.pg-stack{border:1px solid var(--color-grey-200);border-radius:0 8px 8px 8px;overflow:hidden;display:flex;flex-direction:column}
+.pg-stack > div{display:flex;align-items:center;padding:0 10px;font-size:11px;line-height:1.2;border-top:1px solid rgba(0,0,0,.06)}
+.pg-stack > div:first-child{border-top:0}
+.pg-stack .w{background:#fff;color:var(--color-grey-600)}
+.pg-stack .m{background:var(--color-mist);color:var(--color-grey-600)}
+.pg-stack .b{background:var(--color-burgundy);color:#fff;border-top-color:transparent}
+.pg-stack .k{background:#111;color:#fff;border-top-color:transparent}
+.pg-stack .x{outline:2px solid #da1e28;outline-offset:-2px}
+.pg-stack .r{border-top:1px solid var(--color-grey-200)}
+.pg-note{font-size:12px;line-height:1.4;color:var(--color-grey-600)}
+.pg-note b{color:#da1e28;font-weight:600}
+.pg.prop .pg-name{color:var(--color-burgundy)}
+.pg.prop .pg-stack{outline:2px solid var(--color-burgundy);outline-offset:2px}
+.pg-legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:20px;font-size:12px;color:var(--color-grey-600)}
+.pg-legend span{display:inline-flex;align-items:center;gap:6px}
+.pg-legend i{width:14px;height:14px;border:1px solid var(--color-grey-200);display:inline-block}
+@media (max-width:1000px){.pg-row{grid-template-columns:1fr 1fr}}
+
 /* ---------- Decisions ---------- */
 .decide{background:var(--color-burgundy);color:#fff;padding:88px 0}
 .decide h2{color:#fff}
@@ -434,6 +882,14 @@ main{min-width:0}
 footer{padding:40px 0 56px;font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--color-grey-500)}
 
 /* ---------- Toast ---------- */
+/* Text selection: burgundy on light, white on dark */
+::selection{background:#892951;color:#fff}
+.on-dark ::selection,.on-dark::selection,.nav ::selection,.decide ::selection,.st-ink ::selection,.g-ink ::selection{background:#fff;color:#111}
+.g-burg ::selection,.nav ::selection,.decide ::selection,.csh ::selection,.sel-burg ::selection{background:#fff;color:#892951}
+.sel-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.sel-grid > div{padding:32px 28px}
+.sel-grid p{margin:10px 0 0;font-size:18px;line-height:1.55}
+@media (max-width:1000px){.sel-grid{grid-template-columns:1fr}}
 .toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--color-grey-900);color:#fff;padding:11px 16px;border-radius:0 8px 8px 8px;font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:.05em;opacity:0;pointer-events:none;transition:.25s;z-index:20}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 
@@ -459,7 +915,7 @@ footer{padding:40px 0 56px;font-family:var(--font-mono);font-size:11px;text-tran
   .sec,.decide{padding:56px 0}
   .logo-grid,.fam-grid,.rules{grid-template-columns:1fr}
   .row{grid-template-columns:1fr;gap:10px}
-  .t-h1{font-size:32px;white-space:normal} .t-h2{font-size:24px;white-space:normal}
+  .t-disp{font-size:40px;white-space:normal} .t-h1{font-size:32px;white-space:normal} .t-h2l{font-size:32px;white-space:normal} .t-h2{font-size:24px;white-space:normal}
   .t-h3{font-size:22px} .t-h4{font-size:18px} .t-h5{font-size:16px} .t-body{font-size:16px}
   .lede{margin-bottom:32px}
 }
@@ -480,23 +936,23 @@ footer{padding:40px 0 56px;font-family:var(--font-mono);font-size:11px;text-tran
     <a href="#colour" data-nav>Colour <span class="tag tag-soon">Agreed</span></a>
     <a href="#type" data-nav>Typography <span class="tag tag-soon">Agreed</span></a>
     <a href="#decisions" data-nav>Decisions <span class="tag tag-soon">Agreed</span></a>
-    <a class="is-soon">Spacing &amp; radius <span class="tag tag-soon">Next</span></a>
+    <a href="#spacing" data-nav>Spacing &amp; radius <span class="tag tag-soon">Agreed</span></a>
   </div>
   <div class="nav-group">
     <p class="nav-label">Components</p>
     <a href="#buttons" data-nav>Buttons &amp; links <span class="tag tag-soon">Agreed</span></a>
-    <a class="is-soon">Eyebrows &amp; headings <span class="tag tag-soon">Soon</span></a>
+    <a href="#eyebrows" data-nav>Eyebrows &amp; headings <span class="tag tag-soon">Agreed</span></a>
     <a href="#cards" data-nav>Cards <span class="tag tag-soon">Agreed</span></a>
     <a href="#forms" data-nav>Forms <span class="tag tag-soon">Agreed</span></a>
-    <a href="#header" data-nav>Header &amp; footer <span class="tag tag-review">Review</span></a>
+    <a href="#header" data-nav>Header &amp; footer <span class="tag tag-soon">Agreed</span></a>
   </div>
   <div class="nav-group">
     <p class="nav-label">Patterns</p>
-    <a class="is-soon">FAQ accordion <span class="tag tag-soon">Soon</span></a>
-    <a class="is-soon">Review carousel <span class="tag tag-soon">Soon</span></a>
-    <a class="is-soon">Logo marquee <span class="tag tag-soon">Soon</span></a>
-    <a class="is-soon">Final CTA <span class="tag tag-soon">Soon</span></a>
-    <a class="is-soon">Section rhythm <span class="tag tag-soon">Soon</span></a>
+    <a href="#faq" data-nav>FAQ accordion <span class="tag tag-soon">Agreed</span></a>
+    <a href="#reviews" data-nav>Review carousel <span class="tag tag-soon">Agreed</span></a>
+    <a href="#marquee" data-nav>Logo marquee <span class="tag tag-soon">Agreed</span></a>
+    <a href="#cta" data-nav>Final CTA <span class="tag tag-soon">Agreed</span></a>
+    <a href="#rhythm" data-nav>Section rhythm <span class="tag tag-soon">Agreed</span></a>
   </div>
 </nav>
 
@@ -548,6 +1004,17 @@ footer{padding:40px 0 56px;font-family:var(--font-mono);font-size:11px;text-tran
       <p class="sub">Glows · on ink only</p>
       <div class="glow-grid" id="glows"></div>
 
+      <p class="sub">Text selection</p>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Highlighted text</h3><p>When someone selects text, it shows in brand colours instead of the browser’s blue. Try it below. Added Nov 27.</p></div></div>
+        <div class="sel-grid">
+          <div style="background:#fff"><small class="eh-lab">On white and mist</small><p>Burgundy highlight, white text. Select this sentence to see it.</p></div>
+          <div class="sel-burg on-dark" style="background:var(--color-burgundy);color:#fff"><small class="eh-lab">On burgundy</small><p>White highlight, burgundy text. Select this sentence to see it.</p></div>
+          <div class="g-ink on-dark" style="background:#111;color:#fff"><small class="eh-lab">On ink</small><p>White highlight, ink text. Select this sentence to see it.</p></div>
+        </div>
+        <div class="spec-list"><div><b>Light</b>::selection burgundy #892951, white text</div><div><b>Burgundy</b>White, burgundy text</div><div><b>Ink</b>White, ink text</div><div><b>Never</b>The browser default blue</div></div>
+      </div>
+
     </div>
   </section>
 
@@ -555,7 +1022,7 @@ footer{padding:40px 0 56px;font-family:var(--font-mono);font-size:11px;text-tran
   <section class="sec" id="type">
     <div class="wrap">
       <h2>Typography</h2>
-      <p class="lede">Desktop / mobile sizes. H2 grows to 62&nbsp;px on large monitors.</p>
+      <p class="lede">Desktop / mobile sizes. Display and H2 large are for the Final CTA, case studies and feature sections (updated Nov 27).</p>
 
       <p class="sub">Families</p>
       <div class="fam-grid">
@@ -578,6 +1045,78 @@ footer{padding:40px 0 56px;font-family:var(--font-mono);font-size:11px;text-tran
 
       <p class="sub">Scale</p>
       <div class="scale" id="scale"></div>
+    </div>
+  </section>
+
+
+  <!-- SPACING & RADIUS -->
+  <section class="sec" id="spacing">
+    <div class="wrap">
+      <h2>Spacing &amp; radius</h2>
+      <p class="lede">One scale for every gap, one rhythm for every section, and the cut corner in three sizes. Measured from dreww.ca, then tidied: the live site uses six different section paddings and still rounds some cards all round.</p>
+
+      <p class="sub">Scale</p>
+      <div class="sp-scale"><div class="sp-row"><b>4&nbsp;px<span class="sp-tok">--space-xs</span></b><div class="bar" style="width:10px;max-width:100%"></div><span>Icon to label inside a tag or chip.</span></div><div class="sp-row"><b>8&nbsp;px<span class="sp-tok">--space-sm</span></b><div class="bar" style="width:19px;max-width:100%"></div><span>Icon to label in buttons and links. Gaps between tags.</span></div><div class="sp-row"><b>12&nbsp;px<span class="sp-tok">--space-md</span></b><div class="bar" style="width:29px;max-width:100%"></div><span>Gaps between cards in a grid. Label to field.</span></div><div class="sp-row"><b>16&nbsp;px<span class="sp-tok">--space-lg</span></b><div class="bar" style="width:38px;max-width:100%"></div><span>Eyebrow to heading, heading to lede. Inside small cards.</span></div><div class="sp-row"><b>24&nbsp;px<span class="sp-tok">--space-xl</span></b><div class="bar" style="width:58px;max-width:100%"></div><span>Gaps between columns. Padding in small cards.</span></div><div class="sp-row"><b>32&nbsp;px<span class="sp-tok">--space-2xl</span></b><div class="bar" style="width:77px;max-width:100%"></div><span>Padding in big cards. Between groups inside a section.</span></div><div class="sp-row"><b>48&nbsp;px<span class="sp-tok">--space-3xl</span></b><div class="bar" style="width:115px;max-width:100%"></div><span>Heading block to the content under it.</span></div><div class="sp-row big"><b>64&nbsp;px<span class="sp-tok">--space-4xl</span></b><div class="bar" style="width:154px;max-width:100%"></div><span>Section padding on mobile.</span></div><div class="sp-row big"><b>120&nbsp;px<span class="sp-tok">--space-section</span></b><div class="bar" style="width:288px;max-width:100%"></div><span>Section padding on desktop, top and bottom.</span></div></div>
+
+      <p class="sub">Section rhythm</p>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>A section, measured</h3><p>The same spacing on every section: 120&nbsp;px top and bottom on desktop, 64&nbsp;px on mobile. Content sits in a 1520&nbsp;px container with 40&nbsp;px side margins (20&nbsp;px on mobile).</p></div></div>
+        <div class="spec">
+          <div class="spec-gap" style="height:120px">Section top · 120 / 64 mobile</div>
+          <div class="spec-sec"><div class="spec-side">Margin 40</div><div class="spec-body">
+            <p class="spec-eyebrow">Services</p>
+            <div class="spec-gap" style="height:16px">16</div>
+            <h3 class="spec-h2">Four ways we grow brands</h3>
+            <div class="spec-gap" style="height:16px">16</div>
+            <p class="spec-lede">One team for content, ads and the systems that track them to revenue.</p>
+            <div class="spec-gap" style="height:48px">Heading block to content · 48</div>
+            <div class="spec-colgap"><div></div><i title="24"></i><div></div><i title="24"></i><div></div></div>
+          </div><div class="spec-side">Margin 40</div></div>
+          <div class="spec-gap" style="height:120px">Section bottom · 120 / 64 mobile</div>
+        </div>
+        <div class="spec-list"><div><b>Section</b>120&nbsp;px desktop, 64&nbsp;px mobile, top and bottom the same</div><div><b>Container</b>1520&nbsp;px max, 40&nbsp;px margins, 20&nbsp;px on mobile</div><div><b>Heading block</b>Eyebrow 16, heading 16, lede, then 48 to content</div><div><b>Grids</b>24&nbsp;px between columns, 12&nbsp;px between cards</div></div>
+      </div>
+
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>What the live site does today</h3><p>Read from the homepage, Services, About and Clients at desktop and mobile widths.</p></div></div>
+        <div class="audit-wrap"><table class="audit">
+          <thead><tr><th>Where</th><th>Live today</th><th>Proposed</th></tr></thead>
+          <tbody>
+            <tr><td>Section padding, desktop</td><td>120/110, 120/120, 120/130, 160/150, 96/104, 180/88</td><td class="new">120 / 120</td></tr>
+            <tr><td>Section padding, mobile</td><td>64/72, 88/80, 96/96, 56/56</td><td class="new">64 / 64</td></tr>
+            <tr><td>Eyebrow to heading</td><td>18, and 4 on the Final CTA</td><td class="new">16</td></tr>
+            <tr><td>Heading to lede</td><td>18</td><td class="new">16</td></tr>
+            <tr><td>Heading block to content</td><td>29, 40, 55, 56</td><td class="new">48</td></tr>
+            <tr><td>Container</td><td>1520 max, 40 margins (20 mobile)</td><td class="new">Keep</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+
+      <p class="sub">Radius</p>
+      <div class="rad-grid">
+        <div class="rad"><div class="rad-stage"><div class="rad-shape" style="width:64px;height:28px;border-radius:0 4px 4px 4px"></div></div><div class="rad-body"><h3>4&nbsp;px</h3><code>0 4 4 4</code><p>Tags, checkboxes, the kbd key in search.</p></div></div>
+        <div class="rad"><div class="rad-stage"><div class="rad-shape" style="border-radius:0 8px 8px 8px"></div></div><div class="rad-body"><h3>8&nbsp;px</h3><code>0 8 8 8</code><p>Inputs, small buttons like Close and View all, social and platform chips.</p></div></div>
+        <div class="rad"><div class="rad-stage"><div class="rad-shape" style="border-radius:0 12px 12px 12px"></div></div><div class="rad-body"><h3>12&nbsp;px</h3><code>0 12 12 12</code><p>Buttons, the header search and tab fill, option cards, small cards, FAQ cards.</p></div></div>
+        <div class="rad"><div class="rad-stage"><div class="rad-shape" style="border-radius:0 16px 16px 16px"></div></div><div class="rad-body"><h3>16&nbsp;px</h3><code>0 16 16 16</code><p>Big cards: service, review, case study. The menu and footer panels.</p></div></div>
+      </div>
+      <div class="spec-list" style="background:#fff;border:1px solid var(--color-grey-200);border-radius:0 8px 8px 8px;margin-top:16px"><div><b>Rule</b>The top-left corner is always square</div><div><b>Size</b>Pick by the size of the thing, not by taste</div><div><b>Round</b>Only circles: icon buttons, avatars, dots</div><div><b>Nested</b>Inside a card, use the next size down</div></div>
+
+      <p class="sub">Still rounded all round on the live site</p>
+      <div class="rad-live">
+        <div class="rad"><div class="rad-stage"><div class="rad-shape" style="border-radius:22px;width:70px;height:110px"></div></div><div class="rad-body"><h3>Hero reels</h3><code>22 22 22 22</code><p>The phone cards in the home hero.</p><span class="rad-tag">Keep: reads as a phone</span></div></div>
+        <div class="rad"><div class="rad-stage"><div class="rad-shape" style="border-radius:16px"></div></div><div class="rad-body"><h3>Review cards</h3><code>16 16 16 16</code><p>Home services section reviews.</p><span class="rad-tag fix">Already agreed: cut 16</span></div></div>
+        <div class="rad"><div class="rad-stage"><div class="rad-shape" style="border-radius:12px"></div></div><div class="rad-body"><h3>FAQ cards</h3><code>12 12 12 12</code><p>Home and service page FAQs.</p><span class="rad-tag fix">Already agreed: cut 12</span></div></div>
+        <div class="rad"><div class="rad-stage"><div class="rad-shape" style="border-radius:999px;width:120px;height:36px"></div></div><div class="rad-body"><h3>Rating pill</h3><code>999</code><p>The 4.8 Google rating badge in the hero.</p><span class="rad-tag fix">Agreed: cut 8</span></div></div>
+      </div>
+
+      <div class="card-decide">
+        <h3>Spacing &amp; radius · agreed</h3>
+        <div class="cd-grid">
+          <div><b>Section padding</b><p>Six different paddings across four pages, so sections feel slightly uneven as you scroll.</p><p class="cd-rec">120&nbsp;px top and bottom on desktop, 64&nbsp;px on mobile, everywhere. The hero is the only exception.</p></div>
+          <div><b>Heading spacing</b><p>18&nbsp;px around headings, then anything from 29 to 56&nbsp;px before the content.</p><p class="cd-rec">16 between eyebrow, heading and lede. 48 before the content.</p></div>
+          <div><b>Hero reels and rating pill</b><p>The only rounded-all-round shapes left once the agreed card fixes land.</p><p class="cd-rec">Keep the reels rounded: they read as phones. Cut the rating pill to 8&nbsp;px like other chips.</p></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -646,6 +1185,109 @@ footer{padding:40px 0 56px;font-family:var(--font-mono);font-size:11px;text-tran
   </section>
 
   
+
+
+  <!-- EYEBROWS & HEADINGS -->
+  <section class="sec" id="eyebrows">
+    <div class="wrap">
+      <h2>Eyebrows &amp; headings</h2>
+      <p class="lede">How the eyebrow, heading and lede sit together at the top of every section. Read from the homepage, Services, About and the case studies, then brought onto one style.</p>
+
+      <p class="sub">Eyebrow · agreed</p>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>One eyebrow</h3><p>IBM Plex Mono 14&nbsp;px, 500, uppercase, 0.1em. Says what the section is, in two to four words. Coral on light and ink; on burgundy, see the options below.</p></div></div>
+        <div class="grounds">
+          <div class="ground g-light"><small>On light</small><p class="eb">Core services</p><p class="eb"><span class="n">01</span><span class="dotsep">·</span>Visibility &amp; demand</p></div>
+          <div class="ground g-ink on-dark"><small>On ink</small><p class="eb">Your next step</p><p class="eb"><span class="n">02</span><span class="dotsep">·</span>Qualified pipeline</p></div>
+          <div class="ground g-light" style="background:var(--color-mist)"><small>On mist</small><p class="eb">Insights</p><p class="eb"><span class="n">03</span><span class="dotsep">·</span>Profitable e-commerce</p></div>
+        </div>
+      </div>
+
+      <p class="sub">On burgundy · agreed</p>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Coral, as live</h3><p>Eyebrow and highlight stay brand coral on burgundy. It is 2.9:1, an accepted exception like the coral buttons, kept for brand recognition. The lede is blush #F3DCE6 so it doesn’t read as a second heading.</p></div></div>
+        <div class="eh-stage g-burg on-dark"><div class="eh-block"><p class="eb">Growth marketing agency in Montreal</p><h3 class="eh-h2">We help businesses turn marketing into <em>revenue</em></h3><p class="eh-lede" style="color:#F3DCE6">We help B2C brands and B2B companies grow, with a specialist team owning it from start to finish.</p></div></div>
+      </div>
+
+      <p class="sub">Heading block</p>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Left, the default</h3><p>Every content section. Eyebrow, heading and lede 16&nbsp;px apart. Heading column 640 to 900&nbsp;px, lede up to 640.</p></div></div>
+        <div class="eh-stage g-light"><div class="eh-block"><p class="eb">Core services</p><h3 class="eh-h2">Growth systems built around different business outcomes</h3><p class="eh-lede">One team for content, ads and the systems that track them to revenue.</p></div></div>
+        <div class="eh-stage g-mist"><div class="eh-block"><p class="eb">Insights</p><h3 class="eh-h2">Straight talk on growth marketing</h3><p class="eh-lede">Playbooks, case notes and what we are testing this month.</p></div></div>
+      </div>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Centred, for closing sections</h3><p>Only for single-column moments that end a page: the Final CTA, the Instagram feed, a full-width quote. Heading up to 1000&nbsp;px.</p></div></div>
+        <div class="eh-stage g-ink on-dark"><div class="eh-block c"><p class="eb">Your next step</p><h3 class="eh-h2">Let’s turn your marketing into <em>revenue</em></h3><p class="eh-lede" style="color:#CFCFCF">A 30-minute call with a strategist. No pitch deck.</p></div></div>
+      </div>
+
+      <p class="sub">Line count · agreed</p>
+      <div class="yn lc">
+        <div class="yes"><div class="st"><h3 class="eh-h2" style="color:#111">Straight talk on growth marketing</h3></div><div class="cap"><b>Yes</b>Five words, two lines.</div></div>
+        <div class="no"><div class="st"><h3 class="eh-h2" style="color:#111;max-width:260px">Straight talk on growth marketing</h3></div><div class="cap"><b>No</b>Same five words in a narrow column: four lines.</div></div>
+        <div class="yes"><div class="st"><h3 class="eh-h2" style="color:#111">Growth systems built around different business outcomes</h3></div><div class="cap"><b>Yes</b>Seven words, three lines at most.</div></div>
+        <div class="no"><div class="st"><h3 class="eh-h2" style="color:#111;max-width:300px">Growth systems built around different business outcomes</h3></div><div class="cap"><b>No</b>Same words, narrow column: well past three lines. Widen the column or cut words.</div></div>
+      </div>
+      <div class="spec-list" style="background:#fff;border:1px solid var(--color-grey-200);border-radius:0 8px 8px 8px;margin-top:16px"><div><b>Up to 4 words</b>One line</div><div><b>5 to 8 words</b>Two lines</div><div><b>Longer</b>Three lines at most, never four</div><div><b>How</b>Heading column never under 640&nbsp;px on desktop; lines balanced</div></div>
+
+      <p class="sub">Highlight · agreed</p>
+      <div class="yn">
+        <div class="yes"><div class="st" style="background:var(--color-burgundy)"><p class="eb">Home hero</p><h3 class="eh-h2" style="color:#fff">We help businesses turn marketing into <em>revenue</em></h3></div><div class="cap"><b>Yes</b>Only the homepage hero and the Final CTA. One phrase, the outcome.</div></div>
+        <div class="no"><div class="st" style="background:var(--color-burgundy)"><p class="eb">Services</p><h3 class="eh-h2" style="color:#fff">Growth systems built around different <em>outcomes</em></h3></div><div class="cap"><b>No</b>Every other hero and section heading is all white (or all ink).</div></div>
+        <div class="no"><div class="st"><h3 class="eh-h2" style="color:#111">We help businesses turn marketing into <em>revenue</em></h3></div><div class="cap"><b>No</b>Coral text on white fails contrast (2.9:1), even at heading size.</div></div>
+        <div class="no"><div class="st"><p class="eb"><span class="dashline"></span>Core services</p><h3 class="eh-h2" style="color:#111">Four ways we grow brands</h3></div><div class="cap"><b>No</b>A short line before the eyebrow or above the heading.</div></div>
+      </div>
+
+      <p class="sub">Sizes · agreed</p>
+      <div class="ladder">
+        <div><div class="spec"><b>Display</b>82&nbsp;px · 40 mobile · lh 0.98<br>Final CTA, case study hero. Long headlines step to 68</div><div class="smp"><span class="eh-disp">Let’s talk</span></div></div>
+        <div><div class="spec"><b>H1</b>68&nbsp;px · 32 mobile · lh 1.04<br>Page hero, one per page</div><div class="smp"><span class="eh-h1">Real results</span></div></div>
+        <div><div class="spec"><b>H2 large</b>62&nbsp;px · 32 mobile · lh 1.0<br>Case study and feature sections</div><div class="smp"><span class="eh-h2l">What we did</span></div></div>
+        <div><div class="spec"><b>H2</b>44&nbsp;px · 24 mobile · lh 1.06<br>Every other section</div><div class="smp"><span class="eh-h2">Questions before your first call</span></div></div>
+      </div>
+
+      <p class="sub">Motion · hero blur rise</p>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Blur rise</h3><p>On load, the hero’s lines rise 14&nbsp;px out of a 14&nbsp;px blur, top to bottom, 0.18&nbsp;s apart. The heading takes a little longer, so it settles last. It works on whatever the hero holds: most pages have an eyebrow, heading and lede; a case study adds a breadcrumb, logo and facts. Spacing follows the agreed rules: 16 between lines, 48 before anything under the lede, 120 top and bottom (64 on mobile).</p></div><div class="acts csh-switch"><button class="act on" type="button" data-hero="std">Standard hero</button><button class="act" type="button" data-hero="cs">Case study</button><button class="act" type="button" id="csh-replay">Replay</button></div></div>
+        <div class="csh" id="hero-std">
+          <div class="csh-copy">
+            <p class="eb">Case studies</p>
+            <h3 class="std hd-line">Real results from businesses like yours</h3>
+            <p class="csh-lede">See how Dreww helped brands like Federal Steel, Erco and Sacs Lambert grow. Each case study shows the challenge, the work we did and the results, in real numbers.</p>
+          </div>
+        </div>
+        <div class="csh" id="hero-cs" hidden>
+          <div class="csh-copy">
+            <nav class="csh-crumbs">Case studies <span aria-hidden="true">/</span> <span class="csh-tag">Lead Generation</span></nav>
+            <div class="csh-logo"><span>FEDERAL</span> <b>STEEL</b></div>
+            <h3 class="long hd-line">Inbound lead generation now drives 39% of new quote value</h3>
+            <dl><div><dt>Industry</dt><dd>Business supplies &amp; equipment</dd></div><div><dt>Service</dt><dd>Lead Generation</dd></div><div><dt>Timeframe</dt><dd>Jul 2025 to Oct 2026</dd></div></dl>
+          </div>
+          <span class="csh-cue">Scroll<i></i></span>
+        </div>
+        <div class="spec-list"><div><b>Order</b>Top to bottom, 0.18&nbsp;s apart. Eyebrow, heading, lede, then anything under it</div><div><b>Timing</b>1.4&nbsp;s per line, heading 1.8&nbsp;s, cubic-bezier(.2, .8, .2, 1)</div><div><b>Where</b>Every page hero, once on load. Not on sections further down</div><div><b>Reduced motion</b>Everything shows at once, no blur</div></div>
+      </div>
+
+      <div class="card-decide">
+        <h3>Eyebrows &amp; headings · agreed</h3>
+        <div class="agreed-list">
+          <div><b>Agreed</b><p>One eyebrow: Plex Mono 14, 500, 0.1em.</p></div>
+          <div><b>Agreed</b><p>Two lines for short headings, three at most, never four.</p></div>
+          <div><b>Agreed</b><p>Highlight only in the homepage hero and the Final CTA.</p></div>
+          <div><b>Agreed</b><p>No short lines, no coral on white.</p></div>
+          <div><b>Agreed</b><p>Display 82, H1 68, H2 44.</p></div>
+          <div><b>Agreed</b><p>The case study hero is the reference. Coral eyebrow and highlight on burgundy, as live.</p></div>
+        </div>
+        <div class="cd-grid">
+          <div><b>Facts row on burgundy</b><p>The case study hero labels (Industry, Service, Timeframe) are pale coral today.</p><p class="cd-rec">Coral, like every other eyebrow.</p></div>
+          <div><b>Blur rise, where</b><p>Live only on the case study heroes today.</p><p class="cd-rec">Every page hero, on load. Sections further down stay still.</p></div>
+          <div><b>H2 large</b><p>Case study sections use 62&nbsp;px, bigger than a normal H2.</p><p class="cd-rec">Keep 62 as H2 large for case studies and feature sections only.</p></div>
+          <div><b>Numbered eyebrows</b><p>Services uses “01 — Visibility &amp; demand” with a long dash.</p><p class="cd-rec">“01 · Visibility &amp; demand”, the dot every other mono label uses.</p></div>
+          <div><b>Heading colour</b><p>Ink #111 mostly, black #000 on About, burgundy on Insights.</p><p class="cd-rec">Ink on light, white on dark. Nothing else.</p></div>
+          <div><b>Alignment</b><p>About centres almost every section; other pages align left.</p><p class="cd-rec">Left by default. Centre only the closing sections and the case study hero.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- CARDS -->
   <section class="sec" id="cards">
@@ -794,24 +1436,209 @@ footer{padding:40px 0 56px;font-family:var(--font-mono);font-size:11px;text-tran
 <path d="M31.2675 6.4514C31.2675 7.8031 30.7312 8.2413 29.8713 8.2413H29.8602L29.8227 3.8265H23.0703V20.4101H29.9634L29.8878 11.4882C30.23 9.3467 35.0039 7.9393 37.5869 9.6147L38.0168 3.8265C38.0168 3.8265 36.9339 3.1333 35.2011 3.1333C33.2447 3.1333 31.2675 4.3371 31.2675 6.4514Z" fill="#FFFFFF"/></svg></a><div class="hd-end"><nav class="hd-nav" aria-label="Demo"><button class="hd-tab" type="button" data-pane="0"><span class="fill"></span><span>Services</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button class="hd-tab" type="button" data-pane="1"><span class="fill"></span><span>Work</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button class="hd-tab" type="button" data-pane="2"><span class="fill"></span><span>About</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button class="hd-tab" type="button" data-pane="3"><span class="fill"></span><span>Resources</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></nav><button class="hd-search" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span>Search</span><kbd>⌘K</kbd></button><a class="btn btn--primary btn--sm" href="#header">Book a call</a><a class="hd-lang" href="#header">FR</a></div></div></div>
       </div>
       <div class="cmp">
-        <div class="cmp-head"><div><h3>Menu</h3><p>Opens full screen on the menu glow. Click the tabs to switch panels and hover the items.</p></div></div>
-        <div class="card-stage st-white" style=";display:block"><div class="mn" id="mn-demo"><div class="hd hd--hero is-menu"><a class="hd-logo" href="#header"><svg viewBox="0 0 124 21" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Dreww"><path d="M120.495 3.78662C119.819 3.78662 119.158 3.98862 118.596 4.36702C118.034 4.74542 117.596 5.28322 117.337 5.91252C117.079 6.54172 117.011 7.23412 117.143 7.90222C117.275 8.57022 117.6 9.18382 118.078 9.66542C118.556 10.147 119.165 10.475 119.828 10.6079C120.491 10.7408 121.178 10.6726 121.803 10.4119C122.427 10.1513 122.961 9.70992 123.337 9.14362C123.712 8.57722 123.912 7.91142 123.912 7.23032C123.911 6.31752 123.55 5.44272 122.91 4.79722C122.269 4.15182 121.401 3.78842 120.495 3.78662ZM120.495 10.2284C119.906 10.2286 119.331 10.0528 118.842 9.72352C118.352 9.39412 117.971 8.92592 117.745 8.37812C117.52 7.83032 117.461 7.22742 117.576 6.64582C117.691 6.06422 117.974 5.52992 118.39 5.11062C118.806 4.69122 119.336 4.40562 119.913 4.28992C120.491 4.17412 121.089 4.23352 121.633 4.46042C122.176 4.68732 122.641 5.07162 122.968 5.56462C123.295 6.05772 123.47 6.63732 123.47 7.23032C123.471 7.62442 123.395 8.01492 123.246 8.37922C123.097 8.74362 122.878 9.07472 122.602 9.35342C122.325 9.63212 121.997 9.85292 121.635 10.003C121.273 10.1532 120.886 10.2298 120.495 10.2284Z" fill="#FFFFFF"/>
+        <div class="cmp-head"><div><h3>Menu</h3><p>Opens full screen on the menu glow. Each item has its own preview: the how-it-works blurb and a client reel for services, case studies, a logo wall, team photos, latest insights and the free tool. Click the tabs and hover the items. Location and a ticker of quotes and logos run along the bottom.</p></div></div>
+        <div class="card-stage st-white" style="padding:0;display:block"><div class="mn" id="mn-demo" style="border-radius:0"><div class="hd hd--hero is-menu"><a class="hd-logo" href="#header"><svg viewBox="0 0 124 21" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Dreww"><path d="M120.495 3.78662C119.819 3.78662 119.158 3.98862 118.596 4.36702C118.034 4.74542 117.596 5.28322 117.337 5.91252C117.079 6.54172 117.011 7.23412 117.143 7.90222C117.275 8.57022 117.6 9.18382 118.078 9.66542C118.556 10.147 119.165 10.475 119.828 10.6079C120.491 10.7408 121.178 10.6726 121.803 10.4119C122.427 10.1513 122.961 9.70992 123.337 9.14362C123.712 8.57722 123.912 7.91142 123.912 7.23032C123.911 6.31752 123.55 5.44272 122.91 4.79722C122.269 4.15182 121.401 3.78842 120.495 3.78662ZM120.495 10.2284C119.906 10.2286 119.331 10.0528 118.842 9.72352C118.352 9.39412 117.971 8.92592 117.745 8.37812C117.52 7.83032 117.461 7.22742 117.576 6.64582C117.691 6.06422 117.974 5.52992 118.39 5.11062C118.806 4.69122 119.336 4.40562 119.913 4.28992C120.491 4.17412 121.089 4.23352 121.633 4.46042C122.176 4.68732 122.641 5.07162 122.968 5.56462C123.295 6.05772 123.47 6.63732 123.47 7.23032C123.471 7.62442 123.395 8.01492 123.246 8.37922C123.097 8.74362 122.878 9.07472 122.602 9.35342C122.325 9.63212 121.997 9.85292 121.635 10.003C121.273 10.1532 120.886 10.2298 120.495 10.2284Z" fill="#FFFFFF"/>
 <path d="M121.416 8.68505L120.93 5.93945H120.062L119.577 8.68505L119.009 5.93945H118.553L119.14 8.77545H120.013L120.498 6.02985L120.984 8.77545H121.856L122.44 5.93945H121.987L121.416 8.68505Z" fill="#FFFFFF"/>
 <path d="M14.7718 7.3987C13.6465 4.507 11.4517 3.0897 8.16003 3.0897C3.32153 3.0897 -0.0826721 6.8881 0.00152789 12.1595C0.00152789 17.2057 2.95543 20.9756 7.70973 20.9756C11.1987 20.9756 13.6182 19.5019 14.7736 16.695V20.4086H21.6618V0H14.7718V7.3987ZM10.9456 15.6757C8.63853 15.6757 7.14773 14.1735 7.14773 12.019C7.14773 9.8645 8.63973 8.3908 10.9739 8.3908C13.3657 8.3908 14.8 9.8645 14.8 11.9627C14.7994 14.1166 13.308 15.6757 10.9456 15.6757Z" fill="#FFFFFF"/>
 <path d="M48.2217 3.08984C41.8077 3.08984 38.0381 6.83134 38.0381 11.8786C38.0381 17.2367 42.2014 20.9769 49.1222 20.9769C52.3016 20.9769 55.2272 20.1265 57.0276 18.9345V14.0319C55.2555 15.1095 53.3704 15.7327 50.8943 15.7327C47.8003 15.7327 45.8304 14.8539 45.0147 13.3517H57.5903V11.4522C57.5903 6.40674 54.5516 3.08984 48.2217 3.08984ZM44.8433 10.3189C45.2377 8.95734 46.5319 8.05064 48.5571 8.05064C50.5546 8.05064 51.7647 8.87254 52.0454 10.3189H44.8433Z" fill="#FFFFFF"/>
 <path d="M107.516 13.834L104.45 3.82715H97.472L94.434 13.7771L92.099 3.82715H81.667L79.2192 13.834L76.1528 3.82715H69.1762L66.1375 13.7771L63.8027 3.82715H56.6289L62.0017 20.4102H69.2886L72.4391 10.4324L75.7308 20.4102H83.3267L86.7573 9.48115L90.298 20.4102H97.585L100.736 10.4324L104.027 20.4102H111.623L116.828 3.82715H109.964L107.516 13.834Z" fill="#FFFFFF"/>
-<path d="M31.2675 6.4514C31.2675 7.8031 30.7312 8.2413 29.8713 8.2413H29.8602L29.8227 3.8265H23.0703V20.4101H29.9634L29.8878 11.4882C30.23 9.3467 35.0039 7.9393 37.5869 9.6147L38.0168 3.8265C38.0168 3.8265 36.9339 3.1333 35.2011 3.1333C33.2447 3.1333 31.2675 4.3371 31.2675 6.4514Z" fill="#FFFFFF"/></svg></a><div class="hd-end"><nav class="hd-nav" aria-label="Demo"><button class="hd-tab on" type="button" data-pane="0"><span class="fill"></span><span>Services</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button class="hd-tab" type="button" data-pane="1"><span class="fill"></span><span>Work</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button class="hd-tab" type="button" data-pane="2"><span class="fill"></span><span>About</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button class="hd-tab" type="button" data-pane="3"><span class="fill"></span><span>Resources</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></nav><button class="hd-search" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span>Search</span><kbd>⌘K</kbd></button><a class="btn btn--primary btn--sm" href="#header">Book a call</a><a class="hd-lang" href="#header">FR</a></div></div><div class="mn-body"><div class="mn-pane on" data-pane="0"><p class="mn-kick">Services<b>4 ways we grow brands</b></p><a class="mn-item" href="#header"><span class="mn-n">01</span><span class="mn-big">Always-On Social Media</span><span class="mn-sx"><span><span>Content and community that build demand month after month.</span></span></span></a><a class="mn-item" href="#header"><span class="mn-n">02</span><span class="mn-big">Lead Generation</span><span class="mn-sx"><span><span>Qualified leads, tracked to signed deals in HubSpot.</span></span></span></a><a class="mn-item" href="#header"><span class="mn-n">03</span><span class="mn-big">E-commerce Growth</span><span class="mn-sx"><span><span>Paid social, creative and CRO that grow online revenue profitably.</span></span></span></a><a class="mn-item" href="#header"><span class="mn-n">04</span><span class="mn-big">User Acquisition</span><span class="mn-sx"><span><span>Paid campaigns that bring in app and product users.</span></span></span></a></div><div class="mn-pane" data-pane="1"><p class="mn-kick">Work<b>1.5B+ views and counting</b></p><a class="mn-item" href="#header"><span class="mn-n">01</span><span class="mn-big">Case Studies</span><span class="mn-sx"><span><span>The problems we solved, and the numbers behind them.</span></span></span></a><a class="mn-item" href="#header"><span class="mn-n">02</span><span class="mn-big">Clients</span><span class="mn-sx"><span><span>The brands we’ve helped grow.</span></span></span></a><a class="mn-item" href="#header"><span class="mn-n">03</span><span class="mn-big">Watch Our Work</span><span class="mn-sx"><span><span>The Dreww feed. Every reel we’ve made, in one place.</span></span></span></a></div><div class="mn-pane" data-pane="2"><p class="mn-kick">About<b>One team for growth</b></p><a class="mn-item" href="#header"><span class="mn-n">01</span><span class="mn-big">About Dreww</span><span class="mn-sx"><span><span>Who we are, what we do, and the team behind it.</span></span></span></a><a class="mn-item" href="#header"><span class="mn-n">02</span><span class="mn-big">Culture</span><span class="mn-sx"><span><span>We work hard and have fun doing it.</span></span></span></a><a class="mn-item" href="#header"><span class="mn-n">03</span><span class="mn-big">Origin Story</span><span class="mn-sx"><span><span>Open the files from the Dreww archives.</span></span></span></a></div><div class="mn-pane" data-pane="3"><p class="mn-kick">Resources<b>Free, from the team</b></p><a class="mn-item" href="#header"><span class="mn-n">01</span><span class="mn-big">Insights</span><span class="mn-sx"><span><span>Marketing insights from the Dreww team.</span></span></span></a><a class="mn-item" href="#header"><span class="mn-n">02</span><span class="mn-big">Press Releases</span><span class="mn-sx"><span><span>News from Dreww and our clients.</span></span></span></a><a class="mn-item" href="#header"><span class="mn-n">03</span><span class="mn-big">Tools</span><span class="mn-sx"><span><span>Calculators and playbooks we use with clients.</span></span></span></a></div></div></div></div>
-      </div><div id="footer"></div>
+<path d="M31.2675 6.4514C31.2675 7.8031 30.7312 8.2413 29.8713 8.2413H29.8602L29.8227 3.8265H23.0703V20.4101H29.9634L29.8878 11.4882C30.23 9.3467 35.0039 7.9393 37.5869 9.6147L38.0168 3.8265C38.0168 3.8265 36.9339 3.1333 35.2011 3.1333C33.2447 3.1333 31.2675 4.3371 31.2675 6.4514Z" fill="#FFFFFF"/></svg></a><div class="hd-end"><nav class="hd-nav" aria-label="Demo"><button class="hd-tab on" type="button" data-pane="0"><span class="fill"></span><span>Services</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button class="hd-tab" type="button" data-pane="1"><span class="fill"></span><span>Work</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button class="hd-tab" type="button" data-pane="2"><span class="fill"></span><span>About</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button class="hd-tab" type="button" data-pane="3"><span class="fill"></span><span>Resources</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></nav><button class="hd-search" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span>Search</span><kbd>⌘K</kbd></button><a class="btn btn--primary btn--sm" href="#header">Book a call</a><a class="hd-lang" href="#header">FR</a></div></div><div class="mn-closerow"><button class="mn-close" type="button">Close <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="mn-body"><div class="mn-pane mn-svc on" data-pane="0"><div><p class="mn-kick">Services<b>4 ways we grow brands</b></p><a class="mn-item is-on" href="#header" data-pv="s0"><span class="mn-n">01</span><span class="mn-big">Always-On Social Media</span><span class="mn-sx"><span><span>Content and community that build demand month after month.</span></span></span></a><a class="mn-item" href="#header" data-pv="s1"><span class="mn-n">02</span><span class="mn-big">Lead Generation</span><span class="mn-sx"><span><span>Qualified leads, tracked to signed deals in HubSpot.</span></span></span></a><a class="mn-item" href="#header" data-pv="s2"><span class="mn-n">03</span><span class="mn-big">E-commerce Growth</span><span class="mn-sx"><span><span>Paid social, creative and CRO that grow online revenue profitably.</span></span></span></a><a class="mn-item" href="#header" data-pv="s3"><span class="mn-n">04</span><span class="mn-big">User Acquisition</span><span class="mn-sx"><span><span>Paid campaigns that bring in app and product users.</span></span></span></a><a class="mn-all" href="#header">View all services <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></div><div class="mn-pvs"><div class="mn-pv mn-how on" data-pv="s0"><p class="mn-kick">How it works at Dreww · Always-On Social Media</p><p>For consumer brands that need to show up every week. Keeping up with content, creators and approvals wears your team out. We plan, film and edit in our studio and run your community, every month. You get content people actually watch, and a brand they remember.</p></div><div class="mn-pv mn-how" data-pv="s1"><p class="mn-kick">How it works at Dreww · Lead Generation</p><p>For B2B and B2C businesses with a sales team that needs booked calls. Most ads bring form fills that never turn into deals. We run the ads, landing pages and HubSpot setup as one system. You get qualified leads, and you can see which ones closed.</p></div><div class="mn-pv mn-how" data-pv="s2"><p class="mn-kick">How it works at Dreww · E-commerce Growth</p><p>For online stores that want to scale without losing margin. More ad spend often means thinner profit. We run paid social, test new creative every week and fix the pages that leak sales. You grow revenue and keep your margin.</p></div><div class="mn-pv mn-how" data-pv="s3"><p class="mn-kick">How it works at Dreww · User Acquisition</p><p>For apps and products that need users who stick around. Cheap installs often churn within a week. We run Meta and TikTok campaigns with creative built to hook in the first second. You get more users, at a lower cost, who stay.</p></div></div><div class="mn-pvs"><div class="mn-reel"><img src="img/prime-video-reel.jpg" alt=""><div class="mn-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="mn-count">1 / 8</span><button class="mn-snd" type="button" aria-label="Sound on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M22 9l-6 6M16 9l6 6"/></svg></button><div class="mn-cap"><b><i>C</i>clienthandle</b><span>The reel’s caption, two lines at most.</span><small><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5l12 7-12 7z" fill="currentColor"/></svg>3,486,944</small></div></div></div></div><div class="mn-pane" data-pane="1"><div><p class="mn-kick">Work<b>1.5B+ views and counting</b></p><a class="mn-item is-on" href="#header" data-pv="w0"><span class="mn-n">01</span><span class="mn-big">Case Studies</span><span class="mn-sx"><span><span>The problems we solved, and the numbers behind them.</span></span></span></a><a class="mn-item" href="#header" data-pv="w1"><span class="mn-n">02</span><span class="mn-big">Clients</span><span class="mn-sx"><span><span>The brands we’ve helped grow.</span></span></span></a><a class="mn-item" href="#header" data-pv="w2"><span class="mn-n">03</span><span class="mn-big">Watch Our Work</span><span class="mn-sx"><span><span>The Dreww feed. Every reel we’ve made, in one place.</span></span></span></a></div><div class="mn-pvs"><div class="mn-pv on" data-pv="w0"><div class="mn-box"><p class="mn-kick">Case studies</p><a class="mn-row" href="#header"><span class="mn-th"></span><span><small>Client logo</small><b>Inbound lead generation now drives 39% of new quote value</b></span></a><a class="mn-row" href="#header"><span class="mn-th"></span><span><small>Client logo</small><b>180% more paid leads at half the acquisition cost</b></span></a><a class="mn-row" href="#header"><span class="mn-th"></span><span><small>Client logo</small><b>43% more sales in two years, with contribution margin up 34%</b></span></a><a class="mn-pv-all" href="#header">All case studies <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></div></div><div class="mn-pv" data-pv="w1"><div class="mn-logos"><span><img src="img/prime-video-logo--color.svg" alt=""></span><span><img src="img/natrel-logo--color.svg" alt=""></span><span><img src="img/second-cup-logo--color.svg" alt="" class="keep"></span><span><img src="img/agropur-logo--color.svg" alt=""></span><span><img src="img/access-signs-logo--color.svg" alt=""></span><span><img src="img/prime-video-logo--color.svg" alt=""></span></div></div><div class="mn-pv" data-pv="w2"><div class="mn-reel"><img src="img/prime-video-reel.jpg" alt=""><div class="mn-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="mn-count">1 / 8</span><button class="mn-snd" type="button" aria-label="Sound on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M22 9l-6 6M16 9l6 6"/></svg></button><div class="mn-cap"><b><i>C</i>clienthandle</b><span>The reel’s caption, two lines at most.</span><small><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5l12 7-12 7z" fill="currentColor"/></svg>3,486,944</small></div></div></div></div></div><div class="mn-pane" data-pane="2"><div><p class="mn-kick">About<b>One team for growth</b></p><a class="mn-item is-on" href="#header" data-pv="a0"><span class="mn-n">01</span><span class="mn-big">About Dreww</span><span class="mn-sx"><span><span>Who we are, what we do, and the team behind it.</span></span></span></a><a class="mn-item" href="#header" data-pv="a1"><span class="mn-n">02</span><span class="mn-big">Culture</span><span class="mn-sx"><span><span>We work hard and have fun doing it.</span></span></span></a><a class="mn-item" href="#header" data-pv="a2"><span class="mn-n">03</span><span class="mn-big">Origin Story</span><span class="mn-sx"><span><span>Open the files from the Dreww archives.</span></span></span></a></div><div class="mn-pvs"><div class="mn-pv on" data-pv="a0"><div class="mn-photos"><span>Team photo</span><span>Studio</span><span>Shoot day</span></div></div><div class="mn-pv" data-pv="a1"><div class="mn-photos"><span>Team photo</span><span>Studio</span><span>Shoot day</span></div></div><div class="mn-pv" data-pv="a2"><div class="mn-photos"><span>Team photo</span><span>Studio</span><span>Shoot day</span></div></div></div></div><div class="mn-pane" data-pane="3"><div><p class="mn-kick">Resources<b>Free, from the team</b></p><a class="mn-item is-on" href="#header" data-pv="r0"><span class="mn-n">01</span><span class="mn-big">Insights</span><span class="mn-sx"><span><span>Marketing insights from the Dreww team.</span></span></span></a><a class="mn-item" href="#header" data-pv="r1"><span class="mn-n">02</span><span class="mn-big">Press Releases</span><span class="mn-sx"><span><span>News from Dreww and our clients.</span></span></span></a><a class="mn-item" href="#header" data-pv="r2"><span class="mn-n">03</span><span class="mn-big">Tools</span><span class="mn-sx"><span><span>Calculators and playbooks we use with clients.</span></span></span></a></div><div class="mn-pvs"><div class="mn-pv on" data-pv="r0"><div class="mn-box"><p class="mn-kick">Latest insights</p><a class="mn-row" href="#header"><span class="mn-th"></span><span><small>Insight</small><b>How ChatGPT and Claude Recommend Businesses</b><em><span>Andrew Johnson</span><span>44 views</span></em></span></a><a class="mn-row" href="#header"><span class="mn-th"></span><span><small>Insight</small><b>How to Get Your Business Recommended by ChatGPT and Claude</b><em><span>Andrew Johnson</span><span>23 views</span></em></span></a><a class="mn-row" href="#header"><span class="mn-th"></span><span><small>Insight</small><b>How to Claim Your Business in ChatGPT</b><em><span>Andrew Johnson</span><span></span></em></span></a><a class="mn-pv-all" href="#header">All insights <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></div></div><div class="mn-pv" data-pv="r1"><div class="mn-box"><p class="mn-kick">Press releases</p><a class="mn-row" href="#header"><span class="mn-th"></span><span><small>Press</small><b>A press release headline, two lines at most</b></span></a><a class="mn-row" href="#header"><span class="mn-th"></span><span><small>Press</small><b>A second release, newest first</b></span></a><a class="mn-pv-all" href="#header">All press releases <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></div></div><div class="mn-pv" data-pv="r2"><div class="mn-box mn-tool"><p class="mn-kick">Free tool</p><h4>What’s a lead worth to you?</h4><a class="btn btn--primary btn--sm" href="#header">Open the calculator</a><ul><li><span class="mn-kick" style="margin:0">Coming next</span></li><li>What ads work?</li><li>How much to pay to get a customer?</li><li>DIY lead generation playbook, step by step.</li></ul></div></div></div></div></div><div class="mn-foot"><span class="mn-meta">Montréal · Canada and the US</span><div class="mn-tick" aria-hidden="true"><div class="mn-tick-in"><img src="img/prime-video-logo--color.svg" alt=""><q>We’re very satisfied with the quality of Dreww’s work with Second Cup …</q><i>Cendrine Lavigne, Second Cup</i><img src="img/second-cup-logo--color.svg" alt="" class="keep"><q>The Dreww team came in with creative, structured ideas that were well …</q><i>William Dorion, Ville de Laval</i><img src="img/natrel-logo--color.svg" alt=""><q>Dreww stands out for its creative boldness and ability to go off the …</q><i>Alexandra Tsotsis, Lafleur</i><img src="img/agropur-logo--color.svg" alt=""><img src="img/prime-video-logo--color.svg" alt=""><q>We’re very satisfied with the quality of Dreww’s work with Second Cup …</q><i>Cendrine Lavigne, Second Cup</i><img src="img/second-cup-logo--color.svg" alt="" class="keep"><q>The Dreww team came in with creative, structured ideas that were well …</q><i>William Dorion, Ville de Laval</i><img src="img/natrel-logo--color.svg" alt=""><q>Dreww stands out for its creative boldness and ability to go off the …</q><i>Alexandra Tsotsis, Lafleur</i><img src="img/agropur-logo--color.svg" alt=""></div></div></div></div></div>
+      </div>
       <div class="cmp">
-        <div class="cmp-head"><div><h3>Footer</h3><p>Edge glow on ink. The newsletter form sits above it (see Forms).</p></div></div>
-        <div class="card-stage st-white" style=";display:block"><footer class="ft"><div class="ft-grid"><div><p class="ft-h coral">Montreal HQ</p><address>1600 Rue Notre-Dame Ouest,<br>Unit 304, Montréal, QC<br>H3J 1M1, Canada</address></div><div><p class="ft-h">Core services</p><ul><li><a href="#footer">Always-On Social Media</a></li><li><a href="#footer">Lead Generation</a></li><li><a href="#footer">E-commerce Growth</a></li><li><a href="#footer">User Acquisition</a></li></ul></div><div><p class="ft-h">Company</p><ul><li><a href="#footer">About</a></li><li><a href="#footer">Origin Story</a></li><li><a href="#footer">Culture</a></li><li><a href="#footer">Careers</a></li></ul></div><div><p class="ft-h">Work</p><ul><li><a href="#footer">Clients</a></li><li><a href="#footer">Case Studies</a></li></ul></div><div><p class="ft-h">Resources</p><ul><li><a href="#footer">Insights</a></li><li><a href="#footer">Press Releases</a></li><li><a href="#footer">Lead Value Calculator</a></li><li><a href="#footer">Brand Kit</a></li></ul></div><div><p class="ft-h">Connect</p><ul><li><a href="#footer">Contact</a></li><li><a href="#footer">Book a call</a></li></ul></div></div><div class="ft-plat"><p class="ft-h coral" style="margin:0 8px 0 0">Platforms we work with</p><span>Meta Business Partner</span><span>Google Partner</span><span>HubSpot Certified Partner</span><span>Klaviyo</span><span>TikTok</span><span>Shopify Partners</span></div><div class="ft-bot"><span>© 2015–2026 Dreww Media Inc.<a href="#footer">Privacy Policy</a><a href="#footer">Terms of Service</a><a href="#footer">Data Request</a></span><span class="ft-soc"><a href="#footer" aria-label="Instagram">IG</a><a href="#footer" aria-label="LinkedIn">IN</a><a href="#footer" aria-label="TikTok">TT</a><a href="#footer" aria-label="YouTube">YT</a><a href="#footer" aria-label="Facebook">FB</a></span></div></footer></div>
+        <div class="cmp-head"><div><h3>Header &amp; menu · mobile</h3><p>Below 820&nbsp;px the tabs and search fold into a menu button. The menu opens full screen: search and language on top, sections as an accordion of cards, and a bar that stays at the bottom with Watch our work, Book a call and Close.</p></div></div>
+        <div class="mob-row">
+          <div class="mob-col"><div class="mob"><div class="mob-hd"><a class="hd-logo" href="#header" data-logo aria-label="Dreww"></a><a class="btn btn--primary btn--sm" href="#header">Book a call</a><button class="mob-burger" type="button" aria-label="Open menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M10 16h10"/></svg></button></div>
+            <div class="mob-hero"><p class="e">Growth marketing agency in Montreal</p><h4>We help businesses turn marketing into <em>revenue</em></h4><p class="b">We help B2C brands and B2B companies grow.</p></div></div><small class="cap">Closed</small></div>
+          <div class="mob-col"><div class="mob"><div class="mob-menu" id="mob-demo">
+            <div class="mob-hd"><a class="hd-logo" href="#header" data-logo aria-label="Dreww"></a><button class="mob-x" type="button" aria-label="Close menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+            <div class="mob-tools"><button class="mob-search" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>Search</button><div class="mob-lang"><span class="on">EN</span><span>FR</span></div></div>
+            <div class="mob-scroll">
+              <div class="mob-acc on"><button type="button" aria-expanded="true">Services<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="mob-panel"><a class="mob-card" href="#header"><span><b>Always-On Social Media</b><span>Content and community that build demand month after month.</span></span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></i></a><a class="mob-card" href="#header"><span><b>Lead Generation</b><span>Qualified leads, tracked to signed deals in HubSpot.</span></span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></i></a><a class="mob-card" href="#header"><span><b>E-commerce Growth</b><span>Paid social, creative and CRO that grow online revenue profitably.</span></span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></i></a><a class="mob-card" href="#header"><span><b>User Acquisition</b><span>Paid campaigns that bring in app and product users.</span></span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></i></a><a class="mob-all" href="#header">See all services <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></div></div>
+              <div class="mob-acc"><button type="button" aria-expanded="false">Work<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="mob-panel"><a class="mob-card" href="#header"><span><b>Case Studies</b><span>The problems we solved, and the numbers behind them.</span></span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></i></a><a class="mob-card" href="#header"><span><b>Clients</b><span>The brands we’ve helped grow.</span></span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></i></a><a class="mob-card" href="#header"><span><b>Watch Our Work</b><span>Every reel we’ve made, in one place.</span></span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></i></a></div></div>
+              <div class="mob-acc"><button type="button" aria-expanded="false">About<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="mob-panel"><a class="mob-card" href="#header"><span><b>About Dreww</b><span>Who we are, what we do, and the team behind it.</span></span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></i></a><a class="mob-card" href="#header"><span><b>Culture</b><span>We work hard and have fun doing it.</span></span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></i></a><a class="mob-card" href="#header"><span><b>Origin Story</b><span>Open the files from the Dreww archives.</span></span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></i></a></div></div>
+              <div class="mob-acc"><button type="button" aria-expanded="false">Resources<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="mob-panel"><a class="mob-card" href="#header"><span><b>Insights</b><span>Marketing insights from the Dreww team.</span></span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></i></a><a class="mob-card" href="#header"><span><b>Press Releases</b><span>News from Dreww and our clients.</span></span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></i></a><a class="mob-card" href="#header"><span><b>Tools</b><span>Calculators and playbooks we use with clients.</span></span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></i></a></div></div>
+              <div class="mob-tick" aria-hidden="true"><div class="mn-tick-in"><img src="img/prime-video-logo--color.svg" alt=""><q>We’re very satisfied with the quality of Dreww’s work with Second Cup …</q><i>Cendrine Lavigne, Second Cup</i><img src="img/second-cup-logo--color.svg" alt="" class="keep"><q>The Dreww team came in with creative, structured ideas that were well …</q><i>William Dorion, Ville de Laval</i><img src="img/natrel-logo--color.svg" alt=""><q>Dreww stands out for its creative boldness and ability to go off the …</q><i>Alexandra Tsotsis, Lafleur</i><img src="img/agropur-logo--color.svg" alt=""><img src="img/prime-video-logo--color.svg" alt=""><q>We’re very satisfied with the quality of Dreww’s work with Second Cup …</q><i>Cendrine Lavigne, Second Cup</i><img src="img/second-cup-logo--color.svg" alt="" class="keep"><q>The Dreww team came in with creative, structured ideas that were well …</q><i>William Dorion, Ville de Laval</i><img src="img/natrel-logo--color.svg" alt=""><q>Dreww stands out for its creative boldness and ability to go off the …</q><i>Alexandra Tsotsis, Lafleur</i><img src="img/agropur-logo--color.svg" alt=""></div></div>
+            </div>
+            <div class="mob-bar"><a class="ic" href="#header" aria-label="Watch our work"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M3 8h18M8 3l3 5M14 3l3 5M10 11.5v5l4.5-2.5z"/></svg></a><a class="btn btn--primary" href="#header">Book a call</a><button type="button" aria-label="Close menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+          </div></div><small class="cap">Open · Services</small></div>
+        </div>
+      </div>
+<div id="footer"></div>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Footer</h3><p>Edge glow on ink. Newsletter on top, then the logo, address and social icons beside five link columns, the partner logos, and the legal line.</p></div></div>
+        <div class="card-stage st-white" style=";display:block"><footer class="ft on-dark"><div class="ft-news"><p class="ft-h coral">News</p><h4>Marketing insights, straight to your inbox.</h4><p>Join our newsletter for growth marketing playbooks, case studies, social trends, and much more.</p><form onsubmit="return false"><input class="f-input" aria-label="First name" placeholder="First name"><input class="f-input" aria-label="Last name" placeholder="Last name"><input class="f-input full" type="email" aria-label="Email" placeholder="you@company.com"><div class="fine"><span>By subscribing, you agree to our <a href="#footer">privacy policy</a>. You can unsubscribe anytime.</span><button class="btn btn--primary btn--sm" type="submit">Subscribe</button></div></form></div><div class="ft-grid"><div><a class="ft-logo" href="#footer" data-logo aria-label="Dreww"></a><p class="ft-h coral">Montreal HQ</p><address>1600 Rue Notre-Dame Ouest,<br>Unit 304, Montréal, QC<br>H3J 1M1, Canada</address><div class="ft-soc"><a href="#footer" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg></a><a href="#footer" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg></a><a href="#footer" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M14 3v11a4 4 0 1 1-4-4"/><path d="M14 3c.5 2.5 2.5 4.5 5 5"/></svg></a><a href="#footer" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="M10 9.5v5l4.5-2.5z"/></svg></a><a href="#footer" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></svg></a></div></div><div><p class="ft-h">Core services</p><ul><li><a href="#footer">Always-On Social Media</a></li><li><a href="#footer">Lead Generation</a></li><li><a href="#footer">E-commerce Growth</a></li><li><a href="#footer">User Acquisition</a></li></ul></div><div><p class="ft-h">Company</p><ul><li><a href="#footer">About</a></li><li><a href="#footer">Origin Story</a></li><li><a href="#footer">Culture</a></li><li><a href="#footer">Careers</a></li></ul></div><div><p class="ft-h">Work</p><ul><li><a href="#footer">Clients</a></li><li><a href="#footer">Case Studies</a></li></ul></div><div><p class="ft-h">Resources</p><ul><li><a href="#footer">Insights</a></li><li><a href="#footer">Press Releases</a></li><li><a href="#footer">Lead Value Calculator</a></li><li><a href="#footer">Brand Kit</a></li></ul></div><div><p class="ft-h">Connect</p><ul><li><a href="#footer">Contact</a></li><li><a href="#footer">Book a call</a></li></ul></div></div><div class="ft-plat"><p class="ft-h coral">Platforms we work with</p><div class="ft-plat-row"><b>Meta <small>Business Partners</small></b><b>Google <small>Partner</small></b><b>HubSpot <small>Certified Partner</small></b><b>klaviyo</b><b>TikTok</b><b>Shopify <small>Partners</small></b></div></div><div class="ft-bot"><span>© 2015–2026 Dreww Media Inc.</span><span class="ft-legal"><a href="#footer">Privacy Policy</a><a href="#footer">Terms of Service</a><a href="#footer">Data Request</a></span></div></footer></div>
       </div>
       <div class="card-decide">
-        <h3>Where the header and footer disagree</h3>
+        <h3>Agreed fixes for the header and footer</h3>
         <div class="cd-grid">
           <div><b>Corners</b><p>The header Book a call button is 8&nbsp;px. The tab fill and search field are 12&nbsp;px, which matches the agreed buttons.</p><p class="cd-rec">12&nbsp;px on the header button too.</p></div>
           <div><b>Footer labels</b><p>Two eyebrow styles in one footer: coral at 400 weight (Montreal HQ, Platforms) and faded white at 500 (the link columns), with different spacing.</p><p class="cd-rec">One style: Plex Mono 500, 0.1em. Coral for the first label only, faded white for the columns.</p></div>
-          <div><b>Naming</b><p>The footer says "App Growth &amp; User Acquisition" and "Book a Call". Everywhere else it's "User Acquisition" and "Book a call".</p><p class="cd-rec">Match the rest of the site.</p></div>
+          <div><b>Two close buttons</b><p>The mobile menu has a coral close at the top and another in the bottom bar.</p><p class="cd-rec">Keep the bottom bar one, where the thumb is. Drop the top one.</p></div><div><b>Newsletter form</b><p>Live, the fields are light boxes, Subscribe floats on its own line, and the fine print is split in two and off-centre.</p><p class="cd-rec">Use the agreed dark fields from Forms, with one line of fine print beside Subscribe.</p></div><div><b>Platform logos</b><p>Six partner badges with different sizes and weights. Shown here as type; the live badges are images.</p><p class="cd-rec">One height (24&nbsp;px), all white.</p></div><div><b>Naming</b><p>The footer says "App Growth &amp; User Acquisition" and "Book a Call". Everywhere else it's "User Acquisition" and "Book a call".</p><p class="cd-rec">Match the rest of the site.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FAQ ACCORDION -->
+  <section class="sec" id="faq">
+    <div class="wrap">
+      <h2>FAQ accordion</h2>
+      <p class="lede">The questions section near the bottom of the homepage, Services and the case studies hub. Built from the agreed FAQ card and heading rules. Click a question: one answer is open at a time.</p>
+
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Desktop</h3><p>Heading block on the left, pinned while the list scrolls. Questions on the right, 12&nbsp;px apart. The first answer starts open.</p></div></div>
+        <div class="fq" data-fq>
+          <div class="fq-head"><div class="eh-block"><p class="eb">FAQ</p><h3 class="eh-h2">Questions before your first call</h3><p class="eh-lede">What Dreww does, who we work with and how we start.</p></div><a class="link-arrow fq-more" href="#faq">Still have a question? Book a call <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></div>
+          <ul class="fq-list"><li class="c-faq is-open"><button type="button" aria-expanded="true"><span class="c-n">01</span><span class="c-q">What is Dreww?<span class="c-emo" aria-hidden="true">👋</span></span><span class="c-plus"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M8 2v12"/></svg></span></button><div class="c-a"><div><p>Dreww is a growth marketing agency in Montréal. Since 2015, Dreww has helped B2C and B2B businesses turn marketing into revenue. A specialist team runs each of its four core services.</p></div></div></li><li class="c-faq"><button type="button" aria-expanded="false"><span class="c-n">02</span><span class="c-q">What services does Dreww offer?<span class="c-emo" aria-hidden="true">🧰</span></span><span class="c-plus"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M8 2v12"/></svg></span></button><div class="c-a"><div><p>Four: Always-On Social Media, Lead Generation, E-commerce Growth and User Acquisition.</p></div></div></li><li class="c-faq"><button type="button" aria-expanded="false"><span class="c-n">03</span><span class="c-q">Who does Dreww work with?<span class="c-emo" aria-hidden="true">🤝</span></span><span class="c-plus"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M8 2v12"/></svg></span></button><div class="c-a"><div><p>Consumer brands and franchises, B2B companies, service businesses that need leads, startups and large brands. Clients include Natrel, Second Cup, Prime Video, Lambert, Quesada and Gustav.</p></div></div></li><li class="c-faq"><button type="button" aria-expanded="false"><span class="c-n">04</span><span class="c-q">Does Dreww work in French and English?<span class="c-emo" aria-hidden="true">⚜️</span></span><span class="c-plus"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M8 2v12"/></svg></span></button><div class="c-a"><div><p>Yes. The team works in both, for clients across Canada and the US.</p></div></div></li><li class="c-faq"><button type="button" aria-expanded="false"><span class="c-n">05</span><span class="c-q">How does Dreww measure results?<span class="c-emo" aria-hidden="true">📈</span></span><span class="c-plus"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M8 2v12"/></svg></span></button><div class="c-a"><div><p>Against revenue, not reach. Leads are tracked in HubSpot from the first click to the signed deal.</p></div></div></li><li class="c-faq"><button type="button" aria-expanded="false"><span class="c-n">06</span><span class="c-q">Which platforms is Dreww a partner of?<span class="c-emo" aria-hidden="true">🏅</span></span><span class="c-plus"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M8 2v12"/></svg></span></button><div class="c-a"><div><p>Meta, Google, HubSpot, Klaviyo, TikTok and Shopify.</p></div></div></li><li class="c-faq"><button type="button" aria-expanded="false"><span class="c-n">07</span><span class="c-q">How do I get started with Dreww?<span class="c-emo" aria-hidden="true">📞</span></span><span class="c-plus"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M8 2v12"/></svg></span></button><div class="c-a"><div><p>Book a call. A strategist looks at where you are and tells you what we would do first.</p></div></div></li></ul>
+        </div>
+        <div class="spec-list"><div><b>Layout</b>5 / 7 columns, 48&nbsp;px gap. Heading pinned 120&nbsp;px from the top</div><div><b>Behaviour</b>One open at a time. First open on load. Plus turns to ×, emoji appears</div><div><b>Type</b>Number Plex Mono 14 coral, question Anton 24, answer DM Sans 17</div><div><b>Schema</b>Every list ships FAQPage data with the same questions</div></div>
+      </div>
+
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Mobile</h3><p>One column: heading block, then the list. Question 20&nbsp;px, answer 15, the answer drops its indent.</p></div></div>
+        <div class="card-stage st-mist" style="display:block"><div class="fq-narrow"><div class="fq" data-fq><div class="fq-head"><div class="eh-block"><p class="eb">FAQ</p><h3 class="eh-h2">Questions before your first call</h3><p class="eh-lede">What Dreww does, who we work with and how we start.</p></div></div><ul class="fq-list"><li class="c-faq is-open"><button type="button" aria-expanded="true"><span class="c-n">01</span><span class="c-q">What is Dreww?<span class="c-emo" aria-hidden="true">👋</span></span><span class="c-plus"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M8 2v12"/></svg></span></button><div class="c-a"><div><p>Dreww is a growth marketing agency in Montréal. Since 2015, Dreww has helped B2C and B2B businesses turn marketing into revenue. A specialist team runs each of its four core services.</p></div></div></li><li class="c-faq"><button type="button" aria-expanded="false"><span class="c-n">02</span><span class="c-q">What services does Dreww offer?<span class="c-emo" aria-hidden="true">🧰</span></span><span class="c-plus"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M8 2v12"/></svg></span></button><div class="c-a"><div><p>Four: Always-On Social Media, Lead Generation, E-commerce Growth and User Acquisition.</p></div></div></li><li class="c-faq"><button type="button" aria-expanded="false"><span class="c-n">03</span><span class="c-q">Who does Dreww work with?<span class="c-emo" aria-hidden="true">🤝</span></span><span class="c-plus"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M8 2v12"/></svg></span></button><div class="c-a"><div><p>Consumer brands and franchises, B2B companies, service businesses that need leads, startups and large brands. Clients include Natrel, Second Cup, Prime Video, Lambert, Quesada and Gustav.</p></div></div></li><li class="c-faq"><button type="button" aria-expanded="false"><span class="c-n">04</span><span class="c-q">Does Dreww work in French and English?<span class="c-emo" aria-hidden="true">⚜️</span></span><span class="c-plus"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M8 2v12"/></svg></span></button><div class="c-a"><div><p>Yes. The team works in both, for clients across Canada and the US.</p></div></div></li></ul></div></div></div>
+      </div>
+
+      <div class="card-decide">
+        <h3>FAQ accordion · agreed</h3>
+        <div class="cd-grid">
+          <div><b>How many</b><p>Seven questions on the homepage, twelve on Services.</p><p class="cd-rec">Eight at most. Move the rest to the service page they belong to.</p></div>
+          <div><b>A way out</b><p>The list ends with nothing to do if your question isn’t there.</p><p class="cd-rec">A text link under the heading: “Still have a question? Book a call”.</p></div>
+          <div><b>Answers</b><p>Lengths vary from one line to a paragraph.</p><p class="cd-rec">First sentence answers the question outright, 60 words at most. Search and AI answers quote that sentence.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- REVIEW CAROUSEL -->
+  <section class="sec" id="reviews">
+    <div class="wrap">
+      <h2>Review carousel</h2>
+      <p class="lede">The moving row of Google reviews under the services on the homepage, the case studies hub and the service pages. Built from the agreed review card. Hover to pause.</p>
+
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Reviews row</h3><p>Runs edge to edge, drifting left at about 54&nbsp;px a second, and fades out at both edges. Hovering or tabbing into it pauses it. On desktop the cursor becomes a hand: grab a card and drag the row either way.</p></div><div class="acts"><button class="act" type="button" id="rc-pause" aria-pressed="false">Pause</button></div></div>
+        <div class="rc" id="rc">
+          <div class="rc-head"><p class="eb">Google reviews</p><h3 class="eh-h2">Trusted by brands and growth-minded teams</h3><div class="rc-rate"><b>4.8</b><span class="stars" aria-hidden="true">★★★★★</span>40+ Google reviews</div></div>
+          <div class="rc-view" tabindex="0" aria-label="Google reviews, drag to browse"><div class="rc-track"><figure class="c-rev"><div class="c-rev-top"><svg width="22" height="22" viewBox="0 0 24 24" aria-label="Google"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.46a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.58-5.17 3.58-8.72z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3c-1.08.72-2.46 1.15-4.06 1.15-3.12 0-5.77-2.11-6.72-4.95H1.28v3.09A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.28 14.3a7.2 7.2 0 0 1 0-4.6V6.61H1.28a12 12 0 0 0 0 10.78l4-3.09z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.190 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4 3.09C6.23 6.86 8.88 4.75 12 4.75z"/></svg><span class="c-stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg></span></div><blockquote>We’re very satisfied with the quality of Dreww’s work with Second Cup project. They handled the project with professionalism and delivered results that aligned well with our expectations.</blockquote><figcaption><img class="c-logo" src="img/second-cup-logo--color.svg" alt="Second Cup"><span class="c-who"><b>Cendrine Lavigne</b><small>Marketing Director</small></span><img class="c-head" src="img/cendrine-lavigne.jpg" alt=""></figcaption></figure><figure class="c-rev"><div class="c-rev-top"><svg width="22" height="22" viewBox="0 0 24 24" aria-label="Google"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.46a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.58-5.17 3.58-8.72z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3c-1.08.72-2.46 1.15-4.06 1.15-3.12 0-5.77-2.11-6.72-4.95H1.28v3.09A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.28 14.3a7.2 7.2 0 0 1 0-4.6V6.61H1.28a12 12 0 0 0 0 10.78l4-3.09z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.190 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4 3.09C6.23 6.86 8.88 4.75 12 4.75z"/></svg><span class="c-stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg></span></div><blockquote>Dreww stands out for its creative boldness and ability to go off the beaten path. Lucie was a bold idea, deeply rooted in Lafleur, that few agencies would have dared to bring forward in 2022. It took just as much boldness on our side to back it and bring it to life.</blockquote><figcaption><span class="rc-co">Lafleur</span><span class="c-who"><b>Alexandra Tsotsis</b><small>Marketing Director</small></span><span class="rc-ini">AT</span></figcaption></figure><figure class="c-rev"><div class="c-rev-top"><svg width="22" height="22" viewBox="0 0 24 24" aria-label="Google"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.46a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.58-5.17 3.58-8.72z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3c-1.08.72-2.46 1.15-4.06 1.15-3.12 0-5.77-2.11-6.72-4.95H1.28v3.09A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.28 14.3a7.2 7.2 0 0 1 0-4.6V6.61H1.28a12 12 0 0 0 0 10.78l4-3.09z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.190 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4 3.09C6.23 6.86 8.88 4.75 12 4.75z"/></svg><span class="c-stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg></span></div><blockquote>Thanks to Dreww, we have built a culturally grounded content strategy that creates an authentic connection with Natrel consumers and generates an unmatched level of brand love and engagement.</blockquote><figcaption><img class="c-logo" src="img/natrel-logo--color.svg" alt="Natrel"><span class="c-who"><b>Audrey Paquette</b><small>Digital Marketing Manager</small></span><span class="rc-ini">AP</span></figcaption></figure><figure class="c-rev"><div class="c-rev-top"><svg width="22" height="22" viewBox="0 0 24 24" aria-label="Google"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.46a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.58-5.17 3.58-8.72z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3c-1.08.72-2.46 1.15-4.06 1.15-3.12 0-5.77-2.11-6.72-4.95H1.28v3.09A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.28 14.3a7.2 7.2 0 0 1 0-4.6V6.61H1.28a12 12 0 0 0 0 10.78l4-3.09z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.190 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4 3.09C6.23 6.86 8.88 4.75 12 4.75z"/></svg><span class="c-stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg></span></div><blockquote>They underpromise and overdeliver every time. They are not an expense to our business, they are a great investment.</blockquote><figcaption><span class="rc-co">Erco</span><span class="c-who"><b>Eric Gagné</b><small>President</small></span><span class="rc-ini">EG</span></figcaption></figure><figure class="c-rev"><div class="c-rev-top"><svg width="22" height="22" viewBox="0 0 24 24" aria-label="Google"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.46a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.58-5.17 3.58-8.72z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3c-1.08.72-2.46 1.15-4.06 1.15-3.12 0-5.77-2.11-6.72-4.95H1.28v3.09A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.28 14.3a7.2 7.2 0 0 1 0-4.6V6.61H1.28a12 12 0 0 0 0 10.78l4-3.09z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.190 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4 3.09C6.23 6.86 8.88 4.75 12 4.75z"/></svg><span class="c-stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg></span></div><blockquote>The Dreww team came in with creative, structured ideas that were well aligned with our organizational reality. We reached—and even exceeded—the expectations and objectives we had set for ourselves, both in terms of visibility and engagement.</blockquote><figcaption><span class="rc-co">Ville de Laval</span><span class="c-who"><b>William Dorion</b><small>Social media advisor</small></span><span class="rc-ini">WD</span></figcaption></figure><figure class="c-rev"><div class="c-rev-top"><svg width="22" height="22" viewBox="0 0 24 24" aria-label="Google"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.46a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.58-5.17 3.58-8.72z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3c-1.08.72-2.46 1.15-4.06 1.15-3.12 0-5.77-2.11-6.72-4.95H1.28v3.09A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.28 14.3a7.2 7.2 0 0 1 0-4.6V6.61H1.28a12 12 0 0 0 0 10.78l4-3.09z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.190 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4 3.09C6.23 6.86 8.88 4.75 12 4.75z"/></svg><span class="c-stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg></span></div><blockquote>I highly recommend Dreww to any company looking for a serious, committed partner focused on delivering tangible results.</blockquote><figcaption><span class="rc-co">Maître Glacier</span><span class="c-who"><b>Martine Benoit</b><small>Founder &amp; President</small></span><span class="rc-ini">MB</span></figcaption></figure><figure class="c-rev"><div class="c-rev-top"><svg width="22" height="22" viewBox="0 0 24 24" aria-label="Google"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.46a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.58-5.17 3.58-8.72z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3c-1.08.72-2.46 1.15-4.06 1.15-3.12 0-5.77-2.11-6.72-4.95H1.28v3.09A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.28 14.3a7.2 7.2 0 0 1 0-4.6V6.61H1.28a12 12 0 0 0 0 10.78l4-3.09z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.190 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4 3.09C6.23 6.86 8.88 4.75 12 4.75z"/></svg><span class="c-stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg></span></div><blockquote>We’re very satisfied with the quality of Dreww’s work with Second Cup project. They handled the project with professionalism and delivered results that aligned well with our expectations.</blockquote><figcaption><img class="c-logo" src="img/second-cup-logo--color.svg" alt="Second Cup"><span class="c-who"><b>Cendrine Lavigne</b><small>Marketing Director</small></span><img class="c-head" src="img/cendrine-lavigne.jpg" alt=""></figcaption></figure><figure class="c-rev"><div class="c-rev-top"><svg width="22" height="22" viewBox="0 0 24 24" aria-label="Google"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.46a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.58-5.17 3.58-8.72z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3c-1.08.72-2.46 1.15-4.06 1.15-3.12 0-5.77-2.11-6.72-4.95H1.28v3.09A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.28 14.3a7.2 7.2 0 0 1 0-4.6V6.61H1.28a12 12 0 0 0 0 10.78l4-3.09z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.190 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4 3.09C6.23 6.86 8.88 4.75 12 4.75z"/></svg><span class="c-stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg></span></div><blockquote>Dreww stands out for its creative boldness and ability to go off the beaten path. Lucie was a bold idea, deeply rooted in Lafleur, that few agencies would have dared to bring forward in 2022. It took just as much boldness on our side to back it and bring it to life.</blockquote><figcaption><span class="rc-co">Lafleur</span><span class="c-who"><b>Alexandra Tsotsis</b><small>Marketing Director</small></span><span class="rc-ini">AT</span></figcaption></figure><figure class="c-rev"><div class="c-rev-top"><svg width="22" height="22" viewBox="0 0 24 24" aria-label="Google"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.46a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.58-5.17 3.58-8.72z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3c-1.08.72-2.46 1.15-4.06 1.15-3.12 0-5.77-2.11-6.72-4.95H1.28v3.09A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.28 14.3a7.2 7.2 0 0 1 0-4.6V6.61H1.28a12 12 0 0 0 0 10.78l4-3.09z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.190 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4 3.09C6.23 6.86 8.88 4.75 12 4.75z"/></svg><span class="c-stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg></span></div><blockquote>Thanks to Dreww, we have built a culturally grounded content strategy that creates an authentic connection with Natrel consumers and generates an unmatched level of brand love and engagement.</blockquote><figcaption><img class="c-logo" src="img/natrel-logo--color.svg" alt="Natrel"><span class="c-who"><b>Audrey Paquette</b><small>Digital Marketing Manager</small></span><span class="rc-ini">AP</span></figcaption></figure><figure class="c-rev"><div class="c-rev-top"><svg width="22" height="22" viewBox="0 0 24 24" aria-label="Google"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.46a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.58-5.17 3.58-8.72z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3c-1.08.72-2.46 1.15-4.06 1.15-3.12 0-5.77-2.11-6.72-4.95H1.28v3.09A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.28 14.3a7.2 7.2 0 0 1 0-4.6V6.61H1.28a12 12 0 0 0 0 10.78l4-3.09z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.190 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4 3.09C6.23 6.86 8.88 4.75 12 4.75z"/></svg><span class="c-stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg></span></div><blockquote>They underpromise and overdeliver every time. They are not an expense to our business, they are a great investment.</blockquote><figcaption><span class="rc-co">Erco</span><span class="c-who"><b>Eric Gagné</b><small>President</small></span><span class="rc-ini">EG</span></figcaption></figure><figure class="c-rev"><div class="c-rev-top"><svg width="22" height="22" viewBox="0 0 24 24" aria-label="Google"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.46a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.58-5.17 3.58-8.72z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3c-1.08.72-2.46 1.15-4.06 1.15-3.12 0-5.77-2.11-6.72-4.95H1.28v3.09A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.28 14.3a7.2 7.2 0 0 1 0-4.6V6.61H1.28a12 12 0 0 0 0 10.78l4-3.09z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.190 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4 3.09C6.23 6.86 8.88 4.75 12 4.75z"/></svg><span class="c-stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg></span></div><blockquote>The Dreww team came in with creative, structured ideas that were well aligned with our organizational reality. We reached—and even exceeded—the expectations and objectives we had set for ourselves, both in terms of visibility and engagement.</blockquote><figcaption><span class="rc-co">Ville de Laval</span><span class="c-who"><b>William Dorion</b><small>Social media advisor</small></span><span class="rc-ini">WD</span></figcaption></figure><figure class="c-rev"><div class="c-rev-top"><svg width="22" height="22" viewBox="0 0 24 24" aria-label="Google"><path fill="#4285F4" d="M23.52 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.46a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.58-5.17 3.58-8.72z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3c-1.08.72-2.46 1.15-4.06 1.15-3.12 0-5.77-2.11-6.72-4.95H1.28v3.09A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.28 14.3a7.2 7.2 0 0 1 0-4.6V6.61H1.28a12 12 0 0 0 0 10.78l4-3.09z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.190 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4 3.09C6.23 6.86 8.88 4.75 12 4.75z"/></svg><span class="c-stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg><svg viewBox="0 0 16 15" aria-hidden="true"><path d="M8 .6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L8 12.3 3.4 14.7l.9-5.1L.6 6l5.1-.7z"/></svg></span></div><blockquote>I highly recommend Dreww to any company looking for a serious, committed partner focused on delivering tangible results.</blockquote><figcaption><span class="rc-co">Maître Glacier</span><span class="c-who"><b>Martine Benoit</b><small>Founder &amp; President</small></span><span class="rc-ini">MB</span></figcaption></figure></div></div>
+        </div>
+        <div class="spec-list"><div><b>Card</b>The agreed review card, 340&nbsp;px wide, 16&nbsp;px apart. All cards as tall as the longest</div><div><b>Motion</b>About 54&nbsp;px a second, endless loop, 6% fade at each edge</div><div><b>Hand</b>Pause on hover or focus. Grab and drag on desktop, swipe on touch</div><div><b>Quote</b>The short testimonial from HubDB, always in full, never cut</div></div>
+      </div>
+
+      <div class="card-decide">
+        <h3>Review carousel · agreed</h3>
+        <div class="cd-grid">
+          <div><b>Pause button</b><p>Today it only stops on hover, so phones and keyboards can’t stop it. Accessibility rules ask for a way to pause anything that moves for more than 5 seconds.</p><p class="cd-rec">A small pause button under the row, plus pause on focus.</p></div>
+          <div><b>Heading</b><p>Live, it’s a one-off bold line in DM Sans 20 with the rating under it.</p><p class="cd-rec">The agreed heading block: “Google reviews” eyebrow, H2, then the 4.8 rating as the lede.</p></div>
+          <div><b>Quotes</b><p>The HubDB short testimonials run 18 to 52 words. Shown in full, every card grows to the longest one.</p><p class="cd-rec">Keep short testimonials to 55 words at most, word for word from the review, and link the row to the Google profile.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- LOGO MARQUEE -->
+  <section class="sec" id="marquee">
+    <div class="wrap">
+      <h2>Logo marquee</h2>
+      <p class="lede">The row of client logos that drifts across the bottom of the homepage hero, the case studies hub and the Clients page. One build for all of them: same size, speed and spacing, and it can be grabbed and dragged like the reviews.</p>
+
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>On burgundy</h3><p>Under a hero. White logos at 75%, full white on hover. A thin line above separates it from the hero.</p></div></div>
+        <div class="mq-dark"><div class="mq" data-mq tabindex="0" aria-label="Client logos, drag to browse"><div class="mq-track"><img src="img/prime-video-logo--color.svg" alt="Prime Video"><img src="img/natrel-logo--color.svg" alt="Natrel"><img src="img/agropur-logo--color.svg" alt="Agropur"><img src="img/access-signs-logo--color.svg" alt="Access Signs"><img src="img/prime-video-logo--color.svg" alt="Prime Video"><img src="img/natrel-logo--color.svg" alt="Natrel"><img src="img/agropur-logo--color.svg" alt="Agropur"><img src="img/access-signs-logo--color.svg" alt="Access Signs"><img src="img/prime-video-logo--color.svg" alt="Prime Video"><img src="img/natrel-logo--color.svg" alt="Natrel"><img src="img/agropur-logo--color.svg" alt="Agropur"><img src="img/access-signs-logo--color.svg" alt="Access Signs"><img src="img/prime-video-logo--color.svg" alt="Prime Video"><img src="img/natrel-logo--color.svg" alt="Natrel"><img src="img/agropur-logo--color.svg" alt="Agropur"><img src="img/access-signs-logo--color.svg" alt="Access Signs"><img src="img/prime-video-logo--color.svg" alt="Prime Video"><img src="img/natrel-logo--color.svg" alt="Natrel"><img src="img/agropur-logo--color.svg" alt="Agropur"><img src="img/access-signs-logo--color.svg" alt="Access Signs"><img src="img/prime-video-logo--color.svg" alt="Prime Video"><img src="img/natrel-logo--color.svg" alt="Natrel"><img src="img/agropur-logo--color.svg" alt="Agropur"><img src="img/access-signs-logo--color.svg" alt="Access Signs"></div></div></div>
+      </div>
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>On light</h3><p>On white or mist. Logos in ink at 60%, their own colours on hover, the same as the logo tiles in Cards.</p></div></div>
+        <div class="mq-light"><div class="mq" data-mq tabindex="0" aria-label="Client logos, drag to browse"><div class="mq-track"><img src="img/prime-video-logo--color.svg" alt="Prime Video"><img src="img/natrel-logo--color.svg" alt="Natrel"><img src="img/agropur-logo--color.svg" alt="Agropur"><img src="img/access-signs-logo--color.svg" alt="Access Signs"><img src="img/prime-video-logo--color.svg" alt="Prime Video"><img src="img/natrel-logo--color.svg" alt="Natrel"><img src="img/agropur-logo--color.svg" alt="Agropur"><img src="img/access-signs-logo--color.svg" alt="Access Signs"><img src="img/prime-video-logo--color.svg" alt="Prime Video"><img src="img/natrel-logo--color.svg" alt="Natrel"><img src="img/agropur-logo--color.svg" alt="Agropur"><img src="img/access-signs-logo--color.svg" alt="Access Signs"><img src="img/prime-video-logo--color.svg" alt="Prime Video"><img src="img/natrel-logo--color.svg" alt="Natrel"><img src="img/agropur-logo--color.svg" alt="Agropur"><img src="img/access-signs-logo--color.svg" alt="Access Signs"><img src="img/prime-video-logo--color.svg" alt="Prime Video"><img src="img/natrel-logo--color.svg" alt="Natrel"><img src="img/agropur-logo--color.svg" alt="Agropur"><img src="img/access-signs-logo--color.svg" alt="Access Signs"><img src="img/prime-video-logo--color.svg" alt="Prime Video"><img src="img/natrel-logo--color.svg" alt="Natrel"><img src="img/agropur-logo--color.svg" alt="Agropur"><img src="img/access-signs-logo--color.svg" alt="Access Signs"></div></div></div>
+        <div class="spec-list"><div><b>Size</b>32&nbsp;px tall, 150&nbsp;px wide at most, 64&nbsp;px apart</div><div><b>Motion</b>40&nbsp;px a second, endless, 6% fade at each edge</div><div><b>Hand</b>Pauses on hover or focus. Grab and drag on desktop, swipe on touch</div><div><b>Hover</b>The logo goes to full strength. No grow, no glow</div></div>
+      </div>
+
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>What the live site does today</h3><p>Three versions of the same row.</p></div></div>
+        <div class="audit-wrap"><table class="audit">
+          <thead><tr><th>Where</th><th>Size</th><th>Speed</th><th>Logos</th><th>Hover</th></tr></thead>
+          <tbody>
+            <tr><td>Homepage hero</td><td>34&nbsp;px, 72 apart</td><td>39&nbsp;px/s</td><td>White, 75%</td><td>Grows 15% and glows. Draggable</td></tr>
+            <tr><td>Case studies hub</td><td>28&nbsp;px, 52 apart</td><td>26&nbsp;px/s</td><td>White, 55%</td><td>None</td></tr>
+            <tr><td>Clients page</td><td>42&nbsp;px</td><td>45&nbsp;px/s</td><td>Full colour, 85%</td><td>None</td></tr>
+            <tr><td>Proposed</td><td class="new">32&nbsp;px, 64 apart</td><td class="new">40&nbsp;px/s</td><td class="new">White on dark, ink on light</td><td class="new">Full strength. Draggable everywhere</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+
+      <div class="card-decide">
+        <h3>Logo marquee · agreed</h3>
+        <div class="cd-grid">
+          <div><b>One marquee</b><p>Three sizes, three speeds and three strengths across three pages.</p><p class="cd-rec">32&nbsp;px tall, 64 apart, 40&nbsp;px a second, everywhere.</p></div>
+          <div><b>Hover</b><p>On the homepage, a logo grows 15% and glows. The agreed hover rule says no grow.</p><p class="cd-rec">Full strength on hover, nothing else. Dragging stays.</p></div>
+          <div><b>On light</b><p>The Clients page shows every logo in its own colours, which gets busy.</p><p class="cd-rec">Ink at 60%, colour on hover, like the logo tiles.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FINAL CTA -->
+  <section class="sec" id="cta">
+    <div class="wrap">
+      <h2>Final CTA</h2>
+      <p class="lede">The last section on most pages: one ask, Book a call. Ink with the warm glow, a Display headline with the one coral phrase, and the large primary button.</p>
+
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Final CTA</h3><p>As it scrolls in, the headline’s words rise into place. Book a call, with an optional text link beside it. The coral phrase sits on its own line and cycles every 2.4&nbsp;seconds through what each service delivers, so a two-word phrase never knocks the headline onto a new line. The badge in the corner turns slowly and also books a call.</p></div><div class="acts"><button class="act" type="button" id="fc-replay">Replay</button></div></div>
+        <div class="fc on-dark" id="fc">
+          <a class="fc-badge" href="#cta" aria-label="Book a call, rated 4.8 on Google"><svg viewBox="0 0 132 132" aria-hidden="true"><defs><path id="fc-c" d="M66 66m-54 0a54 54 0 1 1 108 0a54 54 0 1 1-108 0"/></defs><text><textPath href="#fc-c">Let’s talk growth · Let’s talk growth · </textPath></text></svg><b>4.8★</b></a>
+          <div class="fc-copy">
+            <p class="eb">Your next step</p>
+            <h3><span class="ln"><span class="w"><span style="--d:0.00s">Let’s</span></span> <span class="w"><span style="--d:0.06s">turn</span></span> <span class="w"><span style="--d:0.12s">your</span></span></span><span class="ln"><span class="w"><span style="--d:0.18s">marketing</span></span> <span class="w"><span style="--d:0.24s">into</span></span></span><span class="ln"><span class="w"><span style="--d:0.30s"><span class="rot"><span class="rot-list"><span>revenue</span><span>qualified leads</span><span>online sales</span><span>new users</span></span></span></span></span></span></h3>
+            <p class="fc-lede">A 30-minute call with a strategist. Tell us where you are, and we’ll tell you what we’d do first.</p>
+            <div class="fc-ctas"><a class="btn btn--primary btn--lg" href="#cta">Book a call</a><a class="link-arrow" href="#cta">Explore our services <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></div>
+          </div>
+        </div>
+        <div class="spec-list"><div><b>Ground</b>Ink with the warm glow. 120&nbsp;px top and bottom, at least 640 tall</div><div><b>Type</b>Eyebrow, Display 82 headline, lede #CFCFCF, 16 apart, 48 to the button</div><div><b>Phrase</b>Coral, on its own last line so it never pushes the headline around. Longest option 16 characters, so it fits a phone. Cycles every 2.4&nbsp;s</div><div><b>Buttons</b>Large primary Book a call, white wipe, no magnetic pull. An optional text link beside it, picked per page</div></div>
+      </div>
+
+      <div class="card-decide">
+        <h3>Final CTA · agreed</h3>
+        <div class="cd-grid">
+          <div><b>Cycling phrase</b><p>It cycles on every page, even on a service page where only one outcome fits.</p><p class="cd-rec">Cycle on the homepage and hubs. On a service page, hold that service’s outcome (Lead Generation: “qualified leads”).</p></div>
+          <div><b>Badge</b><p>A spinning “Let’s talk growth · 4.8★” badge sits in the corner as a second button.</p><p class="cd-rec">Keep it on desktop, hide it on mobile, stop it spinning for reduced motion.</p></div>
+          <div><b>Buttons</b><p>Some pages need a second way forward, like Explore our services.</p><p class="cd-rec">Book a call is always the one button. A second action is a text link beside it, never a second button, and only when the page needs it.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SECTION RHYTHM -->
+  <section class="sec" id="rhythm">
+    <div class="wrap">
+      <h2>Section rhythm</h2>
+      <p class="lede">How sections stack down a page: which ground each one sits on and what always comes first and last. Read from the homepage, Services, Lead Generation and a case study.</p>
+
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Pages today, and the shape to build to</h3><p>Each column is a page from top to bottom, at desktop. Red outlines mark what breaks the proposed shape.</p></div></div>
+        <div style="padding:28px 24px">
+          <div class="pg-row">
+            <div class="pg"><span class="pg-name">Homepage</span><div class="pg-stack"><div class="b" style="height:70px">Hero</div><div class="w" style="height:46px">Services + reviews</div><div class="m" style="height:40px">Insights</div><div class="w" style="height:40px">FAQ</div><div class="k" style="height:40px">Final CTA</div><div class="w x" style="height:34px">Instagram feed</div><div class="k" style="height:28px">Footer</div></div><p class="pg-note"><b>Instagram after the Final CTA.</b> The ask isn’t the last thing.</p></div>
+            <div class="pg"><span class="pg-name">Services</span><div class="pg-stack"><div class="b" style="height:56px">Hero</div><div class="w" style="height:34px">Always-On</div><div class="w" style="height:34px">Lead Gen</div><div class="w" style="height:34px">E-commerce</div><div class="w" style="height:34px">User Acq.</div><div class="w" style="height:40px">FAQ</div><div class="k" style="height:40px">Final CTA</div><div class="k" style="height:28px">Footer</div></div><p class="pg-note">Four white service sections in a row, with nothing between them.</p></div>
+            <div class="pg"><span class="pg-name">Lead Gen page</span><div class="pg-stack"><div class="b" style="height:56px">Hero</div><div class="w" style="height:30px">What it is</div><div class="m" style="height:30px">Quote</div><div class="k" style="height:34px">How it works</div><div class="w" style="height:30px">Setup</div><div class="w" style="height:30px">Reviews</div><div class="m" style="height:30px">Is it for you</div><div class="w" style="height:30px">Case study</div><div class="w" style="height:30px">FAQ</div><div class="k" style="height:36px">Final CTA</div><div class="k" style="height:26px">Footer</div></div><p class="pg-note">One ink band mid-page, then three whites in a row.</p></div>
+            <div class="pg"><span class="pg-name">Case study</span><div class="pg-stack"><div class="b" style="height:60px">Hero</div><div class="w" style="height:26px">Results</div><div class="b" style="height:30px">Pull quote</div><div class="w" style="height:26px">Challenge</div><div class="w" style="height:26px">What we did</div><div class="w" style="height:26px">Ad to deal</div><div class="w" style="height:26px">Results</div><div class="m" style="height:28px">About</div><div class="m" style="height:28px">Tool</div><div class="m" style="height:28px">Related</div><div class="k" style="height:36px">Final CTA</div><div class="k" style="height:26px">Footer</div></div><p class="pg-note">One burgundy band, four whites, then three mists.</p></div>
+            <div class="pg prop"><span class="pg-name">Proposed shape</span><div class="pg-stack"><div class="b" style="height:60px">Hero</div><div class="w" style="height:34px">Proof: logos or reviews</div><div class="m" style="height:34px">Content</div><div class="w" style="height:34px">Service 1</div><div class="w r" style="height:34px">Service 2, same ground + line</div><div class="b" style="height:34px">One dark band, optional</div><div class="m" style="height:34px">Content</div><div class="w" style="height:36px">FAQ</div><div class="k" style="height:40px">Final CTA, always last</div><div class="k" style="height:26px">Footer</div></div><p class="pg-note">Hero, proof, content alternating, FAQ, Final CTA.</p></div>
+          </div>
+          <div class="pg-legend"><span><i style="background:var(--color-burgundy)"></i>Burgundy</span><span><i style="background:#111"></i>Ink</span><span><i style="background:#fff"></i>White</span><span><i style="background:var(--color-mist)"></i>Mist</span></div>
+        </div>
+        <div class="spec-list"><div><b>First</b>Hero on burgundy. Then proof (logos or reviews) when the page has it</div><div><b>Middle</b>White and mist take turns. Two sections of the same kind share a ground, split by a Grey 200 line</div><div><b>Dark band</b>One burgundy or ink band at most between hero and Final CTA</div><div><b>Last</b>FAQ, then the Final CTA, then the footer. Nothing after the ask</div></div>
+      </div>
+
+      <div class="card-decide">
+        <h3>Section rhythm · agreed</h3>
+        <div class="cd-grid">
+          <div><b>The ask comes last</b><p>On the homepage, the Instagram feed sits after the Final CTA.</p><p class="cd-rec">Move the feed above the FAQ. The Final CTA is always the last section before the footer.</p></div>
+          <div><b>White and mist take turns</b><p>Pages run three or four white sections in a row, so the edges between them disappear.</p><p class="cd-rec">Alternate white and mist. A run of the same kind (the four services) keeps one ground with a Grey 200 line between.</p></div>
+          <div><b>One dark band</b><p>Lead Generation and the case studies use one dark band mid-page, which works.</p><p class="cd-rec">One burgundy or ink band at most between the hero and the Final CTA, and never right next to either.</p></div>
         </div>
       </div>
     </div>
@@ -832,13 +1659,13 @@ footer{padding:40px 0 56px;font-family:var(--font-mono);font-size:11px;text-tran
           <p class="todo">To do: Final CTA button 14 → 12&nbsp;px · brand kit 8 → 12&nbsp;px</p></div>
         <div class="q"><h3>Hover: left-to-right wipe</h3>
           <p>Same on primary and ghost. Alternatives explored and set aside. No darker shades, grow or lift.</p>
-          <p class="todo">To do: remove #702242, #C95D4F and scale(1.03) from the theme</p></div>
+          <p class="todo">To do: remove #702242, #C95D4F and scale(1.03) from the theme · drop the magnetic hover on the bottom-of-page CTA buttons, use the standard wipe (noted Nov 27)</p></div>
         <div class="q"><h3>Eyebrows: 0.1em spacing</h3>
           <p>A little tighter than the brand kit's 0.12em.</p>
           <p class="todo">To do: homepage eyebrows (now 0) · brand kit 0.12 → 0.1em</p></div>
-        <div class="q"><h3>H2: 54&nbsp;px, 62&nbsp;px on large monitors</h3>
-          <p>One fluid size instead of two fixed ones.</p>
-          <p class="todo">To do: theme H2 token</p></div>
+        <div class="q"><h3>Heading sizes: Display 82, H1 68, H2 44</h3>
+          <p>H2 large 62 for case studies and feature sections. Replaces the earlier 54–62&nbsp;px H2 (changed Nov 27).</p>
+          <p class="todo">To do: theme heading tokens · home H1 48 → 68 · service titles 76 → H2</p></div>
         <div class="q"><h3>Teal #215F6A for positive states</h3>
           <p>UI only, never a brand colour. Replaces the site's green #2F7D4F.</p>
           <p class="todo">To do: theme success token · add to brand kit as UI-only</p></div>
@@ -856,11 +1683,38 @@ footer{padding:40px 0 56px;font-family:var(--font-mono);font-size:11px;text-tran
         <div class="q"><h3>Leftover template values: remove</h3>
           <p>Navy surface #2A2E42, orange link #DD6B3E, red form button #E31B22 and grey 100.</p>
           <p class="todo">To do: remove from the theme</p></div>
+        <div class="q"><h3>Header &amp; footer: as live, with six fixes</h3>
+          <p>Nav dividers fade and the outline underline draws on hover. Menu previews, mobile accordion and bottom bar stay. Agreed Nov 27, 2026.</p>
+          <p class="todo">To do: header Book a call 8 → 12&nbsp;px · one footer eyebrow style · drop the top close on mobile · newsletter to dark fields, one line of fine print · partner logos white at 24&nbsp;px · footer to "User Acquisition" and "Book a call"</p></div>
+        <div class="q"><h3>Spacing: one scale, one section rhythm</h3>
+          <p>Sections pad 120&nbsp;px desktop, 64&nbsp;px mobile, hero excepted. 16 between eyebrow, heading and lede, 48 to content. Cut corners at 4, 8, 12 and 16; hero reels stay round. Agreed Nov 27, 2026.</p>
+          <p class="todo">To do: theme --space-* tokens · section padding to 120 / 64 on every module · heading gaps to 16 and 48 · rating pill to cut 8&nbsp;px</p></div>
+        <div class="q"><h3>Eyebrows &amp; headings: one eyebrow, sized to the words</h3>
+          <p>Plex Mono 14, 500, 0.1em, coral everywhere (coral on burgundy kept as an exception). Headings 2 lines when short, 3 at most. Coral highlight only in the homepage hero and Final CTA. Ink on light, white on dark, left unless closing. Page heroes blur-rise on load. Agreed Nov 27, 2026.</p>
+          <p class="todo">To do: one eyebrow style site-wide · numbered eyebrows to "01 · Label" · case study hero labels to coral · remove highlights outside home hero and Final CTA · About headings to left, #111 · Insights heading to ink · blur rise on every page hero · burgundy ledes to #F3DCE6</p></div>
+        <div class="q"><h3>FAQ accordion: one list, eight questions</h3>
+          <p>Heading pinned left, cards right, one answer open at a time, first open on load. Eight questions at most, first sentence answers outright in 60 words or fewer, a “Still have a question? Book a call” link. FAQPage schema on every list. Agreed Nov 27, 2026.</p>
+          <p class="todo">To do: Services FAQ 12 → 8, move the rest to the service pages · add the Book a call link · tighten answers to 60 words</p></div>
+        <div class="q"><h3>Text selection in brand colours</h3>
+          <p>Burgundy highlight with white text on light grounds, white highlight with burgundy text on burgundy, white with ink text on ink. Agreed Nov 27, 2026.</p>
+          <p class="todo">To do: add the ::selection rules to the theme</p></div>
+        <div class="q"><h3>Review carousel: full quotes, drag, pause</h3>
+          <p>Agreed review card, short HubDB testimonials shown in full (55 words at most), drifting at 54&nbsp;px a second. Pauses on hover and focus, grab and drag on desktop, pause button, heading block with the 4.8 rating. Agreed Nov 27, 2026.</p>
+          <p class="todo">To do: cards to the agreed review card (cut 16, no shadow) · grab cursor and drag · pause button · heading block · link to the Google profile · trim short testimonials over 55 words</p></div>
+        <div class="q"><h3>Logo marquee: one row everywhere</h3>
+          <p>32&nbsp;px tall, 64 apart, 40&nbsp;px a second, edge fade. White at 75% on dark, ink at 60% on light (colour on hover). Full strength on hover, no grow or glow. Pause on hover and focus, grab and drag. Agreed Nov 27, 2026.</p>
+          <p class="todo">To do: homepage hero, case studies hub and Clients page onto one marquee · remove the hover grow and glow · add drag to the hub and Clients rows</p></div>
+        <div class="q"><h3>Final CTA: one ask, a phrase that never jumps</h3>
+          <p>Ink with the warm glow, Display 82 headline with the coral phrase on its own last line (16 characters at most), cycling on the homepage and hubs, fixed on service pages. Large Book a call button, optional text link beside it. Badge on desktop only. Agreed Nov 27, 2026.</p>
+          <p class="todo">To do: phrase on its own line · hold the service’s phrase on service pages · Final CTA button to btn--lg, 12&nbsp;px cut, no magnetic hover · hide the badge on mobile · reduced motion stops the spin and cycling</p></div>
+        <div class="q"><h3>Section rhythm: hero first, the ask last</h3>
+          <p>Burgundy hero, then proof. White and mist take turns; a run of the same kind shares a ground with a Grey 200 line. One dark band at most mid-page, never next to the hero or Final CTA. FAQ, Final CTA, footer, nothing after the ask. Agreed Nov 27, 2026.</p>
+          <p class="todo">To do: homepage Instagram feed above the FAQ · alternate white and mist on Services, Lead Generation and case studies · Grey 200 line between the four service sections</p></div>
       </div>
     </div>
   </section>
 
-  <footer><div class="wrap">Dreww web design system · values read from dreww.ca theme CSS · v0.1</div></footer>
+  <footer><div class="wrap">Dreww web design system · values read from dreww.ca theme CSS · v1.0, every section agreed Nov 27, 2026</div></footer>
 </main>
 </div>
 
@@ -964,8 +1818,10 @@ document.querySelectorAll('[data-swatches]').forEach(el => {
 
 /* ---------- Type scale (from dreww.ca :root) ---------- */
 const SCALE = [
-  {k:'H1', cls:'t-h1', d:'72', m:'32', lh:'1.1', fam:'Anton', txt:'Turn marketing into revenue', css:'font-family:"Anton",Georgia,serif;font-size:72px;line-height:1.1;text-transform:uppercase;font-weight:400;'},
-  {k:'H2', cls:'t-h2', d:'54–62', m:'24', lh:'1.06', fam:'Anton', txt:'Growth systems that work', css:'font-family:"Anton",Georgia,serif;font-size:clamp(54px,4.3vw,62px);line-height:1.06;text-transform:uppercase;font-weight:400;'},
+  {k:'Display', cls:'t-disp', d:'82', m:'40', lh:'1.0', fam:'Anton', txt:'Let’s talk', css:'font-family:"Anton",Georgia,serif;font-size:82px;line-height:1;text-transform:uppercase;font-weight:400;'},
+  {k:'H1', cls:'t-h1', d:'68', m:'32', lh:'1.04', fam:'Anton', txt:'Turn marketing into revenue', css:'font-family:"Anton",Georgia,serif;font-size:68px;line-height:1.04;text-transform:uppercase;font-weight:400;'},
+  {k:'H2 large', cls:'t-h2l', d:'62', m:'32', lh:'1.0', fam:'Anton', txt:'What we did', css:'font-family:"Anton",Georgia,serif;font-size:62px;line-height:1;text-transform:uppercase;font-weight:400;'},
+  {k:'H2', cls:'t-h2', d:'44', m:'24', lh:'1.06', fam:'Anton', txt:'Growth systems that work', css:'font-family:"Anton",Georgia,serif;font-size:44px;line-height:1.06;text-transform:uppercase;font-weight:400;'},
   {k:'H3', cls:'t-h3', d:'28', m:'22', lh:'1.3', fam:'Anton', txt:'Paid inbound, built to close', css:'font-family:"Anton",Georgia,serif;font-size:28px;line-height:1.3;text-transform:uppercase;font-weight:400;'},
   {k:'H4', cls:'t-h4', d:'22', m:'18', lh:'1.4', fam:'Anton', txt:'Lead generation', css:'font-family:"Anton",Georgia,serif;font-size:22px;line-height:1.4;text-transform:uppercase;font-weight:400;'},
   {k:'H5', cls:'t-h5', d:'20', m:'16', lh:'1.4', fam:'Anton', txt:'Book a call', css:'font-family:"Anton",Georgia,serif;font-size:20px;line-height:1.4;text-transform:uppercase;font-weight:400;'},
@@ -1113,6 +1969,126 @@ document.querySelectorAll('#header a[href="#header"], #header a[href="#footer"]'
     m.querySelectorAll('.hd-tab').forEach(x => x.classList.toggle('on', x === t));
     m.querySelectorAll('.mn-pane').forEach(p => p.classList.toggle('on', p.dataset.pane === t.dataset.pane));
   }));
+})();
+
+
+/* ---------- Menu previews, mobile accordion, shared logo ---------- */
+(function(){
+  const src = document.querySelector('.hd-logo svg');
+  document.querySelectorAll('[data-logo]').forEach(a => { if (src) a.appendChild(src.cloneNode(true)); });
+  const m = document.getElementById('mn-demo');
+  if (m) {
+    m.querySelectorAll('.mn-pane').forEach(p => p.querySelectorAll('.mn-item').forEach(it => it.addEventListener('mouseenter', () => {
+      p.querySelectorAll('.mn-item').forEach(x => x.classList.toggle('is-on', x === it));
+      p.querySelectorAll('.mn-pv').forEach(v => v.classList.toggle('on', v.dataset.pv === it.dataset.pv));
+    })));
+  }
+  const mob = document.getElementById('mob-demo');
+  if (mob) mob.querySelectorAll('.mob-acc > button').forEach(b => b.addEventListener('click', () => {
+    const a = b.parentElement, open = !a.classList.contains('on');
+    mob.querySelectorAll('.mob-acc').forEach(x => { x.classList.remove('on'); x.firstElementChild.setAttribute('aria-expanded','false'); });
+    if (open) { a.classList.add('on'); b.setAttribute('aria-expanded','true'); }
+  }));
+  document.querySelectorAll('#header button').forEach(b => { if (!b.closest('#mn-demo') && !b.closest('#mob-demo')) b.addEventListener('click', e => e.preventDefault()); });
+})();
+
+
+/* ---------- Nav hover underline: traces the tab's cut-corner outline, bottom edge only ---------- */
+(function(){
+  const NS = 'http://www.w3.org/2000/svg';
+  document.querySelectorAll('.hd-tab').forEach(t => {
+    const svg = document.createElementNS(NS, 'svg'); svg.setAttribute('class', 'hd-tb'); svg.setAttribute('aria-hidden', 'true');
+    const path = document.createElementNS(NS, 'path'); path.setAttribute('pathLength', '1'); svg.appendChild(path); t.appendChild(svg);
+    const fit = () => {
+      const w = t.offsetWidth - 8, h = t.offsetHeight - 6; if (w <= 0) return;
+      const r = Math.min(12, h / 2);
+      svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+      path.setAttribute('d', `M${r} ${h}H${w - r}Q${w} ${h} ${w} ${h - r}V${r}Q${w} 0 ${w - r} 0H0V${h - r}Q0 ${h} ${r} ${h}`);
+      const tmp = document.createElementNS(NS, 'path'); tmp.setAttribute('d', path.getAttribute('d'));
+      svg.appendChild(tmp); const L = tmp.getTotalLength(); tmp.remove();
+      t.style.setProperty('--to', ((w - 2 * r) / L).toFixed(3));
+    };
+    fit(); if ('ResizeObserver' in window) new ResizeObserver(fit).observe(t);
+  });
+})();
+
+
+/* ---------- Hero blur rise demo ---------- */
+(function(){
+  const std = document.getElementById('hero-std'), cs = document.getElementById('hero-cs'); if (!std || !cs) return;
+  const cur = () => std.hidden ? cs : std;
+  const play = () => { const h = cur(); h.classList.add('paused'); void h.offsetWidth; h.classList.remove('paused'); };
+  document.getElementById('csh-replay').addEventListener('click', play);
+  document.querySelectorAll('[data-hero]').forEach(b => b.addEventListener('click', () => {
+    const k = b.dataset.hero; std.hidden = k !== 'std'; cs.hidden = k !== 'cs';
+    document.querySelectorAll('[data-hero]').forEach(x => x.classList.toggle('on', x === b)); play();
+  }));
+  if ('IntersectionObserver' in window) { std.classList.add('paused'); new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { o.disconnect(); play(); } }), {threshold:.4}).observe(std); }
+})();
+
+
+/* ---------- FAQ pattern: one open at a time ---------- */
+document.querySelectorAll('[data-fq]').forEach(list => list.querySelectorAll('.c-faq button').forEach(b => b.addEventListener('click', () => {
+  const li = b.closest('.c-faq');
+  list.querySelectorAll('.c-faq').forEach(x => { if (x !== li) { x.classList.remove('is-open'); x.querySelector('button').setAttribute('aria-expanded', 'false'); } });
+})));
+
+
+/* ---------- Review carousel: drift, pause, drag ---------- */
+(function(){
+  const rc = document.getElementById('rc'), view = rc && rc.querySelector('.rc-view'), tr = rc && rc.querySelector('.rc-track'), btn = document.getElementById('rc-pause'); if (!rc || !tr || !btn) return;
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let x = 0, half = 1, last = performance.now(), hover = false, drag = null, moved = 0;
+  const measure = () => { half = (tr.scrollWidth + 16) / 2; }; measure(); addEventListener('resize', measure);
+  const wrap = () => { while (x <= -half) x += half; while (x > 0) x -= half; };
+  const tick = now => {
+    const dt = Math.min(.05, (now - last) / 1000); last = now;
+    if (!drag && !hover && !still && !rc.classList.contains('paused') && !view.matches(':focus-within')) x -= 54 * dt;
+    wrap(); tr.style.transform = `translateX(${x}px)`; requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+  view.addEventListener('mouseenter', () => hover = true);
+  view.addEventListener('mouseleave', () => hover = false);
+  view.addEventListener('pointerdown', e => { if (e.button !== 0) return; drag = {sx: e.clientX, x0: x}; moved = 0; view.setPointerCapture(e.pointerId); view.classList.add('drag'); });
+  view.addEventListener('pointermove', e => { if (!drag) return; const d = e.clientX - drag.sx; moved = Math.max(moved, Math.abs(d)); x = drag.x0 + d; });
+  const end = e => { if (!drag) return; drag = null; view.classList.remove('drag'); try { view.releasePointerCapture(e.pointerId); } catch (_) {} };
+  view.addEventListener('pointerup', end); view.addEventListener('pointercancel', end);
+  view.addEventListener('click', e => { if (moved > 4) e.preventDefault(); }, true);
+  view.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') x += 356; if (e.key === 'ArrowRight') x -= 356; });
+  btn.addEventListener('click', () => { const p = !rc.classList.contains('paused'); rc.classList.toggle('paused', p); btn.setAttribute('aria-pressed', p); btn.textContent = p ? 'Play' : 'Pause'; });
+})();
+
+
+/* ---------- Logo marquee: drift, pause, drag ---------- */
+document.querySelectorAll('[data-mq]').forEach(view => {
+  const tr = view.querySelector('.mq-track'); if (!tr) return;
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let x = 0, half = 1, last = performance.now(), hover = false, drag = null;
+  const measure = () => { half = tr.scrollWidth / 2; }; measure(); addEventListener('resize', measure); addEventListener('load', measure);
+  const tick = now => { const dt = Math.min(.05, (now - last) / 1000); last = now;
+    if (!drag && !hover && !still && !view.matches(':focus-within')) x -= 40 * dt;
+    while (x <= -half) x += half; while (x > 0) x -= half; tr.style.transform = `translateX(${x}px)`; requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
+  view.addEventListener('mouseenter', () => hover = true); view.addEventListener('mouseleave', () => hover = false);
+  view.addEventListener('pointerdown', e => { if (e.button !== 0) return; drag = {sx: e.clientX, x0: x}; view.setPointerCapture(e.pointerId); view.classList.add('drag'); });
+  view.addEventListener('pointermove', e => { if (drag) x = drag.x0 + (e.clientX - drag.sx); });
+  const end = e => { if (!drag) return; drag = null; view.classList.remove('drag'); try { view.releasePointerCapture(e.pointerId); } catch (_) {} };
+  view.addEventListener('pointerup', end); view.addEventListener('pointercancel', end);
+  view.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') x += 200; if (e.key === 'ArrowRight') x -= 200; });
+});
+
+
+/* ---------- Final CTA ---------- */
+(function(){
+  const fc = document.getElementById('fc'); if (!fc) return;
+  const rot = fc.querySelector('.rot'), list = fc.querySelector('.rot-list'), items = [...list.children]; let k = 0;
+  const size = () => { rot.style.width = items[k].getBoundingClientRect().width + 'px'; };
+  const step = () => { k = (k + 1) % items.length; list.style.transform = `translateY(-${k * 1.04}em)`; size(); };
+  requestAnimationFrame(size); addEventListener('resize', size);
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) setInterval(step, 2400);
+  const play = () => { fc.classList.remove('in'); void fc.offsetWidth; requestAnimationFrame(() => fc.classList.add('in')); };
+  document.getElementById('fc-replay').addEventListener('click', play);
+  if ('IntersectionObserver' in window) new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { o.disconnect(); play(); } }), {threshold:.4}).observe(fc); else fc.classList.add('in');
 })();
 
 /* ---------- Active nav ---------- */

@@ -1,5 +1,7 @@
 # Dreww app design system
 
+> Building for dreww.ca or a page prototype? The website system lives in `web/`; its rules are in `web/CLAUDE.md`. This file covers the apps.
+
 The source of truth for how every Dreww app looks: Reporting, the hub, proposals and the diagnostic. It is built from the dreww.ca web design system and scaled down for dense, everyday screens. The current apps are not a reference for how things should look; this repo is.
 
 - Visual reference with every component live: `docs/app-design-system.html` (published at https://claude.ai/artifact/A8YuabgA31G7W14omfqkpz).
