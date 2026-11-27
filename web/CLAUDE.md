@@ -60,6 +60,12 @@ Header, menu and footer are single theme modules (`hv4-*`), not shared component
 - Reels and "watch our work" use `square-play`. No sparkles or "AI" icons.
 - Need an icon that isn't in the sprite? Take it from Lucide as is, add it to `web/icons.svg`, and note it on the reference page.
 
+### Long-form text
+- Insights, press releases, guides and legal pages wrap their rich text in `.dw-prose`: the live insight template. Column up to 780px, DM Sans 17–18 at 1.65, 20 between paragraphs.
+- Headings inside the text are DM Sans 700: H2 28, H3 23, H4 19, 36 above. Never skip a level. Anton only for the page title above the text.
+- Links burgundy and underlined. Lists with coral markers. Quotes are the statement quote (`<blockquote><p>…</p><cite>Name · Role</cite></blockquote>`), never a plain paragraph.
+- Images inside the text take the cut 12 corner and a 13px caption that says what the image shows.
+
 ### Imagery
 - Five shapes: 9:16 for reels (`.dw-media--reel`), 4:5 for people (`--portrait`), 3:2 for case study and studio photos (`--photo`), 16:9 for video and covers (`--wide`), 1:1 only for round avatars (`.dw-avatar`).
 - Images take their container's cut corner: 12 by default, 16 inside big cards (`--lg`). Circles only for avatars. Round 22 only for the hero reels (`--reel.dw-media--phone`).
