@@ -1094,8 +1094,10 @@ main{min-width:0}
 .ins-h{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #111;padding-bottom:10px;margin-bottom:4px}
 .ins-h b{font-family:var(--font-heading);font-weight:400;font-size:26px;text-transform:uppercase}
 .ins-h small{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-grey-500)}
-.ins-row{display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:24px;align-items:center;padding:22px 0;border-bottom:1px solid var(--color-grey-200);text-decoration:none;color:#111}
-.ins-row h4{font-family:var(--font-body);font-weight:700;font-size:21px;line-height:1.3;margin:6px 0;transition:color .12s}
+.ins-row{display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:32px;align-items:center;padding:24px 0;border-bottom:1px solid var(--color-grey-200);text-decoration:none;color:#111}
+.ins-row > div:first-child{display:flex;flex-direction:column;gap:8px;min-width:0}
+.ins-row .ins-by{margin-top:4px}
+.ins-row h4{font-family:var(--font-body);font-weight:700;font-size:23px;line-height:1.28;margin:0;transition:color .12s}
 .ins-row .ins-img{border-radius:0 12px 12px 12px}
 .ins-most a{display:grid;grid-template-columns:28px 1fr;gap:8px;padding:14px 0;border-bottom:1px solid var(--color-grey-200);text-decoration:none;color:#111}
 .ins-most a > span:first-child{font-family:var(--font-heading);font-size:22px;color:var(--color-coral);line-height:1}
@@ -1104,14 +1106,29 @@ main{min-width:0}
 .ins-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
 .ins-chips a{padding:8px 12px;border:1px solid var(--color-grey-200);border-radius:0 8px 8px 8px;font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#111;text-decoration:none;transition:border-color .12s,color .12s}
 .ins-chips a:hover{border-color:var(--color-burgundy);color:var(--color-burgundy)}
-.ins-home{display:grid;grid-template-columns:224px minmax(0,1fr) 40px;gap:24px;align-items:center;padding:20px 0;border-top:1px solid var(--color-grey-200);text-decoration:none;color:#111}
+.ins-home-list{border-bottom:1px solid var(--color-grey-200)}
+.ins-home{display:grid;grid-template-columns:40px 224px minmax(0,1fr) 44px;gap:24px;align-items:center;padding:24px 0;border-top:1px solid var(--color-grey-200);text-decoration:none;color:#111}
+.ins-home .n{font-family:var(--font-mono);font-size:15px;color:var(--color-coral)}
 .ins-home .ins-img{border-radius:0 12px 12px 12px}
-.ins-home h4{font-family:var(--font-heading);font-weight:400;text-transform:uppercase;font-size:22px;line-height:1.1;margin:0 0 8px}
-.ins-home .go{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--color-coral);color:#fff;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
-.ins-home:hover .go{transform:translateX(5px)}
+.ins-home .b{display:flex;flex-direction:column;gap:8px;min-width:0}
+.ins-home h4{font-family:var(--font-heading);font-weight:400;text-transform:uppercase;font-size:28px;line-height:1.1;margin:0;transition:color .12s}
+.ins-home .m{font-family:var(--font-mono);font-size:13px;color:var(--color-grey-500)}
+.ins-home .go{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:2px solid #111;color:#111;transition:background .12s,border-color .12s,color .12s,transform .3s cubic-bezier(.2,.8,.2,1)}
+.ins-home:hover h4,.ins-home:focus-visible h4{color:var(--color-burgundy)}
+.ins-home:hover .go,.ins-home:focus-visible .go{background:var(--color-coral);border-color:var(--color-coral);color:#fff;transform:translateX(5px)}
+.ins-zoom .ins-img img{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.ins-zoom:hover .ins-img img{transform:scale(1.04)}
+.ins-news{background:var(--color-burgundy);color:#fff;padding:40px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.ins-news a{display:flex;flex-direction:column;gap:10px;color:#fff;text-decoration:none}
+.ins-news .k{font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.ins-news b{font-size:18px;line-height:1.3}
+.ins-news a:hover b{text-decoration:underline;text-underline-offset:3px}
+.ins-pair{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.ins-pair small{display:block;margin-bottom:8px;font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-grey-500)}
 .ins-views{color:#da1e28;text-decoration:line-through}
 @media (max-width:1023px){.ins-top,.ins-lower{grid-template-columns:1fr}}
-@media (max-width:767px){.ins-stage{padding:24px 16px}.ins-row{grid-template-columns:1fr}.ins-row .ins-img{order:-1}.ins-home{grid-template-columns:1fr}}
+@media (max-width:1023px){.ins-news{grid-template-columns:1fr 1fr}}
+@media (max-width:767px){.ins-stage{padding:24px 16px}.ins-row{grid-template-columns:1fr}.ins-row .ins-img{order:-1}.ins-home{grid-template-columns:28px minmax(0,1fr) 44px}.ins-home .ins-img{display:none}.ins-news,.ins-pair{grid-template-columns:1fr}}
 
 /* ---------- Decisions ---------- */
 .decide{background:var(--color-burgundy);color:#fff;padding:88px 0}
@@ -1959,10 +1976,27 @@ footer{padding:40px 0 56px;font-family:var(--font-mono);font-size:11px;text-tran
       </div>
 
       <div class="cmp">
-        <div class="cmp-head"><div><h3>Homepage row</h3><p>Three latest insights under the homepage heading. Thumbnail, Anton title, byline, and the coral arrow that nudges on hover.</p></div></div>
+        <div class="cmp-head"><div><h3>Homepage: Insights and Dreww News</h3><p>As live: three numbered insight rows beside the section heading, then the Dreww News band with the three latest press releases. Hover a row: the title turns burgundy and the arrow fills coral and nudges.</p></div></div>
         <div class="ins-stage">
-          <a class="ins-home" href="#insight-cards"><div class="ins-img"><img src="img/prime-video-reel.jpg" alt=""></div><div><h4>How AI assistants recommend businesses</h4><div class="ins-by"><img src="img/cendrine-lavigne.jpg" alt=""><span><b>Author name</b> · Nov 25 · 9 min read</span></div></div><span class="go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
-          <a class="ins-home" href="#insight-cards"><div class="ins-img"><img src="img/prime-video-reel.jpg" alt=""></div><div><h4>Get recommended by ChatGPT, step by step</h4><div class="ins-by"><img src="img/cendrine-lavigne.jpg" alt=""><span><b>Author name</b> · Nov 25 · 9 min read</span></div></div><span class="go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+          <div class="ins-home-list">
+            <a class="ins-home" href="#insight-cards"><span class="n">01</span><div class="ins-img"><img src="img/prime-video-reel.jpg" alt=""></div><span class="b"><h4>How AI assistants recommend businesses</h4><span class="m">AEO · 5 min read</span><div class="ins-by"><img src="img/cendrine-lavigne.jpg" alt=""><span><b>Author name</b></span></div></span><span class="go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+            <a class="ins-home" href="#insight-cards"><span class="n">02</span><div class="ins-img"><img src="img/prime-video-reel.jpg" alt=""></div><span class="b"><h4>Get recommended by ChatGPT, step by step</h4><span class="m">AEO · 12 min read</span><div class="ins-by"><img src="img/cendrine-lavigne.jpg" alt=""><span><b>Author name</b></span></div></span><span class="go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+            <a class="ins-home" href="#insight-cards"><span class="n">03</span><div class="ins-img"><img src="img/prime-video-reel.jpg" alt=""></div><span class="b"><h4>Claim your business in ChatGPT</h4><span class="m">AEO · 6 min read</span><div class="ins-by"><img src="img/cendrine-lavigne.jpg" alt=""><span><b>Author name</b></span></div></span><span class="go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+          </div>
+        </div>
+        <div class="ins-news">
+          <a href="#insight-cards"><div class="ins-img"><img src="img/prime-video-reel.jpg" alt=""></div><span class="k">New client · Nov 11, 2026</span><b>Sample client retains Dreww for paid media</b></a>
+          <a href="#insight-cards"><div class="ins-img"><img src="img/prime-video-reel.jpg" alt=""></div><span class="k">Team · Oct 28, 2026</span><b>Dreww names a new head of strategy</b></a>
+          <a href="#insight-cards"><div class="ins-img"><img src="img/prime-video-reel.jpg" alt=""></div><span class="k">New client · Oct 14, 2026</span><b>Sample brand picks Dreww for Always-On Social</b></a>
+        </div>
+        <div class="spec-list"><div><b>Row</b>Number in coral mono, 16:9 thumbnail cut 12, Anton 28 title, topic and read time, author</div><div><b>Arrow</b>44px circle, ink outline; fills coral and nudges 5px on hover</div><div><b>News card</b>16:9 cut 12, mono kicker, DM Sans 700 18 title in white on burgundy</div><div><b>Dropped</b>View counts</div></div>
+      </div>
+
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Image hover: live vs agreed</h3><p>Live, the thumbnail grows 4% inside its frame on hover. Motion &amp; focus says images never zoom. Hover both rows to compare.</p></div></div>
+        <div class="ins-stage ins-pair">
+          <div><small>Live · image zooms 1.04</small><a class="ins-home ins-zoom" href="#insight-cards"><span class="n">01</span><div class="ins-img"><img src="img/prime-video-reel.jpg" alt=""></div><span class="b"><h4>How AI assistants recommend businesses</h4><span class="m">AEO · 5 min read</span><div class="ins-by"><img src="img/cendrine-lavigne.jpg" alt=""><span><b>Author name</b></span></div></span><span class="go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a></div>
+          <div><small>Agreed motion rule · image still</small><a class="ins-home" href="#insight-cards"><span class="n">01</span><div class="ins-img"><img src="img/prime-video-reel.jpg" alt=""></div><span class="b"><h4>How AI assistants recommend businesses</h4><span class="m">AEO · 5 min read</span><div class="ins-by"><img src="img/cendrine-lavigne.jpg" alt=""><span><b>Author name</b></span></div></span><span class="go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a></div>
         </div>
       </div>
 
@@ -1976,6 +2010,7 @@ footer{padding:40px 0 56px;font-family:var(--font-mono);font-size:11px;text-tran
             <tr><td>Featured title</td><td>Anton 62, four lines</td><td class="new">Headings: sized to its words, three lines at most</td></tr>
             <tr><td>Topic chips</td><td>Fully rounded pills</td><td class="new">Spacing &amp; radius: chips cut 8, no pills</td></tr>
             <tr><td>Meta</td><td>Date, read time and view counts (31 views, 48 views)</td><td class="new">Your call</td></tr>
+            <tr><td>Image hover</td><td>Homepage thumbnails grow 4% inside their frame</td><td class="new">Motion: images never zoom</td></tr>
           </tbody>
         </table></div>
       </div>
@@ -1985,7 +2020,7 @@ footer{padding:40px 0 56px;font-family:var(--font-mono);font-size:11px;text-tran
         <div class="cd-grid">
           <div><b>Keep the live cards</b><p>The card set works; only corners, the featured title and the chips break agreed rules.</p><p class="cd-rec">Keep every card as live, with corners cut 16 / 12, the featured title sized to its words and chips cut 8.</p></div>
           <div><b>View counts</b><p>Every card shows views, and most are small numbers (31, 48, 95).</p><p class="cd-rec">Drop view counts from cards; keep category, date and read time. Small numbers undersell the work.</p></div>
-          <div><b>Hover</b><p>Live hovers vary by card.</p><p class="cd-rec">The title turns burgundy and the homepage arrow nudges 5&nbsp;px. Images never zoom.</p></div>
+          <div><b>Hover</b><p>Live, the homepage thumbnails zoom 4% and other cards don&rsquo;t.</p><p class="cd-rec">The title turns burgundy and the homepage arrow fills coral and nudges 5&nbsp;px. Images stay still, as Motion &amp; focus agreed.</p></div>
         </div>
       </div>
     </div>
