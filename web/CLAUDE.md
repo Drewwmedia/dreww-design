@@ -66,6 +66,13 @@ Header, menu and footer are single theme modules (`hv4-*`), not shared component
 - Links burgundy and underlined. Lists with coral markers. Quotes are the statement quote (`<blockquote><p>…</p><cite>Name · Role</cite></blockquote>`), never a plain paragraph.
 - Images inside the text take the cut 12 corner and a 13px caption that says what the image shows.
 
+### Insight cards
+- Insights hub, press releases and the homepage keep the live card set: featured (`.dw-insight--feature`), secondary (`.dw-insight`), Latest rows (`--row`), Most read (`.dw-insight-ranked`), topic chips (`.dw-chip`), homepage rows (`.dw-insight-home`) and Dreww News press cards on burgundy (`.dw-news-card`).
+- Images 16:9: cut 16 on featured and secondary, cut 12 on thumbnails and press cards. Featured titles sized to their words, three lines at most.
+- Meta: category in coral mono, then date and read time. No view counts.
+- Hover: the title turns burgundy. Homepage rows also fill the arrow coral, nudge it 5px and zoom the thumbnail 4% inside its frame, the one image zoom on the site.
+- Topic chips are cut 8, never pills.
+
 ### Imagery
 - Five shapes: 9:16 for reels (`.dw-media--reel`), 4:5 for people (`--portrait`), 3:2 for case study and studio photos (`--photo`), 16:9 for video and covers (`--wide`), 1:1 only for round avatars (`.dw-avatar`).
 - Images take their container's cut corner: 12 by default, 16 inside big cards (`--lg`). Circles only for avatars. Round 22 only for the hero reels (`--reel.dw-media--phone`).
