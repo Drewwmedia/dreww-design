@@ -28,6 +28,15 @@
   .dw-layout-half > *,.dw-layout-three > *,.dw-layout-three > :nth-child(3n){grid-column:1 / -1}
 }
 
+/* ============ Icons: web/icons.svg sprite ============ */
+/* <svg class="dw-icon"><use href="icons.svg#arrow-right"/></svg> */
+.dw-icon{width:24px;height:24px;flex:none;display:inline-block;vertical-align:middle}
+.dw-icon--sm{width:16px;height:16px}   /* beside small text */
+.dw-icon--md{width:20px;height:20px}   /* in buttons and links */
+.dw-icon--star{color:var(--dw-coral)}
+.dw-icon-dot{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--dw-coral);color:var(--dw-white);flex:none}
+.dw-icon-dot .dw-icon{width:18px;height:18px}
+
 /* ============ Type ============ */
 .dw-display,.dw-h1,.dw-h2l,.dw-h2,.dw-h3,.dw-h4,.dw-h5{font-family:var(--dw-font-display);font-weight:400;text-transform:uppercase;margin:0}
 .dw-display{font-size:var(--dw-fs-display);line-height:var(--dw-lh-display)}
@@ -62,7 +71,7 @@
 .dw-btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;gap:10px;border:0;cursor:pointer;text-decoration:none;font-family:var(--dw-font-display);font-weight:400;font-size:20px;line-height:1.1;letter-spacing:.02em;text-transform:uppercase;padding:16px 32px;border-radius:var(--dw-cut-md);transition:color .35s}
 .dw-btn::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;clip-path:inset(0 100% 0 0);transition:clip-path var(--dw-dur-wipe-web) var(--dw-ease-wipe)}
 .dw-btn:hover::before,.dw-btn:focus-visible::before{clip-path:inset(0)}
-.dw-btn svg{width:18px;height:18px;flex:none}
+.dw-btn svg{width:20px;height:20px;flex:none}
 .dw-btn--lg{font-size:22px;padding:18px 36px}  /* Final CTA */
 .dw-btn--sm{font-size:16px;padding:11px 20px}  /* header */
 .dw-btn--primary{background:var(--dw-coral);color:var(--dw-white)}
@@ -83,7 +92,7 @@
 .dw-on-burgundy .dw-link,.dw-on-ink .dw-link{color:var(--dw-white)}
 .dw-link::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:currentColor;transform:scaleX(0);transform-origin:right center;transition:transform .45s var(--dw-ease-wipe)}
 .dw-link:hover::after,.dw-link:focus-visible::after{transform:scaleX(1);transform-origin:left center}
-.dw-link svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .35s}
+.dw-link svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .35s}
 .dw-link:hover svg,.dw-link:focus-visible svg{transform:translateX(5px)}
 
 /* ============ Cards ============ */

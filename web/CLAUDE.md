@@ -12,6 +12,7 @@ The source of truth for how dreww.ca looks, for prototypes in artifacts and for 
 | `web/tokens.css` | Every colour, glow, font, size, space, corner, shadow and speed as `--dw-*` variables. Variables only. |
 | `web/base.css` | Body type, text selection colours, focus ring, reduced motion. |
 | `web/components.css` | Every agreed component, classes prefixed `dw-` so they can't clash with theme CSS. |
+| `web/icons.svg` | Every agreed icon as one SVG sprite: 29 Lucide line icons, filled star and play, 7 brand marks. |
 | `web/motion.js` | Card ink spread, one-open FAQ, draggable marquees, Final CTA word rise and cycling phrase. Opt-in by data attribute. |
 | `web/tailwind.preset.js` | Tailwind 3 preset: colours, type scale, spacing, cut corners and easings, all pointing at the tokens. |
 
@@ -49,6 +50,13 @@ Header, menu and footer are single theme modules (`hv4-*`), not shared component
 - 12 columns on desktop and wide, 8 on tablet, 4 on phone (`.dw-grid`, `--dw-grid-cols`). Gutter 24, 16 on phone. Container 1520, margins 40, 20 on phone.
 - Every section uses one of four layouts, with spans set for every size: Half 6+6 (`.dw-layout-half`), Feature 5+7 (`.dw-layout-feature`, the FAQ), Three up 4+4+4 (`.dw-layout-three`), Reading 8 centred (`.dw-layout-reading`). Tablet: halves and cards go two across, features and reading go full width. Phone: everything stacks.
 - Tailwind: `md` 768, `lg` 1024, `xl` 1440 from the preset.
+
+### Icons
+- One set: Lucide, one drawing per icon, 2px stroke on a 24 grid, round ends, in the text colour. Every icon comes from `web/icons.svg` (`<svg class="dw-icon"><use href="icons.svg#arrow-right"/></svg>`); never paste a hand-drawn SVG.
+- Sizes: 16 beside small text (`.dw-icon--sm`), 20 in buttons and links (`--md`), 24 on its own. Card actions sit in a 40px coral circle at 18 (`.dw-icon-dot`).
+- Filled only for `star` (coral, `.dw-icon--star`), `play`, and brand marks (`brand-*`, each brand's own one-colour mark; Google stays full colour on review cards).
+- Reels and "watch our work" use `square-play`. No sparkles or "AI" icons.
+- Need an icon that isn't in the sprite? Take it from Lucide as is, add it to `web/icons.svg`, and note it on the reference page.
 
 ### Space and shape
 - Spacing scale 4, 8, 12, 16, 24, 32, 48, 64, 120. Eyebrow → heading → lede 16, heading block → content 48, columns 24 apart, cards 12 apart.
