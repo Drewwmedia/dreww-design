@@ -44,9 +44,15 @@ Header, menu and footer are single theme modules (`hv4-*`), not shared component
 - Highlight: one coral phrase, the outcome, only in the homepage hero and the Final CTA. Every other heading is all ink or all white.
 - Headings: ink on light, white on dark. Left aligned; centred only for closing sections and the case study hero.
 
+### Grid
+- Four sizes, three switch points: phone under 768, tablet 768–1023, desktop 1024–1439, wide 1440 and up. No other breakpoints, ever; a module that needs one uses the nearest of these.
+- 12 columns on desktop and wide, 8 on tablet, 4 on phone (`.dw-grid`, `--dw-grid-cols`). Gutter 24, 16 on phone. Container 1520, margins 40, 20 on phone.
+- Every section uses one of four layouts, with spans set for every size: Half 6+6 (`.dw-layout-half`), Feature 5+7 (`.dw-layout-feature`, the FAQ), Three up 4+4+4 (`.dw-layout-three`), Reading 8 centred (`.dw-layout-reading`). Tablet: halves and cards go two across, features and reading go full width. Phone: everything stacks.
+- Tailwind: `md` 768, `lg` 1024, `xl` 1440 from the preset.
+
 ### Space and shape
 - Spacing scale 4, 8, 12, 16, 24, 32, 48, 64, 120. Eyebrow → heading → lede 16, heading block → content 48, columns 24 apart, cards 12 apart.
-- Sections pad 120 top and bottom (64 on mobile); the hero is the only exception. Container 1520 max, side margins 40 (20 on mobile).
+- Sections pad 120 top and bottom (64 on phone); the hero is the only exception. Container 1520 max, side margins 40 (20 on mobile).
 - Cut corner, top-left always square: 4 (tags, kbd), 8 (inputs, small buttons, chips), 12 (buttons, small and FAQ cards, option cards), 16 (big cards, menu and footer panels). Only circles are round (icon buttons, avatars, dots). The hero reels stay rounded: they read as phones.
 - One shadow: the scrolled header. Cards are flat with a Grey 200 border.
 

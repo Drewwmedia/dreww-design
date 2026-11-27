@@ -6,6 +6,8 @@ const v = (name) => `var(--dw-${name})`;
 
 export default {
   theme: {
+    // Agreed switch points. Replaces the theme's eight sizes; xl moves from 1280 to 1440.
+    screens: { md: '768px', lg: '1024px', xl: '1440px' },
     extend: {
       colors: {
         burgundy: v('burgundy'),
@@ -42,6 +44,8 @@ export default {
         section: v('section-y'), gutter: v('gutter'),
       },
       maxWidth: { container: v('container') },
+      gridTemplateColumns: { dw: 'repeat(var(--dw-grid-cols), minmax(0, 1fr))' },
+      gap: { dw: v('grid-gap') },
       borderRadius: {
         'cut-xs': v('cut-xs'), 'cut-sm': v('cut-sm'), 'cut-md': v('cut-md'), 'cut-lg': v('cut-lg'),
       },

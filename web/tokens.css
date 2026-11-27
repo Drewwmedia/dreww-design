@@ -67,6 +67,11 @@
   --dw-gutter:40px;      /* page side margin (20 on mobile) */
   --dw-heading-min:640px;/* heading columns are never narrower on desktop */
 
+  /* Grid. Breakpoints (media queries can't read variables, so use the numbers):
+     phone < 768 · tablet 768–1023 · desktop 1024–1439 · wide ≥ 1440 */
+  --dw-grid-cols:12;
+  --dw-grid-gap:24px;
+
   /* Cut corner: top-left always square. Pick by the size of the thing. */
   --dw-cut-xs:0 4px 4px 4px;    /* tags, checkboxes, kbd */
   --dw-cut-sm:0 8px 8px 8px;    /* inputs, small buttons, chips */
@@ -87,6 +92,9 @@
   --dw-stagger:.18s;           /* between hero lines */
   --dw-blur-rise:14px;         /* starting blur and drop */
 }
-@media (max-width:820px){
-  :root{--dw-section-y:64px;--dw-gutter:20px;--dw-heading-min:0px}
+@media (max-width:1023px){
+  :root{--dw-grid-cols:8;--dw-heading-min:0px}
+}
+@media (max-width:767px){
+  :root{--dw-grid-cols:4;--dw-grid-gap:16px;--dw-section-y:64px;--dw-gutter:20px}
 }
