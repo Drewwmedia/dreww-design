@@ -13,6 +13,8 @@ The source of truth for how dreww.ca looks, for prototypes in artifacts and for 
 | `web/base.css` | Body type, text selection colours, focus ring, reduced motion. |
 | `web/components.css` | Every agreed component, classes prefixed `dw-` so they can't clash with theme CSS. |
 | `web/icons.svg` | Every agreed icon as one SVG sprite: 29 Lucide line icons, filled star and play, 7 brand marks. |
+| `web/glossary.json` | One French name for each English term, used in menus, copy and addresses. |
+| `web/fr.js` | `frTypo(text)`: French spaces, decimals, thousands and money. |
 | `web/motion.js` | Card ink spread, one-open FAQ, draggable marquees, Final CTA word rise and cycling phrase. Opt-in by data attribute. |
 | `web/tailwind.preset.js` | Tailwind 3 preset: colours, type scale, spacing, cut corners and easings, all pointing at the tokens. |
 
@@ -65,6 +67,12 @@ Header, menu and footer are single theme modules (`hv4-*`), not shared component
 - Deliver WebP at exactly 2× the display width (HubSpot resizes to the width/height attributes). The hero image loads eager with `fetchpriority="high"`; everything else `loading="lazy"`.
 - Alt text says what the image shows and why it's there. Leave it empty (`alt=""`) only when a caption or name beside it already says it.
 - Video autoplays muted, inline and looping, with a poster, through `data-dw-video`: it pauses off screen and has a pause button (`.dw-video__pause`). Never autoplay with sound.
+
+### French and English
+- Every page exists in both; French lives under `/fr/` with French slugs. The EN / FR switch goes to the same page in the other language. Pages declare `lang="en-CA"` or `lang="fr-CA"`.
+- French runs up to 25% longer. French copy is edited to fit the same line limits as the English (headings three lines at most), not just translated. Buttons size to their label, never a fixed width; French labels stay under 20 characters.
+- French typography (`web/fr.js` → `frTypo(text)` applies it): narrow no-break space (U+202F) before ? ! ; and %, and inside « »; no-break space (U+00A0) before :; decimal commas (4,8); thousands with a narrow space (1 500); money after the number (310 k$, 50 $).
+- One French name per term, from `web/glossary.json`, in menus, body copy and addresses. Client, brand, product and campaign names are never translated.
 
 ### Space and shape
 - Spacing scale 4, 8, 12, 16, 24, 32, 48, 64, 120. Eyebrow → heading → lede 16, heading block → content 48, columns 24 apart, cards 12 apart.

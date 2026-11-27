@@ -68,6 +68,14 @@ for (const m of sprite.matchAll(/<symbol id="([^"]+)" viewBox="0 0 24 24" fill="
   if (!/stroke-width="2"/.test(m[2]) || !/stroke-linecap="round"/.test(m[2])) problems.push(`icons.svg: ${m[1]} is not 2px with round ends`);
 }
 
+// 7. French: the typography helper and the glossary
+const { frTypo } = await import("../web/fr.js");
+const FR_CASES = [["Pourquoi Dreww?", "Pourquoi Dreww\u202f?"], ["Note : 4.8 sur 5", "Note\u00a0: 4,8 sur 5"], ["40%", "40\u202f%"], ["$310K", "310\u202fk$"], ["1,500 abonnés", "1\u202f500 abonnés"], ["“Ils livrent plus que promis.”", "«\u202fIls livrent plus que promis.\u202f»"], ["Visitez https://dreww.ca/fr", "Visitez https://dreww.ca/fr"], ["À 14:30 !", "À 14:30\u202f!"]];
+for (const [i, o] of FR_CASES) if (frTypo(i) !== o) problems.push(`fr.js: frTypo(${JSON.stringify(i)}) gave ${JSON.stringify(frTypo(i))}`);
+const gloss = JSON.parse(read("../web/glossary.json"));
+const seenFr = new Map();
+for (const t of gloss.terms) { if (!t.en || !t.fr) problems.push(`glossary.json: incomplete term ${JSON.stringify(t)}`); if (seenFr.has(t.fr) && seenFr.get(t.fr) !== t.en && t.fr !== t.en) problems.push(`glossary.json: "${t.fr}" used for two terms`); seenFr.set(t.fr, t.en); }
+
 // 6. Imagery: never stretch
 if (/object-fit\s*:\s*fill/.test(comp)) problems.push("components.css: object-fit: fill stretches images; use cover");
 

@@ -1,6 +1,6 @@
 {
   "name": "@dreww/design",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "private": true,
   "description": "Dreww design system: app tokens, Tailwind 4 theme, component CSS and React components; web tokens, components, motion and Tailwind 3 preset for dreww.ca.",
   "type": "module",
@@ -16,7 +16,9 @@
     "./web/components.css": "./web/components.css",
     "./web/motion.js": "./web/motion.js",
     "./web/tailwind-preset": "./web/tailwind.preset.js",
-    "./web/icons.svg": "./web/icons.svg"
+    "./web/icons.svg": "./web/icons.svg",
+    "./web/glossary.json": "./web/glossary.json",
+    "./web/fr.js": "./web/fr.js"
   },
   "files": [
     "src",
