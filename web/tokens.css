@@ -23,6 +23,12 @@
   --dw-on-ink-muted:#cfcfcf;      /* ledes on ink */
   --dw-night:#181215;             /* the open menu's warm near-black */
 
+  /* Washes behind tags and badges */
+  --dw-burgundy-wash:#f3eaee;           /* service tags, partner badge */
+  --dw-coral-wash:rgba(238,116,100,.18); /* result highlight, dark grounds only */
+  --dw-on-dark-wash:rgba(255,255,255,.12); /* tags on burgundy or ink */
+  --dw-scrim:rgba(17,17,17,.6);         /* badges and buttons on images */
+
   /* Glows: dark grounds only */
   --dw-glow-warm:radial-gradient(44% 40% at 50% 46%,#311f1d 0%,#311f1d 42%,#111111 100%);   /* Final CTA */
   --dw-glow-edge:radial-gradient(farthest-side,#111111 0%,#32201d 100%);                     /* footer */

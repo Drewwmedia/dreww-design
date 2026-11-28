@@ -49,7 +49,7 @@
 .dw-media--wide{aspect-ratio:16/9}
 .dw-avatar{aspect-ratio:1/1;border-radius:50%;object-fit:cover}
 /* Video: web/motion.js pauses it off screen and wires the pause button */
-.dw-video__pause{position:absolute;right:12px;bottom:12px;display:grid;place-items:center;width:40px;height:40px;border:0;border-radius:50%;background:rgba(17,17,17,.6);color:var(--dw-white);cursor:pointer}
+.dw-video__pause{position:absolute;right:12px;bottom:12px;display:grid;place-items:center;width:40px;height:40px;border:0;border-radius:50%;background:var(--dw-scrim);color:var(--dw-white);cursor:pointer}
 .dw-video__pause .dw-icon{width:18px;height:18px}
 
 /* ============ Type ============ */
@@ -213,10 +213,7 @@
 .dw-insight-ranked small{display:block;margin-top:4px;font-family:var(--dw-font-mono);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--dw-coral)}
 .dw-insight-ranked a:hover b{color:var(--dw-burgundy)}
 
-/* Topic chips: cut 8, never pills */
-.dw-chips{display:flex;flex-wrap:wrap;gap:var(--dw-space-sm)}
-.dw-chip{padding:8px 12px;border:1px solid var(--dw-grey-200);border-radius:var(--dw-cut-sm);font-family:var(--dw-font-mono);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--dw-ink);text-decoration:none;transition:border-color var(--dw-dur-tint) var(--dw-ease-out),color var(--dw-dur-tint) var(--dw-ease-out)}
-.dw-chip:hover,.dw-chip[aria-current]{border-color:var(--dw-burgundy);color:var(--dw-burgundy)}
+/* Topic chips: see Tags & badges */
 
 /* Homepage row: number, thumbnail, title, meta, author, outlined arrow.
    The thumbnail zooms 4% inside its frame: the one image zoom on the site (agreed Nov 27). */
@@ -245,6 +242,33 @@
   .dw-insight-home{grid-template-columns:28px minmax(0,1fr) 44px}
   .dw-insight-home .dw-insight__img{display:none}
 }
+
+/* ============ Tags & badges ============ */
+/* Four kinds, one look each. What it does picks the kind:
+   tag = says what something is (not clickable) · chip = filters a list · badge = sits on an image · example = marks sample content. */
+.dw-tags,.dw-chips{display:flex;flex-wrap:wrap;gap:var(--dw-space-sm)}
+.dw-tag{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font-family:var(--dw-font-sans);font-size:13px;font-weight:600;line-height:1.2;padding:5px 10px;border-radius:var(--dw-cut-xs);color:var(--dw-ink);background:var(--dw-mist)}
+.dw-tag .dw-icon{width:14px;height:14px}
+.dw-tag--brand{color:var(--dw-burgundy);background:var(--dw-burgundy-wash)}
+.dw-section--mist .dw-tag,.dw-on-mist .dw-tag{background:var(--dw-white)}
+.dw-on-burgundy .dw-tag,.dw-on-ink .dw-tag{color:var(--dw-white);background:var(--dw-on-dark-wash)}
+/* Result highlight: dark grounds only, one per card */
+.dw-tag--highlight,.dw-on-burgundy .dw-tag--highlight,.dw-on-ink .dw-tag--highlight{font-family:var(--dw-font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--dw-coral);background:var(--dw-coral-wash)}
+
+/* Chip: <a class="dw-chip" aria-current="true"> for the selected filter, or <button aria-pressed> */
+.dw-chip{display:inline-flex;align-items:center;white-space:nowrap;font-family:var(--dw-font-mono);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:8px 12px;border:0;border-radius:var(--dw-cut-sm);color:var(--dw-ink);background:var(--dw-mist);text-decoration:none;cursor:pointer;transition:background-color var(--dw-dur-tint) var(--dw-ease-out),color var(--dw-dur-tint) var(--dw-ease-out)}
+.dw-section--mist .dw-chip,.dw-on-mist .dw-chip{background:var(--dw-white)}
+.dw-chip:hover{color:var(--dw-burgundy)}
+.dw-chip[aria-current="true"],.dw-chip[aria-current="page"],.dw-chip[aria-pressed="true"],.dw-chip.is-on{background:var(--dw-ink);color:var(--dw-white)}
+
+/* Badge on an image or video: place it inside a positioned .dw-media */
+.dw-badge{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font-family:var(--dw-font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--dw-white);background:var(--dw-scrim);border-radius:var(--dw-cut-sm);padding:6px 10px}
+.dw-badge .dw-icon{width:12px;height:12px}
+.dw-media > .dw-badge{position:absolute;left:12px;bottom:12px}
+
+/* Example label: every sample number, screen or quote that isn't real */
+.dw-example{display:inline-flex;align-items:center;white-space:nowrap;font-family:var(--dw-font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--dw-grey-600);background:var(--dw-mist);border-radius:var(--dw-cut-xs);padding:5px 8px}
+.dw-section--mist .dw-example,.dw-on-mist .dw-example{background:var(--dw-white)}
 
 /* ============ FAQ ============ */
 .dw-faq-layout{display:grid;grid-template-columns:5fr 7fr;gap:var(--dw-space-3xl);align-items:start}
