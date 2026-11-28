@@ -1104,8 +1104,8 @@ main{min-width:0}
 .ins-most b{display:block;font-size:15px;line-height:1.35}
 .ins-most small{display:block;margin-top:4px;font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--color-coral)}
 .ins-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.ins-chips a{padding:8px 12px;border:1px solid var(--color-grey-200);border-radius:0 8px 8px 8px;font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#111;text-decoration:none;transition:border-color .12s,color .12s}
-.ins-chips a:hover{border-color:var(--color-burgundy);color:var(--color-burgundy)}
+.ins-chips a{padding:8px 12px;background:var(--color-mist);border-radius:0 8px 8px 8px;font-family:var(--font-mono);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#111;text-decoration:none;transition:background-color .12s,color .12s}
+.ins-chips a:hover{color:var(--color-burgundy)}
 .ins-home-list{border-bottom:1px solid var(--color-grey-200)}
 .ins-home{display:grid;grid-template-columns:40px 224px minmax(0,1fr) 44px;gap:24px;align-items:center;padding:24px 0;border-top:1px solid var(--color-grey-200);text-decoration:none;color:#111}
 .ins-home .n{font-family:var(--font-mono);font-size:15px;color:var(--color-coral)}
@@ -1275,7 +1275,7 @@ footer{padding:40px 0 56px;font-family:var(--font-mono);font-size:11px;text-tran
     <a href="#longform" data-nav>Long-form text <span class="tag tag-soon">Agreed</span></a>
     <a href="#cards" data-nav>Cards <span class="tag tag-soon">Agreed</span></a>
     <a href="#insight-cards" data-nav>Insight cards <span class="tag tag-soon">Agreed</span></a>
-    <a href="#tags" data-nav>Tags &amp; badges <span class="tag tag-review">Review</span></a>
+    <a href="#tags" data-nav>Tags &amp; badges <span class="tag tag-soon">Agreed</span></a>
     <a href="#forms" data-nav>Forms <span class="tag tag-soon">Agreed</span></a>
     <a href="#header" data-nav>Header &amp; footer <span class="tag tag-soon">Agreed</span></a>
   </div>
@@ -2521,6 +2521,9 @@ footer{padding:40px 0 56px;font-family:var(--font-mono);font-size:11px;text-tran
         <div class="q"><h3>Insight cards: the live card set</h3>
           <p>Featured, secondary, Latest rows, Most read, topic chips, homepage rows and Dreww News kept as live. Images 16:9, cut 16 big and 12 for thumbnails; featured title sized to its words; chips cut 8; category, date and read time, no view counts. Hover turns the title burgundy; the homepage row also fills and nudges its arrow and zooms its thumbnail 4% inside the frame, the one image zoom on the site. Agreed Nov 27, 2026.</p>
           <p class="todo">To do: featured image cut 22 → 16, list thumbnails cut 14 → 12 · featured title to three lines at most · topic chips from pills to cut 8 · remove view counts from insight and homepage cards · homepage arrow and zoom onto the motion tokens (0.3s)</p></div>
+        <div class="q"><h3>Tags &amp; badges: four kinds, one look each</h3>
+          <p>Tag (says what something is): DM Sans 13 600, cut 4, ink on mist, burgundy on wash for services. Chip (filters): Plex Mono 12, cut 8, mist, ink when selected; the Insight cards chip follows it. Badge (on images): Plex Mono 11, white on ink at 60%, cut 8. Example label: Plex Mono 11, Grey 600 on mist, cut 4. Coral highlight on dark grounds only. No pills. Agreed Nov 28, 2026.</p>
+          <p class="todo">To do: Culture values and Always-On Social formats from pills to cut 4 tags · case study tags cut 8 → 4 · product tags cut 10 → 4 · partner badge cut 10 → 4 with the badge-check icon · example labels from #767676 to Grey 600 · one badge colour on case study and reel media · topic chips get the burgundy hover</p></div>
       </div>
     </div>
   </section>

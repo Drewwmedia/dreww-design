@@ -12,7 +12,7 @@ The source of truth for how dreww.ca looks, for prototypes in artifacts and for 
 | `web/tokens.css` | Every colour, glow, font, size, space, corner, shadow and speed as `--dw-*` variables. Variables only. |
 | `web/base.css` | Body type, text selection colours, focus ring, reduced motion. |
 | `web/components.css` | Every agreed component, classes prefixed `dw-` so they can't clash with theme CSS. |
-| `web/icons.svg` | Every agreed icon as one SVG sprite: 29 Lucide line icons, filled star and play, 7 brand marks. |
+| `web/icons.svg` | Every agreed icon as one SVG sprite: 30 Lucide line icons, filled star and play, 7 brand marks. |
 | `web/glossary.json` | One French name for each English term, used in menus, copy and addresses. |
 | `web/fr.js` | `frTypo(text)`: French spaces, decimals, thousands and money. |
 | `web/motion.js` | Card ink spread, one-open FAQ, draggable marquees, Final CTA word rise and cycling phrase. Opt-in by data attribute. |
@@ -71,7 +71,12 @@ Header, menu and footer are single theme modules (`hv4-*`), not shared component
 - Images 16:9: cut 16 on featured and secondary, cut 12 on thumbnails and press cards. Featured titles sized to their words, three lines at most.
 - Meta: category in coral mono, then date and read time. No view counts.
 - Hover: the title turns burgundy. Homepage rows also fill the arrow coral, nudge it 5px and zoom the thumbnail 4% inside its frame, the one image zoom on the site.
-- Topic chips are cut 8, never pills.
+- Topic chips are the standard chip (see Tags and badges).
+
+### Tags and badges
+- Four kinds; what it does picks which. Tag (`.dw-tag`) says what something is and isn't clickable: DM Sans 13 600, cut 4, ink on mist (white on mist grounds), `--brand` burgundy on wash for services and the partner badge (with `badge-check`), white on a 12% wash on burgundy or ink. Chip (`.dw-chip`) filters a list: Plex Mono 12 uppercase, cut 8, mist, hover burgundy text, ink with white text when selected (`aria-current` or `aria-pressed`). Badge (`.dw-badge`) sits on an image or video: Plex Mono 11 uppercase, white on `--dw-scrim`, cut 8. Example label (`.dw-example`): Plex Mono 11 uppercase, Grey 600 on mist, cut 4, on every sample number or screen.
+- Result highlight (`.dw-tag--highlight`): coral mono on a coral wash, dark grounds only, one per card.
+- No pills. Screens drawn inside illustrations (ad previews, CRM, calculators) copy the product they show and are outside these rules.
 
 ### Imagery
 - Five shapes: 9:16 for reels (`.dw-media--reel`), 4:5 for people (`--portrait`), 3:2 for case study and studio photos (`--photo`), 16:9 for video and covers (`--wide`), 1:1 only for round avatars (`.dw-avatar`).

@@ -44,6 +44,9 @@ const PAIRS = [
   ["dw-grey-200", "dw-burgundy", 4.5, "FAQ answers on the open card"],
   ["dw-red", "dw-white", 4.5, "form errors"],
   ["dw-teal", "dw-white", 4.5, "positive states"],
+  ["dw-burgundy", "dw-burgundy-wash", 4.5, "service tags"],
+  ["dw-ink", "dw-mist", 4.5, "tags and chips on mist"],
+  ["dw-grey-600", "dw-mist", 4.5, "example labels"],
   ["dw-burgundy", "dw-white", 3, "selected text highlight"],
 ];
 const EXCEPTIONS = [
