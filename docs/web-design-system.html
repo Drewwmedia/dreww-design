@@ -1131,6 +1131,63 @@ main{min-width:0}
 @media (max-width:1023px){.ins-news{grid-template-columns:1fr 1fr}}
 @media (max-width:767px){.ins-stage{padding:24px 16px}.ins-row{grid-template-columns:1fr}.ins-row .ins-img{order:-1}.ins-home{grid-template-columns:28px minmax(0,1fr) 44px}.ins-home .ins-img{display:none}.ins-news,.ins-pair{grid-template-columns:1fr}}
 
+
+/* ===== Tags & badges ===== */
+.tb-row{display:grid;grid-template-columns:200px minmax(0,1fr) minmax(0,1fr);border-top:1px solid var(--color-grey-200)}
+.tb-row > div{padding:22px 24px;border-left:1px solid var(--color-grey-200);display:flex;flex-wrap:wrap;gap:8px;align-items:center;align-content:center;min-width:0}
+.tb-row > div:first-child{border-left:0;flex-direction:column;align-items:flex-start;gap:4px}
+.tb-row > div:first-child b{font-size:15px}
+.tb-row > div:first-child small{font-size:12px;color:var(--color-grey-500);line-height:1.4}
+.tb-row .lbl{flex-basis:100%;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-grey-500)}
+.tb-row .on-mist{background:var(--color-mist)}
+.tb-row .on-burg{background:var(--color-burgundy)}.tb-row .on-burg .lbl{color:#f3dce6}
+.tb-row .on-ink{background:#111}.tb-row .on-ink .lbl{color:#cfcfcf}
+.tb-head{display:grid;grid-template-columns:200px 1fr 1fr;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-grey-500)}
+.tb-head span{padding:12px 24px}.tb-head span:first-child{padding-left:24px}
+/* live samples */
+.lv{display:inline-flex;align-items:center;white-space:nowrap}
+.lv-svc{font-size:13px;font-weight:600;color:#892951;background:rgba(137,41,81,.1);border-radius:0 8px 8px 8px;padding:5px 10px}
+.lv-ind{font-size:13px;font-weight:600;color:#111;background:#f2f4f8;border-radius:0 8px 8px 8px;padding:5px 10px}
+.lv-prod{font-size:14px;font-weight:500;color:#111;background:#fff;border-radius:0 10px 10px 10px;padding:8px 14px}
+.lv-trait{font-size:14px;font-weight:500;color:#525252;background:#fff;border:1px solid #e5e5e5;border-radius:9999px;padding:8px 16px}
+.lv-fmt{font-size:13px;color:#111;background:#f7f7f7;border-radius:99px;padding:5px 11px}
+.lv-role{font-size:14px;color:#fff;background:rgba(255,255,255,.12);border-radius:0 8px 8px 8px;padding:8px 12px}
+.lv-partner{font-size:13px;font-weight:600;color:#892951;background:rgba(137,41,81,.08);border-radius:0 10px 10px 10px;padding:7px 9px}
+.lv-chip{font-family:var(--font-mono);font-size:12px;text-transform:uppercase;color:#111;background:#f2f4f8;border-radius:0 8px 8px 8px;padding:8px 12px}
+.lv-chip.is-on{background:#111;color:#fff}
+.lv-watch{font-family:var(--font-mono);font-size:11px;font-weight:600;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.5);border-radius:0 8px 8px 8px;padding:5px 9px}
+.lv-views{font-family:var(--font-mono);font-size:12px;color:#fff;background:rgba(17,17,17,.55);border-radius:0 8px 8px 8px;padding:6px 10px}
+.lv-ex{font-family:var(--font-mono);font-size:12px;color:#767676;background:#f2f4f8;border-radius:6px;padding:5px 10px}
+.lv-ex2{font-family:var(--font-mono);font-size:10.5px;font-weight:600;text-transform:uppercase;color:#767676;background:#f2f4f8;border-radius:0 6px 6px 6px;padding:6px 8px}
+.lv-best{font-family:var(--font-mono);font-size:11px;font-weight:600;text-transform:uppercase;color:#ee7464;background:rgba(238,116,100,.25);border-radius:0 6px 6px 6px;padding:5px 9px}
+/* proposed */
+.pt{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font-size:13px;font-weight:600;line-height:1.2;padding:5px 10px;border-radius:0 4px 4px 4px;color:#111;background:#f2f4f8}
+.pt svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.on-mist .pt{background:#fff}
+.pt--brand{color:#892951;background:#f3eaee}
+.on-mist .pt--brand{background:#fff}
+.on-burg .pt,.on-ink .pt{color:#fff;background:rgba(255,255,255,.12)}
+.pt--hi{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#ee7464;background:rgba(238,116,100,.18)}
+.on-burg .pt--hi,.on-ink .pt--hi{color:#ee7464;background:rgba(238,116,100,.18)}
+.pc{display:inline-flex;align-items:center;white-space:nowrap;font-family:var(--font-mono);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:8px 12px;border-radius:0 8px 8px 8px;color:#111;background:#f2f4f8;cursor:pointer;text-decoration:none;transition:background-color .12s,color .12s}
+.on-mist .pc{background:#fff}
+.pc:hover{color:#892951}
+.pc.is-on,.pc[aria-pressed="true"]{background:#111;color:#fff}
+.pb{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:rgba(17,17,17,.6);border-radius:0 8px 8px 8px;padding:6px 10px}
+.pb svg{width:12px;height:12px;fill:currentColor}
+.pe{display:inline-flex;align-items:center;white-space:nowrap;font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#525252;background:#f2f4f8;border-radius:0 4px 4px 4px;padding:5px 8px}
+.on-mist .pe{background:#fff}
+.tb-media{position:relative;width:150px;aspect-ratio:9/12;border-radius:0 12px 12px 12px;overflow:hidden;background:#111}
+.tb-media img{width:100%;height:100%;object-fit:cover;display:block}
+.tb-media .lv,.tb-media .pb{position:absolute;left:10px;bottom:10px}
+.tb-kinds{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--color-grey-200)}
+.tb-kinds > div{padding:24px;border-left:1px solid var(--color-grey-200);display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.tb-kinds > div:first-child{border-left:0}
+.tb-kinds h4{margin:0;font-size:16px}
+.tb-kinds p{margin:0;font-size:13px;color:var(--color-grey-600);line-height:1.5}
+.tb-kinds .w{display:flex;flex-wrap:wrap;gap:8px}
+@media (max-width:1000px){.tb-row,.tb-head,.tb-kinds{grid-template-columns:1fr}.tb-head{display:none}.tb-row > div,.tb-kinds > div{border-left:0;border-top:1px solid var(--color-grey-200)}}
+
 /* ---------- Decisions ---------- */
 .decide{background:var(--color-burgundy);color:#fff;padding:88px 0}
 .decide h2{color:#fff}
@@ -1218,6 +1275,7 @@ footer{padding:40px 0 56px;font-family:var(--font-mono);font-size:11px;text-tran
     <a href="#longform" data-nav>Long-form text <span class="tag tag-soon">Agreed</span></a>
     <a href="#cards" data-nav>Cards <span class="tag tag-soon">Agreed</span></a>
     <a href="#insight-cards" data-nav>Insight cards <span class="tag tag-soon">Agreed</span></a>
+    <a href="#tags" data-nav>Tags &amp; badges <span class="tag tag-review">Review</span></a>
     <a href="#forms" data-nav>Forms <span class="tag tag-soon">Agreed</span></a>
     <a href="#header" data-nav>Header &amp; footer <span class="tag tag-soon">Agreed</span></a>
   </div>
@@ -2014,6 +2072,55 @@ footer{padding:40px 0 56px;font-family:var(--font-mono);font-size:11px;text-tran
           <div><b>Keep the live cards</b><p>The card set works; only corners, the featured title and the chips break agreed rules.</p><p class="cd-rec">Keep every card as live, with corners cut 16 / 12, the featured title sized to its words and chips cut 8.</p></div>
           <div><b>View counts</b><p>Every card shows views, and most are small numbers (31, 48, 95).</p><p class="cd-rec">Drop view counts from cards; keep category, date and read time. Small numbers undersell the work.</p></div>
           <div><b>Hover</b><p>Live, the homepage thumbnails zoom 4% and other cards don&rsquo;t.</p><p class="cd-rec">The title turns burgundy and the homepage arrow fills coral and nudges 5&nbsp;px. The homepage thumbnail grows 4% inside its frame in 0.3s, the only image allowed to zoom. Other cards keep their images still.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TAGS & BADGES -->
+  <section class="sec" id="tags">
+    <div class="wrap">
+      <h2>Tags &amp; badges</h2>
+      <p class="lede">The small labels on case studies, service pages, insights and media. Read from 28 live page templates: 36 different styles today, in three corner shapes, four fonts and five fully rounded pills.</p>
+
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Four kinds, one look each</h3><p>What it does decides how it looks: a tag says what something is, a chip is clicked to filter, a badge sits on an image, and the example label marks sample content.</p></div></div>
+        <div class="tb-kinds">
+          <div><h4>Tag</h4><p>Says what something is. Not clickable. DM Sans 13, 600, cut 4.</p><div class="w"><span class="pt pt--brand">Lead Generation</span><span class="pt">Food &amp; beverage</span></div></div>
+          <div><h4>Chip</h4><p>Filters a list. IBM Plex Mono 12, uppercase, cut 8. Ink when selected.</p><div class="w"><a class="pc is-on" href="#tags">All</a><a class="pc" href="#tags">AEO</a></div></div>
+          <div><h4>Badge</h4><p>Sits on an image or video. IBM Plex Mono 11, white on ink at 60%, cut 8.</p><div class="w"><div class="tb-media" style="width:120px"><img src="img/prime-video-reel.jpg" alt="" style="object-position:50% 25%"><span class="pb">Watch</span></div></div></div>
+          <div><h4>Example label</h4><p>Marks every sample number or screen. IBM Plex Mono 11, Grey 600, cut 4.</p><div class="w"><span class="pe">Example</span><span class="pe">Last 90 days · example</span></div></div>
+        </div>
+      </div>
+
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>Every live style, and what it becomes</h3><p>Left as it is on dreww.ca today, right as proposed. Text from the live pages.</p></div></div>
+        <div class="tb-head"><span>Where</span><span>Live</span><span>Proposed</span></div>
+        <div class="tb-row"><div><b>Service tag</b><small>Case studies: what we did</small></div><div><span class="lv lv-svc">E-commerce Growth</span><span class="lv lv-svc">Lead Generation</span></div><div><span class="pt pt--brand">E-commerce Growth</span><span class="pt pt--brand">Lead Generation</span></div></div><div class="tb-row"><div><b>Industry tag</b><small>Case studies: who for</small></div><div><span class="lv lv-ind">Food &amp; beverage</span><span class="lv lv-ind">Construction &amp; home services</span></div><div><span class="pt">Food &amp; beverage</span><span class="pt">Construction &amp; home services</span></div></div><div class="tb-row"><div><b>Product tag</b><small>Case studies, on mist</small></div><div class="on-mist"><span class="lbl">on mist</span><span class="lv lv-prod">Protein powders</span><span class="lv lv-prod">Standby generators</span></div><div class="on-mist"><span class="lbl">on mist the tag turns white</span><span class="pt">Protein powders</span><span class="pt">Standby generators</span></div></div><div class="tb-row"><div><b>Values</b><small>Culture: pills</small></div><div><span class="lv lv-trait">Proactive</span><span class="lv lv-trait">Curious</span><span class="lv lv-trait">Accountable</span></div><div><span class="pt">Proactive</span><span class="pt">Curious</span><span class="pt">Accountable</span></div></div><div class="tb-row"><div><b>Formats</b><small>Always-On Social: pills</small></div><div><span class="lv lv-fmt">Short-form video</span><span class="lv lv-fmt">Carousels</span></div><div><span class="pt">Short-form video</span><span class="pt">Carousels</span></div></div><div class="tb-row"><div><b>Roles on burgundy</b><small>Always-On Social: the team</small></div><div class="on-burg"><span class="lv lv-role">Account Director</span><span class="lv lv-role">Strategist</span><span class="lv lv-role">Content Creator</span></div><div class="on-burg"><span class="pt">Account Director</span><span class="pt">Strategist</span><span class="pt">Content Creator</span></div></div><div class="tb-row"><div><b>Partner badge</b><small>Services</small></div><div><span class="lv lv-partner">HubSpot Certified Partner</span></div><div><span class="pt pt--brand"><svg viewBox="0 0 24 24"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>HubSpot Certified Partner</span></div></div><div class="tb-row"><div><b>Result highlight</b><small>Service pages, on dark cards</small></div><div class="on-ink"><span class="lv lv-best">Best month on record</span><span class="lv lv-best">Same period</span></div><div class="on-ink"><span class="pt pt--hi">Best month on record</span><span class="pt pt--hi">Same period</span></div></div><div class="tb-row"><div><b>Topic chips</b><small>Insights, authors, press: you click them</small></div><div><span class="lv lv-chip is-on">All</span><span class="lv lv-chip">AEO/GEO</span><span class="lv lv-chip">Paid media</span></div><div><a class="pc is-on" href="#tags">All</a><a class="pc" href="#tags">AEO</a><a class="pc" href="#tags">Paid media</a></div></div><div class="tb-row"><div><b>On an image</b><small>Case studies and reels</small></div><div><div class="tb-media"><img src="img/prime-video-reel.jpg" alt="" style="object-position:50% 25%"><span class="lv lv-watch">Watch</span></div><div class="tb-media"><img src="img/prime-video-reel.jpg" alt="" style="object-position:50% 25%"><span class="lv lv-views">19.9M views</span></div></div><div><div class="tb-media"><img src="img/prime-video-reel.jpg" alt="" style="object-position:50% 25%"><span class="pb">Watch</span></div><div class="tb-media"><img src="img/prime-video-reel.jpg" alt="" style="object-position:50% 25%"><span class="pb"><svg viewBox="0 0 24 24"><path d="M12 5C5.6 5 2 12 2 12s3.6 7 10 7 10-7 10-7-3.6-7-10-7Zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z"/></svg>19.9M views</span></div></div></div><div class="tb-row"><div><b>Example label</b><small>Every sample number or screen</small></div><div><span class="lv lv-ex">Last 90 days · example</span><span class="lv lv-ex2">Example 1</span></div><div><span class="pe">Last 90 days · example</span><span class="pe">Example 1</span></div></div>
+        <div class="spec-list"><div><b>Tag colours</b>Ink on mist (white on mist grounds), burgundy on wash for services and the partner badge, white on 12% white on burgundy or ink</div><div><b>Highlight</b>Coral mono on a coral wash, dark grounds only, one per card</div><div><b>Corners</b>Tags and example labels cut 4, chips and badges cut 8. No pills</div><div><b>Not covered</b>Screens drawn inside illustrations (ad previews, CRM, calculators) copy the product they show</div></div>
+      </div>
+
+      <div class="cmp">
+        <div class="cmp-head"><div><h3>What the live site does today</h3><p>28 page templates, one of each kind.</p></div></div>
+        <div class="audit-wrap"><table class="audit">
+          <thead><tr><th>What</th><th>Today</th><th>Agreed rule it meets</th></tr></thead>
+          <tbody>
+            <tr><td>Corners</td><td>Cut 6, 8 and 10, rounded 6 all round, and pills (999px) on values and formats</td><td class="new">Spacing &amp; radius: tags 4, chips 8, no pills</td></tr>
+            <tr><td>Fonts</td><td>DM Sans 13 / 14 at 400–600, IBM Plex Mono 10.5 / 11 / 12 at 400–600</td><td class="new">Two: DM Sans 13 600 for tags, Plex Mono 500 for chips, badges and labels</td></tr>
+            <tr><td>Example labels</td><td>#767676 on mist, 4.1:1, below the 4.5 needed at 12px</td><td class="new">Grey 600 on mist, 7.1:1</td></tr>
+            <tr><td>Badges on images</td><td>Black at 50% and ink at 55%, weights 400 and 600</td><td class="new">One badge: ink at 60%, as on the agreed case study card</td></tr>
+            <tr><td>Topic chips</td><td>Mist, ink when selected; no hover</td><td class="new">Keep; hover turns the text burgundy. The Insight cards chip follows this</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+
+      <div class="card-decide">
+        <h3>Your call</h3>
+        <div class="cd-grid">
+          <div><b>Four kinds</b><p>36 styles today, decided page by page.</p><p class="cd-rec">Tag, chip, badge and example label, each with one look. What it does picks which one.</p></div>
+          <div><b>No pills, tags cut 4</b><p>Values and formats are fully rounded pills; other tags are cut 6–10.</p><p class="cd-rec">Tags take the agreed cut 4, chips and badges cut 8. Pills go.</p></div>
+          <div><b>Chips as live</b><p>Live chips are mist with ink when selected. The Insight cards chip I locked used a grey border instead.</p><p class="cd-rec">Keep the live chip everywhere and update the Insight cards chip to match.</p></div>
         </div>
       </div>
     </div>
